@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserAuthenticationServiceService } from '../service/user/user-authentication-service.service';
+import { UserServiceService } from '../service/user/user-service.service';
 
 
 
@@ -36,7 +37,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router:Router,
     private userAuthenticationService:UserAuthenticationServiceService,
-    private fb:FormBuilder
+    private fb:FormBuilder,
+    private userService:UserServiceService
   ) { }
 
   ngOnInit(
@@ -49,65 +51,41 @@ export class LoginComponent implements OnInit {
     //this.showSpinner=true;   
     this.userAuthenticationService.executeJWTAuthenticationService(this.emailField.value,this.passwordField.value).subscribe(
           response => {
-            // this.userService.getUser(this.emailField.value).subscribe(
-            //   response => {
-            //     this.handleSuccessfulResponse(response);
-            //   },
-            //   error =>{
-            //     this.showSpinner=false;   
-            //     this.errorMessage="INVALID CREDENTIALS.";
-            //     console.log(error);
-            //   }
-            // );
+            this.userService.getUser(this.emailField.value).subscribe(
+              response => {
+                this.handleSuccessfulResponse(response);
+              },
+              error =>{
+                this.showSpinner=false;   
+                this.errorMessage="System Error.Please try again..";
+                console.log(error);
+              }
+            );
           },
           error => {
-            // this.showSpinner=false;
-            // this.errorMessage="INVALID CREDENTIALS.";
-            // this.handleErrorResponse(error);
+            this.errorMessage="INVALID CREDENTIALS.";
           }
         );
    }
 
   //3)Valid User
   handleSuccessfulResponse(response){
-    
-    if(response.userId != null){
-      if(response.userId > 0 && response.status==1){
-
+      
+    if(response.userId != null && response.userId > 0 && response.status==1){
+      
         sessionStorage.setItem('userId',response.userId);
         sessionStorage.setItem('userRole',response.role);
         
         let userName = response.firstName+' '+response.lastName;
         sessionStorage.setItem('userName',userName);
 
-        // should check status backendside
-        if(response.role === 2){
-
-          this.router.navigate(['admin-staff-student-dash-board'])
-        }else if( response.role == 3 ){
-          this.router.navigate(['time-table']);
-        }else if(response.role==4){
-          this.router.navigate(['instructor-time-table']);
-        }else if( response.role == 5){
-          this.router.navigate(['time-table']);
-        }else{
-          this.router.navigate(['dashboard']);
-        }
-      }
-      // else if(response.status == 0){
-      //   this.errorMessage="Account Deactivate.Please Inform to the administrator";
-      // }else{
-        
-      // }
-    
+        if(response.role === 1){
+          this.router.navigate(['dashboard'])
+        }     
     }
-    this.showSpinner=false;
   }
 
-  //Invalid User
-  
-
-  //
+ 
   closeError(){
     this.errorMessage=null;
   }
