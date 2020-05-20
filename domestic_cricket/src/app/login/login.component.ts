@@ -75,12 +75,16 @@ export class LoginComponent implements OnInit {
       
         sessionStorage.setItem('userId',response.userId);
         sessionStorage.setItem('userRole',response.role);
-        
-        let userName = response.firstName+' '+response.lastName;
-        sessionStorage.setItem('userName',userName);
+        sessionStorage.setItem('userName',response.userName);
 
         if(response.role === 1){
           this.router.navigate(['dashboard'])
+        }else if(response.role == 2){
+          this.router.navigate(['dashboard']);
+        }else if(response.role == 3){
+          this.router.navigate(['#']);
+        }else if(response.role == 4){
+          this.router.navigate(['#']);
         }     
     }
   }

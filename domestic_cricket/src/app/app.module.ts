@@ -15,6 +15,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './login/login.component';
 import { HttpIntercepterBasicAuthServiceService } from './service/user/http-intercepter-basic-auth-service.service';
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,

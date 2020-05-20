@@ -3,6 +3,7 @@ import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
 import Chart from 'chart.js';
+import { UserAuthenticationServiceService } from '../../service/user/user-authentication-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +11,10 @@ import Chart from 'chart.js';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+
+    userRole:Number;
+    userRoleName:String;
+
     private listTitles: any[];
     location: Location;
       mobile_menu_visible: any = 0;
@@ -18,12 +23,24 @@ export class NavbarComponent implements OnInit {
 
     public isCollapsed = true;
 
-    constructor(location: Location,  private element: ElementRef, private router: Router) {
+    constructor(location: Location,  private element: ElementRef, private router: Router,private userAuthenticationService:UserAuthenticationServiceService) {
       this.location = location;
           this.sidebarVisible = false;
     }
 
     ngOnInit(){
+
+     this.userRole=+sessionStorage.getItem("userRole");
+     if(this.userRole==1){
+       this.userRoleName="Admin";
+     }else if(this.userRole==2){
+       this.userRoleName="Manager";
+     }else if(this.userRole==3){
+       this.userRoleName="Player";
+     }else{
+       this.userRoleName="Referee"
+     }
+
       this.listTitles = ROUTES.filter(listTitle => listTitle);
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
@@ -150,6 +167,11 @@ export class NavbarComponent implements OnInit {
               return this.listTitles[item].title;
           }
       }
-      return 'Dashboard';
+      return 'Loged in '+sessionStorage.getItem("userName")+ " : "+this.userRoleName;
+    }
+
+    logout(){
+      this.userAuthenticationService.logout();
+      this.router.navigate(['']);
     }
 }

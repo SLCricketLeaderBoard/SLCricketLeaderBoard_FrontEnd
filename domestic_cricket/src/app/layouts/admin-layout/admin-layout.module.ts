@@ -14,6 +14,12 @@ import { ChartsModule } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
+import { ClubListComponent } from '../../club/club-list/club-list.component';
+import { ClubRegisterComponent } from '../../club/club-register/club-register.component';
+import { MatchListComponent } from '../../match/match-list/match-list.component';
+import { StadiumListComponent } from '../../stadium/stadium-list/stadium-list.component';
+import { ManagerListComponent } from '../../manager/manager-list/manager-list.component';
+import { PlayerListComponent } from '../../player/player-list/player-list.component';
 
 @NgModule({
   imports: [
@@ -33,6 +39,14 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
     IconsComponent,
     MapsComponent,
     NotificationsComponent,
+
+    ClubListComponent,
+    ClubRegisterComponent,
+
+    MatchListComponent,
+    StadiumListComponent,
+    ManagerListComponent,
+    PlayerListComponent
   ]
 })
 
