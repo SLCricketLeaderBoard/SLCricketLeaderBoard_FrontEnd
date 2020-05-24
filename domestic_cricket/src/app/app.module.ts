@@ -14,6 +14,7 @@ import { AppComponent } from "./app.component";
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { LoginComponent } from "./login/login.component";
 import { HttpIntercepterBasicAuthServiceService } from "./service/user/http-intercepter-basic-auth-service.service";
+import { ManagerService} from "./service/manager/manager.service";
 
 
 @NgModule({
@@ -34,8 +35,9 @@ import { HttpIntercepterBasicAuthServiceService } from "./service/user/http-inte
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpIntercepterBasicAuthServiceService,
-      multi: true,
+      multi: true,      
     },
+    ManagerService
   ],
   bootstrap: [AppComponent],
 })

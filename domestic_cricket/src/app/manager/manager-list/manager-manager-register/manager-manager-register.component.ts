@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { UserModel } from '../../../class-model/UserModel'
-
+import { UserModel } from '../../../class-model/UserModel';
+import { ManagerService } from '../../../service/manager/manager.service'
 @Component({
   selector: 'app-manager-manager-register',
   templateUrl: './manager-manager-register.component.html',
@@ -12,7 +12,7 @@ export class ManagerManagerRegisterComponent implements OnInit {
   managerRegisterForm: FormGroup;
   // User : UserModel
 
-  constructor(private formBuilder:FormBuilder) {
+  constructor(private formBuilder:FormBuilder,private managerService:ManagerService) {
     this.managerRegisterForm = this.formBuilder.group({
       userName: new FormControl(null,Validators.compose([Validators.required])),
       fullName: new FormControl(null,Validators.compose([Validators.required])),
@@ -39,9 +39,8 @@ export class ManagerManagerRegisterComponent implements OnInit {
     const contactNumber: String = this.managerRegisterForm.value['contactNumber'];
     const email:String = this.managerRegisterForm.value['email'];
     const address:String = this.managerRegisterForm.value['address'];
-    const password:String = this.managerRegisterForm.value['password'];
+    const password:String = this.managerRegisterForm.value['nic'];
     const role:Number = 2;
-    const status = 0;
     const id=0;
     const regDate:Date = new Date();
   
@@ -51,7 +50,13 @@ export class ManagerManagerRegisterComponent implements OnInit {
     const user:UserModel = new UserModel(id,userName,fullName,nameWithInitials,nic,contactNumber,role,email,password,address,regDate);
 
     console.log(user);
-    
+
+    this.managerService.registerManager(user).subscribe(res=>{
+      console.log(res);
+      
+      },error=>{
+        console.log(error);
+      })
   }
 
   reset(){
