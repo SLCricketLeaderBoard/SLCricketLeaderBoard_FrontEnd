@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ManagerService, Manager, User } from '../../../service/manager/manager.service';
+
+
+
+
 
 @Component({
   selector: 'app-manager-managers',
@@ -7,9 +12,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManagerManagersComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  manager:any;
+
+  constructor() {
+   }
 
   ngOnInit() {
+    console.log(this.manager);
+    
   }
 
 }

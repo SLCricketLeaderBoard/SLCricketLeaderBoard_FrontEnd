@@ -10,7 +10,7 @@
           </button>
         </div>
         <div class="card-body">
-          <app-manager-managers></app-manager-managers>
+          <app-manager-managers *ngFor="let manager of managers" [manager]="manager"></app-manager-managers>
         </div>
       </div>
     </div>
