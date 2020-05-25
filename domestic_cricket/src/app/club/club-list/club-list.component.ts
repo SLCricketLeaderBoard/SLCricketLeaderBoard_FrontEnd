@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-club-list',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClubListComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router:Router
+  ) { }
 
   ngOnInit() {
+    let userRole = +sessionStorage.getItem("userRole");
+    if(userRole!=1){
+      this.router.navigate(['']);
+    }
+  }
+
+  clubRegister(){
+    this.router.navigate(['club-register']);
   }
 
 }

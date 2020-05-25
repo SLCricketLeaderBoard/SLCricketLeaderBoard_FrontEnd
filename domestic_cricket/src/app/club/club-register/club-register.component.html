@@ -1,3 +1,85 @@
-<p>
-  club-register works!
-</p>
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Club Register</h4>
+        </div>
+        <div class="card-body">
+          
+           <div class="row">
+             <div class="col-md-2"></div>
+             <div class="col-md-8">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Registration Form</h5>
+                </div>
+                <div class="card-body">
+                  
+                  <form [formGroup]="clubRegisterFrom" (ngSubmit)="clubRegister()">
+
+                    <div class="row">
+
+                      <div class="col-sm-12 col-lg-12">
+                          <div class="form-group">
+                              <input [class.is-invalid]="clubRegisterFrom.get('clubName').invalid && clubRegisterFrom.get('clubName').touched" formControlName="clubName"  type="text" name="clubName" placeholder="Club Name" class="form-control"/>
+                              <div *ngIf="clubRegisterFrom.get('clubName').invalid && clubRegisterFrom.get('clubName').touched">
+                                <small *ngIf="clubNameField.errors?.required" class="text-danger">Club Name Required</small>
+                              </div>
+                           </div>
+                      </div>
+
+                      <div class="col-sm-12 col-lg-12">
+                          <div class="form-group">
+                              <input [class.is-invalid]="clubRegisterFrom.get('address').invalid && clubRegisterFrom.get('address').touched" formControlName="address"  type="text" name="clubAddress" placeholder="Club Address" class="form-control"/>
+                              <div *ngIf="clubRegisterFrom.get('address').invalid && clubRegisterFrom.get('address').touched">
+                                <small *ngIf="addressField.errors?.required" class="text-danger">Club Address Required</small>
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <div class="col-sm-12 col-lg-6">
+                          <div  class="form-group">
+                              <input [class.is-invalid]="clubRegisterFrom.get('email').invalid && clubRegisterFrom.get('email').touched" formControlName="email"  type="text" name="clubEmail" placeholder="Email" class="form-control"/>
+                              <div *ngIf="clubRegisterFrom.get('email').invalid && clubRegisterFrom.get('email').touched">
+                                <small *ngIf="emailField.errors?.required" class="text-danger">Email Required</small>
+                                <small *ngIf="emailField.errors?.email" class="text-danger">Required Valid Email</small>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-sm-12 col-lg-6">
+                          <div class="form-group">
+                              <input [class.is-invalid]="clubRegisterFrom.get('contactNumber').invalid && clubRegisterFrom.get('contactNumber').touched" formControlName="contactNumber"  type="text" name="clubContactNumber" placeholder="Contact Number" class="form-control" />
+                              <div *ngIf="clubRegisterFrom.get('contactNumber').invalid && clubRegisterFrom.get('contactNumber').touched">
+                                <small *ngIf="contactNumberField.errors?.required" class="text-danger">Contact Number Required</small>
+                                <small *ngIf="contactNumberField.errors?.pattern" class="text-danger">Contact Number should be 10 digit</small>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-sm-12 col-lg-12">
+                          <div class="form-group">
+                              <input type="text" value="" placeholder="Manager" class="form-control" />
+                          </div>
+                      </div>
+                      <br>
+                      <button id="submit-button" type="submit" class="btn btn-success btn-round" [disabled]="!contactNumberField.valid">Submit</button>
+                    </div>
+
+                  </form>
+
+                </div>
+              </div>
+             </div>
+             <div class="col-md-2"></div>
+           </div>
+
+        </div>
+      </div>
+    </div>
+   
+  </div>
+</div>

@@ -1,6 +1,8 @@
 import { UserModel } from './UserModel';
 
-export class ManagerModel extends UserModel {
-   managerId:number
-   
+export class ManagerModel{
+    constructor(
+      public managerId:Number,
+      public userId:UserModel
+    ){}
 }

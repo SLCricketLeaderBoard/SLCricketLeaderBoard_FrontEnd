@@ -4,6 +4,7 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 import { Router } from '@angular/router';
 import Chart from 'chart.js';
 import { UserAuthenticationServiceService } from '../../service/user/user-authentication-service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-navbar',
@@ -171,6 +172,18 @@ export class NavbarComponent implements OnInit {
     }
 
     logout(){
+      // Swal.fire({
+      //   title: 'Are you sure?',
+      //   text: "",
+      //   icon: 'warning',
+      //   showCancelButton: true,
+      //   confirmButtonColor: '#3085d6',
+      //   cancelButtonColor: '#d33',
+      //   confirmButtonText: 'Yes'
+      // }).then((result) => {
+      //   this.userAuthenticationService.logout();
+      //   this.router.navigate(['']);
+      // });   
       this.userAuthenticationService.logout();
       this.router.navigate(['']);
     }
