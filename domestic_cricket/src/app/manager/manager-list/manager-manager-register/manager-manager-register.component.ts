@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { UserModel } from '../../../class-model/UserModel';
-import { ManagerService } from '../../../service/manager/manager.service'
+import { ManagerService } from '../../../service/manager/manager.service';
 @Component({
   selector: 'app-manager-manager-register',
   templateUrl: './manager-manager-register.component.html',

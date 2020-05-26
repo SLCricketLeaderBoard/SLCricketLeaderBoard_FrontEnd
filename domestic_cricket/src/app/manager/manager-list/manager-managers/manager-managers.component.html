@@ -1,9 +1,54 @@
-<p>
-  manager-managers works!
-</p>
 
-<ul>
-  <li>Manager 1</li>
-  <li>Manager 2</li>
-  <li>Manager 3</li>
-</ul>
+  <div class="card" style="width: 40rem; padding-left: 5px;">
+    <div class="row">
+      <div class="col-4">
+        <img class="profile-image" src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/malecostume-512.png" alt="Card image cap">
+      </div>
+      <div class="col-8">
+        <div class="profile-body">
+          <h4 class="card-title">Mr {{manager.userId.nameWithInitial}}</h4>
+          <table>
+            <tr>
+              <td>
+                <b>Eamil</b>
+              </td>
+              <td>
+                {{manager.userId.email}}
+              </td>
+            </tr>
+    
+            <tr>
+              <td>
+                <b>Contact</b>
+              </td>
+              <td>
+                {{manager.userId.contactNumber}}
+              </td>
+            </tr>
+    
+    
+            <tr>
+              <td>
+                <b>Address</b>
+              </td>
+              <td>
+                {{manager.userId.address}}
+              </td>
+            </tr>
+    
+    
+            <tr>
+              <td>
+                <b>Club</b>
+              </td>
+              <td>
+                Abc Sport club
+                <!-- {{manager.userId.}} -->
+              </td>
+            </tr>
+          </table>
+          <a  class="btn btn-primary">more</a>
+        </div>
+      </div>
+    </div>
+  </div>

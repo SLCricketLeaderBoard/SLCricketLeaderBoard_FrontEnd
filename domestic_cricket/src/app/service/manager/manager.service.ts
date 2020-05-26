@@ -5,24 +5,6 @@ import { UserModel } from '../../class-model/UserModel';
 import { ManagerModel } from '../../class-model/ManagerModel';
 import { Observable } from 'rxjs';
 
-export interface User{
-   userId:Number,
-   userName:String,
-   fullName:String,
-   nameWithInitial:String,
-   nic:String,
-   contactNumber:String,
-   role:Number,
-   email:String,
-   password:String,
-   address:String,
-   regDate:Date
-}
-
-export interface Manager{
-  managerId: String;
-  userId: User;
-}
 
 
 @Injectable({
@@ -43,10 +25,10 @@ export class ManagerService {
     return this.http.post<UserModel>(`${API_URL}/managerRegister`,user,{headers,responseType:'text' as 'json'});
   }
 
-  getAllManagers():Observable<Manager[]>{
+  getAllManagers():Observable<ManagerModel[]>{
     let jwt = sessionStorage.getItem('TOKEN');
     const headers = new HttpHeaders().set('Authorization',jwt);
-    return this.http.get<Manager[]>(`${API_URL}/managers`,{headers,responseType:'text' as 'json'});
+    return this.http.get<ManagerModel[]>(`${API_URL}/managers`,{headers});
   }
 
 }

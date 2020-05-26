@@ -74,4 +74,12 @@ export const AdminLayoutRoutes: Routes = [
     component: ManagerManagerRegisterComponent,
     canActivate: [RouteGuardService],
   },
+
+  {
+    path: "profile",
+    component: UserProfileComponent,
+    canActivate: [RouteGuardService],
+  },
+
+
 ];

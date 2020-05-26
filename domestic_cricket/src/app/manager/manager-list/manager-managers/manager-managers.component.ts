@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ManagerService, Manager, User } from '../../../service/manager/manager.service';
+import { ManagerService} from '../../../service/manager/manager.service';
+import { ManagerModel } from '../../../class-model/ManagerModel';
 
 
 
@@ -13,7 +14,7 @@ import { ManagerService, Manager, User } from '../../../service/manager/manager.
 export class ManagerManagersComponent implements OnInit {
 
   @Input()
-  manager:any;
+  manager:ManagerModel;
 
   constructor() {
    }

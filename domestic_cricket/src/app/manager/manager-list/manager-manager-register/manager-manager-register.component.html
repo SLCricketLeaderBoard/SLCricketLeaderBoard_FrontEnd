@@ -9,6 +9,7 @@
         <div class="card-body">
           <div class="main-content">
             <div class="row">
+              <div class="col-md-2"></div>
               <div class="col-md-8">
                 <div class="card">
                   <div class="card-header">
@@ -112,48 +113,9 @@
                         </div>
                       </div>
 
-                      <!-- <div class="row">
-                        <div class="col-md-8 pr-1">
-                          <div class="form-group">
-                            <label>Password</label>
-                            <input
-                              type="password"
-                              class="form-control"
-                              placeholder="password"
-                              formControlName="password"
-                              [type]="hide ? 'password' : 'text'"
-                            />
-                            <span>
-                              <button (click)="hide=!hide">{{hide ? 'show' : 'hide'}}</button>
-                            </span>
-
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-md-8 pr-1">
-                          <div class="form-group">
-                            <label>Confirm Password</label>
-                            <input
-                              type="password"
-                              class="form-control"
-                              placeholder="confirm password"
-                              formControlName="confirmPassword"
-                              [type]="hide ? 'password' : 'text'"
-                            />
-                            <span>
-                              <button (click)="hide=!hide" >{{hide ? 'show' : 'hide'}}</button>  
-                            </span>
-
-                            
-                          </div>
-                        </div>
-                      </div> -->
-
                       <div class="button-container">
-                        <button type="button" class="btn btn-outline-secondary" (click)="reset()">Reset</button>
-                        <button type="button" class="btn btn-outline-secondary" (click)="register()">Register</button>
+                        <button type="button" class="btn btn-warning" (click)="reset()">Reset</button>
+                        <button type="button" class="btn btn-outline-secondary" (click)="register()" [disabled]="!managerRegisterForm.valid">Register</button>
                       </div>
                     </form>
                   </div>
