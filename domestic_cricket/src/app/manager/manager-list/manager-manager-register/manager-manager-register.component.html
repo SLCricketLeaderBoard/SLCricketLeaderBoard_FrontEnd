@@ -16,7 +16,7 @@
                     <h5 class="title">Register Manager</h5>
                   </div>
                   <div class="card-body">
-                    <form [formGroup]="managerRegisterForm">
+                    <form *ngIf="!done" [formGroup]="managerRegisterForm" >
                       <div class="row">
                         <div class="col-md-8 pr-1">
                           <div class="form-group">
@@ -27,6 +27,10 @@
                               placeholder="username"
                               formControlName="userName"
                             />
+                                <div  class="error-message"
+                                    *ngIf="!managerRegisterForm.get('userName').valid && managerRegisterForm.get('userName').touched" >
+                                    Username is required
+                                </div>                         
                           </div>
                         </div>
                       </div>
@@ -41,6 +45,12 @@
                               placeholder="full name"
                               formControlName="fullName"
                             />
+
+                            <div  class="error-message"
+                            *ngIf="!managerRegisterForm.get('fullName').valid && managerRegisterForm.get('fullName').touched" >
+                            Full name is required
+                            </div>
+
                           </div>
                         </div>
                       </div>
@@ -55,6 +65,11 @@
                               placeholder="name with initials"
                               formControlName="nameWithInitials"
                             />
+
+                            <div  class="error-message"
+                            *ngIf="!managerRegisterForm.get('nameWithInitials').valid && managerRegisterForm.get('nameWithInitials').touched" >
+                            Invalid name
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -69,6 +84,12 @@
                               placeholder="national identity card number"
                               formControlName="nic"
                             />
+
+                            <div  class="error-message"
+                            *ngIf="!managerRegisterForm.get('nic').valid && managerRegisterForm.get('nic').touched" >
+                            Invalid NIC please check again!
+                            </div>
+
                           </div>
                         </div>
 
@@ -81,6 +102,12 @@
                               placeholder="Contact number"
                               formControlName="contactNumber"
                             />
+
+                            <div  class="error-message"
+                            *ngIf="!managerRegisterForm.get('contactNumber').valid && managerRegisterForm.get('contactNumber').touched" >
+                            Invalid contact number
+                            </div>
+
                           </div>
                         </div>
                       </div>
@@ -95,6 +122,13 @@
                               placeholder="email"
                               formControlName="email"
                             />
+
+                            <div  class="error-message"
+                            *ngIf="!managerRegisterForm.get('email').valid && managerRegisterForm.get('email').touched" >
+                            Invalid email
+                            </div>
+                            
+
                           </div>
                         </div>
                       </div>
@@ -109,15 +143,28 @@
                               placeholder="address"
                               formControlName="address"
                             />
+
+                            <div  class="error-message"
+                            *ngIf="!managerRegisterForm.get('address').valid && managerRegisterForm.get('address').touched" >
+                            Invalid address
+                            </div>
+
                           </div>
                         </div>
                       </div>
 
                       <div class="button-container">
                         <button type="button" class="btn btn-warning" (click)="reset()">Reset</button>
-                        <button type="button" class="btn btn-outline-secondary" (click)="register()" [disabled]="!managerRegisterForm.valid">Register</button>
+                        <button type="button" class="btn btn-outline-secondary" (click)="register()"  [disabled]="!valid">Register</button>
                       </div>
                     </form>
+                  </div>
+                  <div *ngIf="done" >
+                      <p style="margin-top: 20px; margin-left: 100px; color: green;" >Registration successfull!!</p> 
+
+                      <!-- <app-user  [user]="user">  </app-user> -->
+
+
                   </div>
                 </div>
               </div>

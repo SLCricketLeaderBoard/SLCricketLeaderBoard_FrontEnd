@@ -1,0 +1,43 @@
+
+  <div class="card" style="width: 40rem; padding-left: 5px;">
+    <div class="row">
+      <div class="col-4">
+        <img class="profile-image" src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/malecostume-512.png" alt="Card image cap">
+      </div>
+      <div class="col-8">
+        <div class="profile-body">
+          <h4 class="card-title">Mr {{user.nameWithInitial}}</h4>
+          <table>
+            <tr>
+              <td>
+                <b>Eamil</b>
+              </td>
+              <td>
+                {{user.email}}
+              </td>
+            </tr>
+    
+            <tr>
+              <td>
+                <b>Contact</b>
+              </td>
+              <td>
+                {{user.contactNumber}}
+              </td>
+            </tr>
+    
+    
+            <tr>
+              <td>
+                <b>Address</b>
+              </td>
+              <td>
+                {{user.address}}
+              </td>
+            </tr>
+          </table>
+          <a  class="btn btn-primary">more</a>
+        </div>
+      </div>
+    </div>
+  </div>

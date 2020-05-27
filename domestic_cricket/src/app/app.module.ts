@@ -15,6 +15,7 @@ import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from "./login/login.component";
 import { HttpIntercepterBasicAuthServiceService } from "./service/user/http-intercepter-basic-auth-service.service";
 import { ManagerService} from "./service/manager/manager.service";
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
@@ -30,7 +31,7 @@ import { ManagerService} from "./service/manager/manager.service";
     ToastrModule.forRoot(),
      
   ],
-  declarations: [AppComponent, AdminLayoutComponent, LoginComponent],
+  declarations: [AppComponent, AdminLayoutComponent, LoginComponent, UserComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
