@@ -8,6 +8,15 @@
           <h4 class="card-title"> Club Register</h4>
         </div>
         <div class="card-body">
+
+          <div *ngIf="errorMessage" class="alert alert-danger">
+            <button (click)="close()" type="button" aria-hidden="true" class="close">
+              <i  class="now-ui-icons ui-1_simple-remove"></i>
+            </button>
+            <span>
+              {{errorMessage}}
+            </span>
+          </div>
           
            <div class="row">
              <div class="col-md-2"></div>
@@ -24,7 +33,7 @@
 
                       <div class="col-sm-12 col-lg-12">
                           <div class="form-group">
-                              <input [class.is-invalid]="clubRegisterFrom.get('clubName').invalid && clubRegisterFrom.get('clubName').touched" formControlName="clubName"  type="text" name="clubName" placeholder="Club Name" class="form-control"/>
+                              <input [class.is-invalid]="clubRegisterFrom.get('clubName').invalid && clubRegisterFrom.get('clubName').touched" formControlName="clubName"  type="text" name="club" placeholder="Club Name" class="form-control"/>
                               <div *ngIf="clubRegisterFrom.get('clubName').invalid && clubRegisterFrom.get('clubName').touched">
                                 <small *ngIf="clubNameField.errors?.required" class="text-danger">Club Name Required</small>
                               </div>
@@ -61,12 +70,17 @@
                       </div>
 
                       <div class="col-sm-12 col-lg-12">
-                          <div class="form-group">
-                              <input type="text" value="" placeholder="Manager" class="form-control" />
+                          <select [class.is-invalid]="clubRegisterFrom.get('manager').invalid && clubRegisterFrom.get('manager').touched" class="form-control"  formControlName="manager" >
+                              <option [ngValue]="null" disabled>Select a manager</option>
+                              <option *ngFor="let manager of availableManagers" [ngValue]="manager">{{manager.userId.nameWithInitial}}</option>
+                          </select>
+                          <div *ngIf="clubRegisterFrom.get('manager').invalid && clubRegisterFrom.get('manager').touched">
+                            <small *ngIf="managerField.errors?.required" class="text-danger">please select a manager</small>
                           </div>
                       </div>
-                      <br>
-                      <button id="submit-button" type="submit" class="btn btn-success btn-round" [disabled]="!contactNumberField.valid">Submit</button>
+
+                      
+                      <button id="submit-button" type="submit" class="btn btn-success btn-round" [disabled]="!clubRegisterFrom.valid">Submit</button>
                     </div>
 
                   </form>

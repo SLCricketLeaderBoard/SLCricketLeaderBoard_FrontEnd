@@ -49,4 +49,8 @@ export class ManagerService {
     return this.http.get<Manager[]>(`${API_URL}/managers`,{headers,responseType:'text' as 'json'});
   }
 
+  getAvailableManagers(){
+    return this.http.get<[ManagerModel]>(`${API_URL}/manager/available`);
+  }
+
 }
