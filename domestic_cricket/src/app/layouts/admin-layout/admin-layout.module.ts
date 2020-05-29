@@ -22,6 +22,7 @@ import { ManagerListComponent } from "../../manager/manager-list/manager-list.co
 import { PlayerListComponent } from "../../player/player-list/player-list.component";
 import { ManagerManagerRegisterComponent } from "../../manager/manager-list/manager-manager-register/manager-manager-register.component";
 import { ManagerManagersComponent } from "../../manager/manager-list/manager-managers/manager-managers.component";
+import { UserResetPasswordComponent } from '../../user-reset-password/user-reset-password.component';
 
 @NgModule({
   imports: [
@@ -52,6 +53,7 @@ import { ManagerManagersComponent } from "../../manager/manager-list/manager-man
     PlayerListComponent,
     ManagerManagerRegisterComponent,
     ManagerManagersComponent,
+    UserResetPasswordComponent
   ],
 })
 export class AdminLayoutModule {}

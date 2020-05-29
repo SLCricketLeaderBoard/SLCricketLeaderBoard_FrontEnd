@@ -17,6 +17,7 @@ import { StadiumListComponent } from "../../stadium/stadium-list/stadium-list.co
 import { PlayerListComponent } from "../../player/player-list/player-list.component";
 import { ManagerManagerRegisterComponent } from "../../manager/manager-list/manager-manager-register/manager-manager-register.component";
 import { ManagerManagersComponent } from "../../manager/manager-list/manager-managers/manager-managers.component";
+import { UserResetPasswordComponent } from '../../user-reset-password/user-reset-password.component';
 
 export const AdminLayoutRoutes: Routes = [
   { path: "user-profile", component: UserProfileComponent },
@@ -80,6 +81,11 @@ export const AdminLayoutRoutes: Routes = [
     component: UserProfileComponent,
     canActivate: [RouteGuardService],
   },
+  {
+    path: "user-reset-password/:id",
+    component: UserResetPasswordComponent,
+    canActivate: [RouteGuardService]
+  }
 
 
 ];
