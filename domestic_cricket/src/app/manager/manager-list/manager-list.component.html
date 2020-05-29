@@ -4,13 +4,18 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Managers</h4>
-          <button (click)="register()">
-            <i _ngcontent-c8="" class="now-ui-icons ui-1_simple-add"></i>
-          </button>
+          <div class="row">
+          <div class="col-3">
+            <h4 class="card-title">Managers</h4>
+          </div>
+          <div>
+            <button (click)="register()" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Register Manager"><i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
         </div>
         <div class="card-body">
-          <app-manager-managers *ngFor="let manager of managers" [manager]="manager"></app-manager-managers>
+          <app-manager-managers *ngFor="let manager of managers" [manager]="manager" ></app-manager-managers>
         </div>
       </div>
     </div>

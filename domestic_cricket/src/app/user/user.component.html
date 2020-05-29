@@ -6,14 +6,14 @@
       </div>
       <div class="col-8">
         <div class="profile-body">
-          <h4 class="card-title">Mr {{manager.userId.nameWithInitial}}</h4>
+          <h4 class="card-title">Mr {{user.nameWithInitial}}</h4>
           <table>
             <tr>
               <td>
                 <b>Eamil</b>
               </td>
               <td>
-                {{manager.userId.email}}
+                {{user.email}}
               </td>
             </tr>
     
@@ -22,7 +22,7 @@
                 <b>Contact</b>
               </td>
               <td>
-                {{manager.userId.contactNumber}}
+                {{user.contactNumber}}
               </td>
             </tr>
     
@@ -32,22 +32,11 @@
                 <b>Address</b>
               </td>
               <td>
-                {{manager.userId.address}}
-              </td>
-            </tr>
-    
-    
-            <tr>
-              <td>
-                <b>Club</b>
-              </td>
-              <td>
-                Abc Sport club
-                <!-- {{manager.userId.}} -->
+                {{user.address}}
               </td>
             </tr>
           </table>
-          <a  class="btn btn-primary" (click)="more()" >more</a>
+          <a  class="btn btn-primary">more</a>
         </div>
       </div>
     </div>

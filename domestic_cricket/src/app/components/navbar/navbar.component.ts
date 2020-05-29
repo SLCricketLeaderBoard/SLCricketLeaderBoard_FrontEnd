@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import Chart from 'chart.js';
 import { UserAuthenticationServiceService } from '../../service/user/user-authentication-service.service';
 import Swal from 'sweetalert2';
@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit {
 
     public isCollapsed = true;
 
-    constructor(location: Location,  private element: ElementRef, private router: Router,private userAuthenticationService:UserAuthenticationServiceService) {
+    constructor(private route:ActivatedRoute, location: Location,  private element: ElementRef, private router: Router,private userAuthenticationService:UserAuthenticationServiceService) {
       this.location = location;
           this.sidebarVisible = false;
     }
@@ -186,5 +186,11 @@ export class NavbarComponent implements OnInit {
       // });   
       this.userAuthenticationService.logout();
       this.router.navigate(['']);
+    }
+
+
+    profile(){
+      console.log("here to profile");
+      this.router.navigate(["/profile"], { relativeTo: this.route });
     }
 }

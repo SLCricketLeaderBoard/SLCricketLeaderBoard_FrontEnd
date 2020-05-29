@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import { ManagerService, Manager } from '../../service/manager/manager.service';
+import { ManagerModel } from '../../class-model/ManagerModel';
+import { ManagerService } from '../../service/manager/manager.service';
 
 @Component({
   selector: "app-manager-list",
@@ -9,20 +10,18 @@ import { ManagerService, Manager } from '../../service/manager/manager.service';
 })
 export class ManagerListComponent implements OnInit {
 
-  managers : Manager[];
+  managers:ManagerModel[];
   constructor(private managerService:ManagerService,private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.managerService.getAllManagers().subscribe(
-      res=>{
-        console.log(res);
-        
-        this.managers=res;
-      },error=>{
-        console.log(error);
-        
-      }
-    )
+    this.managerService.getAllManagers().subscribe(res=>{
+      // console.log(res);
+      this.managers=res;
+      console.log(this.managers);
+      
+
+      
+    })
       
   }
 
