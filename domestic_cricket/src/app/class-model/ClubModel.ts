@@ -11,6 +11,7 @@ export class ClubModel{
       public failMatch:Number,
       public growMatch:Number,
       public regDate:Date,
+      public status:Number,
       public managerId:ManagerModel
     ){}
 }

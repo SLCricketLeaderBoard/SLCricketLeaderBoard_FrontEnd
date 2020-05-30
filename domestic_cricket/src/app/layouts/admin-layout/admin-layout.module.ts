@@ -24,6 +24,9 @@ import { ManagerManagerRegisterComponent } from "../../manager/manager-list/mana
 import { ManagerManagersComponent } from "../../manager/manager-list/manager-managers/manager-managers.component";
 import { UserResetPasswordComponent } from '../../user-reset-password/user-reset-password.component';
 import { ClubDetailsComponent } from '../../club/club-details/club-details.component';
+import { PlayerMoreDetailsComponent } from '../../player/player-more-details/player-more-details.component';
+import { ClubPaymentComponent } from '../../club/club-payment/club-payment.component';
+import { ClubPaymentNotCompleteListComponent } from '../../club/club-payment-not-complete-list/club-payment-not-complete-list.component';
 
 @NgModule({
   imports: [
@@ -48,6 +51,8 @@ import { ClubDetailsComponent } from '../../club/club-details/club-details.compo
     ClubListComponent,
     ClubRegisterComponent,
     ClubDetailsComponent,
+    ClubPaymentComponent,
+    ClubPaymentNotCompleteListComponent,
 
     MatchListComponent,
     StadiumListComponent,
@@ -55,7 +60,9 @@ import { ClubDetailsComponent } from '../../club/club-details/club-details.compo
     PlayerListComponent,
     ManagerManagerRegisterComponent,
     ManagerManagersComponent,
-    UserResetPasswordComponent
+    UserResetPasswordComponent,
+
+    PlayerMoreDetailsComponent
   ],
 })
 export class AdminLayoutModule {}

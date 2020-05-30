@@ -19,6 +19,9 @@ import { ManagerManagerRegisterComponent } from "../../manager/manager-list/mana
 import { ManagerManagersComponent } from "../../manager/manager-list/manager-managers/manager-managers.component";
 import { UserResetPasswordComponent } from '../../user-reset-password/user-reset-password.component';
 import { ClubDetailsComponent } from '../../club/club-details/club-details.component';
+import { PlayerMoreDetailsComponent } from '../../player/player-more-details/player-more-details.component';
+import { ClubPaymentComponent } from '../../club/club-payment/club-payment.component';
+import { ClubPaymentNotCompleteListComponent } from '../../club/club-payment-not-complete-list/club-payment-not-complete-list.component';
 
 export const AdminLayoutRoutes: Routes = [
   { path: "user-profile", component: UserProfileComponent },
@@ -90,6 +93,21 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: "club-details",
     component: ClubDetailsComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: "player-more-details",
+    component: PlayerMoreDetailsComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: "club-payment/:clubId",
+    component: ClubPaymentComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: "club-payment-not-complete-list",
+    component: ClubPaymentNotCompleteListComponent,
     canActivate: [RouteGuardService]
   }
 
