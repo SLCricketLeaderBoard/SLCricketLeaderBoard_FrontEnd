@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClubService } from '../../service/club/club.service';
 
 declare interface RouteInfo {
     path: string;
@@ -29,6 +30,8 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
 
+  isManagerHasClub:Boolean = true;
+
   menuItems: any[];
 
   admin: any[];//(role=1)
@@ -36,7 +39,9 @@ export class SidebarComponent implements OnInit {
   player: any[];//(role=3)
   referee: any[];//(role=4)
 
-  constructor() { }
+  constructor(
+    private clubService : ClubService
+  ) { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
@@ -75,5 +80,17 @@ export class SidebarComponent implements OnInit {
         return true;
     }
     return false;
+  }
+
+  getClubData(){
+    let userId:Number = +sessionStorage.getItem("userId");
+    this.clubService.getClubDataOfManager(userId).subscribe(
+        response => {
+
+        },
+        error => {
+          this.isManagerHasClub=false;
+        }
+    );
   }
 }

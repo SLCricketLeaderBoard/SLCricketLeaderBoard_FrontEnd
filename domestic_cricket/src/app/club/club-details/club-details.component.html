@@ -5,14 +5,20 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title"></h4>
+          <h3 *ngIf="club!=null" class="card-title">{{club.clubName}}</h3>
+          <div *ngIf="errorMessage" class="alert alert-danger">
+            <button (click)="close()" type="button" aria-hidden="true" class="close">
+              <i  class="now-ui-icons ui-1_simple-remove"></i>
+            </button>
+            <span>
+              {{errorMessage}}
+            </span>
+          </div>
         </div>
         <div *ngIf="club!=null" class="card-body">
 
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">{{club.clubName}}</h3>
-              </div>
+         
+              
 
               <div class="row">
                 <div class="col-md-6">
@@ -72,7 +78,7 @@
                 </div>
               </div>
 
-            </div>
+           
 
         </div>
       </div>
