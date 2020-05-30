@@ -70,6 +70,13 @@ export class ClubRegisterComponent implements OnInit {
     this.userRole = +sessionStorage.getItem("userRole");
     this.option = this.route.snapshot.params['option'];
 
+    if(this.userRole!=1 && this.userRole!=2){
+      this.router.navigate(['']);
+    }
+    if(this.userRole==2 && this.option==0){
+      this.router.navigate(['']);
+    }
+
     if(this.option>0){//club Update
       this.getClubData(this.option);
     }
@@ -116,7 +123,13 @@ export class ClubRegisterComponent implements OnInit {
       response => {
         if(response==1){
           this.swalMessage.successMessage('Club data successfully updated');
-          this.router.navigate(['club-list']);
+
+          if(this.userRole==1){//admin account
+            this.router.navigate(['club-list']);
+          }else{//manager accout
+            this.router.navigate(['club-details']);
+          }
+         
         }
         if(response==0){
           this.errorMessage="There is another club has same name or email or address or contactNmber";

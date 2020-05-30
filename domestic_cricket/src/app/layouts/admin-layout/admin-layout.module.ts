@@ -23,6 +23,7 @@ import { PlayerListComponent } from "../../player/player-list/player-list.compon
 import { ManagerManagerRegisterComponent } from "../../manager/manager-list/manager-manager-register/manager-manager-register.component";
 import { ManagerManagersComponent } from "../../manager/manager-list/manager-managers/manager-managers.component";
 import { UserResetPasswordComponent } from '../../user-reset-password/user-reset-password.component';
+import { ClubDetailsComponent } from '../../club/club-details/club-details.component';
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import { UserResetPasswordComponent } from '../../user-reset-password/user-reset
 
     ClubListComponent,
     ClubRegisterComponent,
+    ClubDetailsComponent,
 
     MatchListComponent,
     StadiumListComponent,

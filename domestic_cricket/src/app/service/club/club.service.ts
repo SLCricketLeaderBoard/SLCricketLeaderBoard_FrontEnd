@@ -28,5 +28,9 @@ export class ClubService {
   getClubData(clubId:Number){
     return this.http.get<ClubModel>(`${API_URL}/club/${clubId}`,{});
   }
+
+  getClubDataOfManager(userId:Number){
+    return this.http.get<ClubModel>(`${API_URL}/club/manager/${userId}`);
+  }
   
 }

@@ -69,7 +69,7 @@
                           </div>
                       </div>
 
-                      <div class="col-sm-12 col-lg-12">
+                      <div *ngIf="userRole==1" class="col-sm-12 col-lg-12">
                           <select [class.is-invalid]="clubRegisterFrom.get('manager').invalid && clubRegisterFrom.get('manager').touched" class="form-control"  formControlName="manager" >
                               <option *ngIf="option==0" [ngValue]="null" disabled>Select a manager</option>
                               <option *ngIf="option>0" [ngValue]="managerField.value" disabled>{{selectedManagerName}}</option>

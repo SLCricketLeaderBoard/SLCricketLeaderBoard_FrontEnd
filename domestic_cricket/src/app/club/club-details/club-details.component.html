@@ -1,0 +1,82 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"></h4>
+        </div>
+        <div *ngIf="club!=null" class="card-body">
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">{{club.clubName}}</h3>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-header">
+                      <h5 class="card-title">Club Details</h5>
+                      <a (click)=clubUpdate()><button type="button" class="btn btn-info btn-sm" title="Update"><i class="fas fa-edit"></i></button></a>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table">
+                          <tr>
+                            <th>Club Name</th>
+                            <td>{{club.clubName}}</td>
+                          </tr>
+                          <tr>
+                            <th>Address</th>
+                            <td>{{club.address}}</td>
+                          </tr>
+                          <tr>
+                            <th>Email</th>
+                            <td>{{club.email}}</td>
+                          </tr>
+                          <tr>
+                            <th>Contact Number</th>
+                            <td>{{club.contactNumber}}</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-header">
+                      <div class="card-title">
+                        <h5>Club Logo</h5>
+                      </div>
+                      <div class="card-body">
+                        <div class="card card-user">
+                          <div class="image">
+                            <img src="../assets/img/logo_background.jpg" alt="...">
+                          </div>
+                          <div class="author">
+                            <a href="#">
+                              <img id="logo" class="avatar border-gray" src="../assets/img/mike.jpg" alt="...">
+                              <br>
+                              <label for="upload-photo">Update Logo</label>
+                              <input type="file" name="photo" id="upload-photo" (change)="selectFile($event)"/>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+        </div>
+      </div>
+    </div>
+   
+  </div>
+</div>
