@@ -6,6 +6,9 @@ import { ManagerModel } from '../../class-model/ManagerModel';
 import { ManagerService } from '../../service/manager/manager.service';
 import { error } from 'protractor';
 import Swal from 'sweetalert2';
+import { Router, ActivatedRoute } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { SwalMessage } from '../../shared/swal-message';
 
 
 @Component({
@@ -16,8 +19,15 @@ import Swal from 'sweetalert2';
 export class ClubRegisterComponent implements OnInit {
 
   errorMessage;
+  option:Number;//0-->Register , Any integer greater than zero(clubId)-->Update
+  userRole:Number;
+  selectedManagerName:String;//use when update club data
   availableManagers: ManagerModel[] = [];
-  selectManager: ManagerModel;
+
+  mainTitle:String="Club Register";
+  formTitle:String="Registration Form";
+  swalMessage:SwalMessage = new SwalMessage();
+
 
    //reactive form definition
    clubRegisterFrom=this.fb.group({
@@ -45,57 +55,78 @@ export class ClubRegisterComponent implements OnInit {
     return this.clubRegisterFrom.get('manager');
   }
 
- 
 
 
   constructor(
     private clubService : ClubService,
     private managerService: ManagerService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute
     
   ) { }
 
   ngOnInit() {
+    this.userRole = +sessionStorage.getItem("userRole");
+    this.option = this.route.snapshot.params['option'];
+
+    if(this.option>0){//club Update
+      this.getClubData(this.option);
+    }
+
     this.getAvailableManagers();
   }
 
-  clubRegister(){
+  clubFormSubmit(){
     let club = new ClubModel(-1,this.clubNameField.value,this.addressField.value,this.emailField.value,this.contactNumberField.value,0,0,0,new Date(),this.managerField.value);
 
+    if(this.option>0){
+      this.clubUpdate(club);
+    }else{
+      this.clubRegister(club);
+    }
+  }
+
+  clubRegister(club:ClubModel){
     this.clubService.registerClub(club).subscribe(
       response => {
 
           if(response==1){
-            Swal.fire({
-              position: 'center',
-              icon: 'success',
-              title: 'Club registration successful',
-              showConfirmButton: false,
-              timer: 2000
-            });
+            this.router.navigate(['club-list']);
+            this.swalMessage.successMessage('Club registration successful');
           }
           if(response==0){
             this.errorMessage = 'There is another club has same name or email or address or contactNmber';
-            Swal.fire({
-              position: 'center',
-              icon: 'error',
-              title: 'Club registration not successful',
-              showConfirmButton: false,
-              timer: 2000
-            })
+            this.swalMessage.notSuccessMessage('Club registration not successful');
           }
           
       },
       error =>{
         this.errorMessage="Please try again."
         console.log(error);
-        Swal.fire({
-          position: 'center',
-          icon: 'error',
-          title: 'Club registration not successful',
-          showConfirmButton: false,
-          timer: 2000
-        });
+        this.swalMessage.notSuccessMessage('Club registration not successful');
+      }
+    );
+  }
+
+
+  clubUpdate(club:ClubModel){
+    club.clubId = this.option;
+    this.clubService.updateClub(club).subscribe(
+      response => {
+        if(response==1){
+          this.swalMessage.successMessage('Club data successfully updated');
+          this.router.navigate(['club-list']);
+        }
+        if(response==0){
+          this.errorMessage="There is another club has same name or email or address or contactNmber";
+          this.swalMessage.notSuccessMessage('Club data not updated successful');
+        }
+      },
+      error => {
+        this.errorMessage="Please try again."
+        console.log(error);
+        this.swalMessage.notSuccessMessage('Club data not updated successful');
       }
     );
   }
@@ -111,8 +142,38 @@ export class ClubRegisterComponent implements OnInit {
     );
   }
 
+  getClubData(clubId:Number){
+    this.clubService.getClubData(clubId).subscribe(
+      response => {
+        this.clubNameField.setValue(response.clubName);
+        this.emailField.setValue(response.email);
+        this.addressField.setValue(response.address);
+        this.contactNumberField.setValue(response.contactNumber);
+        this.managerField.setValue(response.managerId);
+
+        this.selectedManagerName = response.managerId.userId.nameWithInitial+"";
+        this.mainTitle = "Update "+this.clubNameField.value+" Details";
+        this.formTitle = "Update Form";
+      },
+      error => {
+        let status:Number = this.ErrorResponse(error);
+        if(status==400){
+          this.errorMessage="There is problem(Bad Request).Please try again";
+        }else if(status==404){
+          this.errorMessage="There is no any club for that id."
+        }else{
+          this.errorMessage="Server side error.Please try again"
+        }
+      }
+    );
+  }
+
   close(){
     this.errorMessage="";
   }
+
+  public ErrorResponse(error: HttpErrorResponse) {
+      return error.status;
+  };
 
 }

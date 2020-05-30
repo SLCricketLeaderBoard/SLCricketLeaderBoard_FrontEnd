@@ -5,7 +5,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title"> Club Register</h4>
+          <h4 class="card-title">{{mainTitle}}</h4>
         </div>
         <div class="card-body">
 
@@ -23,11 +23,11 @@
              <div class="col-md-8">
               <div class="card">
                 <div class="card-header">
-                  <h5 class="card-title">Registration Form</h5>
+                  <h5 class="card-title">{{formTitle}}</h5>
                 </div>
                 <div class="card-body">
                   
-                  <form [formGroup]="clubRegisterFrom" (ngSubmit)="clubRegister()">
+                  <form [formGroup]="clubRegisterFrom" (ngSubmit)="clubFormSubmit()">
 
                     <div class="row">
 
@@ -71,8 +71,9 @@
 
                       <div class="col-sm-12 col-lg-12">
                           <select [class.is-invalid]="clubRegisterFrom.get('manager').invalid && clubRegisterFrom.get('manager').touched" class="form-control"  formControlName="manager" >
-                              <option [ngValue]="null" disabled>Select a manager</option>
-                              <option *ngFor="let manager of availableManagers" [ngValue]="manager">{{manager.userId.nameWithInitial}}</option>
+                              <option *ngIf="option==0" [ngValue]="null" disabled>Select a manager</option>
+                              <option *ngIf="option>0" [ngValue]="managerField.value" disabled>{{selectedManagerName}}</option>
+                              <option  *ngFor="let manager of availableManagers" [ngValue]="manager">{{manager.userId.nameWithInitial}}</option>
                           </select>
                           <div *ngIf="clubRegisterFrom.get('manager').invalid && clubRegisterFrom.get('manager').touched">
                             <small *ngIf="managerField.errors?.required" class="text-danger">please select a manager</small>

@@ -17,5 +17,16 @@ export class ClubService {
     return this.http.post<Number>(`${API_URL}/club`,club);
   }
 
+  updateClub(club : ClubModel){
+    return this.http.put<Number>(`${API_URL}/club`,club);
+  }
+
+  getClubs(){
+    return this.http.get<ClubModel[]>(`${API_URL}/club`,{});
+  }
+
+  getClubData(clubId:Number){
+    return this.http.get<ClubModel>(`${API_URL}/club/${clubId}`,{});
+  }
   
 }

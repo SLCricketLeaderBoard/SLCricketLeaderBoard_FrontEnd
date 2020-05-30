@@ -45,7 +45,7 @@ export const AdminLayoutRoutes: Routes = [
     canActivate: [RouteGuardService],
   },
   {
-    path: "club-register",
+    path: "club-register/:option",
     component: ClubRegisterComponent,
     canActivate: [RouteGuardService],
   },

@@ -20,18 +20,19 @@
                   <thead class=" text-primary">
                     <th> Name </th>
                     <th> Tel </th> 
-                    <th> Emal  </th>  
+                    <th> Email  </th>  
                     <th> Manager </th>
                     <th class="text-right"> Option </th>    
                   </thead>
                   <tbody>
-                    <tr>
-                      <td> Dakota Rice </td>   
-                      <td> Niger </td>     
-                      <td>  Oud-Turnhout </td>  
-                      <td> jj </td>
+                    <tr *ngFor = "let club of clubList">
+                      <td> {{club.clubName}} </td>   
+                      <td> {{club.contactNumber}} </td>     
+                      <td> {{club.email}} </td>  
+                      <td> {{club.managerId.userId.nameWithInitial}} </td>
                       <td class="text-right">
-                        <a><button type="button" class="btn btn-info btn-sm" title="Update"><i class="fas fa-edit"></i></button></a>
+                        <a (click)=clubUpdate(club.clubId)><button type="button" class="btn btn-info btn-sm" title="Update"><i class="fas fa-edit"></i></button></a>
+                        <!-- <a (click)=clubDeactivate()><button type="button" class="btn btn-secondary btn-sm" title="Deactivate Club"><i class="fas fa-times"></i></button></a> -->
                       </td>
                     </tr>
                   </tbody>
