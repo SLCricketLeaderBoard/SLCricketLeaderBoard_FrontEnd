@@ -20,6 +20,7 @@ import { ManagerManagersComponent } from "../../manager/manager-list/manager-man
 import { UserResetPasswordComponent } from '../../user-reset-password/user-reset-password.component';
 import { ClubDetailsComponent } from '../../club/club-details/club-details.component';
 import { UmpireListComponent } from '../../umpire/umpire-list/umpire-list.component';
+import { UmpireUmpireRegisterComponent } from '../../umpire/umpire-list/umpire-umpire-register/umpire-umpire-register.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -97,6 +98,11 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: "umpire-list",
     component: UmpireListComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: "umpire-register",
+    component: UmpireUmpireRegisterComponent,
     canActivate: [RouteGuardService]
   }
 

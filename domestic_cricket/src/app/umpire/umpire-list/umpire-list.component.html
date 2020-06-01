@@ -1,3 +1,23 @@
-<p>
-  umpire-list works!
-</p>
+<div class="panel-header panel-header-sm"></div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+          <div class="col-3">
+            <h4 class="card-title">Umpires</h4>
+          </div>
+          <div>
+            <button (click)="register()" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Register Umpire"><i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        </div>
+        <div class="card-body">
+          <app-manager-managers *ngFor="let manager of managers" [manager]="manager" ></app-manager-managers>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
