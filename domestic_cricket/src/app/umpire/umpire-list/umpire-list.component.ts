@@ -15,6 +15,9 @@ export class UmpireListComponent implements OnInit {
   constructor(private umpireService:UmpireService,private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.umpireService.getAllUmpires().subscribe(res=>{
+      this.umpires=res;
+    });
   }
 
 

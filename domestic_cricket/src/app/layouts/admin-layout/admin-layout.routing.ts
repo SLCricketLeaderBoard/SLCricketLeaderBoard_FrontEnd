@@ -100,11 +100,7 @@ export const AdminLayoutRoutes: Routes = [
     component: UmpireListComponent,
     canActivate: [RouteGuardService]
   },
-  {
-    path: "umpire-register",
-    component: UmpireUmpireRegisterComponent,
-    canActivate: [RouteGuardService]
-  }
+
 
 
 ];
