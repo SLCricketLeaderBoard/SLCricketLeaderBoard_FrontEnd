@@ -26,6 +26,7 @@ import { UserResetPasswordComponent } from '../../user-reset-password/user-reset
 import { ClubDetailsComponent } from '../../club/club-details/club-details.component';
 import { UmpireListComponent } from '../../umpire/umpire-list/umpire-list.component';
 import { UmpireUmpireRegisterComponent } from '../../umpire/umpire-list/umpire-umpire-register/umpire-umpire-register.component';
+import { UmpireUmpiresComponent } from '../../umpire/umpire-list/umpire-umpires/umpire-umpires.component';
 
 @NgModule({
   imports: [
@@ -59,7 +60,8 @@ import { UmpireUmpireRegisterComponent } from '../../umpire/umpire-list/umpire-u
     ManagerManagersComponent,
     UserResetPasswordComponent,
     UmpireListComponent,
-    UmpireUmpireRegisterComponent
+    UmpireUmpireRegisterComponent,
+    UmpireUmpiresComponent
   ],
 })
 export class AdminLayoutModule {}

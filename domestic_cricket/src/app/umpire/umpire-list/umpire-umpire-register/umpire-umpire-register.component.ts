@@ -65,7 +65,7 @@ export class UmpireUmpireRegisterComponent implements OnInit {
 
     const user:UserModel = new UserModel(id,userName,fullName,nameWithInitials,nic,contactNumber,role,email,password,address,regDate);
 
-    this.umpireService.registerManager(user).subscribe(res=>{
+    this.umpireService.registerUmpire(user).subscribe(res=>{
       console.log(res);
       const date = new Date()
       this.done=!this.done;
