@@ -16,7 +16,7 @@
                     <h5 class="title">Register Umpire</h5>
                   </div>
                   <div class="card-body">
-                    <form *ngIf="!done" [formGroup]="managerRegisterForm" >
+                    <form *ngIf="!done" [formGroup]="umpireRegisterForm" >
                       <div class="row">
                         <div class="col-md-8 pr-1">
                           <div class="form-group">
@@ -28,7 +28,7 @@
                               formControlName="userName"
                             />
                                 <div  class="error-message"
-                                    *ngIf="!managerRegisterForm.get('userName').valid && managerRegisterForm.get('userName').touched" >
+                                    *ngIf="!umpireRegisterForm.get('userName').valid && umpireRegisterForm.get('userName').touched" >
                                     Username is required
                                 </div>
                           </div>
@@ -47,7 +47,7 @@
                             />
 
                             <div  class="error-message"
-                            *ngIf="!managerRegisterForm.get('fullName').valid && managerRegisterForm.get('fullName').touched" >
+                            *ngIf="!umpireRegisterForm.get('fullName').valid && umpireRegisterForm.get('fullName').touched" >
                             Full name is required
                             </div>
 
@@ -67,7 +67,7 @@
                             />
 
                             <div  class="error-message"
-                            *ngIf="!managerRegisterForm.get('nameWithInitials').valid && managerRegisterForm.get('nameWithInitials').touched" >
+                            *ngIf="!umpireRegisterForm.get('nameWithInitials').valid && umpireRegisterForm.get('nameWithInitials').touched" >
                             Invalid name
                             </div>
                           </div>
@@ -86,7 +86,7 @@
                             />
 
                             <div  class="error-message"
-                            *ngIf="!managerRegisterForm.get('nic').valid && managerRegisterForm.get('nic').touched" >
+                            *ngIf="!umpireRegisterForm.get('nic').valid && umpireRegisterForm.get('nic').touched" >
                             Invalid NIC please check again!
                             </div>
 
@@ -104,7 +104,7 @@
                             />
 
                             <div  class="error-message"
-                            *ngIf="!managerRegisterForm.get('contactNumber').valid && managerRegisterForm.get('contactNumber').touched" >
+                            *ngIf="!umpireRegisterForm.get('contactNumber').valid && umpireRegisterForm.get('contactNumber').touched" >
                             Invalid contact number
                             </div>
 
@@ -124,7 +124,7 @@
                             />
 
                             <div  class="error-message"
-                            *ngIf="!managerRegisterForm.get('email').valid && managerRegisterForm.get('email').touched" >
+                            *ngIf="!umpireRegisterForm.get('email').valid && umpireRegisterForm.get('email').touched" >
                             Invalid email
                             </div>
 
@@ -145,7 +145,7 @@
                             />
 
                             <div  class="error-message"
-                            *ngIf="!managerRegisterForm.get('address').valid && managerRegisterForm.get('address').touched" >
+                            *ngIf="!umpireRegisterForm.get('address').valid && umpireRegisterForm.get('address').touched" >
                             Invalid address
                             </div>
 
