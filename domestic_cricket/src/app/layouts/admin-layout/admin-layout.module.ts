@@ -24,6 +24,7 @@ import { ManagerManagerRegisterComponent } from "../../manager/manager-list/mana
 import { ManagerManagersComponent } from "../../manager/manager-list/manager-managers/manager-managers.component";
 import { UserResetPasswordComponent } from '../../user-reset-password/user-reset-password.component';
 import { ClubDetailsComponent } from '../../club/club-details/club-details.component';
+import { UmpireListComponent } from '../../umpire/umpire-list/umpire-list.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,7 @@ import { ClubDetailsComponent } from '../../club/club-details/club-details.compo
     ChartsModule,
     NgbModule,
     ToastrModule.forRoot(),
-    ReactiveFormsModule 
+    ReactiveFormsModule
   ],
   declarations: [
     DashboardComponent,
@@ -55,7 +56,8 @@ import { ClubDetailsComponent } from '../../club/club-details/club-details.compo
     PlayerListComponent,
     ManagerManagerRegisterComponent,
     ManagerManagersComponent,
-    UserResetPasswordComponent
+    UserResetPasswordComponent,
+    UmpireListComponent
   ],
 })
 export class AdminLayoutModule {}
