@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
+import { UmpireModel } from '../../class-model/UmpireModel';
+import { UmpireService } from '../../service/umpire/umpire.service';
 
 
 @Component({
@@ -9,7 +11,8 @@ import { Router, ActivatedRoute } from "@angular/router";
 })
 export class UmpireListComponent implements OnInit {
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  umpires:UmpireModel[];
+  constructor(private umpireService:UmpireService,private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
