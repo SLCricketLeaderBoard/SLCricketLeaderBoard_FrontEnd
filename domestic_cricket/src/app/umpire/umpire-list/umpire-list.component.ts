@@ -17,6 +17,7 @@ export class UmpireListComponent implements OnInit {
   ngOnInit() {
     this.umpireService.getAllUmpires().subscribe(res=>{
       this.umpires=res;
+      console.log(this.umpires);
     });
   }
 

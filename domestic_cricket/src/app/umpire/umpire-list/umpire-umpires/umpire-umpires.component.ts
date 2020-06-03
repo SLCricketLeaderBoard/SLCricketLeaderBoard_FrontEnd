@@ -13,9 +13,12 @@ export class UmpireUmpiresComponent implements OnInit {
   @Input()
   umpire:UmpireModel;
 
-  constructor(private router:Router,private route:ActivatedRoute) { }
+
+  constructor(private router:Router,private route:ActivatedRoute) {
+  }
 
   ngOnInit() {
+    console.log(this.umpire);
   }
 
   more(){

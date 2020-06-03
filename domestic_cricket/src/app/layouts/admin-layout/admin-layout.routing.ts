@@ -21,6 +21,7 @@ import { UserResetPasswordComponent } from '../../user-reset-password/user-reset
 import { ClubDetailsComponent } from '../../club/club-details/club-details.component';
 import { UmpireListComponent } from '../../umpire/umpire-list/umpire-list.component';
 import { UmpireUmpireRegisterComponent } from '../../umpire/umpire-list/umpire-umpire-register/umpire-umpire-register.component';
+import { UmpireUmpiresComponent } from '../../umpire/umpire-list/umpire-umpires/umpire-umpires.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -35,6 +36,11 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: "/",
     component: ManagerManagersComponent,
+    canActivate: [RouteGuardService],
+  },
+  {
+    path: "/",
+    component: UmpireUmpiresComponent,
     canActivate: [RouteGuardService],
   },
 
