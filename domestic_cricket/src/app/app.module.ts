@@ -16,6 +16,7 @@ import { LoginComponent } from "./login/login.component";
 import { HttpIntercepterBasicAuthServiceService } from "./service/user/http-intercepter-basic-auth-service.service";
 import { ManagerService} from "./service/manager/manager.service";
 import { UserComponent } from './user/user.component';
+import { MaterialModule } from './material.module';
 
 
 
@@ -33,7 +34,7 @@ import { UserComponent } from './user/user.component';
     AppRoutingModule,
     NgbModule,
     ToastrModule.forRoot(),
-
+    MaterialModule
   ],
   declarations: [AppComponent, AdminLayoutComponent, LoginComponent, UserComponent],
   providers: [
