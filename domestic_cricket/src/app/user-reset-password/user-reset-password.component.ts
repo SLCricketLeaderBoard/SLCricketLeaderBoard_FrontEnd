@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserModel } from '../class-model/UserModel';
 import { UserServiceService } from '../service/user/user-service.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators,FormBuilder, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-user-reset-password',
@@ -16,9 +16,9 @@ export class UserResetPasswordComponent implements OnInit {
 
   userRegisterFrom:FormGroup
 
-  constructor(private route:ActivatedRoute,private userService:UserServiceService) { 
+  constructor(private route:ActivatedRoute,private userService:UserServiceService,public formBuilder: FormBuilder) { 
 
-         this.userRegisterFrom = new FormGroup({
+         this.userRegisterFrom = this.formBuilder.group({
                   userName: new FormControl({value:null,disabled:true}),
                   fullName: new FormControl({value:null,disabled:true}),
                   nameWithInitials: new FormControl({value:null,disabled:true}),
@@ -26,8 +26,10 @@ export class UserResetPasswordComponent implements OnInit {
                   contactNumber: new FormControl({vlaue:null,disabled:true}),
                   email: new FormControl({value:null,disabled:true}),
                   address: new FormControl({value:null,disabled:true}),
-                  password: new FormControl(null,[Validators.required]),
-                  confirmPassword : new FormControl(null,[Validators.required])
+                  password: new FormControl(null,[Validators.required,Validators.minLength(6)]),
+                  confirmPassword : new FormControl(null,[Validators.required,Validators.minLength(6)])
+        },{
+          validators: this.password.bind(this)
         });
 
         this.route.params.subscribe(res=>{
@@ -51,7 +53,6 @@ export class UserResetPasswordComponent implements OnInit {
           password : null,
           confirmPassword: null         
         });
-
     })
   }
 
@@ -59,8 +60,25 @@ export class UserResetPasswordComponent implements OnInit {
   
   }
 
+  password(formGroup: FormGroup) {
+    const { value: password } = formGroup.get('password');
+    const { value: confirmPassword } = formGroup.get('confirmPassword');
+    return password === confirmPassword ? null : { passwordNotMatch: true };
+  }
+
+
   resetPassword(){
-    console.log(this.userRegisterFrom);
+    
+    const password:String = this.userRegisterFrom.value['password'];
+    const id = this.user.userId;
+
+    const updatedUser:UserModel = new UserModel(this.user.userId,this.user.userName,this.user.fullName,this.user.nameWithInitial,this.user.nic,this.user.contactNumber,this.user.role,this.user.email,password,this.user.address,this.user.regDate);
+    console.log(updatedUser);
+    this.userService.resetPassword(updatedUser).subscribe(res=>{
+      console.log(res);
+    },error=>{
+      console.log(error);
+    })
     
   }
 

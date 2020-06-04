@@ -85,7 +85,7 @@ export class ClubRegisterComponent implements OnInit {
   }
 
   clubFormSubmit(){
-    let club = new ClubModel(-1,this.clubNameField.value,this.addressField.value,this.emailField.value,this.contactNumberField.value,0,0,0,new Date(),this.managerField.value);
+    let club = new ClubModel(-1,this.clubNameField.value,this.addressField.value,this.emailField.value,this.contactNumberField.value,0,0,0,new Date(),1,this.managerField.value);
 
     if(this.option>0){
       this.clubUpdate(club);

@@ -26,7 +26,7 @@ export class ClubListComponent implements OnInit {
   }
 
   getClubs(){
-    this.clubService.getClubs().subscribe(
+    this.clubService.getClubs(1).subscribe(
       response => {
         this.clubList = response;
       },
@@ -42,6 +42,14 @@ export class ClubListComponent implements OnInit {
 
   clubUpdate(clubId:Number){
     this.router.navigate(['club-register',clubId]);
+  }
+
+  clubPayment(clubId:Number){
+    this.router.navigate(['club-payment',clubId]);
+  }
+
+  clubNotPaymentList(){
+    this.router.navigate(['club-payment-not-complete-list'])
   }
 
 }

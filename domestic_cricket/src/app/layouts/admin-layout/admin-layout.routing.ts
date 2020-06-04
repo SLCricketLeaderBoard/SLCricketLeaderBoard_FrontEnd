@@ -23,6 +23,9 @@ import { UmpireListComponent } from '../../umpire/umpire-list/umpire-list.compon
 import { UmpireUmpireRegisterComponent } from '../../umpire/umpire-list/umpire-umpire-register/umpire-umpire-register.component';
 import { UmpireUmpiresComponent } from '../../umpire/umpire-list/umpire-umpires/umpire-umpires.component';
 
+import { PlayerMoreDetailsComponent } from '../../player/player-more-details/player-more-details.component';
+import { ClubPaymentComponent } from '../../club/club-payment/club-payment.component';
+import { ClubPaymentNotCompleteListComponent } from '../../club/club-payment-not-complete-list/club-payment-not-complete-list.component';
 
 export const AdminLayoutRoutes: Routes = [
   { path: "user-profile", component: UserProfileComponent },
@@ -111,7 +114,21 @@ export const AdminLayoutRoutes: Routes = [
     component: UmpireUmpireRegisterComponent,
     canActivate: [RouteGuardService]
   },
-
+  {
+    path: "player-more-details",
+    component: PlayerMoreDetailsComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: "club-payment/:clubId",
+    component: ClubPaymentComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: "club-payment-not-complete-list",
+    component: ClubPaymentNotCompleteListComponent,
+    canActivate: [RouteGuardService]
+  }
 
 
 ];

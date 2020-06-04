@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class ClubDetailsComponent implements OnInit {
 
   club:ClubModel = null;
+  errorMessage:String;
 
   constructor(
     private clubService : ClubService,
@@ -28,6 +29,7 @@ export class ClubDetailsComponent implements OnInit {
         this.club = response;
       },
       error => {
+        this.errorMessage='Any club not assign for you yet.Please contact admin';
         console.log(error);
       }
     );

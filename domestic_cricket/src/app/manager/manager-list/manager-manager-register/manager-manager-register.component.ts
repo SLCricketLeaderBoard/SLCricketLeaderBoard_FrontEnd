@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { UserModel } from '../../../class-model/UserModel';
 import { ManagerService } from '../../../service/manager/manager.service';
 
@@ -22,11 +22,11 @@ export class ManagerManagerRegisterComponent implements OnInit {
     let nicRanger = /^[vV0-9]+$/;
    
     this.managerRegisterForm = new FormGroup({
-      userName: new FormControl(null,Validators.required),
-      fullName: new FormControl(null,[Validators.required]),
-      nameWithInitials: new FormControl(null,[Validators.required]),
-      nic: new FormControl(null,[Validators.required,Validators.pattern(nicRanger)]),
-      contactNumber: new FormControl(null,[Validators.required,this.forbiddenContactNumbersValidator.bind(this),Validators.pattern(numericRegex)]),
+      userName: new FormControl(null,[Validators.required,Validators.minLength(6)]),
+      fullName: new FormControl(null,[Validators.required,Validators.minLength(6)]),
+      nameWithInitials: new FormControl(null,[Validators.required,Validators.minLength(6)]),
+      nic: new FormControl(null,[Validators.required,Validators.pattern(nicRanger),Validators.minLength(6)]),
+      contactNumber: new FormControl(null,[Validators.required,this.forbiddenContactNumbersValidator.bind(this),Validators.pattern(numericRegex),Validators.minLength(9)]),
       email: new FormControl(null,[Validators.required,Validators.email]),
       address: new FormControl(null,[Validators.required])
     })
@@ -89,4 +89,12 @@ export class ManagerManagerRegisterComponent implements OnInit {
     }
     return null;
   }
+
+  customMinValidator(control: AbstractControl): { [key: string]: boolean } | null {
+
+    if (control.value !== undefined && (isNaN(control.value) || control.value >= 100000000 )) {
+        return { 'customMin': true };
+    }
+    return null;
+}
 }
