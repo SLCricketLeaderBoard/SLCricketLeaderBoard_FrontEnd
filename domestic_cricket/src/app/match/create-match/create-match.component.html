@@ -16,19 +16,20 @@
                     <h5 class="title">Create Match</h5>
                   </div>
                   <div class="card-body">
-                    <form>
+                    <form [formGroup]="createMatch">
                           <div class="row">
                               <div class="col-sm-6 col-lg-6">
                                 <div class="form-group">
-                                  <label>Club 1</label>
-                                  <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>122</option>
-                                    <option>123</option>
-                                  </select>
+                                  <mat-form-field class="example-full-width">
+                                    <mat-label>Club 01</mat-label>
+                                    <mat-select formControlName="club01">
+                                      <mat-option *ngFor="let club of clubList" [value]="club.clubName" >
+                                        {{club.clubName}}
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
                                 </div>
-                              </div>
-
-                             
+                              </div>      
                           </div>
 
                           
@@ -36,11 +37,14 @@
                           <div class="row">
                             <div class="col-sm-6 col-lg-6">
                               <div class="form-group">
-                                <label >Club 2</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                  <option>122</option>
-                                  <option>123</option>
-                                </select>
+                                <mat-form-field class="example-full-width">
+                                  <mat-label>Club 02</mat-label>
+                                  <mat-select formControlName="club02" >
+                                    <mat-option *ngFor="let club of clubList" [value]="club.clubName" >
+                                      {{club.clubName}}
+                                    </mat-option>
+                                  </mat-select>
+                                </mat-form-field>
                               </div>
                             </div>
                         </div>
@@ -48,70 +52,98 @@
                         <div class="row">
                           <div class="col-sm-6 col-lg-4">
                             <div class="form-group">
-                              <label >Tournement Round</label>
-                                <input type="number" min="0" value="" placeholder="Regular" class="form-control" />
+                              <mat-form-field >
+                                <mat-label>Tournement round</mat-label>
+                                <input matInput type="number" min="0" formControlName="tournementRound">
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          
+                          <div class="col-sm-6 col-lg-4" >
+                            <div class="form-group" style="margin-left: -5px;">
+                              <mat-form-field >
+                                <mat-label>Start Time</mat-label>
+                                <input matInput type="time" formControlName="time">
+                              </mat-form-field>
                             </div>
                           </div>
                         </div>
 
                         <div class="row">
-                          <div class="col-sm-6 col-lg-3">
+                          <div class="col-sm-6 col-lg-4">
                             <div class="form-group">
-                              <label >Start Date</label>
-                                <input type="number" min="0" value="" placeholder="Regular" class="form-control" />
+                              <mat-form-field class="example-full-width">
+                                <mat-label>Stadium</mat-label>
+                                <mat-select formControlName="stadium">
+                                  <mat-option *ngFor="let food of foods" [value]="food.value" >
+                                    {{food.viewValue}}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div class="row">
+                          <div class="col-sm-6 col-lg-3">
+                            <div class="form-group" style="margin-left: 10px; margin-top: 10px;">
+                                <p>
+                                  <mat-form-field class="example-full-width">
+                                    <mat-label>Start Date</mat-label>
+                                    <input matInput [matDatepicker]="std" formControlName="startDate">
+                                    <mat-datepicker-toggle matSuffix [for]="std"></mat-datepicker-toggle>
+                                    <mat-datepicker #std disabled="false"></mat-datepicker>
+                                  </mat-form-field>
+                                </p>
+
                             </div>
                           </div>
                         
                           <div class="col-sm-6 col-lg-3">
+                            <div class="form-group" style="margin-left: 10px; margin-top: 10px;">
+                              <p>
+                                <mat-form-field class="example-full-width">
+                                  <mat-label>End Date</mat-label>
+                                  <input matInput [matDatepicker]="end" formControlName="endDate">
+                                  <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+                                  <mat-datepicker #end disabled="false"></mat-datepicker>
+                                </mat-form-field>
+                              </p>
+
+                          </div>
+                          </div>
+
+                       
+                        </div>
+
+                    
+
+                        <div class="row">
+                          <div class="col-sm-6 col-lg-4">
                             <div class="form-group">
-                              <label >End date</label>
-                                <input type="number" min="0" value="" placeholder="Regular" class="form-control" />
+                              <mat-form-field class="example-full-width">
+                                <mat-label>Refree</mat-label>
+                                <mat-select formControlName="refree">
+                                  <mat-option *ngFor="let food of foods" [value]="food.value" >
+                                    {{food.viewValue}}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
                             </div>
                           </div>
                         </div>
 
                         <div class="row">
                           <div class="col-sm-6 col-lg-4">
-                            <div class="form-group">
-                              <label >Start time</label>
-                                <input type="number" min="0" value="" placeholder="Regular" class="form-control" />
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col-sm-6 col-lg-4">
-                            <div class="form-group">
-                              <label >Stadium</label>
-                              <select class="form-control" id="exampleFormControlSelect1">
-                                <option>122</option>
-                                <option>123</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col-sm-6 col-lg-4">
-                            <div class="form-group">
-                              <label >Refree</label>
-                              <select class="form-control" id="exampleFormControlSelect1">
-                                <option>122</option>
-                                <option>123</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-
-
-                        <div class="row">
-                          <div class="col-sm-6 col-lg-4">
-                            <div class="form-group">
-                              <label >1st Umpire</label>
-                              <select class="form-control" id="exampleFormControlSelect1">
-                                <option>122</option>
-                                <option>123</option>
-                              </select>
+                            <div class="form-group" >
+                              <mat-form-field class="example-full-width">
+                                <mat-label>Umpire 01</mat-label>
+                                <mat-select formControlName="umpire01">
+                                  <mat-option *ngFor="let umpire of umpireList" [value]="umpire.userId.fullName" >
+                                    {{umpire.userId.fullName}}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
                             </div>
                           </div>
                         </div>
@@ -120,11 +152,14 @@
                         <div class="row">
                           <div class="col-sm-6 col-lg-4">
                             <div class="form-group">
-                              <label >2nd Umpire</label>
-                              <select class="form-control" id="exampleFormControlSelect1">
-                                <option>122</option>
-                                <option>123</option>
-                              </select>
+                              <mat-form-field class="example-full-width">
+                                <mat-label>Umpire 02</mat-label>
+                                <mat-select formControlName="umpire02">
+                                  <mat-option *ngFor="let umpire of umpireList" [value]="umpire.userId.fullName" >
+                                    {{umpire.userId.fullName}}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
                             </div>
                           </div>
                         </div>
@@ -133,26 +168,37 @@
                         <div class="row">
                           <div class="col-sm-6 col-lg-4">
                             <div class="form-group">
-                              <label >3rd Umpire</label>
-                              <select class="form-control" id="exampleFormControlSelect1">
-                                <option>122</option>
-                                <option>123</option>
-                              </select>
+                              <mat-form-field class="example-full-width">
+                                <mat-label>Umpire 03</mat-label>
+                                <mat-select formControlName="umpire03">
+                                  <mat-option *ngFor="let umpire of umpireList" [value]="umpire.userId.fullName" >
+                                    {{umpire.userId.fullName}}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
                             </div>
                           </div>
                         </div>
 
+
                         <div class="row">
                           <div class="col-sm-6 col-lg-4">
-                            <div class="form-group">
-                              <label >Sponsers</label>
-                              <select class="form-control" id="exampleFormControlSelect1">
-                                <option>122</option>
-                                <option>123</option>
-                              </select>`
+                            <div class="form-group" >
+                              <mat-form-field class="example-full-width">
+                                <mat-label>Sponser</mat-label>
+                                <mat-select formControlName="sponser">
+                                  <mat-option *ngFor="let food of foods" [value]="food.value" >
+                                    {{food.viewValue}}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
                             </div>
                           </div>
                         </div>
+
+                        <button mat-raised-button (click)="reset()">Reset</button>
+                        <button mat-raised-button (click)="create()" >Create</button>
+             
                     </form>
                   </div>
                   

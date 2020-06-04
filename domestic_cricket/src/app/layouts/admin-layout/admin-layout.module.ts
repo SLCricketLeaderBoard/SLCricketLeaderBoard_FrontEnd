@@ -31,6 +31,7 @@ import { PlayerMoreDetailsComponent } from '../../player/player-more-details/pla
 import { ClubPaymentComponent } from '../../club/club-payment/club-payment.component';
 import { ClubPaymentNotCompleteListComponent } from '../../club/club-payment-not-complete-list/club-payment-not-complete-list.component';
 import { CreateMatchComponent } from '../../match/create-match/create-match.component';
+import { MaterialModule } from '../../material.module';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { CreateMatchComponent } from '../../match/create-match/create-match.comp
     ChartsModule,
     NgbModule,
     ToastrModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ],
   declarations: [
     DashboardComponent,

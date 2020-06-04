@@ -17,8 +17,8 @@ import { HttpIntercepterBasicAuthServiceService } from "./service/user/http-inte
 import { ManagerService} from "./service/manager/manager.service";
 import { UserComponent } from './user/user.component';
 import { MaterialModule } from './material.module';
-
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 
@@ -34,7 +34,10 @@ import { MaterialModule } from './material.module';
     AppRoutingModule,
     NgbModule,
     ToastrModule.forRoot(),
-    MaterialModule
+    MaterialModule,
+    MatFormFieldModule,
+    MatInputModule,
+ 
   ],
   declarations: [AppComponent, AdminLayoutComponent, LoginComponent, UserComponent],
   providers: [

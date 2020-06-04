@@ -39,6 +39,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -83,7 +84,9 @@ import { CdkTreeModule } from '@angular/cdk/tree';
         MatTooltipModule,
         MatTreeModule,
         PortalModule,
-        ScrollingModule
+        ScrollingModule,
+        MatFormFieldModule,
+        
            ],
     imports:[
         CdkStepperModule,
@@ -125,7 +128,8 @@ import { CdkTreeModule } from '@angular/cdk/tree';
         MatTooltipModule,
         MatTreeModule,
         PortalModule,
-        ScrollingModule
+        ScrollingModule,
+        MatFormFieldModule
     ]
 })
 
