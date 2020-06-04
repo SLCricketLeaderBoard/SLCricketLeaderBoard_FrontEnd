@@ -33,14 +33,14 @@ import { UserComponent } from './user/user.component';
     AppRoutingModule,
     NgbModule,
     ToastrModule.forRoot(),
-     
+
   ],
   declarations: [AppComponent, AdminLayoutComponent, LoginComponent, UserComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpIntercepterBasicAuthServiceService,
-      multi: true,      
+      multi: true,
     },
     ManagerService
   ],
