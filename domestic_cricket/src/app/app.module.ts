@@ -19,6 +19,7 @@ import { UserComponent } from './user/user.component';
 import { MaterialModule } from './material.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatchService } from './service/match/match.service';
 
 
 
@@ -46,7 +47,8 @@ import { MatInputModule } from '@angular/material/input';
       useClass: HttpIntercepterBasicAuthServiceService,
       multi: true,
     },
-    ManagerService
+    ManagerService,
+    MatchService
   ],
   bootstrap: [AppComponent],
 })
