@@ -19,10 +19,16 @@ import { ManagerManagerRegisterComponent } from "../../manager/manager-list/mana
 import { ManagerManagersComponent } from "../../manager/manager-list/manager-managers/manager-managers.component";
 import { UserResetPasswordComponent } from '../../user-reset-password/user-reset-password.component';
 import { ClubDetailsComponent } from '../../club/club-details/club-details.component';
+import { UmpireListComponent } from '../../umpire/umpire-list/umpire-list.component';
+import { UmpireUmpireRegisterComponent } from '../../umpire/umpire-list/umpire-umpire-register/umpire-umpire-register.component';
+import { UmpireUmpiresComponent } from '../../umpire/umpire-list/umpire-umpires/umpire-umpires.component';
+
 import { PlayerMoreDetailsComponent } from '../../player/player-more-details/player-more-details.component';
 import { ClubPaymentComponent } from '../../club/club-payment/club-payment.component';
 import { ClubPaymentNotCompleteListComponent } from '../../club/club-payment-not-complete-list/club-payment-not-complete-list.component';
+
 import { PlayerAddComponent } from '../../player/player-add/player-add.component';
+import { CreateMatchComponent } from '../../match/create-match/create-match.component';
 
 export const AdminLayoutRoutes: Routes = [
   { path: "user-profile", component: UserProfileComponent },
@@ -36,6 +42,11 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: "/",
     component: ManagerManagersComponent,
+    canActivate: [RouteGuardService],
+  },
+  {
+    path: "/",
+    component: UmpireUmpiresComponent,
     canActivate: [RouteGuardService],
   },
 
@@ -82,7 +93,7 @@ export const AdminLayoutRoutes: Routes = [
   },
 
   {
-    path: "profile",
+    path: "profile/:id",
     component: UserProfileComponent,
     canActivate: [RouteGuardService],
   },
@@ -94,6 +105,16 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: "club-details",
     component: ClubDetailsComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: "umpire-list",
+    component: UmpireListComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: "umpire-register",
+    component: UmpireUmpireRegisterComponent,
     canActivate: [RouteGuardService]
   },
   {
@@ -112,10 +133,17 @@ export const AdminLayoutRoutes: Routes = [
     canActivate: [RouteGuardService]
   },
   {
+
     path: "player-add",
     component: PlayerAddComponent,
     canActivate: [RouteGuardService]
-  }
+  },
+  {
+    path: "create-match",
+    component: CreateMatchComponent,
+    canActivate: [RouteGuardService]
+  },
+
 
 
 ];

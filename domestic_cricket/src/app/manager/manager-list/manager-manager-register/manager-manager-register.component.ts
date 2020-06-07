@@ -25,7 +25,7 @@ export class ManagerManagerRegisterComponent implements OnInit {
       userName: new FormControl(null,[Validators.required,Validators.minLength(6)]),
       fullName: new FormControl(null,[Validators.required,Validators.minLength(6)]),
       nameWithInitials: new FormControl(null,[Validators.required,Validators.minLength(6)]),
-      nic: new FormControl(null,[Validators.required,Validators.pattern(nicRanger),Validators.minLength(6)]),
+      nic: new FormControl(null,[Validators.required,Validators.pattern(nicRanger),Validators.minLength(9)]),
       contactNumber: new FormControl(null,[Validators.required,this.forbiddenContactNumbersValidator.bind(this),Validators.pattern(numericRegex),Validators.minLength(9)]),
       email: new FormControl(null,[Validators.required,Validators.email]),
       address: new FormControl(null,[Validators.required])

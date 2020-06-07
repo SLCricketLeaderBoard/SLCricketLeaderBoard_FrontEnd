@@ -190,7 +190,8 @@ export class NavbarComponent implements OnInit {
 
 
     profile(){
+      let id = sessionStorage.getItem('userId');
       console.log("here to profile");
-      this.router.navigate(["/profile"], { relativeTo: this.route });
+      this.router.navigate(["/profile",id], { relativeTo: this.route });
     }
 }

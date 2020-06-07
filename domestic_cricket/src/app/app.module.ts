@@ -16,8 +16,10 @@ import { LoginComponent } from "./login/login.component";
 import { HttpIntercepterBasicAuthServiceService } from "./service/user/http-intercepter-basic-auth-service.service";
 import { ManagerService} from "./service/manager/manager.service";
 import { UserComponent } from './user/user.component';
-
-
+import { MaterialModule } from './material.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatchService } from './service/match/match.service';
 
 
 
@@ -33,16 +35,20 @@ import { UserComponent } from './user/user.component';
     AppRoutingModule,
     NgbModule,
     ToastrModule.forRoot(),
-     
+    MaterialModule,
+    MatFormFieldModule,
+    MatInputModule,
+ 
   ],
   declarations: [AppComponent, AdminLayoutComponent, LoginComponent, UserComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpIntercepterBasicAuthServiceService,
-      multi: true,      
+      multi: true,
     },
-    ManagerService
+    ManagerService,
+    MatchService
   ],
   bootstrap: [AppComponent],
 })

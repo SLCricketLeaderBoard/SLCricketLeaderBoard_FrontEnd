@@ -13,9 +13,8 @@ export class UserResetPasswordComponent implements OnInit {
 
   userId:String
   user:UserModel
-
   userRegisterFrom:FormGroup
-
+  response:String
   constructor(private route:ActivatedRoute,private userService:UserServiceService,public formBuilder: FormBuilder) { 
 
          this.userRegisterFrom = this.formBuilder.group({
@@ -76,6 +75,7 @@ export class UserResetPasswordComponent implements OnInit {
     console.log(updatedUser);
     this.userService.resetPassword(updatedUser).subscribe(res=>{
       console.log(res);
+      this.response=res;
     },error=>{
       console.log(error);
     })
