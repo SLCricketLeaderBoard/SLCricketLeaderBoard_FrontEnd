@@ -27,6 +27,7 @@ import { ClubDetailsComponent } from '../../club/club-details/club-details.compo
 import { PlayerMoreDetailsComponent } from '../../player/player-more-details/player-more-details.component';
 import { ClubPaymentComponent } from '../../club/club-payment/club-payment.component';
 import { ClubPaymentNotCompleteListComponent } from '../../club/club-payment-not-complete-list/club-payment-not-complete-list.component';
+import { PlayerAddComponent } from '../../player/player-add/player-add.component';
 
 @NgModule({
   imports: [
@@ -62,7 +63,8 @@ import { ClubPaymentNotCompleteListComponent } from '../../club/club-payment-not
     ManagerManagersComponent,
     UserResetPasswordComponent,
 
-    PlayerMoreDetailsComponent
+    PlayerMoreDetailsComponent,
+    PlayerAddComponent
   ],
 })
 export class AdminLayoutModule {}

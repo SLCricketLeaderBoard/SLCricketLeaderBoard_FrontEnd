@@ -22,6 +22,7 @@ import { ClubDetailsComponent } from '../../club/club-details/club-details.compo
 import { PlayerMoreDetailsComponent } from '../../player/player-more-details/player-more-details.component';
 import { ClubPaymentComponent } from '../../club/club-payment/club-payment.component';
 import { ClubPaymentNotCompleteListComponent } from '../../club/club-payment-not-complete-list/club-payment-not-complete-list.component';
+import { PlayerAddComponent } from '../../player/player-add/player-add.component';
 
 export const AdminLayoutRoutes: Routes = [
   { path: "user-profile", component: UserProfileComponent },
@@ -101,13 +102,18 @@ export const AdminLayoutRoutes: Routes = [
     canActivate: [RouteGuardService]
   },
   {
-    path: "club-payment/:clubId",
+    path: "club-payment/:clubId/:clubName",
     component: ClubPaymentComponent,
     canActivate: [RouteGuardService]
   },
   {
     path: "club-payment-not-complete-list",
     component: ClubPaymentNotCompleteListComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: "player-add",
+    component: PlayerAddComponent,
     canActivate: [RouteGuardService]
   }
 

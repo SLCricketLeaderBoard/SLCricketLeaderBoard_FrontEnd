@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserAuthenticationServiceService } from '../service/user/user-authentication-service.service';
 import { UserServiceService } from '../service/user/user-service.service';
+import { ClubService } from '../service/club/club.service';
+import Swal from 'sweetalert2';
 
 
 
@@ -38,7 +40,8 @@ export class LoginComponent implements OnInit {
     private router:Router,
     private userAuthenticationService:UserAuthenticationServiceService,
     private fb:FormBuilder,
-    private userService:UserServiceService
+    private userService:UserServiceService,
+    private clubService:ClubService
   ) { }
 
   ngOnInit(
@@ -80,7 +83,7 @@ export class LoginComponent implements OnInit {
         if(response.role === 1){
           this.router.navigate(['dashboard'])
         }else if(response.role == 2){
-          this.router.navigate(['dashboard']);
+          this.getClubData();
         }else if(response.role == 3){
           this.router.navigate(['#']);
         }else if(response.role == 4){
@@ -89,6 +92,25 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  getClubData(){
+    let userId:Number = +sessionStorage.getItem("userId");
+    this.clubService.getClubDataOfManager(userId).subscribe(
+        response => {
+          sessionStorage.setItem('isManagerHasClub','1');
+          this.router.navigate(['dashboard']);
+        },
+        error => {
+          sessionStorage.setItem('isManagerHasClub','0');
+          this.router.navigate(['dashboard']);
+          Swal.fire({
+            position: 'center',
+            icon: 'warning',
+            title: 'You haven\'t assing any club yet.Please inform to admin',
+            showConfirmButton: true,            
+          });       
+        } 
+    );
+  }
  
   closeError(){
     this.errorMessage=null;

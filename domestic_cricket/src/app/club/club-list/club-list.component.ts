@@ -44,8 +44,8 @@ export class ClubListComponent implements OnInit {
     this.router.navigate(['club-register',clubId]);
   }
 
-  clubPayment(clubId:Number){
-    this.router.navigate(['club-payment',clubId]);
+  clubPayment(clubId:Number, clubName:String){
+    this.router.navigate(['club-payment',clubId,clubName]);
   }
 
   clubNotPaymentList(){
