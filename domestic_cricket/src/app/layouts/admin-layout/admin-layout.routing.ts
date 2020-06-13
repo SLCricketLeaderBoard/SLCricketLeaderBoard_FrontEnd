@@ -26,6 +26,8 @@ import { UmpireUmpiresComponent } from '../../umpire/umpire-list/umpire-umpires/
 import { PlayerMoreDetailsComponent } from '../../player/player-more-details/player-more-details.component';
 import { ClubPaymentComponent } from '../../club/club-payment/club-payment.component';
 import { ClubPaymentNotCompleteListComponent } from '../../club/club-payment-not-complete-list/club-payment-not-complete-list.component';
+
+import { PlayerAddComponent } from '../../player/player-add/player-add.component';
 import { CreateMatchComponent } from '../../match/create-match/create-match.component';
 
 export const AdminLayoutRoutes: Routes = [
@@ -121,7 +123,7 @@ export const AdminLayoutRoutes: Routes = [
     canActivate: [RouteGuardService]
   },
   {
-    path: "club-payment/:clubId",
+    path: "club-payment/:clubId/:clubName",
     component: ClubPaymentComponent,
     canActivate: [RouteGuardService]
   },
@@ -131,10 +133,17 @@ export const AdminLayoutRoutes: Routes = [
     canActivate: [RouteGuardService]
   },
   {
+
+    path: "player-add",
+    component: PlayerAddComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
     path: "create-match",
     component: CreateMatchComponent,
     canActivate: [RouteGuardService]
   },
+
 
 
 ];

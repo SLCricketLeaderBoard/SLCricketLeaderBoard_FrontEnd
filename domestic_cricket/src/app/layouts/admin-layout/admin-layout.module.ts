@@ -30,8 +30,12 @@ import { UmpireUmpiresComponent } from '../../umpire/umpire-list/umpire-umpires/
 import { PlayerMoreDetailsComponent } from '../../player/player-more-details/player-more-details.component';
 import { ClubPaymentComponent } from '../../club/club-payment/club-payment.component';
 import { ClubPaymentNotCompleteListComponent } from '../../club/club-payment-not-complete-list/club-payment-not-complete-list.component';
+
+import { PlayerAddComponent } from '../../player/player-add/player-add.component';
+
 import { CreateMatchComponent } from '../../match/create-match/create-match.component';
 import { MaterialModule } from '../../material.module';
+
 
 @NgModule({
   imports: [
@@ -72,6 +76,10 @@ import { MaterialModule } from '../../material.module';
     UmpireListComponent,
     UmpireUmpireRegisterComponent,
     UmpireUmpiresComponent,
+
+
+    PlayerMoreDetailsComponent,
+    PlayerAddComponent
 
   ],
 })

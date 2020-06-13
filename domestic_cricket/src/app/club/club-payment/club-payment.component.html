@@ -5,13 +5,86 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Club Payment</h4>
+          <h4 class="card-title">Payment Details of {{clubName}}</h4>
+          <a (click)=clubPaymentAdd()><button type="button" class="btn btn-success btn-sm" title="Add Payment"><i class="fas fa-plus"></i></button></a>
         </div>
         <div class="card-body">
 
-            <div class="card">
+          <div *ngIf="warningMessage!=''" class="alert alert-warning">
+            <button (click)="close()" type="button" aria-hidden="true" class="close">
+              <i  class="now-ui-icons ui-1_simple-remove"></i>
+            </button>
+            <span>
+              {{warningMessage}}
+            </span>
+          </div>
+
+           <div class="row">
+             <div class="col-md-6">
               
+              <div *ngIf="isPaymentAdd" class="card">
+                <div class="card-header">
+                 <button (click)="closeClubAddPaymentBox()" type="button" aria-hidden="true" class="close">
+                   <i  class="now-ui-icons ui-1_simple-remove"></i>
+                 </button>
+                  <h5 class='card-title'>Payment Form</h5>
+                </div>
+                <div class="card-body">
+
+                  <form [formGroup]="clubPaymentForm" (ngSubmit)="clubPaymentFormSubmit()">
+                      <div class="row">
+
+                        <div class="col-sm-12 col-lg-7">
+                            <div class="form-group">
+                                <input [class.is-invalid]="clubPaymentForm.get('amount').invalid && clubPaymentForm.get('amount').touched" formControlName="amount"  type="text" name="club" placeholder="Amount" class="form-control"/>
+                                <div *ngIf="clubPaymentForm.get('amount').invalid && clubPaymentForm.get('amount').touched">
+                                  <small *ngIf="amountField.errors?.required" class="text-danger">Amount Required</small>
+                                  <small *ngIf="amountField.errors?.pattern"  class="text-danger">Inset Valid Amount</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-lg-5">
+                            <div class="form-group">
+                                <input [class.is-invalid]="clubPaymentForm.get('year').invalid && clubPaymentForm.get('year').touched" formControlName="year"  type="text" name="year" placeholder="Year" class="form-control"/>
+                                <div *ngIf="clubPaymentForm.get('year').invalid && clubPaymentForm.get('year').touched">
+                                  <small *ngIf="yearField.errors?.required" class="text-danger">Year Required</small>
+                                  <small *ngIf="yearField.errors?.pattern"  class="text-danger">Inset Valid Year</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button id="submit-button" type="submit" class="btn btn-success btn-round" [disabled]="!clubPaymentForm.valid">Submit</button>
+                      </div>
+                  </form>
+
+                </div>
+              </div>
+
+             </div>
+           </div>
+
+           <!-- Payment list -->
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                  <table class="table">
+                    <tr>
+                      <th></th>
+                      <th>Year</th>
+                      <th>Payment</th>
+                      <th>Payment Date</th>
+                    </tr>
+                    <tr *ngFor="let clubPayment of clubPaymentList; let i=index;">
+                      <td>{{i+1}})</td>
+                      <td>{{clubPayment.paymentForYear}}</td>
+                      <td>{{clubPayment.amount | number : '1.2-2'}}</td>
+                      <td>{{clubPayment.date}}</td>
+                    </tr>
+                  </table>
+              </div>
             </div>
+          </div>
 
         </div>
       </div>

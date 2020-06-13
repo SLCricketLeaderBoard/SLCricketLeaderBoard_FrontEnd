@@ -19,9 +19,11 @@ import { UserComponent } from './user/user.component';
 import { MaterialModule } from './material.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatchService } from './service/match/match.service';
 
-
-
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 
 @NgModule({
   imports: [
@@ -37,7 +39,8 @@ import { MatInputModule } from '@angular/material/input';
     MaterialModule,
     MatFormFieldModule,
     MatInputModule,
- 
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
   declarations: [AppComponent, AdminLayoutComponent, LoginComponent, UserComponent],
   providers: [
@@ -46,7 +49,8 @@ import { MatInputModule } from '@angular/material/input';
       useClass: HttpIntercepterBasicAuthServiceService,
       multi: true,
     },
-    ManagerService
+    ManagerService,
+    MatchService
   ],
   bootstrap: [AppComponent],
 })

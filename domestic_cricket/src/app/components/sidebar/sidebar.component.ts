@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClubService } from '../../service/club/club.service';
 
+
 declare interface RouteInfo {
     path: string;
     title: string;
@@ -78,20 +79,14 @@ export class SidebarComponent implements OnInit {
 
   isManager(){
     if(sessionStorage.getItem('userRole')!=null && sessionStorage.getItem('userRole')==='2'){
+        let isManagerHasClub:Number = +sessionStorage.getItem('isManagerHasClub');
+        if(isManagerHasClub==0){
+          this.isManagerHasClub=false;  
+        }
         return true;
     }
     return false;
   }
 
-  getClubData(){
-    let userId:Number = +sessionStorage.getItem("userId");
-    this.clubService.getClubDataOfManager(userId).subscribe(
-        response => {
-
-        },
-        error => {
-          this.isManagerHasClub=false;
-        }
-    );
-  }
+ 
 }

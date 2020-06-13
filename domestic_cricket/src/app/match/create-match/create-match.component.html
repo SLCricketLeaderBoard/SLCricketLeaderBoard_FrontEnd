@@ -16,8 +16,8 @@
                     <h5 class="title">Create Match</h5>
                   </div>
                   <div class="card-body">
-                    <form [formGroup]="createMatch">
-                          <div class="row">
+                  <form class="form myForm"  [formGroup]="createMatch">
+                          <div class="row fromRow">
                               <div class="col-sm-6 col-lg-6">
                                 <div class="form-group">
                                   <mat-form-field class="example-full-width">
@@ -34,7 +34,7 @@
 
                           
                           
-                          <div class="row">
+                          <div class="row fromRow">
                             <div class="col-sm-6 col-lg-6">
                               <div class="form-group">
                                 <mat-form-field class="example-full-width">
@@ -47,21 +47,52 @@
                                 </mat-form-field>
                               </div>
                             </div>
-                        </div>
+                          </div>
 
-                        <div class="row">
-                          <div class="col-sm-6 col-lg-4">
+                          <hr>
+
+                              <div class="row fromRow">
+                                <div class="col-sm-6 col-lg-3">
+                                  <div class="form-group">
+                                    <mat-form-field class="example-full-width">
+                                      <mat-label>Stadium</mat-label>
+                                      <mat-select formControlName="stadium">
+                                        <mat-option *ngFor="let food of foods" [value]="food.value" >
+                                          {{food.viewValue}}
+                                        </mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                  </div>
+                                </div>
+
+                                <div class="col-sm-6 col-lg-3">
+                                  <div class="form-group">
+                                    <mat-form-field class="example-full-width">
+                                      <mat-label>Match Type</mat-label>
+                                      <mat-select formControlName="stadium">
+                                        <mat-option *ngFor="let type of matchTypes" [value]="type.type" >
+                                          {{type.type}}
+                                        </mat-option>
+                                      </mat-select>
+                                    </mat-form-field>
+                                  </div>
+                                </div>
+
+                              </div>
+
+                        <div class="row fromRow">
+                          <div class="col-sm-6 col-lg-3">
                             <div class="form-group">
-                              <mat-form-field >
+                              <mat-form-field class="example-full-width">
                                 <mat-label>Tournement round</mat-label>
                                 <input matInput type="number" min="0" formControlName="tournementRound">
                               </mat-form-field>
                             </div>
                           </div>
                           
-                          <div class="col-sm-6 col-lg-4" >
-                            <div class="form-group" style="margin-left: -5px;">
-                              <mat-form-field >
+                          <div class="col-sm-6 col-lg-3" >
+                            <div class="form-group" >
+                              <mat-form-field class="example-full-width">
                                 <mat-label>Start Time</mat-label>
                                 <input matInput type="time" formControlName="time">
                               </mat-form-field>
@@ -69,24 +100,10 @@
                           </div>
                         </div>
 
-                        <div class="row">
-                          <div class="col-sm-6 col-lg-4">
-                            <div class="form-group">
-                              <mat-form-field class="example-full-width">
-                                <mat-label>Stadium</mat-label>
-                                <mat-select formControlName="stadium">
-                                  <mat-option *ngFor="let food of foods" [value]="food.value" >
-                                    {{food.viewValue}}
-                                  </mat-option>
-                                </mat-select>
-                              </mat-form-field>
-                            </div>
-                          </div>
-                        </div>
                         
-                        <div class="row">
+                        <div class="row fromRow">
                           <div class="col-sm-6 col-lg-3">
-                            <div class="form-group" style="margin-left: 10px; margin-top: 10px;">
+                            <div class="form-group" >
                                 <p>
                                   <mat-form-field class="example-full-width">
                                     <mat-label>Start Date</mat-label>
@@ -100,7 +117,7 @@
                           </div>
                         
                           <div class="col-sm-6 col-lg-3">
-                            <div class="form-group" style="margin-left: 10px; margin-top: 10px;">
+                            <div class="form-group">
                               <p>
                                 <mat-form-field class="example-full-width">
                                   <mat-label>End Date</mat-label>
@@ -116,9 +133,11 @@
                        
                         </div>
 
-                    
+                        <hr>
 
-                        <div class="row">
+                        Membmers in charge                    
+
+                        <div class="row fromRow">
                           <div class="col-sm-6 col-lg-4">
                             <div class="form-group">
                               <mat-form-field class="example-full-width">
@@ -133,7 +152,7 @@
                           </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row fromRow">
                           <div class="col-sm-6 col-lg-4">
                             <div class="form-group" >
                               <mat-form-field class="example-full-width">
@@ -149,7 +168,7 @@
                         </div>
 
 
-                        <div class="row">
+                        <div class="row fromRow">
                           <div class="col-sm-6 col-lg-4">
                             <div class="form-group">
                               <mat-form-field class="example-full-width">
@@ -165,7 +184,7 @@
                         </div>
 
 
-                        <div class="row">
+                        <div class="row fromRow">
                           <div class="col-sm-6 col-lg-4">
                             <div class="form-group">
                               <mat-form-field class="example-full-width">
@@ -181,7 +200,10 @@
                         </div>
 
 
-                        <div class="row">
+
+                        <hr>
+
+                        <div class="row fromRow">
                           <div class="col-sm-6 col-lg-4">
                             <div class="form-group" >
                               <mat-form-field class="example-full-width">

@@ -19,6 +19,7 @@
               <div class="table-responsive">
                 <table class="table">
                   <thead class=" text-primary">
+                    <th></th>
                     <th> Name </th>
                     <th> Tel </th> 
                     <th> Email  </th>  
@@ -26,14 +27,15 @@
                     <th class="text-right"> Option </th>    
                   </thead>
                   <tbody>
-                    <tr *ngFor = "let club of clubList">
+                    <tr *ngFor = "let club of clubList; let i = index;">
+                      <td>{{i+1}})</td>
                       <td> {{club.clubName}} </td>   
                       <td> {{club.contactNumber}} </td>     
                       <td> {{club.email}} </td>  
                       <td> {{club.managerId.userId.nameWithInitial}} </td>
                       <td class="text-right">
                         <a (click)=clubUpdate(club.clubId)><button type="button" class="btn btn-info btn-sm" title="Update"><i class="fas fa-edit"></i></button></a>
-                        <a (click)=clubPayment(club.clubId)><button type="button" class="btn btn-secondary btn-sm" title="Club Payments"><i class="fas fa-dollar-sign"></i></button></a>
+                        <a (click)=clubPayment(club.clubId,club.clubName)><button type="button" class="btn btn-secondary btn-sm" title="Club Payments"><i class="fas fa-dollar-sign"></i></button></a>
                       </td>
                     </tr>
                   </tbody>

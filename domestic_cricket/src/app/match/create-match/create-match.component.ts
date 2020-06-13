@@ -4,6 +4,8 @@ import { ClubService } from '../../service/club/club.service';
 import { UmpireService } from '../../service/umpire/umpire.service';
 import { UmpireModel } from '../../class-model/UmpireModel';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatchType } from '../../class-model/MatchType';
+import { MatchService } from '../../service/match/match.service';
 
 interface Food {
   value: string;
@@ -24,13 +26,14 @@ export class CreateMatchComponent implements OnInit {
   ];
 
   clubList:ClubModel[] = [];
-  umpireList:UmpireModel[]=[]
+  umpireList:UmpireModel[]=[];
+  matchTypes:MatchType[]=[];
   createMatch:FormGroup;
 
   startDate :Date = new Date();
   endDate :Date = new Date();
 
-  constructor(private clubService:ClubService,private umpireService:UmpireService) {
+  constructor(private clubService:ClubService,private umpireService:UmpireService,private matchService:MatchService) {
 
     this.createMatch = new FormGroup({
       club01: new FormControl(null,[Validators.required]),
@@ -52,7 +55,8 @@ export class CreateMatchComponent implements OnInit {
     this.clubService.getClubs(1).subscribe(
       response => {
         this.clubList = response;
-        console.log(response);      },
+        console.log(response);
+      },
       error => {
         console.log(error);
       }
@@ -64,6 +68,14 @@ export class CreateMatchComponent implements OnInit {
     },error=>{
       console.log(error); 
     });
+
+    this.matchService.getMatchType().subscribe(response=>{
+      this.matchTypes=response;
+      console.log(response);
+    },error=>{
+      console.log(error);
+    })
+
   
   }
 
