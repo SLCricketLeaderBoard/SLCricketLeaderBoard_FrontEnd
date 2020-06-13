@@ -1,20 +1,64 @@
-<div class="panel-header panel-header-sm">
-</div>
+<div class="panel-header panel-header-sm"></div>
 <div class="main-content">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Payment not completed list</h4>
+          <h4 class="card-title">Clubs</h4>
         </div>
         <div class="card-body">
-
-
-
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">Payment not completed list</h4>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="text-primary">
+                    <th></th>
+                    <th>Name</th>
+                    <th>Tel</th>
+                    <th>Email</th>
+                    <th>Manager</th>
+                    <th class="text-right">Option</th>
+                  </thead>
+                  <tbody>
+                    <tr
+                      *ngFor="
+                        let club of paymentNotCompletedList;
+                        let i = index
+                      "
+                    >
+                      <td>{{ i + 1 }})</td>
+                      <td>{{ club.clubName }}</td>
+                      <td>{{ club.contactNumber }}</td>
+                      <td>{{ club.email }}</td>
+                      <td>{{ club.managerId.userId.nameWithInitial }}</td>
+                      <td class="text-right">
+                        <a
+                          (click)="
+                            clubPayment(
+                              club.clubId,
+                              club.clubName,
+                              club.regDate
+                            )
+                          "
+                          ><button
+                            type="button"
+                            class="btn btn-secondary btn-sm"
+                            title="Club Payments"
+                          >
+                            <i class="fas fa-dollar-sign"></i></button
+                        ></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-   
   </div>
 </div>
-
