@@ -21,8 +21,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatchService } from './service/match/match.service';
 
-
-
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { MatchService } from './service/match/match.service';
     MaterialModule,
     MatFormFieldModule,
     MatInputModule,
- 
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
   declarations: [AppComponent, AdminLayoutComponent, LoginComponent, UserComponent],
   providers: [

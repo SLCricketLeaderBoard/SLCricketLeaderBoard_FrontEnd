@@ -20,7 +20,11 @@
     "@angular/core": "7.2.2",
     "@angular/forms": "7.2.2",
     "@angular/http": "7.2.2",
-    "@angular/material": "^7.2.2",
+
+    "@angular/material": "~7.2.0",
+    "@angular/fire": "^5.4.2",
+    "firebase": "^6.6.2",
+
     "@angular/platform-browser": "7.2.2",
     "@angular/platform-browser-dynamic": "7.2.2",
     "@angular/platform-server": "7.2.2",
