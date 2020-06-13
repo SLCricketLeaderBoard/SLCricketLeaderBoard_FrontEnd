@@ -1,5 +1,4 @@
-<div class="panel-header panel-header-sm">
-</div>
+<div class="panel-header panel-header-sm"></div>
 <div class="main-content">
   <div class="row">
     <div class="col-md-12">
@@ -8,27 +7,130 @@
           <h4 class="card-title">Player Registration</h4>
         </div>
         <div class="card-body">
-
-           <div class="row">
-             <div class="col-md-2"></div>
-             <div class="col-md-8">
-                <div class="card">
-                  <div class="card-header">
-                    <div class="card-title">
-                      <h5>Player Registration Form</h5>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">
+                    <h5>Player Registration Form</h5>
                   </div>
                 </div>
-             </div>
-             <div class="col-md-2"></div>
-           </div>
+                <div class="card-body">
 
+                  <form [formGroup]="playerRegisterFrom" (ngSubmit)="playerFormSubmit()">
+                    <div class="row">
+
+                      <div class="col-sm-12 col-lg-6">
+                        <div class="form-group">
+                          <input
+                            [class.is-invalid]="playerRegisterFrom.get('userName').invalid && playerRegisterFrom.get('userName').touched"
+                            formControlName="userName" type="text" name="userName" placeholder="User Name"
+                            class="form-control" />
+                          <div
+                            *ngIf="playerRegisterFrom.get('userName').invalid &&  playerRegisterFrom.get('userName').touched">
+                            <small *ngIf="userNameField.errors?.required" class="text-danger">User Name Required</small>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="col-sm-12 col-lg-6">
+                        <div class="form-group">
+                          <input
+                            [class.is-invalid]="playerRegisterFrom.get('nameWithInitial').invalid && playerRegisterFrom.get('nameWithInitial').touched"
+                            formControlName="nameWithInitial" type="text" name="userInitialName"
+                            placeholder="Name With Initial" class="form-control" />
+                          <div
+                            *ngIf="playerRegisterFrom.get('nameWithInitial').invalid &&  playerRegisterFrom.get('nameWithInitial').touched">
+                            <small *ngIf="nameWithInitialField.errors?.required" class="text-danger">Name With Initial
+                              Required</small>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-12 col-lg-12">
+                        <div class="form-group">
+                          <input
+                            [class.is-invalid]="playerRegisterFrom.get('fullName').invalid && playerRegisterFrom.get('fullName').touched"
+                            formControlName="fullName" type="text" name="fullName" placeholder="Full Name"
+                            class="form-control" />
+                          <div
+                            *ngIf="playerRegisterFrom.get('fullName').invalid &&  playerRegisterFrom.get('fullName').touched">
+                            <small *ngIf="fullNameField.errors?.required" class="text-danger">Full Name
+                              Required</small>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-12 col-lg-6">
+                        <div class="form-group">
+                          <input
+                            [class.is-invalid]="playerRegisterFrom.get('nic').invalid && playerRegisterFrom.get('nic').touched"
+                            formControlName="nic" type="text" name="NIC" placeholder="NIC Number"
+                            class="form-control" />
+                          <div *ngIf="playerRegisterFrom.get('nic').invalid &&  playerRegisterFrom.get('nic').touched">
+                            <small *ngIf="nicField.errors?.required" class="text-danger">NIC Number Required</small>
+                            <small *ngIf="nicField.errors?.pattern" class="text-danger">Insert Valid NIC Number</small>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-12 col-lg-6">
+                        <div class="form-group">
+                          <input
+                            [class.is-invalid]="playerRegisterFrom.get('contactNumber').invalid && playerRegisterFrom.get('contactNumber').touched"
+                            formControlName="contactNumber" type="text" name="contactNumber"
+                            placeholder="Contact Number" class="form-control" />
+                          <div
+                            *ngIf="playerRegisterFrom.get('contactNumber').invalid &&  playerRegisterFrom.get('contactNumber').touched">
+                            <small *ngIf="contactNumberField.errors?.required" class="text-danger">contact Number
+                              Required</small>
+                            <small *ngIf="contactNumberField.errors?.pattern" class="text-danger">Insert Valid Contact
+                              Number</small>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-12 col-lg-12">
+                        <div class="form-group">
+                          <input
+                            [class.is-invalid]="playerRegisterFrom.get('address').invalid && playerRegisterFrom.get('address').touched"
+                            formControlName="address" type="text" name="address" placeholder="Address"
+                            class="form-control" />
+                          <div
+                            *ngIf="playerRegisterFrom.get('address').invalid &&  playerRegisterFrom.get('address').touched">
+                            <small *ngIf="addressField.errors?.required" class="text-danger">Address
+                              Required</small>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-12 col-lg-6">
+                        <select
+                          [class.is-invalid]=" playerRegisterFrom.get('playerType').invalid && playerRegisterFrom.get('playerType').touched"
+                          class="form-control" formControlName="playerType">
+                          <option value="" disabled selected>Select a player Type</option>
+                          <option *ngFor="let player of playerTypeList" [ngValue]="player">{{ player }}</option>
+                        </select>
+                        <div
+                          *ngIf=" playerRegisterFrom.get('playerType').invalid && playerRegisterFrom.get('playerType').touched">
+                          <small *ngIf="playerTypeField.errors?.required" class="text-danger">please select a
+                            player type</small>
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2"></div>
+          </div>
         </div>
       </div>
     </div>
-   
   </div>
 </div>
