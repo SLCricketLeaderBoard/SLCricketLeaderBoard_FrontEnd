@@ -1,41 +1,74 @@
-<div class="panel-header panel-header-sm">
-</div>
+<div class="panel-header panel-header-sm"></div>
 <div class="main-content">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title"> Clubs</h4>
-          <a (click)=clubRegister()><button type="button" class="btn btn-success btn-sm" title="Register Club"><i class="fas fa-plus"></i></button></a>
-          <a (click)=clubNotPaymentList()><button type="button" class="btn btn-secondary btn-sm" title="Payment not complete list"><i class="fas fa-list-alt"></i></button></a>
+          <h4 class="card-title">Clubs</h4>
+          <a (click)="clubRegister()"
+            ><button
+              type="button"
+              class="btn btn-success btn-sm"
+              title="Register Club"
+            >
+              <i class="fas fa-plus"></i></button
+          ></a>
+          <a (click)="clubNotPaymentList()"
+            ><button
+              type="button"
+              class="btn btn-secondary btn-sm"
+              title="Payment not complete list"
+            >
+              <i class="fas fa-list-alt"></i></button
+          ></a>
         </div>
         <div class="card-body">
-          
           <div class="card">
             <div class="card-header">
-              <h4 class="card-title"> Club List</h4>
+              <h4 class="card-title">Payment Completed List</h4>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table">
-                  <thead class=" text-primary">
+                  <thead class="text-primary">
                     <th></th>
-                    <th> Name </th>
-                    <th> Tel </th> 
-                    <th> Email  </th>  
-                    <th> Manager </th>
-                    <th class="text-right"> Option </th>    
+                    <th>Name</th>
+                    <th>Tel</th>
+                    <th>Email</th>
+                    <th>Manager</th>
+                    <th class="text-right">Option</th>
                   </thead>
                   <tbody>
-                    <tr *ngFor = "let club of clubList; let i = index;">
-                      <td>{{i+1}})</td>
-                      <td> {{club.clubName}} </td>   
-                      <td> {{club.contactNumber}} </td>     
-                      <td> {{club.email}} </td>  
-                      <td> {{club.managerId.userId.nameWithInitial}} </td>
+                    <tr *ngFor="let club of clubList; let i = index">
+                      <td>{{ i + 1 }})</td>
+                      <td>{{ club.clubName }}</td>
+                      <td>{{ club.contactNumber }}</td>
+                      <td>{{ club.email }}</td>
+                      <td>{{ club.managerId.userId.nameWithInitial }}</td>
                       <td class="text-right">
-                        <a (click)=clubUpdate(club.clubId)><button type="button" class="btn btn-info btn-sm" title="Update"><i class="fas fa-edit"></i></button></a>
-                        <a (click)=clubPayment(club.clubId,club.clubName)><button type="button" class="btn btn-secondary btn-sm" title="Club Payments"><i class="fas fa-dollar-sign"></i></button></a>
+                        <a (click)="clubUpdate(club.clubId)"
+                          ><button
+                            type="button"
+                            class="btn btn-info btn-sm"
+                            title="Update"
+                          >
+                            <i class="fas fa-edit"></i></button
+                        ></a>
+                        <a
+                          (click)="
+                            clubPayment(
+                              club.clubId,
+                              club.clubName,
+                              club.regDate
+                            )
+                          "
+                          ><button
+                            type="button"
+                            class="btn btn-secondary btn-sm"
+                            title="Club Payments"
+                          >
+                            <i class="fas fa-dollar-sign"></i></button
+                        ></a>
                       </td>
                     </tr>
                   </tbody>
@@ -43,10 +76,8 @@
               </div>
             </div>
           </div>
-          
         </div>
       </div>
     </div>
-   
   </div>
 </div>

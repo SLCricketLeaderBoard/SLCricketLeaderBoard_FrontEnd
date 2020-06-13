@@ -95,11 +95,12 @@ export class ClubRegisterComponent implements OnInit {
   }
 
   clubRegister(club:ClubModel){
+    club.status=0;
     this.clubService.registerClub(club).subscribe(
       response => {
 
           if(response==1){
-            this.router.navigate(['club-list']);
+            this.router.navigate(['club-payment-not-complete-list']);
             this.swalMessage.successMessage('Club registration successful');
           }
           if(response==0){

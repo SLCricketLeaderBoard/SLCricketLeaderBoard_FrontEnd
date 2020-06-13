@@ -1,27 +1,34 @@
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 export class SwalMessage {
+  constructor() {}
 
-    constructor() { }
-    
-    successMessage(messageTitle:string){
-        Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: messageTitle,
-            showConfirmButton: false,
-            timer: 2000
-          });
-    }
-
-    notSuccessMessage(messageTitle:string){
-        Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: messageTitle,
-            showConfirmButton: false,
-            timer: 2000
-        });
-    }
-   
+  successMessage(messageTitle: string) {
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: messageTitle,
+      showConfirmButton: false,
+      timer: 2000,
+    });
   }
+
+  notSuccessMessage(messageTitle: string) {
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: messageTitle,
+      showConfirmButton: false,
+      timer: 2000,
+    });
+  }
+
+  warnningMessage(messageTitle: string) {
+    Swal.fire({
+      position: "center",
+      icon: "warning",
+      title: messageTitle,
+      showConfirmButton: true,
+    });
+  }
+}
