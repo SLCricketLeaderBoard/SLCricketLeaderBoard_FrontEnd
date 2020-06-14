@@ -29,6 +29,7 @@ import { ClubPaymentNotCompleteListComponent } from '../../club/club-payment-not
 
 import { PlayerAddComponent } from '../../player/player-add/player-add.component';
 import { CreateMatchComponent } from '../../match/create-match/create-match.component';
+import { RefereeRegisterComponent } from '../../referee-register/referee-register.component';
 
 export const AdminLayoutRoutes: Routes = [
   { path: "user-profile", component: UserProfileComponent },
@@ -143,6 +144,11 @@ export const AdminLayoutRoutes: Routes = [
     component: CreateMatchComponent,
     canActivate: [RouteGuardService]
   },
+  {
+    path: "referee-register",
+    component: RefereeRegisterComponent,
+    canActivate:[RouteGuardService]
+  }
 
 
 

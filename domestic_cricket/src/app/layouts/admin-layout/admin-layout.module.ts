@@ -35,6 +35,7 @@ import { PlayerAddComponent } from '../../player/player-add/player-add.component
 
 import { CreateMatchComponent } from '../../match/create-match/create-match.component';
 import { MaterialModule } from '../../material.module';
+import { RefereeRegisterComponent } from '../../referee-register/referee-register.component';
 
 
 @NgModule({
@@ -79,7 +80,8 @@ import { MaterialModule } from '../../material.module';
 
 
     PlayerMoreDetailsComponent,
-    PlayerAddComponent
+    PlayerAddComponent,
+    RefereeRegisterComponent
 
   ],
 })
