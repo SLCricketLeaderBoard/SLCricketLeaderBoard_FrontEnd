@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
-import { UserModel } from '../../class-model/UserModel';
-import { RefereeService } from '../../service/referee/referee.service';
+import { UserModel } from '../class-model/UserModel'
+import { RefereeService } from '../service/referee/referee.service'
 
 @Component({
   selector: 'app-referee-register',
