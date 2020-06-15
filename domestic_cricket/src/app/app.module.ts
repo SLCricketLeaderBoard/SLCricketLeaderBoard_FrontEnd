@@ -24,6 +24,8 @@ import { MatchService } from "./service/match/match.service";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { environment } from "../environments/environment";
+import { NewComponentComponent } from './new-component/new-component.component';
+import { TournamentComponent } from './tournament/tournament.component';
 
 @NgModule({
   imports: [
@@ -47,6 +49,8 @@ import { environment } from "../environments/environment";
     AdminLayoutComponent,
     LoginComponent,
     UserComponent,
+    NewComponentComponent,
+    TournamentComponent,
   ],
   providers: [
     {
