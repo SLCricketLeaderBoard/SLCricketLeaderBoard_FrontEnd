@@ -72,6 +72,7 @@ export class SidebarComponent implements OnInit {
         class: "",
       },
       { path: "/umpire-list", title: "Umpires", icon: "design_app", class: "" },
+	   { path: "/tournament-list", title: "Tournament", icon: "design_app", class: "" },
     ];
 
     this.manager = [
@@ -79,7 +80,9 @@ export class SidebarComponent implements OnInit {
       { path: "/club-details", title: "Club", icon: "design_app", class: "" },
       { path: "/player-list", title: "Players", icon: "design_app", class: "" },
       { path: "/match-list", title: "Matches", icon: "design_app", class: "" },
+	   { path: "/tournament-list", title: "Tournament", icon: "design_app", class: "" },
     ];
+    
   }
   isMobileMenu() {
     if (window.innerWidth > 991) {
