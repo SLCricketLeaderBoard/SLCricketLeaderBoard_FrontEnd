@@ -30,6 +30,7 @@ import { ClubPaymentNotCompleteListComponent } from "../../club/club-payment-not
 import { PlayerAddComponent } from '../../player/player-add/player-add.component';
 import { CreateMatchComponent } from '../../match/create-match/create-match.component';
 import { RefereeRegisterComponent } from '../../referee-register/referee-register.component';
+import { StadiumRegisterComponent } from '../../stadium/stadium-register/stadium-register.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -147,6 +148,11 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: "referee-register",
     component: RefereeRegisterComponent,
+    canActivate:[RouteGuardService]
+  },
+  {
+    path: "stadium-register",
+    component: StadiumRegisterComponent,
     canActivate:[RouteGuardService]
   }
 

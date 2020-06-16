@@ -72,6 +72,7 @@ export class SidebarComponent implements OnInit {
         class: "",
       },
       { path: "/umpire-list", title: "Umpires", icon: "design_app", class: "" },
+      { path: "/stadium-register", title: "Stadiums", icon: "design_app", class: "" },
     ];
 
     this.manager = [
