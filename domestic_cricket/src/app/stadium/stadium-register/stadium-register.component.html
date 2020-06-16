@@ -1,0 +1,87 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Register Stadium</h4>
+        </div>
+        <div class="card-body">
+
+          <div *ngIf="errorMessage" class="alert alert-danger">
+            <button (click)="close()" type="button" aria-hidden="true" class="close">
+              <i  class="now-ui-icons ui-1_simple-remove"></i>
+            </button>
+            <span>
+              error
+            </span>
+          </div>
+          
+           <div class="row">
+             <div class="col-md-2"></div>
+             <div class="col-md-8">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Stadium Register Form</h5>
+                </div>
+                <div class="card-body">
+                  
+                  <form [formGroup]="stadiumRegisterForm" (ngSubmit)="stadiumFormSubmit()">
+
+                    <div class="row">
+
+
+                      <div class="col-sm-12 col-lg-12">
+                        <div class="form-group">
+                            <input [class.is-invalid]="stadiumRegisterFrom.get('name').invalid && stadiumRegisterFrom.get('name').touched" formControlName="name"  type="text" name="stadiumname" placeholder="Name of the Stadium" class="form-control"/>
+                            <div *ngIf="stadiumRegisterFrom.get('name').invalid && stadiumRegisterFrom.get('name').touched">
+                              <small *ngIf="nameField.errors?.required" class="text-danger">Stadium Name Required</small>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-12 col-lg-12">
+                        <div class="form-group">
+                            <input [class.is-invalid]="stadiumRegisterFrom.get('address').invalid && stadiumRegisterFrom.get('address').touched" formControlName="address"  type="text" name="address" placeholder="Address of the Stadium" class="form-control"/>
+                            <div *ngIf="stadiumRegisterFrom.get('address').invalid && stadiumRegisterFrom.get('address').touched">
+                              <small *ngIf="addressField.errors?.required" class="text-danger">Address Required</small>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-12 col-lg-12">
+                        <div class="form-group">
+                            <input [class.is-invalid]="stadiumRegisterFrom.get('contactnum').invalid && stadiumRegisterFrom.get('contactnum').touched" formControlName="contactnum"  type="text" name="contactnum" placeholder="Contact Number" class="form-control"/>
+                            <div *ngIf="stadiumRegisterFrom.get('contactnum').invalid && stadiumRegisterFrom.get('contactnum').touched">
+                              <small *ngIf="contactnumField.errors?.required" class="text-danger">Contact Number Required</small>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-12 col-lg-12">
+                        <div class="form-group">
+                            <input [class.is-invalid]="stadiumRegisterFrom.get('capacity').invalid && stadiumRegisterFrom.get('capacity').touched" formControlName="capacity"  type="text" name="capacity" placeholder="People Capacity of the Stadium" class="form-control"/>
+                            <div *ngIf="stadiumRegisterFrom.get('capacity').invalid && stadiumRegisterFrom.get('capacity').touched">
+                              <small *ngIf="capacityField.errors?.required" class="text-danger">Capacity Required</small>
+                            </div>
+                        </div>
+                      </div>
+
+                      <button id="submit-button" type="submit" class="btn btn-success btn-round" [disabled]="!stadiumRegisterFrom.valid">Submit</button>
+                    </div>
+
+                  </form>
+
+                </div>
+              </div>
+             </div>
+             <div class="col-md-2"></div>
+           </div>
+
+        </div>
+      </div>
+    </div>
+   
+  </div>
+</div>

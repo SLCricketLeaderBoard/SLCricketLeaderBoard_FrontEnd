@@ -26,7 +26,9 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { environment } from "../environments/environment";
 import { ProfileImageComponent } from './user-profile/profile-image/profile-image.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { LiveMatchComponent } from './live-match/live-match.component';
+
+
+
 
 @NgModule({
   imports: [
@@ -51,8 +53,7 @@ import { LiveMatchComponent } from './live-match/live-match.component';
     AdminLayoutComponent,
     LoginComponent,
     UserComponent,
-    LiveMatchComponent,
-    
+   
   ],
   providers: [
     {
