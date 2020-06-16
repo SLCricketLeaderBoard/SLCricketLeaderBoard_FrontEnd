@@ -36,6 +36,7 @@ import { PlayerAddComponent } from '../../player/player-add/player-add.component
 import { CreateMatchComponent } from '../../match/create-match/create-match.component';
 import { MaterialModule } from '../../material.module';
 import { RefereeRegisterComponent } from '../../referee-register/referee-register.component';
+import { ProfileImageComponent } from '../../user-profile/profile-image/profile-image.component';
 
 
 @NgModule({
@@ -81,7 +82,9 @@ import { RefereeRegisterComponent } from '../../referee-register/referee-registe
 
     PlayerMoreDetailsComponent,
     PlayerAddComponent,
-    RefereeRegisterComponent
+    RefereeRegisterComponent,
+
+    ProfileImageComponent,
 
   ],
 })

@@ -24,6 +24,9 @@ import { MatchService } from "./service/match/match.service";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { environment } from "../environments/environment";
+import { ProfileImageComponent } from './user-profile/profile-image/profile-image.component';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { LiveMatchComponent } from './live-match/live-match.component';
 
 @NgModule({
   imports: [
@@ -41,12 +44,15 @@ import { environment } from "../environments/environment";
     MatInputModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    AngularFireStorageModule,
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
     UserComponent,
+    LiveMatchComponent,
+    
   ],
   providers: [
     {
