@@ -25,6 +25,8 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { environment } from "../environments/environment";
 
+
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -47,6 +49,7 @@ import { environment } from "../environments/environment";
     AdminLayoutComponent,
     LoginComponent,
     UserComponent,
+   
   ],
   providers: [
     {
