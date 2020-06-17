@@ -18,17 +18,26 @@
                 </div>
                 <div class="card-body">
 
-                  <form [formGroup]="playerRegisterFrom" (ngSubmit)="playerFormSubmit()">
+                  <div *ngIf="errorMessage" class="alert alert-danger">
+                    <button (click)="close()" type="button" aria-hidden="true" class="close">
+                      <i class="now-ui-icons ui-1_simple-remove"></i>
+                    </button>
+                    <span>
+                      {{ errorMessage }}
+                    </span>
+                  </div>
+
+                  <form [formGroup]="playerRegisterForm" (ngSubmit)="playerFormSubmit()">
                     <div class="row">
 
                       <div class="col-sm-12 col-lg-6">
                         <div class="form-group">
                           <input
-                            [class.is-invalid]="playerRegisterFrom.get('userName').invalid && playerRegisterFrom.get('userName').touched"
+                            [class.is-invalid]="playerRegisterForm.get('userName').invalid && playerRegisterForm.get('userName').touched"
                             formControlName="userName" type="text" name="userName" placeholder="User Name"
                             class="form-control" />
                           <div
-                            *ngIf="playerRegisterFrom.get('userName').invalid &&  playerRegisterFrom.get('userName').touched">
+                            *ngIf="playerRegisterForm.get('userName').invalid &&  playerRegisterForm.get('userName').touched">
                             <small *ngIf="userNameField.errors?.required" class="text-danger">User Name Required</small>
                           </div>
                         </div>
@@ -38,11 +47,11 @@
                       <div class="col-sm-12 col-lg-6">
                         <div class="form-group">
                           <input
-                            [class.is-invalid]="playerRegisterFrom.get('nameWithInitial').invalid && playerRegisterFrom.get('nameWithInitial').touched"
+                            [class.is-invalid]="playerRegisterForm.get('nameWithInitial').invalid && playerRegisterForm.get('nameWithInitial').touched"
                             formControlName="nameWithInitial" type="text" name="userInitialName"
                             placeholder="Name With Initial" class="form-control" />
                           <div
-                            *ngIf="playerRegisterFrom.get('nameWithInitial').invalid &&  playerRegisterFrom.get('nameWithInitial').touched">
+                            *ngIf="playerRegisterForm.get('nameWithInitial').invalid &&  playerRegisterForm.get('nameWithInitial').touched">
                             <small *ngIf="nameWithInitialField.errors?.required" class="text-danger">Name With Initial
                               Required</small>
                           </div>
@@ -52,11 +61,11 @@
                       <div class="col-sm-12 col-lg-12">
                         <div class="form-group">
                           <input
-                            [class.is-invalid]="playerRegisterFrom.get('fullName').invalid && playerRegisterFrom.get('fullName').touched"
+                            [class.is-invalid]="playerRegisterForm.get('fullName').invalid && playerRegisterForm.get('fullName').touched"
                             formControlName="fullName" type="text" name="fullName" placeholder="Full Name"
                             class="form-control" />
                           <div
-                            *ngIf="playerRegisterFrom.get('fullName').invalid &&  playerRegisterFrom.get('fullName').touched">
+                            *ngIf="playerRegisterForm.get('fullName').invalid &&  playerRegisterForm.get('fullName').touched">
                             <small *ngIf="fullNameField.errors?.required" class="text-danger">Full Name
                               Required</small>
                           </div>
@@ -66,10 +75,10 @@
                       <div class="col-sm-12 col-lg-6">
                         <div class="form-group">
                           <input
-                            [class.is-invalid]="playerRegisterFrom.get('nic').invalid && playerRegisterFrom.get('nic').touched"
+                            [class.is-invalid]="playerRegisterForm.get('nic').invalid && playerRegisterForm.get('nic').touched"
                             formControlName="nic" type="text" name="NIC" placeholder="NIC Number"
                             class="form-control" />
-                          <div *ngIf="playerRegisterFrom.get('nic').invalid &&  playerRegisterFrom.get('nic').touched">
+                          <div *ngIf="playerRegisterForm.get('nic').invalid &&  playerRegisterForm.get('nic').touched">
                             <small *ngIf="nicField.errors?.required" class="text-danger">NIC Number Required</small>
                             <small *ngIf="nicField.errors?.pattern" class="text-danger">Insert Valid NIC Number</small>
                           </div>
@@ -79,12 +88,12 @@
                       <div class="col-sm-12 col-lg-6">
                         <div class="form-group">
                           <input
-                            [class.is-invalid]="playerRegisterFrom.get('contactNumber').invalid && playerRegisterFrom.get('contactNumber').touched"
+                            [class.is-invalid]="playerRegisterForm.get('contactNumber').invalid && playerRegisterForm.get('contactNumber').touched"
                             formControlName="contactNumber" type="text" name="contactNumber"
                             placeholder="Contact Number" class="form-control" />
                           <div
-                            *ngIf="playerRegisterFrom.get('contactNumber').invalid &&  playerRegisterFrom.get('contactNumber').touched">
-                            <small *ngIf="contactNumberField.errors?.required" class="text-danger">contact Number
+                            *ngIf="playerRegisterForm.get('contactNumber').invalid &&  playerRegisterForm.get('contactNumber').touched">
+                            <small *ngIf="contactNumberField.errors?.required" class="text-danger">Contact Number
                               Required</small>
                             <small *ngIf="contactNumberField.errors?.pattern" class="text-danger">Insert Valid Contact
                               Number</small>
@@ -95,11 +104,11 @@
                       <div class="col-sm-12 col-lg-12">
                         <div class="form-group">
                           <input
-                            [class.is-invalid]="playerRegisterFrom.get('address').invalid && playerRegisterFrom.get('address').touched"
+                            [class.is-invalid]="playerRegisterForm.get('address').invalid && playerRegisterForm.get('address').touched"
                             formControlName="address" type="text" name="address" placeholder="Address"
                             class="form-control" />
                           <div
-                            *ngIf="playerRegisterFrom.get('address').invalid &&  playerRegisterFrom.get('address').touched">
+                            *ngIf="playerRegisterForm.get('address').invalid &&  playerRegisterForm.get('address').touched">
                             <small *ngIf="addressField.errors?.required" class="text-danger">Address
                               Required</small>
                           </div>
@@ -107,19 +116,67 @@
                       </div>
 
                       <div class="col-sm-12 col-lg-6">
+                        <div class="form-group">
+                          <input
+                            [class.is-invalid]="playerRegisterForm.get('email').invalid && playerRegisterForm.get('email').touched"
+                            formControlName="email" type="text" name="email" placeholder="Email" class="form-control" />
+                          <div
+                            *ngIf="playerRegisterForm.get('email').invalid &&  playerRegisterForm.get('email').touched">
+                            <small *ngIf="emailField.errors?.required" class="text-danger">Email Address
+                              Required</small>
+                            <small *ngIf="emailField.errors?.email" class="text-danger">Insert valid
+                              email</small>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-12 col-lg-6">
                         <select
-                          [class.is-invalid]=" playerRegisterFrom.get('playerType').invalid && playerRegisterFrom.get('playerType').touched"
+                          [class.is-invalid]=" playerRegisterForm.get('playerType').invalid && playerRegisterForm.get('playerType').touched"
                           class="form-control" formControlName="playerType">
-                          <option value="" disabled selected>Select a player Type</option>
-                          <option *ngFor="let player of playerTypeList" [ngValue]="player">{{ player }}</option>
+                          <option value="" disabled selected>Select a player special type</option>
+                          <option *ngFor="let player of playerTypeList; let i=index;" [ngValue]="i">{{ player }}
+                          </option>
                         </select>
                         <div
-                          *ngIf=" playerRegisterFrom.get('playerType').invalid && playerRegisterFrom.get('playerType').touched">
+                          *ngIf=" playerRegisterForm.get('playerType').invalid && playerRegisterForm.get('playerType').touched">
                           <small *ngIf="playerTypeField.errors?.required" class="text-danger">please select a
                             player type</small>
                         </div>
                       </div>
 
+                      <div class="col-sm-12 col-lg-6">
+                        <select
+                          [class.is-invalid]=" playerRegisterForm.get('batmanType').invalid && playerRegisterForm.get('batmanType').touched"
+                          class="form-control" formControlName="batmanType">
+                          <option value="" disabled selected>Select a batman type</option>
+                          <option *ngFor="let batman of batmanTypeList" [ngValue]="batman">{{ batman.type }}</option>
+                        </select>
+                        <div
+                          *ngIf=" playerRegisterForm.get('batmanType').invalid && playerRegisterForm.get('batmanType').touched">
+                          <small *ngIf="batmanTypeField.errors?.required" class="text-danger">please select a
+                            batman type</small>
+                        </div>
+                      </div>
+
+                      <div id="ballerType" class="col-sm-12 col-lg-6">
+                        <select
+                          [class.is-invalid]=" playerRegisterForm.get('ballerType').invalid && playerRegisterForm.get('ballerType').touched"
+                          class="form-control" formControlName="ballerType">
+                          <option value="" disabled selected>Select a baller type</option>
+                          <option *ngFor="let baller of ballerTypeList" [ngValue]="baller">{{ baller.type }}</option>
+                        </select>
+                        <div
+                          *ngIf=" playerRegisterForm.get('ballerType').invalid && playerRegisterForm.get('ballerType').touched">
+                          <small *ngIf="ballerTypeField.errors?.required" class="text-danger">please select a
+                            baller type</small>
+                        </div>
+                      </div>
+
+                      <button id="submit-button" type="submit" class="btn btn-success btn-round"
+                        [disabled]="!playerRegisterForm.valid">
+                        Submit
+                      </button>
 
                     </div>
                   </form>

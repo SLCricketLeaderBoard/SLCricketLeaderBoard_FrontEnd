@@ -6,13 +6,45 @@
       <div class="card">
         <div class="card-header">
           <h4 class="card-title">Players</h4>
-          <a (click)=playerRegister()><button type="button" class="btn btn-success btn-sm" title="Register Player"><i class="fas fa-plus"></i></button></a>
+          <a (click)=playerRegister()><button type="button" class="btn btn-success btn-sm" title="Register Player"><i
+                class="fas fa-plus"></i></button></a>
         </div>
         <div class="card-body">
-         
+
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+                <th></th>
+                <th>Name</th>
+                <th>Tel</th>
+                <th>Email</th>
+                <th>Type</th>
+                <th class="text-right">Option</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let player of playerList; let i = index">
+                  <td>{{ i + 1 }})</td>
+                  <td>{{ player.userId.nameWithInitial }}</td>
+                  <td>{{ player.userId.contactNumber }}</td>
+                  <td>{{ player.userId.email }}</td>
+
+                  <td *ngIf="player.specialType==1">Batman : {{player.batmanTypeId.type}}</td>
+                  <td *ngIf="player.specialType==2">Baller : {{player.ballerTypeId.type}}</td>
+                  <td *ngIf="player.specialType==3">AllRounder</td>
+
+                  <td class="text-right">
+                    <a (click)="clubUpdate(club.clubId)"><button type="button" class="btn btn-info btn-sm"
+                        title="Update">
+                        <i class="fas fa-edit"></i></button></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
         </div>
       </div>
     </div>
-   
+
   </div>
 </div>
