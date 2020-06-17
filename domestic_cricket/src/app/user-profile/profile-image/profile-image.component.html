@@ -6,18 +6,18 @@
         <div class="card-body">
           <div class="author">
             <a href="#">
-              <img class="avatar border-gray" src="../assets/img/mike.jpg" alt="...">
-              <h5 class="title">Mike Andrew</h5>
+              <img class="avatar border-gray" src="{{user.profileImage}}" alt="...">
+              <h5 class="title">{{user.userName}}</h5>
             </a>
            
-            <p class="description">
-              michael24
+            <p >
+              {{user.nameWithInitial}}
             </p>
           </div>
-          <p class="description text-center">
-            "Lamborghini Mercy
-            <br> Your chick she so thirsty
-            <br> I'm in that two seat Lambo"
+          <p class="text-center">
+            {{user.email}}
+            <br> {{user.contactNumber}}
+            <br>{{user.address}}
           </p>
         </div>
         <hr>

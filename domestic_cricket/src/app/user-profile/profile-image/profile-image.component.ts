@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
@@ -13,13 +13,13 @@ import { UserModel } from '../../class-model/UserModel';
 })
 export class ProfileImageComponent implements OnInit {
 
+  @Input()user: UserModel;
   uploadPercent: Observable<number>;
-  downloadURL: Observable<string>;
+  downloadURL: Observable<String>;
   selectedFiles: FileList;
   userId:string;
   uploaded: boolean=false;
   userProfileImageFrom:FormGroup
-  user: UserModel;
   constructor(private storage: AngularFireStorage,private formBuilder: FormBuilder,private userService:UserServiceService) {
    
     this.userProfileImageFrom = this.formBuilder.group({
@@ -27,11 +27,11 @@ export class ProfileImageComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.userId=sessionStorage.getItem('userId');
-    this.userService.getUserByUserId(this.userId).subscribe(response=>{
-      this.user=response;
-     console.log(response); });
 
+    console.log(this.user.profileImage);
+    
+    this.userId=sessionStorage.getItem('userId');
+  
   }
 
   selectFile(event) {
@@ -51,13 +51,23 @@ uploadImage() {
     // get notified when the download URL is available
     task.snapshotChanges().pipe(
         finalize(() => {
-          this.downloadURL = fileRef.getDownloadURL();
-          this.uploaded=true;
+          
+          fileRef.getDownloadURL().subscribe(res=>{  
+            this.user.profileImage = res;
+            this.userService.updateUserProfile(this.user).subscribe(res=>{
+              console.log(res);
+              this.uploaded=true;
+              this.userProfileImageFrom.reset();
+            },error=>{
+              console.log(error);
+              
+            })
+          });
+         
+
         } )
      )
     .subscribe()
-
-    
   }
 
   }

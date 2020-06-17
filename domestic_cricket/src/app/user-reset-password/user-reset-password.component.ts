@@ -15,6 +15,7 @@ export class UserResetPasswordComponent implements OnInit {
   user:UserModel
   userRegisterFrom:FormGroup
   response:String
+  prifileImage:String
   constructor(private route:ActivatedRoute,private userService:UserServiceService,public formBuilder: FormBuilder) { 
 
          this.userRegisterFrom = this.formBuilder.group({
@@ -38,6 +39,7 @@ export class UserResetPasswordComponent implements OnInit {
 
     this.userService.getUserByUserId(this.userId).subscribe(response=>{
       this.user=response;
+      this.prifileImage=response.profileImage;
       console.log(response.userName);
       console.log(response.contactNumber);
 
@@ -71,7 +73,7 @@ export class UserResetPasswordComponent implements OnInit {
     const password:String = this.userRegisterFrom.value['password'];
     const id = this.user.userId;
 
-    const updatedUser:UserModel = new UserModel(this.user.userId,this.user.userName,this.user.fullName,this.user.nameWithInitial,this.user.nic,this.user.contactNumber,this.user.role,this.user.email,password,this.user.address,this.user.regDate);
+    const updatedUser:UserModel = new UserModel(this.user.userId,this.user.userName,this.user.fullName,this.user.nameWithInitial,this.user.nic,this.user.contactNumber,this.user.role,this.user.email,password,this.user.address,this.user.regDate,this.user.profileImage);
     console.log(updatedUser);
     this.userService.resetPassword(updatedUser).subscribe(res=>{
       console.log(res);

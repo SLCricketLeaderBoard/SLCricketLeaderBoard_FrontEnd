@@ -28,5 +28,15 @@ export class UserServiceService {
     const headers = new HttpHeaders().set('Authorization',jwt);
     return this.http.post<String>(`${API_URL}/user/resetPassword`,user,{headers,responseType:'text' as 'json'});
   }
+
+  updateUserProfile(user:UserModel){
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization',jwt);
+    
+    console.log(user);
+    
+    return this.http.post<String>(`${API_URL}/user/updateProfile`,user,{headers,responseType:'text' as 'json'});
+
+  }
   
 }

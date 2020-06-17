@@ -59,11 +59,13 @@ export class UmpireUmpireRegisterComponent implements OnInit {
     const role:Number = 2;
     const id=0;
     const regDate:Date = new Date();
+    const profileImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQcUe1moupzaLWXiANaYFIt4jys-rl2OeXwOydel1YWIO22vDW6&usqp=CAU";
+
 
     console.log(userName);
 
 
-    const user:UserModel = new UserModel(id,userName,fullName,nameWithInitials,nic,contactNumber,role,email,password,address,regDate);
+    const user:UserModel = new UserModel(id,userName,fullName,nameWithInitials,nic,contactNumber,role,email,password,address,regDate,profileImage);
 
     this.umpireService.registerUmpire(user).subscribe(res=>{
       console.log(res);

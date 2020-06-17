@@ -81,6 +81,7 @@ export class ManagerManagerRegisterComponent implements OnInit {
     const role: Number = 2;
     const id = 0;
     const regDate: Date = new Date();
+    const profileImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQcUe1moupzaLWXiANaYFIt4jys-rl2OeXwOydel1YWIO22vDW6&usqp=CAU";
 
    
     const user: UserModel = new UserModel(
@@ -94,7 +95,8 @@ export class ManagerManagerRegisterComponent implements OnInit {
       email,
       password,
       address,
-      regDate
+      regDate,
+      profileImage
     );
     
     console.log(user);

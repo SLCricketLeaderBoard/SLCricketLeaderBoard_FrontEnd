@@ -161,7 +161,7 @@
       </div>
     </div>
     <div class="col-md-4">
-      <app-profile-image></app-profile-image>
+      <app-profile-image *ngIf="user let user" [user]="user"></app-profile-image>
     </div>
   </div>
 </div>
