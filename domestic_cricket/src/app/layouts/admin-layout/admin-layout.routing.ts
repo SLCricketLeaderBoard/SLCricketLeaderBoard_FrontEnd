@@ -27,8 +27,11 @@ import { PlayerMoreDetailsComponent } from "../../player/player-more-details/pla
 import { ClubPaymentComponent } from "../../club/club-payment/club-payment.component";
 import { ClubPaymentNotCompleteListComponent } from "../../club/club-payment-not-complete-list/club-payment-not-complete-list.component";
 
-import { PlayerAddComponent } from "../../player/player-add/player-add.component";
-import { CreateMatchComponent } from "../../match/create-match/create-match.component";
+import { PlayerAddComponent } from '../../player/player-add/player-add.component';
+import { CreateMatchComponent } from '../../match/create-match/create-match.component';
+import { RefereeRegisterComponent } from '../../referee-register/referee-register.component';
+import { StadiumRegisterComponent } from '../../stadium/stadium-register/stadium-register.component';
+
 
 export const AdminLayoutRoutes: Routes = [
   { path: "user-profile", component: UserProfileComponent },
@@ -142,4 +145,17 @@ export const AdminLayoutRoutes: Routes = [
     component: CreateMatchComponent,
     canActivate: [RouteGuardService],
   },
+  {
+    path: "referee-register",
+    component: RefereeRegisterComponent,
+    canActivate:[RouteGuardService]
+  },
+  {
+    path: "stadium-register",
+    component: StadiumRegisterComponent,
+    canActivate:[RouteGuardService]
+  }
+
+
+
 ];

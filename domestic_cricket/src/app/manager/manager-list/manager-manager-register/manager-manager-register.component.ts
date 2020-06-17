@@ -82,8 +82,7 @@ export class ManagerManagerRegisterComponent implements OnInit {
     const id = 0;
     const regDate: Date = new Date();
 
-    console.log(userName);
-
+   
     const user: UserModel = new UserModel(
       id,
       userName,
@@ -97,6 +96,8 @@ export class ManagerManagerRegisterComponent implements OnInit {
       address,
       regDate
     );
+    
+    console.log(user);
 
     this.managerService.registerManager(user).subscribe(
       (res) => {

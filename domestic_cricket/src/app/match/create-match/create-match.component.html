@@ -57,8 +57,8 @@
                                     <mat-form-field class="example-full-width">
                                       <mat-label>Stadium</mat-label>
                                       <mat-select formControlName="stadium">
-                                        <mat-option *ngFor="let food of foods" [value]="food.value" >
-                                          {{food.viewValue}}
+                                        <mat-option *ngFor="let stadium of stadiums" [value]="stadium.name" >
+                                          {{stadium.name}}
                                         </mat-option>
                                       </mat-select>
                                     </mat-form-field>
@@ -152,7 +152,7 @@
                           </div>
                         </div>
 
-                        <div class="row fromRow">
+                        <!-- <div class="row fromRow">
                           <div class="col-sm-6 col-lg-4">
                             <div class="form-group" >
                               <mat-form-field class="example-full-width">
@@ -165,10 +165,10 @@
                               </mat-form-field>
                             </div>
                           </div>
-                        </div>
+                        </div> -->
 
 
-                        <div class="row fromRow">
+                        <!-- <div class="row fromRow">
                           <div class="col-sm-6 col-lg-4">
                             <div class="form-group">
                               <mat-form-field class="example-full-width">
@@ -197,7 +197,7 @@
                               </mat-form-field>
                             </div>
                           </div>
-                        </div>
+                        </div> -->
 
 
 
