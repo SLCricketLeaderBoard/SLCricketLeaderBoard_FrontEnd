@@ -42,7 +42,7 @@ export class CreateTournamnetComponent implements OnInit {
 
   }
   reset(){
-    //this.createTournament.reset();
+  
   }
   create(){
 
