@@ -29,8 +29,9 @@ import { ClubPaymentNotCompleteListComponent } from "../../club/club-payment-not
 
 import { PlayerAddComponent } from '../../player/player-add/player-add.component';
 import { CreateMatchComponent } from '../../match/create-match/create-match.component';
-import { RefereeRegisterComponent } from '../../referee-register/referee-register.component';
+import { RefereeRegisterComponent } from '../../referee/referee-register/referee-register.component';
 import { StadiumRegisterComponent } from '../../stadium/stadium-register/stadium-register.component';
+import { RefereeComponent } from '../../referee/referee.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -144,6 +145,11 @@ export const AdminLayoutRoutes: Routes = [
     path: "create-match",
     component: CreateMatchComponent,
     canActivate: [RouteGuardService],
+  },
+  {
+    path: "referee-list",
+    component: RefereeComponent,
+    canActivate: [RouteGuardService]
   },
   {
     path: "referee-register",

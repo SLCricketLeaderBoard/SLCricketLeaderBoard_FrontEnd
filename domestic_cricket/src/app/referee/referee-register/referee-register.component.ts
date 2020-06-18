@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
-import { UserModel } from '../class-model/UserModel'
-import { RefereeService } from '../service/referee/referee.service'
+import { UserModel } from '../../class-model/UserModel'
+import { RefereeService } from '../../service/referee/referee.service'
 
 @Component({
   selector: 'app-referee-register',
@@ -57,7 +57,7 @@ export class RefereeRegisterComponent implements OnInit {
     const email:String = this.refereeRegisterForm.value['email'];
     const address:String = this.refereeRegisterForm.value['address'];
     const password:String = this.refereeRegisterForm.value['nic'];
-    const role:Number = 2;
+    const role:Number = 5;
     const id=0;
     const regDate:Date = new Date();
     const profileImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQcUe1moupzaLWXiANaYFIt4jys-rl2OeXwOydel1YWIO22vDW6&usqp=CAU";

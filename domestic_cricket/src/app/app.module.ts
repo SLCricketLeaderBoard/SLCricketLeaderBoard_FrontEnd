@@ -54,6 +54,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     LoginComponent,
     UserComponent,
    
+   
   ],
   providers: [
     {
