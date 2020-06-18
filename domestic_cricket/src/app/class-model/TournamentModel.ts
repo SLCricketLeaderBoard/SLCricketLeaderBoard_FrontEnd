@@ -1,5 +1,3 @@
-import { UserModel } from './UserModel';
-
 export class TournamentModel{
     constructor(
       public tournamentId:Number,

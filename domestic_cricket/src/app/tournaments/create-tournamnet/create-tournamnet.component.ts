@@ -33,10 +33,6 @@ export class CreateTournamnetComponent implements OnInit {
     tournamentId: new FormControl(null,[Validators.required]),
     startDate: new FormControl(null,[Validators.required]),
     endDate: new FormControl(null,[Validators.required])
-      
-
-
-
 
   })
 }

@@ -8,6 +8,8 @@ import { MatchType } from '../../class-model/MatchType';
 import { MatchService } from '../../service/match/match.service';
 import { StadiumModel } from '../../class-model/StadiumModel';
 import { StadiumService } from '../../service/stadium/stadium.service';
+import { TournamentModel } from '../../class-model/TournamentModel';
+import { TournamentService } from '../../service/tournament/tournament.service';
 
 interface Food {
   value: string;
@@ -31,13 +33,18 @@ export class CreateMatchComponent implements OnInit {
   umpireList:UmpireModel[]=[];
   matchTypes:MatchType[]=[];
   stadiums:StadiumModel[]=[];
+  tournaments:TournamentModel[]=[];
 
   createMatch:FormGroup;
 
   startDate :Date = new Date();
   endDate :Date = new Date();
 
-  constructor(private clubService:ClubService,private umpireService:UmpireService,private matchService:MatchService,private stadiumServices:StadiumService) {
+  constructor(private clubService:ClubService,
+              private umpireService:UmpireService,
+              private matchService:MatchService,
+              private stadiumServices:StadiumService,
+              private tournamentService:TournamentService) {
 
     this.createMatch = new FormGroup({
       club01: new FormControl(null,[Validators.required]),
@@ -82,9 +89,14 @@ export class CreateMatchComponent implements OnInit {
 
 
     this.stadiumServices.getAllStadiums().subscribe(response=>{
-
       this.stadiums=response;
       console.log(response);
+    })
+
+    this.tournamentService.getTournaments().subscribe(respose=>{
+      this.tournaments=respose;
+      console.log(this.tournaments);
+      
     })
 
 
