@@ -16,7 +16,6 @@ import { ToastrModule } from "ngx-toastr";
 import { UpgradeComponent } from "../../upgrade/upgrade.component";
 import { ClubListComponent } from "../../club/club-list/club-list.component";
 import { ClubRegisterComponent } from "../../club/club-register/club-register.component";
-import { MatchListComponent } from "../../match/match-list/match-list.component";
 import { StadiumListComponent } from "../../stadium/stadium-list/stadium-list.component";
 import { ManagerListComponent } from "../../manager/manager-list/manager-list.component";
 import { PlayerListComponent } from "../../player/player-list/player-list.component";
@@ -30,16 +29,17 @@ import { UmpireUmpiresComponent } from '../../umpire/umpire-list/umpire-umpires/
 import { PlayerMoreDetailsComponent } from '../../player/player-more-details/player-more-details.component';
 import { ClubPaymentComponent } from '../../club/club-payment/club-payment.component';
 import { ClubPaymentNotCompleteListComponent } from '../../club/club-payment-not-complete-list/club-payment-not-complete-list.component';
-
 import { PlayerAddComponent } from '../../player/player-add/player-add.component';
-
-import { CreateMatchComponent } from '../../match/create-match/create-match.component';
 import { MaterialModule } from '../../material.module';
 import { RefereeRegisterComponent } from '../../referee/referee-register/referee-register.component';
 import { ProfileImageComponent } from '../../user-profile/profile-image/profile-image.component';
 import { StadiumRegisterComponent } from '../../stadium/stadium-register/stadium-register.component';
 import { LiveMatchComponent } from '../../live-match/live-match.component'
 import { RefereeComponent } from '../../referee/referee.component';
+import { TournamentElementComponent } from '../../tournaments/tournamnet-list/tournament-element/tournament-element.component';
+import { CreateMatchComponent } from '../../tournaments/tournamnet-list/tournament-element/create-match/create-match.component';
+import { MatchListComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-list.component';
+import { TournamnetListComponent } from '../../tournaments/tournamnet-list/tournamnet-list.component';
 
 
 
@@ -90,7 +90,9 @@ import { RefereeComponent } from '../../referee/referee.component';
     RefereeComponent,
     ProfileImageComponent,
     StadiumRegisterComponent,
-    LiveMatchComponent, 
+    LiveMatchComponent,
+    TournamentElementComponent, 
+    TournamnetListComponent
 
 
   ],
