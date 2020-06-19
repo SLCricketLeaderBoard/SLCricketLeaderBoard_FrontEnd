@@ -4,11 +4,8 @@ import { API_URL } from '../../app.constants';
 import { UserModel } from '../../class-model/UserModel';
 import { ManagerModel } from '../../class-model/ManagerModel';
 import { Observable } from 'rxjs';
-import { rejects } from 'assert';
-import * as firebase from 'firebase/app';
-require('firebase/auth');
 import { AngularFirestore } from "@angular/fire/firestore";
-import { resolve } from 'url';
+
 
 @Injectable({
   providedIn: 'root'

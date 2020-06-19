@@ -56,7 +56,7 @@ export class UmpireUmpireRegisterComponent implements OnInit {
     const email:String = this.umpireRegisterForm.value['email'];
     const address:String = this.umpireRegisterForm.value['address'];
     const password:String = this.umpireRegisterForm.value['nic'];
-    const role:Number = 2;
+    const role:Number = 3;
     const id=0;
     const regDate:Date = new Date();
 
