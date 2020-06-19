@@ -1,0 +1,55 @@
+
+      <div class="card card-user">
+        <div class="image">
+          <img src="../assets/img/bg5.jpg" alt="...">
+        </div>
+        <div class="card-body">
+          <div class="author">
+            <a href="#">
+              <img class="avatar border-gray" src="{{user.profileImage}}" alt="...">
+              <h5 class="title">{{user.userName}}</h5>
+            </a>
+           
+            <p >
+              {{user.nameWithInitial}}
+            </p>
+          </div>
+          <p class="text-center">
+            {{user.email}}
+            <br> {{user.contactNumber}}
+            <br>{{user.address}}
+          </p>
+        </div>
+        <hr>
+        <div class="button-container">
+          <h4> Update image </h4>
+            <form [formGroup]="userProfileImageFrom" >
+              <input type="file" value=""  (change)="selectFile($event)"  formControlName="userProfile" />
+              <button type="button" class="btn btn-primary" (click)="uploadImage()"  [disabled]="!userProfileImageFrom.valid" >Save</button>
+            </form>
+        </div>
+        <hr>
+        <div class="button-container">
+          <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+            <i class="fab fa-facebook-f"></i>
+          </button>
+          <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+            <i class="fab fa-twitter"></i>
+          </button>
+          <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+            <i class="fab fa-google-plus-g"></i>
+          </button>
+        </div>
+
+          
+        
+      </div>
+
+
+   
+    
+    
+
+
+   
+ 

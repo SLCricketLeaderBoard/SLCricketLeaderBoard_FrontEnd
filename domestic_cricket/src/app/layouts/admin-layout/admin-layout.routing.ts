@@ -1,5 +1,4 @@
 import { Routes } from "@angular/router";
-
 import { DashboardComponent } from "../../dashboard/dashboard.component";
 import { UserProfileComponent } from "../../user-profile/user-profile.component";
 import { TableListComponent } from "../../table-list/table-list.component";
@@ -12,7 +11,6 @@ import { RouteGuardService } from "../../service/route-guard/route-guard.service
 import { ClubListComponent } from "../../club/club-list/club-list.component";
 import { ClubRegisterComponent } from "../../club/club-register/club-register.component";
 import { ManagerListComponent } from "../../manager/manager-list/manager-list.component";
-import { MatchListComponent } from "../../match/match-list/match-list.component";
 import { StadiumListComponent } from "../../stadium/stadium-list/stadium-list.component";
 import { PlayerListComponent } from "../../player/player-list/player-list.component";
 import { ManagerManagerRegisterComponent } from "../../manager/manager-list/manager-manager-register/manager-manager-register.component";
@@ -22,13 +20,16 @@ import { ClubDetailsComponent } from "../../club/club-details/club-details.compo
 import { UmpireListComponent } from "../../umpire/umpire-list/umpire-list.component";
 import { UmpireUmpireRegisterComponent } from "../../umpire/umpire-list/umpire-umpire-register/umpire-umpire-register.component";
 import { UmpireUmpiresComponent } from "../../umpire/umpire-list/umpire-umpires/umpire-umpires.component";
-
 import { PlayerMoreDetailsComponent } from "../../player/player-more-details/player-more-details.component";
 import { ClubPaymentComponent } from "../../club/club-payment/club-payment.component";
 import { ClubPaymentNotCompleteListComponent } from "../../club/club-payment-not-complete-list/club-payment-not-complete-list.component";
+import { PlayerAddComponent } from '../../player/player-add/player-add.component';
+import { RefereeRegisterComponent } from '../../referee/referee-register/referee-register.component';
+import { StadiumRegisterComponent } from '../../stadium/stadium-register/stadium-register.component';
+import { RefereeComponent } from '../../referee/referee.component';
+import { TournamnetListComponent } from '../../tournaments/tournamnet-list/tournamnet-list.component';
+import { CreateMatchComponent } from '../../tournaments/tournamnet-list/tournament-element/create-match/create-match.component';
 
-import { PlayerAddComponent } from "../../player/player-add/player-add.component";
-import { CreateMatchComponent } from "../../match/create-match/create-match.component";
 
 export const AdminLayoutRoutes: Routes = [
   { path: "user-profile", component: UserProfileComponent },
@@ -72,9 +73,14 @@ export const AdminLayoutRoutes: Routes = [
     canActivate: [RouteGuardService],
   },
   {
-    path: "match-list",
-    component: MatchListComponent,
+    path: "tournament-list",
+    component: TournamnetListComponent,
     canActivate: [RouteGuardService],
+  },
+  {
+    path: "tournament-list/create-match/:tournamentId",
+    component:CreateMatchComponent,
+    canActivate:[RouteGuardService]
   },
   {
     path: "stadium-list",
@@ -138,14 +144,18 @@ export const AdminLayoutRoutes: Routes = [
     canActivate: [RouteGuardService],
   },
   {
-
-    path: "player-add",
-    component: PlayerAddComponent,
+    path: "referee-list",
+    component: RefereeComponent,
     canActivate: [RouteGuardService]
   },
   {
-    path: "create-match",
-    component: CreateMatchComponent,
-    canActivate: [RouteGuardService],
+    path: "referee-register",
+    component: RefereeRegisterComponent,
+    canActivate:[RouteGuardService]
   },
+  {
+    path: "stadium-register",
+    component: StadiumRegisterComponent,
+    canActivate:[RouteGuardService]
+  }
 ];

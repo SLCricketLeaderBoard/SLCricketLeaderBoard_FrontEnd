@@ -7,16 +7,16 @@
         <div class="card-header">
           <div class="row">
             <div class="col-3">
-              <h4 class="card-title">Matches</h4>
+              <h4 class="card-title">Tournaments</h4>
             </div>
             <div>
-              <button (click)="newMatch()" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Register Manager"><i class="fas fa-plus"></i>
+              <button (click)="newTournament()" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Register Manager"><i class="fas fa-plus"></i>
               </button>
             </div>
           </div>
         </div>
         <div class="card-body">
-         
+          <app-tournament-element *ngFor="let tournement of tournaments" [tournement]="tournement" ></app-tournament-element>
         </div>
       </div>
     </div>

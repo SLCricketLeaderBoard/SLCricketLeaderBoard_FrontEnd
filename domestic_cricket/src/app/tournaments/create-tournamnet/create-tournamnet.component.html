@@ -1,0 +1,99 @@
+<div class="panel-header panel-header-sm"></div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"></h4>
+        </div>
+        <div class="card-body">
+          <div class="main-content">
+            <div class="row">
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                <div class="card">
+                  <div class="card-header">
+                    <h5 class="title">Register Tournament</h5>
+                  </div>
+                  <div class="card-body">
+                    <form *ngIf="!done" [formGroup]="tournamentRegisterForm" >
+                      <div class="row">
+                        <div class="col-md-8 pr-1">
+                          <div class="form-group">
+                            <label>Tournament Name</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="tournamentname"
+                              formControlName="tournamentName"
+                            />
+                                <div  class="error-message"
+                                    *ngIf="!tournamentRegisterForm.get('tournamentName').valid && tournamentRegisterForm.get('tournamentName').touched" >
+                                    Tournament Name is required
+                                </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4 pr-1">
+                          <div class="form-group">
+                            <label>Tournament ID</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Tournament ID "
+                              formControlName="tournamentName"
+                            />
+                            <div  class="error-message"
+                            *ngIf="!tournamentRegisterForm.get('tournamentId').valid && tournamentRegisterForm.get('tournamentId').touched" >
+                            Invalid Tournament Id please check again!
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row fromRow">
+                        <div class="col-sm-6 col-lg-3">
+                          <div class="form-group" >
+                              <p>
+                                <mat-form-field class="example-full-width">
+                                  <mat-label>Start Date</mat-label>
+                                  <input matInput [matDatepicker]="std" formControlName="tournamentName">
+                                  <mat-datepicker-toggle matSuffix [for]="std"></mat-datepicker-toggle>
+                                  <mat-datepicker #std disabled="false"></mat-datepicker>
+                                </mat-form-field>
+                              </p>
+                          </div>
+                        </div> 
+                        <div class="col-sm-6 col-lg-3">
+                          <div class="form-group">
+                            <p>
+                              <mat-form-field class="example-full-width">
+                                <mat-label>End Date</mat-label>
+                                <input matInput [matDatepicker]="end" formControlName="tournamentName">
+                                <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+                                <mat-datepicker #end disabled="false"></mat-datepicker>
+                              </mat-form-field>
+                            </p>
+
+                        </div>
+                        </div>
+                     
+                    </div>
+                      <div class="button-container">
+                        <button type="button" class="btn btn-warning" (click)="reset()">Reset</button>
+                        <button type="button" class="btn btn-outline-secondary" (click)="register()"  [disabled]="!valid">Register</button>
+                      </div>
+                    </form>
+                  </div>
+                  <div *ngIf="done" >
+                      <p style="margin-top: 20px; margin-left: 100px; color: green;" >Registration successfull!!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

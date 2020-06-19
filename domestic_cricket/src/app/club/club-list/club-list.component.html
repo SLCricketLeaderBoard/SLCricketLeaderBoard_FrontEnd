@@ -5,22 +5,11 @@
       <div class="card">
         <div class="card-header">
           <h4 class="card-title">Clubs</h4>
-          <a (click)="clubRegister()"
-            ><button
-              type="button"
-              class="btn btn-success btn-sm"
-              title="Register Club"
-            >
-              <i class="fas fa-plus"></i></button
-          ></a>
-          <a (click)="clubNotPaymentList()"
-            ><button
-              type="button"
-              class="btn btn-secondary btn-sm"
-              title="Payment not complete list"
-            >
-              <i class="fas fa-list-alt"></i></button
-          ></a>
+          <a (click)="clubRegister()"><button type="button" class="btn btn-success btn-sm" title="Register Club">
+              <i class="fas fa-plus"></i></button></a>
+          <a (click)="clubNotPaymentList()"><button type="button" class="btn btn-secondary btn-sm"
+              title="Payment not complete list">
+              <i class="fas fa-list-alt"></i></button></a>
         </div>
         <div class="card-body">
           <div class="card">
@@ -46,29 +35,17 @@
                       <td>{{ club.email }}</td>
                       <td>{{ club.managerId.userId.nameWithInitial }}</td>
                       <td class="text-right">
-                        <a (click)="clubUpdate(club.clubId)"
-                          ><button
-                            type="button"
-                            class="btn btn-info btn-sm"
-                            title="Update"
-                          >
-                            <i class="fas fa-edit"></i></button
-                        ></a>
-                        <a
-                          (click)="
+                        <a (click)="clubUpdate(club.clubId)"><button type="button" class="btn btn-info btn-sm"
+                            title="Update">
+                            <i class="fas fa-edit"></i></button></a>
+                        <a (click)="
                             clubPayment(
                               club.clubId,
                               club.clubName,
                               club.regDate
                             )
-                          "
-                          ><button
-                            type="button"
-                            class="btn btn-secondary btn-sm"
-                            title="Club Payments"
-                          >
-                            <i class="fas fa-dollar-sign"></i></button
-                        ></a>
+                          "><button type="button" class="btn btn-secondary btn-sm" title="Club Payments">
+                            <i class="fas fa-dollar-sign"></i></button></a>
                       </td>
                     </tr>
                   </tbody>

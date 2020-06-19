@@ -9,8 +9,8 @@
         <div class="card-body">
           <div class="main-content">
             <div class="row">
-              <div class="col-md-2"></div>
-              <div class="col-md-8">
+              <div class="col-md-6"></div>
+              <div class="col-md-6">
                 <div class="card">
                   <div class="card-header">
                     <h5 class="title">Create Match</h5>
@@ -23,7 +23,7 @@
                                   <mat-form-field class="example-full-width">
                                     <mat-label>Club 01</mat-label>
                                     <mat-select formControlName="club01">
-                                      <mat-option *ngFor="let club of clubList" [value]="club.clubName" >
+                                      <mat-option *ngFor="let club of clubList" [value]="club.clubId" >
                                         {{club.clubName}}
                                       </mat-option>
                                     </mat-select>
@@ -40,7 +40,7 @@
                                 <mat-form-field class="example-full-width">
                                   <mat-label>Club 02</mat-label>
                                   <mat-select formControlName="club02" >
-                                    <mat-option *ngFor="let club of clubList" [value]="club.clubName" >
+                                    <mat-option *ngFor="let club of clubList" [value]="club.clubId" >
                                       {{club.clubName}}
                                     </mat-option>
                                   </mat-select>
@@ -57,8 +57,8 @@
                                     <mat-form-field class="example-full-width">
                                       <mat-label>Stadium</mat-label>
                                       <mat-select formControlName="stadium">
-                                        <mat-option *ngFor="let food of foods" [value]="food.value" >
-                                          {{food.viewValue}}
+                                        <mat-option *ngFor="let stadium of stadiums" [value]="stadium" >
+                                          {{stadium.name}}
                                         </mat-option>
                                       </mat-select>
                                     </mat-form-field>
@@ -69,8 +69,8 @@
                                   <div class="form-group">
                                     <mat-form-field class="example-full-width">
                                       <mat-label>Match Type</mat-label>
-                                      <mat-select formControlName="stadium">
-                                        <mat-option *ngFor="let type of matchTypes" [value]="type.type" >
+                                      <mat-select formControlName="matchType">
+                                        <mat-option *ngFor="let type of matchTypes" [value]="type" >
                                           {{type.type}}
                                         </mat-option>
                                       </mat-select>
@@ -143,8 +143,8 @@
                               <mat-form-field class="example-full-width">
                                 <mat-label>Refree</mat-label>
                                 <mat-select formControlName="refree">
-                                  <mat-option *ngFor="let food of foods" [value]="food.value" >
-                                    {{food.viewValue}}
+                                  <mat-option *ngFor="let ref of referees" [value]="ref" >
+                                    {{ref.userId.fullName}}
                                   </mat-option>
                                 </mat-select>
                               </mat-form-field>
@@ -158,7 +158,7 @@
                               <mat-form-field class="example-full-width">
                                 <mat-label>Umpire 01</mat-label>
                                 <mat-select formControlName="umpire01">
-                                  <mat-option *ngFor="let umpire of umpireList" [value]="umpire.userId.fullName" >
+                                  <mat-option *ngFor="let umpire of umpireList" [value]="umpire.userId.userId" >
                                     {{umpire.userId.fullName}}
                                   </mat-option>
                                 </mat-select>
@@ -174,7 +174,7 @@
                               <mat-form-field class="example-full-width">
                                 <mat-label>Umpire 02</mat-label>
                                 <mat-select formControlName="umpire02">
-                                  <mat-option *ngFor="let umpire of umpireList" [value]="umpire.userId.fullName" >
+                                  <mat-option *ngFor="let umpire of umpireList" [value]="umpire.userId.userId" >
                                     {{umpire.userId.fullName}}
                                   </mat-option>
                                 </mat-select>
@@ -190,7 +190,7 @@
                               <mat-form-field class="example-full-width">
                                 <mat-label>Umpire 03</mat-label>
                                 <mat-select formControlName="umpire03">
-                                  <mat-option *ngFor="let umpire of umpireList" [value]="umpire.userId.fullName" >
+                                  <mat-option *ngFor="let umpire of umpireList" [value]="umpire.userId.userId" >
                                     {{umpire.userId.fullName}}
                                   </mat-option>
                                 </mat-select>

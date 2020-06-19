@@ -1,0 +1,32 @@
+
+  <div class="card" style="width: 40rem; padding-left: 5px;">
+    <div class="row">
+      <div class="col-8">
+        <div class="profile-body">
+          <h4 class="card-title">{{tournement.tournamentName}}</h4>
+          <table>
+            <tr>
+              <td>
+                <b>Start Date</b>
+              </td>
+              <td>
+                {{tournement.startDate}}
+              </td>
+            </tr>
+    
+            <tr>
+              <td>
+                <b>End Date</b>
+              </td>
+              <td>
+                {{tournement.endDate}}
+              </td>
+            </tr>
+          </table>
+          <a  class="btn btn-primary" >more</a>
+          <button (click)="createMatch()" class="btn btn-success" data-toggle="tooltip" data-placement="right" title="New Match">Create Match
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

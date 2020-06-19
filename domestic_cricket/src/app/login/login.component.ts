@@ -41,9 +41,9 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private userService: UserServiceService,
     private clubService: ClubService
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   handleJWTTokeLogin() {
     //this.showSpinner=true;
@@ -97,11 +97,12 @@ export class LoginComponent implements OnInit {
   getClubData() {
     let userId: Number = +sessionStorage.getItem("userId");
     this.clubService.getClubDataOfManager(userId).subscribe(
-      (response) => {
-        console.log("Hello1");
+      (response) => {//ClubModel
+
         let clubStatus: Number = +response.status;
         sessionStorage.setItem("isClubActivated", clubStatus + "");
         sessionStorage.setItem("isManagerHasClub", "1");
+        sessionStorage.setItem("clubId", response.clubId + "");
 
         if (clubStatus == 1) {
           this.router.navigate(["dashboard"]);

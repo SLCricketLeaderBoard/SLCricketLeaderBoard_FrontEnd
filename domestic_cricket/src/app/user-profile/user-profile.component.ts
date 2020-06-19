@@ -53,7 +53,8 @@ export class UserProfileComponent implements OnInit {
         email : response.email,
         address :response.address,
         password : "",
-        confirmPassword: ""         
+        confirmPassword: "",
+                 
       });
 
 
@@ -90,13 +91,12 @@ export class UserProfileComponent implements OnInit {
     const password:String = this.userProfileFrom.value['password'];
     const id = this.user.userId;
 
-    const updatedUser:UserModel = new UserModel(this.user.userId,userName,fullName,nameWithInitial,nic,contactNumber,this.user.role,email,password,address,this.user.regDate);
+    const updatedUser:UserModel = new UserModel(this.user.userId,userName,fullName,nameWithInitial,nic,contactNumber,this.user.role,email,password,address,this.user.regDate,this.user.profileImage);
     console.log(updatedUser);
     this.userService.resetPassword(updatedUser).subscribe(res=>{
       console.log(res);
       this.response=res;
 
-      
         setTimeout(() => {
             console.log('Test');
             this.ngOnInit();

@@ -14,16 +14,20 @@ import { AppComponent } from "./app.component";
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { LoginComponent } from "./login/login.component";
 import { HttpIntercepterBasicAuthServiceService } from "./service/user/http-intercepter-basic-auth-service.service";
-import { ManagerService} from "./service/manager/manager.service";
-import { UserComponent } from './user/user.component';
-import { MaterialModule } from './material.module';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatchService } from './service/match/match.service';
+import { ManagerService } from "./service/manager/manager.service";
+import { UserComponent } from "./user/user.component";
+import { MaterialModule } from "./material.module";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatchService } from "./service/match/match.service";
+import { AngularFireModule } from "@angular/fire";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { environment } from "../environments/environment";
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { environment } from '../environments/environment';
+
+
+
 
 @NgModule({
   imports: [
@@ -40,9 +44,18 @@ import { environment } from '../environments/environment';
     MatFormFieldModule,
     MatInputModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireStorageModule,
   ],
-  declarations: [AppComponent, AdminLayoutComponent, LoginComponent, UserComponent],
+  declarations: [
+    AppComponent,
+    AdminLayoutComponent,
+    LoginComponent,
+    UserComponent,
+    
+   
+   
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -50,7 +63,7 @@ import { environment } from '../environments/environment';
       multi: true,
     },
     ManagerService,
-    MatchService
+    MatchService,
   ],
   bootstrap: [AppComponent],
 })

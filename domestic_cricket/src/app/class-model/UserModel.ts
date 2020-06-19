@@ -10,6 +10,7 @@ export class UserModel{
       public email:String,
       public password:String,
       public address:String,
-      public regDate:Date
+      public regDate:Date,
+      public profileImage:String
     ){}
 }

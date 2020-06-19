@@ -9,26 +9,26 @@ import { map } from 'rxjs/operators';
 export class UserAuthenticationServiceService {
 
   constructor(
-    private http:HttpClient
+    private http: HttpClient
   ) { }
 
- 
+
 
   //username --> email
-  executeJWTAuthenticationService(username,password){
+  executeJWTAuthenticationService(username, password) {
     return this.http.post<any>(
-      `${API_URL}/authenticate`,{
-        username,
-        password
-      }).pipe(
-        map(
-          data => {
-            sessionStorage.setItem('AUTHENTICATED_USER', username);
-            sessionStorage.setItem('TOKEN', `Bearer ${data.token}`);
-            return data;
-          }
-        )
-      );
+      `${API_URL}/authenticate`, {
+      username,
+      password
+    }).pipe(
+      map(
+        data => {
+          sessionStorage.setItem('AUTHENTICATED_USER', username);
+          sessionStorage.setItem('TOKEN', `Bearer ${data.token}`);
+          return data;
+        }
+      )
+    );
   }
 
   getAuthenticatedUser() {
@@ -36,7 +36,7 @@ export class UserAuthenticationServiceService {
   }
 
   getAuthenticatedToken() {
-    if(this.getAuthenticatedUser())
+    if (this.getAuthenticatedUser())
       return sessionStorage.getItem('TOKEN');
   }
 
@@ -45,10 +45,14 @@ export class UserAuthenticationServiceService {
     return !(user === null)
   }
 
-  logout(){
+  logout() {
     sessionStorage.removeItem('AUTHENTICATED_USER');
     sessionStorage.removeItem('TOKEN');
     sessionStorage.removeItem('userId');
     sessionStorage.removeItem('userRole');
+    sessionStorage.removeItem('isClubActivated');
+    sessionStorage.removeItem('isManagerHasClub');
+    sessionStorage.removeItem('userName');
+    sessionStorage.removeItem('clubId');
   }
 }
