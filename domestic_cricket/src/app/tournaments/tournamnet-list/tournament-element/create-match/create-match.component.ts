@@ -190,7 +190,7 @@ export class CreateMatchComponent implements OnInit {
       console.log(res);
       
     },error=>{
-      console.log(error);
+      console.log(error.message);
     })
   }
 
