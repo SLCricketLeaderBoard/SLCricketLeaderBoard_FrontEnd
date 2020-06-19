@@ -41,7 +41,7 @@ export class UmpireService {
     users['role'] = user.role;
     users['userId'] = user.userId;
     users['userName'] = user.userName;
-
+    users['profileImage'] = user.profileImage;
     return this.afs.collection('users').doc(user.nic.toString()).set(users);
 
   }
