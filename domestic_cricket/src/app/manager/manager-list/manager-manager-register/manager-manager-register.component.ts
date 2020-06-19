@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/fo
 import { UserModel } from '../../../class-model/UserModel';
 import { ManagerService } from '../../../service/manager/manager.service';
 
+
 @Component({
   selector: 'app-manager-manager-register',
   templateUrl: './manager-manager-register.component.html',
@@ -20,7 +21,7 @@ export class ManagerManagerRegisterComponent implements OnInit {
     let numericRegex = /^[0-9]+$/;
 
     let nicRanger = /^[vV0-9]+$/;
-   
+
     this.managerRegisterForm = new FormGroup({
       userName: new FormControl(null,[Validators.required,Validators.minLength(6)]),
       fullName: new FormControl(null,[Validators.required,Validators.minLength(6)]),
@@ -30,15 +31,15 @@ export class ManagerManagerRegisterComponent implements OnInit {
       email: new FormControl(null,[Validators.required,Validators.email]),
       address: new FormControl(null,[Validators.required])
     })
-    
+
    }
 
   ngOnInit() {
-      
+
 
     this.managerRegisterForm.statusChanges.subscribe(state=>{
       console.log(state);
-      
+
       if(state=="VALID"){
         this.valid=true;
       }else{
@@ -61,10 +62,10 @@ export class ManagerManagerRegisterComponent implements OnInit {
     const role:Number = 2;
     const id=0;
     const regDate:Date = new Date();
-  
+
     console.log(userName);
 
-   
+
     const user:UserModel = new UserModel(id,userName,fullName,nameWithInitials,nic,contactNumber,role,email,password,address,regDate);
 
     this.managerService.registerManager(user).subscribe(res=>{
@@ -80,7 +81,7 @@ export class ManagerManagerRegisterComponent implements OnInit {
     this.managerRegisterForm.reset();
   }
 
-  
+
   frobiddenContactNumbers: Array<string> = ['000000000','0000000000'];
 
   forbiddenContactNumbersValidator(control: FormControl):{[s:string]: boolean}{
