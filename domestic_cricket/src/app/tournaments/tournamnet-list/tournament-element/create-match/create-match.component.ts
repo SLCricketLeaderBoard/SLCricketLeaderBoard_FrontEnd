@@ -30,54 +30,54 @@ interface Food {
 export class CreateMatchComponent implements OnInit {
 
   foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Asass'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
+    { value: 'steak-0', viewValue: 'Asass' },
+    { value: 'pizza-1', viewValue: 'Pizza' },
+    { value: 'tacos-2', viewValue: 'Tacos' }
   ];
 
-  clubList:ClubModel[] = [];
-  umpireList:UmpireModel[]=[];
-  matchTypes:MatchType[]=[];
-  stadiums:StadiumModel[]=[];
-  tournament:TournamentModel
-  referees:RefereeModel[]=[];
+  clubList: ClubModel[] = [];
+  umpireList: UmpireModel[] = [];
+  matchTypes: MatchType[] = [];
+  stadiums: StadiumModel[] = [];
+  tournament: TournamentModel
+  referees: RefereeModel[] = [];
   tournamentId: Number;
 
-  createMatch:FormGroup;
+  createMatch: FormGroup;
 
-  startDate :Date = new Date();
-  endDate :Date = new Date();
+  startDate: Date = new Date();
+  endDate: Date = new Date();
 
-  constructor(private clubService:ClubService,
-              private umpireService:UmpireService,
-              private matchService:MatchService,
-              private stadiumServices:StadiumService,
-              private tournamentService:TournamentService,
-              private refereeService:RefereeService,
-              private route:ActivatedRoute) {
+  constructor(private clubService: ClubService,
+    private umpireService: UmpireService,
+    private matchService: MatchService,
+    private stadiumServices: StadiumService,
+    private tournamentService: TournamentService,
+    private refereeService: RefereeService,
+    private route: ActivatedRoute) {
 
     this.createMatch = new FormGroup({
-      club01: new FormControl(null,[Validators.required]),
-      club02: new FormControl(null,[Validators.required]),
-      tournementRound: new FormControl(null,[Validators.required]),
-      startDate: new FormControl(null,[Validators.required]),
-      endDate: new FormControl(null,[Validators.required]),
-      time: new FormControl(null,[Validators.required]),
-      stadium: new FormControl(null,[Validators.required]),
-      matchType: new FormControl(null,[Validators.required]),
-      refree: new FormControl(null,[Validators.required]),
-      umpire01: new FormControl(null,[Validators.required]),
-      umpire02: new FormControl(null,[Validators.required]),
-      umpire03: new FormControl(null,[Validators.required]),
-      sponser: new FormControl(null,[Validators.required])
+      club01: new FormControl(null, [Validators.required]),
+      club02: new FormControl(null, [Validators.required]),
+      tournementRound: new FormControl(null, [Validators.required]),
+      startDate: new FormControl(null, [Validators.required]),
+      endDate: new FormControl(null, [Validators.required]),
+      time: new FormControl(null, [Validators.required]),
+      stadium: new FormControl(null, [Validators.required]),
+      matchType: new FormControl(null, [Validators.required]),
+      refree: new FormControl(null, [Validators.required]),
+      umpire01: new FormControl(null, [Validators.required]),
+      umpire02: new FormControl(null, [Validators.required]),
+      umpire03: new FormControl(null, [Validators.required]),
+      sponser: new FormControl(null, [Validators.required])
     })
 
-    this.route.params.subscribe(res=>{
-      this.tournamentId=res['tournamentId'];
-        this.tournamentService.getTournamentById(this.tournamentId).subscribe(res=>{
+    this.route.params.subscribe(res => {
+      this.tournamentId = res['tournamentId'];
+      this.tournamentService.getTournamentById(this.tournamentId).subscribe(res => {
         console.log(res);
-        this.tournament=res;
-        
+        this.tournament = res;
+
       })
     })
 
@@ -92,34 +92,34 @@ export class CreateMatchComponent implements OnInit {
       }
     );
 
-    this.umpireService.getAvailableUmpires().subscribe(response=>{
-      this.umpireList=response
+    this.umpireService.getAvailableUmpires().subscribe(response => {
+      this.umpireList = response
       // console.log(response);
-    },error=>{
-      console.log(error); 
+    }, error => {
+      console.log(error);
     });
 
-    this.matchService.getMatchType().subscribe(response=>{
-      this.matchTypes=response;
+    this.matchService.getMatchType().subscribe(response => {
+      this.matchTypes = response;
       // console.log(response);
-    },error=>{
+    }, error => {
       console.log(error);
     })
 
 
-    this.stadiumServices.getAllStadiums().subscribe(response=>{
-      this.stadiums=response;
+    this.stadiumServices.getAllStadiums().subscribe(response => {
+      this.stadiums = response;
       // console.log(response);
     })
 
-    this.refereeService.getAvailableReferees().subscribe(response=>{
-      this.referees=response;
+    this.refereeService.getAvailableReferees().subscribe(response => {
+      this.referees = response;
       // console.log(this.referees);
-      
+
     })
 
 
-  
+
   }
 
   ngOnInit() {
@@ -128,37 +128,37 @@ export class CreateMatchComponent implements OnInit {
 
   }
 
-  reset(){
+  reset() {
     this.createMatch.reset();
   }
-  
-  create(){
+
+  create() {
     const matchId: Number = null;
-    const club1Id:Number = this.createMatch.value['club01'];
-    const club2Id:Number = this.createMatch.value['club02'];
+    const club1Id: Number = this.createMatch.value['club01'];
+    const club2Id: Number = this.createMatch.value['club02'];
     const captainClub1: Number = 0;
     const captainClub2: Number = 0;
     const club1Mark: Number = 0;
     const club2Mark: Number = 0;
     const club1Wicket: Number = 0;
     const club2Wicket: Number = 0;
-    const tournementRound : number = this.createMatch.value['tournementRound'];
+    const tournementRound: number = this.createMatch.value['tournementRound'];
     const startDate: Date = this.createMatch.value['startDate'];
     const finishDate: Date = this.createMatch.value['endDate'];
-    const startTime : Timestamp<Time> = this.createMatch.value['time'];
+    const startTime: Timestamp<Time> = this.createMatch.value['time'];
     const winTeamId: Number = 0;
-    const sponser : String = this.createMatch.value['sponser'];
-    const matchTypeId : MatchType = this.createMatch.value['matchType'];
+    const sponser: String = this.createMatch.value['sponser'];
+    const matchTypeId: MatchType = this.createMatch.value['matchType'];
     const tournamentId: TournamentModel = this.tournament;
-    const stadiumId: StadiumModel = this.createMatch.value['stadium']
-    const refereeId : RefereeModel = this.createMatch.value['refree'];
-    const umpire1Id : Number = this.createMatch.value['umpire01'];
-    const umpire2Id : Number = this.createMatch.value['umpire02'];
-    const umpire3Id : Number = this.createMatch.value['umpire03'];
-    
- 
-     
-    
+    const stadiumId: StadiumModel = this.createMatch.value['stadium'];
+    const refereeId: RefereeModel = this.createMatch.value['refree'];
+    const umpire1Id: Number = this.createMatch.value['umpire01'];
+    const umpire2Id: Number = this.createMatch.value['umpire02'];
+    const umpire3Id: Number = this.createMatch.value['umpire03'];
+
+
+
+
     const match: MatchModel = new MatchModel(
       matchId,
       club1Id,
@@ -181,15 +181,15 @@ export class CreateMatchComponent implements OnInit {
       refereeId,
       umpire1Id,
       umpire2Id,
-      umpire3Id  
+      umpire3Id
     );
 
     // console.log(match);
-    
-    this.matchService.createMatch(match).subscribe(res=>{
+
+    this.matchService.createMatch(match).subscribe(res => {
       console.log(res);
-      
-    },error=>{
+
+    }, error => {
       console.log(error.message);
     })
   }
