@@ -55,4 +55,5 @@ export class UserAuthenticationServiceService {
     sessionStorage.removeItem('userName');
     sessionStorage.removeItem('clubId');
   }
+
 }

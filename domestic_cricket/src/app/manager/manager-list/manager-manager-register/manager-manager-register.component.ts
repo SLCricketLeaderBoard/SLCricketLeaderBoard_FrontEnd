@@ -97,6 +97,7 @@ export class ManagerManagerRegisterComponent implements OnInit {
       password,
       address,
       regDate,
+      0,
       profileImage
     );
 

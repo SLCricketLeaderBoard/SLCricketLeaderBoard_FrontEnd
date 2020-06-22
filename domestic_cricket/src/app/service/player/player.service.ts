@@ -12,6 +12,10 @@ export class PlayerService {
     private http: HttpClient
   ) { }
 
+  playerSignup(player: PlayerModel) {
+    return this.http.post<Number>(`${API_URL}/player/signup`, player);
+  }
+
   playerRegister(player: PlayerModel) {
     return this.http.post<Number>(`${API_URL}/player`, player);
   }
@@ -19,4 +23,5 @@ export class PlayerService {
   getClubPlayerList(clubId: Number) {
     return this.http.get<PlayerModel[]>(`${API_URL}/player/club/${clubId}`, {});
   }
+
 }
