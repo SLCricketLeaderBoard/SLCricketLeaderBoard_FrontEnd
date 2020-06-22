@@ -24,6 +24,7 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { environment } from "../environments/environment";
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { PlayerSignupComponent } from './player/player-signup/player-signup.component';
 
 
 
@@ -52,7 +53,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     AdminLayoutComponent,
     LoginComponent,
     UserComponent,
-  
+    PlayerSignupComponent,
     
    
    
