@@ -155,6 +155,7 @@ export class CreateMatchComponent implements OnInit {
     const umpire1Id: Number = this.createMatch.value['umpire01'];
     const umpire2Id: Number = this.createMatch.value['umpire02'];
     const umpire3Id: Number = this.createMatch.value['umpire03'];
+    const tossWinTeam: Number = 0;
 
 
 
@@ -181,10 +182,11 @@ export class CreateMatchComponent implements OnInit {
       refereeId,
       umpire1Id,
       umpire2Id,
-      umpire3Id
+      umpire3Id,
+      tossWinTeam
     );
 
-    // console.log(match);
+    console.log(match);
 
     this.matchService.createMatch(match).subscribe(res => {
       console.log(res);

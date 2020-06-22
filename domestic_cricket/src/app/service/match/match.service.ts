@@ -25,10 +25,13 @@ export class MatchService {
     const headers = new HttpHeaders().set('Authorization',jwt);
 
     console.log(match);
-    
-
-
     return this.http.post<MatchModel>(`${API_URL}/createMatch`,match,{headers,responseType:'text' as 'json'});
+  }
+
+  getMatchesByTournamentId(tournamentId: number){
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization',jwt);
+    return this.http.get<MatchModel[]>(`${API_URL}/matches/${tournamentId}`,{headers});
   }
 
 }

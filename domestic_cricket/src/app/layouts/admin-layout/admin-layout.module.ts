@@ -40,6 +40,7 @@ import { TournamentElementComponent } from '../../tournaments/tournamnet-list/to
 import { CreateMatchComponent } from '../../tournaments/tournamnet-list/tournament-element/create-match/create-match.component';
 import { MatchListComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-list.component';
 import { TournamnetListComponent } from '../../tournaments/tournamnet-list/tournamnet-list.component';
+import { MatchElementComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-element/match-element.component';
 
 
 
@@ -92,8 +93,8 @@ import { TournamnetListComponent } from '../../tournaments/tournamnet-list/tourn
     StadiumRegisterComponent,
     LiveMatchComponent,
     TournamentElementComponent, 
-    TournamnetListComponent
-
+    TournamnetListComponent,
+    MatchElementComponent
 
   ],
 })

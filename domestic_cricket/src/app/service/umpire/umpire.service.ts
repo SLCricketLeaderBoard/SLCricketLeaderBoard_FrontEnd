@@ -53,7 +53,15 @@ export class UmpireService {
   }
 
   getAvailableUmpires(){
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization',jwt);
     return this.http.get<[UmpireModel]>(`${API_URL}/umpire/available`);
+  }
+
+  getUmpire(id:Number){
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization',jwt);
+    return this.http.get<UmpireModel>(`${API_URL}/umpire/${id}`,{headers});
   }
 
 }

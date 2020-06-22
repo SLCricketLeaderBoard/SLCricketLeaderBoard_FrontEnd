@@ -29,6 +29,7 @@ import { StadiumRegisterComponent } from '../../stadium/stadium-register/stadium
 import { RefereeComponent } from '../../referee/referee.component';
 import { TournamnetListComponent } from '../../tournaments/tournamnet-list/tournamnet-list.component';
 import { CreateMatchComponent } from '../../tournaments/tournamnet-list/tournament-element/create-match/create-match.component';
+import { MatchListComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-list.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -80,6 +81,11 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: "tournament-list/create-match/:tournamentId",
     component:CreateMatchComponent,
+    canActivate:[RouteGuardService]
+  },
+  {
+    path: "tournament-list/view-matches/:tournamentId",
+    component:MatchListComponent,
     canActivate:[RouteGuardService]
   },
   {
