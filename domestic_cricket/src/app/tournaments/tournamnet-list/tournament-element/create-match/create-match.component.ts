@@ -3,7 +3,7 @@ import { ClubModel } from '../../../../class-model/ClubModel';
 import { ClubService } from '../../../../service/club/club.service';
 import { UmpireService } from '../../../../service/umpire/umpire.service';
 import { UmpireModel } from '../../../../class-model/UmpireModel';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MatchType } from '../../../../class-model/MatchType';
 import { MatchService } from '../../../../service/match/match.service';
 import { StadiumModel } from '../../../../class-model/StadiumModel';
@@ -16,6 +16,8 @@ import { MatchModel } from '../../../../class-model/MatchModel';
 import { ActivatedRoute } from '@angular/router';
 import { Time } from '@angular/common';
 import { Timestamp } from 'rxjs/internal/operators/timestamp';
+import { ConfirmedValidator } from '../../../../validators/matchClubValidators.validator';
+import { UmpireValidator } from '../../../../validators/matchUmpireValidators.validator';
 
 interface Food {
   value: string;
@@ -42,7 +44,8 @@ export class CreateMatchComponent implements OnInit {
   tournament: TournamentModel
   referees: RefereeModel[] = [];
   tournamentId: Number;
-
+  done:boolean =null;
+  errorMessage = null;
   createMatch: FormGroup;
 
   startDate: Date = new Date();
@@ -54,9 +57,10 @@ export class CreateMatchComponent implements OnInit {
     private stadiumServices: StadiumService,
     private tournamentService: TournamentService,
     private refereeService: RefereeService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private formBuilder:FormBuilder) {
 
-    this.createMatch = new FormGroup({
+    this.createMatch = this.formBuilder.group({
       club01: new FormControl(null, [Validators.required]),
       club02: new FormControl(null, [Validators.required]),
       tournementRound: new FormControl(null, [Validators.required]),
@@ -70,6 +74,11 @@ export class CreateMatchComponent implements OnInit {
       umpire02: new FormControl(null, [Validators.required]),
       umpire03: new FormControl(null, [Validators.required]),
       sponser: new FormControl(null, [Validators.required])
+    },{
+      validators: [ConfirmedValidator('club01','club02'),
+      UmpireValidator('umpire01','umpire02','umpire03'),
+      ]
+      
     })
 
     this.route.params.subscribe(res => {
@@ -128,8 +137,15 @@ export class CreateMatchComponent implements OnInit {
 
   }
 
+  get f(){
+    return this.createMatch.controls;
+  }
+
   reset() {
     this.createMatch.reset();
+    console.log("reset");
+    this.errorMessage=null;
+    this.done=null;
   }
 
   create() {
@@ -186,14 +202,43 @@ export class CreateMatchComponent implements OnInit {
       tossWinTeam
     );
 
-    console.log(match);
+     
+     let x = this.matchService.createMatch(match).subscribe(response=>{
+       this.matchService.createMatchInfirebase(response).then(res=>{
+         console.log(res);
+         
+          this.done=true;
+          setTimeout(()=>{
+            this.createMatch.reset();
+            this.createMatch.clearValidators();
+          },1000)
+       }
+         
+       ).catch(error=>{
+        setTimeout(()=>{
+          this.createMatch.reset();
+          this.createMatch.clearAsyncValidators();
+        },2000)
 
-    this.matchService.createMatch(match).subscribe(res => {
-      console.log(res);
+         this.errorMessage=error.message
+         this.done=false;
+       })
+     },error=>{
+      setTimeout(()=>{
+        this.createMatch.reset();
+        this.createMatch.clearAsyncValidators();
+      },1000)
 
-    }, error => {
-      console.log(error.message);
-    })
-  }
+       console.log(error.message);
+       this.errorMessage=error.message
+       this.done= false; 
+     })
+    
+    
+     
+     
+    }
+
+  
 
 }

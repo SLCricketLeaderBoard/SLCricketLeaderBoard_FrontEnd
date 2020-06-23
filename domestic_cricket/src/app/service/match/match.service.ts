@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MatchType } from '../../class-model/MatchType';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { API_URL } from '../../app.constants';
 import { MatchModel } from '../../class-model/MatchModel';
-
+import { AngularFirestore } from "@angular/fire/firestore"; 
 @Injectable({
   providedIn: 'root'
 })
 export class MatchService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private afs: AngularFirestore) { }
 
 
   getMatchType():Observable<MatchType[]>{
@@ -21,11 +21,8 @@ export class MatchService {
 
   createMatch(match:MatchModel):Observable<MatchModel>{
     let jwt = sessionStorage.getItem('TOKEN');
-    console.log(jwt);
     const headers = new HttpHeaders().set('Authorization',jwt);
-
-    console.log(match);
-    return this.http.post<MatchModel>(`${API_URL}/createMatch`,match,{headers,responseType:'text' as 'json'});
+   return this.http.post<MatchModel>(`${API_URL}/createMatch`,match,{headers});   
   }
 
   getMatchesByTournamentId(tournamentId: number){
@@ -34,4 +31,9 @@ export class MatchService {
     return this.http.get<MatchModel[]>(`${API_URL}/matches/${tournamentId}`,{headers});
   }
 
+
+  //firebase Create match
+  createMatchInfirebase(match:MatchModel){
+   return this.afs.collection('tournaments').doc(`${match.tournamentId.tournamentId}`).collection('matches').doc(`${match.matchId}`).set(match);
+  }
 }

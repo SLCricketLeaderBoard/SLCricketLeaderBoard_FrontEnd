@@ -50,6 +50,11 @@
                         </div>
                       </div>
 
+                      <mat-error *ngIf="!createMatch.get('club02').valid && createMatch.get('club02').touched">
+                        cheack again !
+                      </mat-error> <br>
+
+
                       <hr>
 
                       <div class="row fromRow">
@@ -165,6 +170,9 @@
                               </mat-select>
                             </mat-form-field>
                           </div>
+                          <mat-error *ngIf="!createMatch.get('umpire01').valid && createMatch.get('umpire01').touched">
+                            cheack again !
+                          </mat-error> <br>
                         </div>
                       </div>
 
@@ -181,6 +189,11 @@
                               </mat-select>
                             </mat-form-field>
                           </div>
+
+                          <mat-error *ngIf="!createMatch.get('umpire02').valid && createMatch.get('umpire02').touched">
+                            cheack again !
+                          </mat-error> <br>
+
                         </div>
                       </div>
 
@@ -197,6 +210,9 @@
                               </mat-select>
                             </mat-form-field>
                           </div>
+                          <mat-error *ngIf="!createMatch.get('umpire03').valid && createMatch.get('umpire03').touched">
+                            cheack again !
+                          </mat-error> <br>
                         </div>
                       </div>
 
@@ -227,10 +243,13 @@
 
 
 
-                  <!-- <div>
-                    <p style="margin-top: 20px; margin-left: 100px; color: green;">Registration successfull!!</p>
-                  </div> -->
+                  <div *ngIf="done">
+                    <p style="margin-top: 20px; margin-left: 100px; color: green;">Match Creation successfull!!</p>
+                  </div>
 
+                  <div *ngIf="!done">
+                    <p style="margin-top: 20px; margin-left: 100px; color:red;">{{errorMessage}}</p>
+                  </div>
 
                 </div>
               </div>
