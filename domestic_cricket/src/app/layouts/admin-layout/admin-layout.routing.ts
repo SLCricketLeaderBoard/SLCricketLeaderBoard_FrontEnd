@@ -32,6 +32,7 @@ import { CreateMatchComponent } from '../../match/create-match/create-match.comp
 import { RefereeRegisterComponent } from '../../referee/referee-register/referee-register.component';
 import { StadiumRegisterComponent } from '../../stadium/stadium-register/stadium-register.component';
 import { RefereeComponent } from '../../referee/referee.component';
+import { RefereeListComponent } from '../../referee/referee-list/referee-list.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -160,8 +161,12 @@ export const AdminLayoutRoutes: Routes = [
     path: "stadium-register",
     component: StadiumRegisterComponent,
     canActivate:[RouteGuardService]
+  },
+  {
+    path: "referee-list-list",
+    component: RefereeListComponent,
+    canActivate:[RouteGuardService]
   }
-
 
 
 ];

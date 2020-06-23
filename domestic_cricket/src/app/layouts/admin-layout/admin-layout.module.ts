@@ -41,7 +41,7 @@ import { StadiumRegisterComponent } from '../../stadium/stadium-register/stadium
 import { LiveMatchComponent } from '../../live-match/live-match.component'
 import { RefereeComponent } from '../../referee/referee.component';
 
-
+import { RefereeListComponent } from '../../referee/referee-list/referee-list.component';
 
 @NgModule({
   imports: [
@@ -91,7 +91,7 @@ import { RefereeComponent } from '../../referee/referee.component';
     ProfileImageComponent,
     StadiumRegisterComponent,
     LiveMatchComponent, 
-
+    RefereeListComponent,
 
   ],
 })
