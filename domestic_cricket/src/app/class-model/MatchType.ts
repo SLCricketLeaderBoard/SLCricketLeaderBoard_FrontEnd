@@ -1,7 +1,7 @@
 
-export class MatchType{
-    constructor(
-      public matchTypeId:Number,
-      public type:String
-    ){}
+export class MatchType {
+  constructor(
+    public matchTypeId: Number,
+    public matchType: String
+  ) { }
 }

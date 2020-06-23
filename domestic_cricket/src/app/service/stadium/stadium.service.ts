@@ -15,7 +15,9 @@ export class StadiumService {
   ) { }
 
   registerStadium(stadium : StadiumModel){
-    return this.http.post<Number>(`${API_URL}/stadium`,stadium);
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization',jwt);
+    return this.http.post<Number>(`${API_URL}/stadium`,stadium,{headers,responseType:'text' as 'json'});
   }
 
   getAllStadiums():Observable<StadiumModel[]>{

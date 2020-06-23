@@ -122,7 +122,7 @@ export class PlayerAddComponent implements OnInit {
   playerFormSubmit() {
     let clubId: Number = +sessionStorage.getItem('clubId');
     const profileImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQcUe1moupzaLWXiANaYFIt4jys-rl2OeXwOydel1YWIO22vDW6&usqp=CAU";
-    let user: UserModel = new UserModel(0, this.userNameField.value, this.fullNameField.value, this.nameWithInitialField.value, this.nicField.value, this.contactNumberField.value, 4, this.emailField.value, this.nicField.value, this.addressField.value, new Date(),profileImage);
+    let user: UserModel = new UserModel(0, this.userNameField.value, this.fullNameField.value, this.nameWithInitialField.value, this.nicField.value, this.contactNumberField.value, 4, this.emailField.value, this.nicField.value, this.addressField.value, new Date(), 0, profileImage);
     let player: PlayerModel = new PlayerModel(0, +this.playerTypeField.value + 1, this.batmanTypeField.value, this.ballerTypeField.value, null, user);
 
     this.clubService.getClubData(clubId).subscribe(

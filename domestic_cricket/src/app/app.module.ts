@@ -20,12 +20,12 @@ import { MaterialModule } from "./material.module";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatchService } from "./service/match/match.service";
-
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { environment } from "../environments/environment";
-import { ProfileImageComponent } from './user-profile/profile-image/profile-image.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { PlayerSignupComponent } from './player/player-signup/player-signup.component';
+
 
 
 
@@ -54,6 +54,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     AdminLayoutComponent,
     LoginComponent,
     UserComponent,
+    PlayerSignupComponent,
     
    
    

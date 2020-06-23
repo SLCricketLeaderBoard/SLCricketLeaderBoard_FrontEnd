@@ -1,0 +1,26 @@
+<div class="panel-header panel-header-sm"></div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+          <div class="col-3">
+            <h4 class="card-title">{{tournament.tournamentName}}</h4>
+          </div>
+          <div>
+            <button (click)="createMatch()" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Register Manager"><i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        </div>
+        <app-match-element *ngFor="let match of matches" [match]="match"></app-match-element>
+      </div>
+    </div>
+  </div>
+</div>
+
+ 
+      
+    
+ 

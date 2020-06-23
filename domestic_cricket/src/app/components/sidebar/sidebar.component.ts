@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ClubService } from "../../service/club/club.service";
 
+
 declare interface RouteInfo {
   path: string;
   title: string;
@@ -64,7 +65,6 @@ export class SidebarComponent implements OnInit {
     this.admin = [
       { path: "/dashboard", title: "Dashboard", icon: "design_app", class: "" },
       { path: "/club-list", title: "Clubs", icon: "design_app", class: "" },
-      { path: "/match-list", title: "Matches", icon: "design_app", class: "" },
       { path: "/manager-list", title: "Managers", icon: "design_app",class: "",},
       { path: "/umpire-list", title: "Umpires", icon: "design_app", class: "" },
       { path: '/referee-list', title: "Referees", icon: "design_app", class: ""},

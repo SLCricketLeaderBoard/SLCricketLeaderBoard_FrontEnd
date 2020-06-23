@@ -8,6 +8,7 @@ import {
 import { UserModel } from "../../../class-model/UserModel";
 import { ManagerService } from "../../../service/manager/manager.service";
 
+
 @Component({
   selector: "app-manager-manager-register",
   templateUrl: "./manager-manager-register.component.html",
@@ -83,7 +84,7 @@ export class ManagerManagerRegisterComponent implements OnInit {
     const regDate: Date = new Date();
     const profileImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQcUe1moupzaLWXiANaYFIt4jys-rl2OeXwOydel1YWIO22vDW6&usqp=CAU";
 
-   
+
     const user: UserModel = new UserModel(
       id,
       userName,
@@ -96,9 +97,10 @@ export class ManagerManagerRegisterComponent implements OnInit {
       password,
       address,
       regDate,
+      0,
       profileImage
     );
-    
+
     console.log(user);
 
     this.managerService.registerManager(user).subscribe(
