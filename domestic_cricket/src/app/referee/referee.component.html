@@ -1,10 +1,24 @@
-<div style="margin-top: 500px;">
 
+<div class="panel-header panel-header-sm"></div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+          <div class="col-3">
+            <h4 class="card-title">Referees</h4>
+          </div>
+          <div>
+            <button (click)="register()" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Register Referee"><i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        </div>
+        <div class="card-body">
+          <app-referee-list *ngFor="let referee of referees" [referee]="referee" ></app-referee-list>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<p>
-  refree works!
-
-
-  <button (click)="register()">For Register Refree</button>
-</p>

@@ -9,8 +9,9 @@
         <div class="card-body">
           <div class="main-content">
             <div class="row">
-              <div class="col-md-6"></div>
-              <div class="col-md-6">
+              <div class="col-md-2">
+              </div>
+              <div class="col-md-8">
                 <div class="card">
                   <div class="card-header">
                     <h5 class="title">Create Match</h5>
@@ -48,6 +49,11 @@
                           </div>
                         </div>
                       </div>
+
+                      <mat-error *ngIf="!createMatch.get('club02').valid && createMatch.get('club02').touched">
+                        cheack again !
+                      </mat-error> <br>
+
 
                       <hr>
 
@@ -164,6 +170,9 @@
                               </mat-select>
                             </mat-form-field>
                           </div>
+                          <mat-error *ngIf="!createMatch.get('umpire01').valid && createMatch.get('umpire01').touched">
+                            cheack again !
+                          </mat-error> <br>
                         </div>
                       </div>
 
@@ -180,6 +189,11 @@
                               </mat-select>
                             </mat-form-field>
                           </div>
+
+                          <mat-error *ngIf="!createMatch.get('umpire02').valid && createMatch.get('umpire02').touched">
+                            cheack again !
+                          </mat-error> <br>
+
                         </div>
                       </div>
 
@@ -196,6 +210,9 @@
                               </mat-select>
                             </mat-form-field>
                           </div>
+                          <mat-error *ngIf="!createMatch.get('umpire03').valid && createMatch.get('umpire03').touched">
+                            cheack again !
+                          </mat-error> <br>
                         </div>
                       </div>
 
@@ -226,10 +243,13 @@
 
 
 
-                  <div>
-                    <p style="margin-top: 20px; margin-left: 100px; color: green;">Registration successfull!!</p>
+                  <div *ngIf="done">
+                    <p style="margin-top: 20px; margin-left: 100px; color: green;">Match Creation successfull!!</p>
                   </div>
 
+                  <div *ngIf="!done">
+                    <p style="margin-top: 20px; margin-left: 100px; color:red;">{{errorMessage}}</p>
+                  </div>
 
                 </div>
               </div>

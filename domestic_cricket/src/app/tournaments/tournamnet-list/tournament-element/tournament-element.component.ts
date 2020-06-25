@@ -25,4 +25,8 @@ export class TournamentElementComponent implements OnInit {
 
   }
 
+  viewMatches(){
+    this.router.navigate(["view-matches",this.tournement.tournamentId], { relativeTo: this.route });
+  }
+
 }
