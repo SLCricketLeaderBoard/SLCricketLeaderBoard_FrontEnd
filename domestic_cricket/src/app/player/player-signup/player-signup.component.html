@@ -135,8 +135,9 @@
                   placeholder="Confirm Password" class="form-control" />
                 <div
                   *ngIf="playerRegisterForm.get('confirmPassword').invalid &&  playerRegisterForm.get('confirmPassword').touched">
-                  <small *ngIf="passwordField.errors?.required" class="text-danger">Please confirm the password</small>
-                  <!-- <small *ngIf="passwordField.errors?.passwordConfirming" class="text-danger">Password not match</small> -->
+                  <small *ngIf="confirmPasswordField.errors?.required" class="text-danger">Please confirm the
+                    password</small>
+                  <small *ngIf="confirmPasswordField.errors?.mustMatch" class="text-danger">Password not match</small>
                 </div>
               </div>
             </div>

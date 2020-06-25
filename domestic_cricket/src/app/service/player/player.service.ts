@@ -16,12 +16,16 @@ export class PlayerService {
     return this.http.post<Number>(`${API_URL}/player/signup`, player);
   }
 
-  playerRegister(player: PlayerModel) {
-    return this.http.post<Number>(`${API_URL}/player`, player);
+  playerUpdate(player: PlayerModel) {
+    return this.http.put<Number>(`${API_URL}/player`, player);
   }
 
-  getClubPlayerList(clubId: Number) {
-    return this.http.get<PlayerModel[]>(`${API_URL}/player/club/${clubId}`, {});
+  getClubPlayerList(clubId: Number, status: Number) {
+    return this.http.get<PlayerModel[]>(`${API_URL}/player/club/${clubId}/${status}`, {});
+  }
+
+  getPlayer(playerId: Number) {
+    return this.http.get<PlayerModel>(`${API_URL}/player/${playerId}`, {});
   }
 
 }

@@ -9,7 +9,8 @@ import { PlayerModel } from '../../class-model/PlayerModel';
 import { ClubService } from '../../service/club/club.service';
 import { SwalMessage } from '../../shared/swal-message';
 import { PlayerService } from '../../service/player/player.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Route } from '@angular/compiler/src/core';
 
 
 @Component({
@@ -19,15 +20,19 @@ import { Router } from '@angular/router';
 })
 export class PlayerAddComponent implements OnInit {
 
+  playerData: PlayerModel;
   playerTypeList: String[] = ['Batman', 'Baller', 'All Rounder'];
   batmanTypeList: BatmanTypeModel[] = [];
   ballerTypeList: BallerTypeModel[] = [];
+
+  selectPlayerType: String = '';
+  selectBallerType: String = '';
+  selectBatmanType: String = '';
 
   swalMessage: SwalMessage = new SwalMessage();
   errorMessage: string = "";
 
   playerRegisterForm = this.fb.group({
-    userName: ['', [Validators.required]],
     fullName: ['', [Validators.required]],
     nameWithInitial: ['', [Validators.required]],
     nic: ['', [Validators.required, Validators.pattern('^\\d{9,9}[v,V]$')]],
@@ -39,9 +44,7 @@ export class PlayerAddComponent implements OnInit {
     ballerType: ['', [Validators.required]]
   });
 
-  get userNameField() {
-    return this.playerRegisterForm.get('userName');
-  }
+
 
   get nameWithInitialField() {
     return this.playerRegisterForm.get('nameWithInitial');
@@ -60,7 +63,7 @@ export class PlayerAddComponent implements OnInit {
   }
 
   get addressField() {
-    return this.playerRegisterForm.get('contactNumber');
+    return this.playerRegisterForm.get('address');
   }
 
   get emailField() {
@@ -85,16 +88,40 @@ export class PlayerAddComponent implements OnInit {
     private ballerTypeService: BallerTypeService,
     private clubService: ClubService,
     private playerService: PlayerService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    let playerId: Number = +this.route.snapshot.params['playerId'];
+    this.getPlayerData(playerId);
+
     this.getBatmanTypeList();
     this.getBallerTypeList();
   }
 
-  playerTypeSelection() {
-    console.log(this.playerTypeField.value)
+  getPlayerData(playerId: Number) {
+    this.playerService.getPlayer(playerId).subscribe(
+      response => {
+        this.playerData = response;
+        this.nameWithInitialField.setValue(this.playerData.userId.nameWithInitial);
+        this.fullNameField.setValue(this.playerData.userId.fullName);
+        this.emailField.setValue(this.playerData.userId.email);
+        this.nicField.setValue(this.playerData.userId.nic);
+        this.addressField.setValue(this.playerData.userId.address);
+        this.contactNumberField.setValue(this.playerData.userId.contactNumber);
+        this.ballerTypeField.setValue(this.playerData.ballerTypeId);
+        this.batmanTypeField.setValue(this.playerData.batmanTypeId);
+        this.playerTypeField.setValue(this.playerData.specialType);
+
+        this.selectBallerType = this.playerData.ballerTypeId.type;
+        this.selectBatmanType = this.playerData.batmanTypeId.type;
+        this.selectPlayerType = this.playerTypeList[+this.playerData.specialType - 1];
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   getBatmanTypeList() {
@@ -120,35 +147,31 @@ export class PlayerAddComponent implements OnInit {
   }
 
   playerFormSubmit() {
-    let clubId: Number = +sessionStorage.getItem('clubId');
     const profileImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQcUe1moupzaLWXiANaYFIt4jys-rl2OeXwOydel1YWIO22vDW6&usqp=CAU";
-    let user: UserModel = new UserModel(0, this.userNameField.value, this.fullNameField.value, this.nameWithInitialField.value, this.nicField.value, this.contactNumberField.value, 4, this.emailField.value, this.nicField.value, this.addressField.value, new Date(), 0, profileImage);
-    let player: PlayerModel = new PlayerModel(0, +this.playerTypeField.value + 1, this.batmanTypeField.value, this.ballerTypeField.value, null, user);
+    let user: UserModel = new UserModel(this.playerData.userId.userId, this.playerData.userId.userName, this.fullNameField.value, this.nameWithInitialField.value, this.nicField.value, this.contactNumberField.value, 4, this.emailField.value, this.playerData.userId.password, this.addressField.value, new Date(), 1, profileImage);
+    let player: PlayerModel = new PlayerModel(this.playerData.playerId, +this.playerTypeField.value + 1, this.batmanTypeField.value, this.ballerTypeField.value, this.playerData.clubId, user);
 
-    this.clubService.getClubData(clubId).subscribe(
-      response => {//ClubModel
-        player.clubId = response;
-        this.playerService.playerRegister(player).subscribe(
-          response => {
-            if (response == 1) {
-              this.router.navigate(['player-list']);
-              this.swalMessage.successMessage('Player Registration Successful');
-            } else {
-              this.errorMessage = "There is another user has same  Email or Nic";
-              this.swalMessage.warnningMessage("Player Registration Not Successful");
-            }
 
-          },
-          error => {
-            console.log(error);
-            this.swalMessage.notSuccessMessage('Player Registration Not Successful')
-          }
-        );
+    this.playerService.playerUpdate(player).subscribe(
+      response => {
+        if (response == 1) {
+          this.router.navigate(['player-list']);
+          this.swalMessage.successMessage('Player Registration Successful');
+        } else {
+          this.errorMessage = "There is another user has same  Email or Nic";
+          this.swalMessage.warnningMessage("Player Registration Not Successful");
+        }
       },
       error => {
         console.log(error);
-        this.swalMessage.notSuccessMessage('Player Registration Not Successful')
+        this.swalMessage.notSuccessMessage('Player Registration Not Successful');
       }
     );
   }
+
+  close() {
+    this.errorMessage = "";
+  }
 }
+
+

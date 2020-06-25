@@ -128,4 +128,8 @@ export class LoginComponent implements OnInit {
   closeError() {
     this.errorMessage = null;
   }
+
+  playerSignup() {
+    this.router.navigate(['player-signup']);
+  }
 }

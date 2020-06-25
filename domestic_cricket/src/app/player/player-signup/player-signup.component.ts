@@ -13,6 +13,7 @@ import { SwalMessage } from '../../shared/swal-message';
 import { UserAuthenticationServiceService } from '../../service/user/user-authentication-service.service';
 import { GUEST_USER_EMAIL, GUEST_USER_PASSWORD } from '../../app.constants';
 import { ClubModel } from '../../class-model/ClubModel';
+import { MustMatch } from '../../shared/custom_validators';
 
 @Component({
   selector: 'app-player-signup',
@@ -28,6 +29,7 @@ export class PlayerSignupComponent implements OnInit {
 
   swalMessage: SwalMessage = new SwalMessage();
   errorMessage: string = "";
+  isPasswordNotMatch: Boolean = false;
 
   playerRegisterForm = this.fb.group({
     userName: ['', [Validators.required]],
@@ -42,12 +44,12 @@ export class PlayerSignupComponent implements OnInit {
     ballerType: ['', [Validators.required]],
     club: ['', [Validators.required]],
     password: ['', [Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')]],
-    confirmPassword: ['', [Validators.required,]],
+    confirmPassword: ['', [Validators.required]],
+  }, {
+    validator: MustMatch('password', 'confirmPassword')
   });
 
-  // private validateAreEqual(fieldControl: FormControl) {
-  //   return this.confirmPasswordField.value == this.passwordField.value ? false : true;
-  // }
+
 
   get userNameField() {
     return this.playerRegisterForm.get('userName');
@@ -101,6 +103,8 @@ export class PlayerSignupComponent implements OnInit {
     return this.playerRegisterForm.get('confirmPassword');
   }
 
+
+
   constructor(
     private fb: FormBuilder,
     private batamnTypeService: BatmanTypeService,
@@ -136,9 +140,6 @@ export class PlayerSignupComponent implements OnInit {
       );
   }
 
-  // playerTypeSelection() {
-  //   console.log(this.playerTypeField.value)
-  // }
 
   getBatmanTypeList() {
     this.batamnTypeService.getBatmanTypeList().subscribe(
@@ -175,7 +176,7 @@ export class PlayerSignupComponent implements OnInit {
 
   playerFormSubmit() {
     const profileImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQcUe1moupzaLWXiANaYFIt4jys-rl2OeXwOydel1YWIO22vDW6&usqp=CAU";
-    let user: UserModel = new UserModel(0, this.userNameField.value, this.fullNameField.value, this.nameWithInitialField.value, this.nicField.value, this.contactNumberField.value, 4, this.emailField.value, this.nicField.value, this.addressField.value, new Date(), 0, profileImage);
+    let user: UserModel = new UserModel(0, this.userNameField.value, this.fullNameField.value, this.nameWithInitialField.value, this.nicField.value, this.contactNumberField.value, 4, this.emailField.value, this.passwordField.value, this.addressField.value, new Date(), 0, profileImage);
     let player: PlayerModel = new PlayerModel(0, +this.playerTypeField.value + 1, this.batmanTypeField.value, this.ballerTypeField.value, this.clubField.value, user);
 
     this.playerService.playerSignup(player).subscribe(

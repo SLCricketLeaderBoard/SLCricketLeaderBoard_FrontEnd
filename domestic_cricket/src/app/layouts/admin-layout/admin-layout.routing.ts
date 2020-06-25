@@ -79,8 +79,8 @@ export const AdminLayoutRoutes: Routes = [
   },
   {
     path: "tournament-list/create-match/:tournamentId",
-    component:CreateMatchComponent,
-    canActivate:[RouteGuardService]
+    component: CreateMatchComponent,
+    canActivate: [RouteGuardService]
   },
   {
     path: "stadium-list",
@@ -139,7 +139,7 @@ export const AdminLayoutRoutes: Routes = [
     canActivate: [RouteGuardService],
   },
   {
-    path: "player-add",
+    path: "player-add/:playerId",
     component: PlayerAddComponent,
     canActivate: [RouteGuardService],
   },
@@ -151,11 +151,11 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: "referee-register",
     component: RefereeRegisterComponent,
-    canActivate:[RouteGuardService]
+    canActivate: [RouteGuardService]
   },
   {
     path: "stadium-register",
     component: StadiumRegisterComponent,
-    canActivate:[RouteGuardService]
+    canActivate: [RouteGuardService]
   }
 ];
