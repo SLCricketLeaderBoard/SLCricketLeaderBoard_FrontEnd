@@ -16,6 +16,13 @@
         </div>
         <div class="card-body">
           <app-manager-managers *ngFor="let manager of managers" [manager]="manager" ></app-manager-managers>
+          <div class="container" *ngIf="!managers">
+            <div class="text-center">
+                <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

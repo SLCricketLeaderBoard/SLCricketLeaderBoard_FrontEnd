@@ -6,7 +6,7 @@
         <div class="card-header">
           <div class="row">
           <div class="col-3">
-            <h4 class="card-title">{{tournament.tournamentName}}</h4>
+            <h4 class="card-title" *ngIf="tournament">{{tournament.tournamentName}}</h4>
           </div>
           <div>
             <button (click)="createMatch()" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Register Manager"><i class="fas fa-plus"></i>
@@ -15,6 +15,14 @@
         </div>
         </div>
         <app-match-element *ngFor="let match of matches" [match]="match"></app-match-element>
+        
+              <div class="container" *ngIf="!matches">
+                <div class="text-center">
+                    <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+              </div>
       </div>
     </div>
   </div>

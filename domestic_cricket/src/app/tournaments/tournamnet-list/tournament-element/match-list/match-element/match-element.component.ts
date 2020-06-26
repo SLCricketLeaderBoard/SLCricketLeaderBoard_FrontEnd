@@ -6,6 +6,7 @@ import { UmpireModel } from '../../../../../class-model/UmpireModel';
 import { ClubService } from '../../../../../service/club/club.service';
 import { UmpireService } from '../../../../../service/umpire/umpire.service';
 import { PlayerService } from '../../../../../service/player/player.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-match-element',
@@ -24,7 +25,7 @@ export class MatchElementComponent implements OnInit {
   umpireTwo: UmpireModel
   umpireThree: UmpireModel
   tossWinClub: ClubModel
-  constructor(private clubServie:ClubService,private umpireService:UmpireService,private playerService:PlayerService) { }
+  constructor(private router:Router,private clubServie:ClubService,private umpireService:UmpireService,private playerService:PlayerService,private route:ActivatedRoute) { }
 
   ngOnInit() {
     this.clubServie.getClubData(this.match.clubOneId).subscribe(res=>{
@@ -64,7 +65,11 @@ export class MatchElementComponent implements OnInit {
     //   this.tossWinClub=res;      
     // })
 
+  }
 
+  more(){
+    // tournament-list/view-matches/:tournamentId/match/:matchId
+    this.router.navigate(["match-details",this.match.matchId], { relativeTo: this.route });
   }
 
 

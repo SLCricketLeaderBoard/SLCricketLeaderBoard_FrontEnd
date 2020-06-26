@@ -17,6 +17,13 @@
         </div>
         <div class="card-body">
           <app-referee-list *ngFor="let referee of referees" [referee]="referee" ></app-referee-list>
+          <div class="container" *ngIf="!referees">
+            <div class="text-center">
+                <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -27,7 +27,7 @@ export class ManagerManagersComponent implements OnInit {
 
   more(){
     console.log(this.manager.userId.userId);
-    this.router.navigate(["../user-reset-password",this.manager.userId.userId], { relativeTo: this.route });
+    this.router.navigate(["../user-profile-view",this.manager.userId.userId], { relativeTo: this.route });
   }
 
 

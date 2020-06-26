@@ -15,7 +15,6 @@ import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from "./login/login.component";
 import { HttpIntercepterBasicAuthServiceService } from "./service/user/http-intercepter-basic-auth-service.service";
 import { ManagerService } from "./service/manager/manager.service";
-import { UserComponent } from "./user/user.component";
 import { MaterialModule } from "./material.module";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -25,7 +24,6 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { environment } from "../environments/environment";
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { PlayerSignupComponent } from './player/player-signup/player-signup.component';
-
 
 
 
@@ -53,11 +51,8 @@ import { PlayerSignupComponent } from './player/player-signup/player-signup.comp
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
-    UserComponent,
     PlayerSignupComponent,
     
-   
-   
   ],
   providers: [
     {
