@@ -41,9 +41,11 @@ import { CreateMatchComponent } from '../../tournaments/tournamnet-list/tourname
 import { MatchListComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-list.component';
 import { TournamnetListComponent } from '../../tournaments/tournamnet-list/tournamnet-list.component';
 import { MatchElementComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-element/match-element.component';
-
 import { RefereeListComponent } from '../../referee/referee-list/referee-list.component';
 import { PlayerSelectionComponent } from '../../player/player-selection/player-selection.component';
+import { UserComponent } from '../../user/user.component';
+import { MatchDetailsComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-details/match-details.component';
+
 
 @NgModule({
   imports: [
@@ -97,7 +99,11 @@ import { PlayerSelectionComponent } from '../../player/player-selection/player-s
     TournamentElementComponent,
     TournamnetListComponent,
     MatchElementComponent,
-    PlayerSelectionComponent
+
+    PlayerSelectionComponent,
+    UserComponent,
+    MatchDetailsComponent,
+
 
   ],
 })

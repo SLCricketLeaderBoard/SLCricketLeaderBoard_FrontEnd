@@ -32,6 +32,9 @@ import { TournamnetListComponent } from '../../tournaments/tournamnet-list/tourn
 import { CreateMatchComponent } from '../../tournaments/tournamnet-list/tournament-element/create-match/create-match.component';
 import { MatchListComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-list.component';
 import { PlayerSelectionComponent } from '../../player/player-selection/player-selection.component';
+import { UserComponent } from '../../user/user.component';
+import { MatchDetailsComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-details/match-details.component';
+
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -91,6 +94,11 @@ export const AdminLayoutRoutes: Routes = [
     canActivate: [RouteGuardService]
   },
   {
+    path: "tournament-list/view-matches/:tournamentId/match-details/:matchId",
+    component: MatchDetailsComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
     path: "stadium-list",
     component: StadiumListComponent,
     canActivate: [RouteGuardService],
@@ -112,8 +120,8 @@ export const AdminLayoutRoutes: Routes = [
     canActivate: [RouteGuardService],
   },
   {
-    path: "user-reset-password/:id",
-    component: UserResetPasswordComponent,
+    path: "user-profile-view/:id",
+    component: UserComponent,
     canActivate: [RouteGuardService],
   },
   {

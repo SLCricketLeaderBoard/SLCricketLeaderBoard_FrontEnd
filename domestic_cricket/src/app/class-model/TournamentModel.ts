@@ -4,6 +4,6 @@ export class TournamentModel{
       public tournamentName:String,
       public startDate : Date,
       public endDate:Date,
-      
+      public registartionCloseDate: Date,     
     ){}
 }

@@ -23,12 +23,10 @@ export class RefereeListComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.referee);
-    
   }
 
   more(){
-    console.log(this.referee.userId.userId);
-    this.router.navigate(["../user-reset-password",this.referee.userId.userId], { relativeTo: this.route });
+    this.router.navigate(["../user-profile-view",this.referee.userId.userId], { relativeTo: this.route });
   }
 
 

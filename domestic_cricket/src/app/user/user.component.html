@@ -1,43 +1,177 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card" *ngIf="user">
+        <div class="card-header">
+          <h5 class="title">Profile</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="userProfileFrom" >
+            <div class="row">
+              <div class="col-md-8 pr-1">
+                <div class="form-group">
+                  <label>Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="userName"
+                  />                       
+                </div>
+              </div>
+            </div>
 
-  <div class="card" style="width: 40rem; padding-left: 5px;">
-    <div class="row">
-      <div class="col-4">
-        <img class="profile-image" src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/malecostume-512.png" alt="Card image cap">
-      </div>
-      <div class="col-8">
-        <div class="profile-body">
-          <h4 class="card-title">Mr {{user.nameWithInitial}}</h4>
-          <table>
-            <tr>
-              <td>
-                <b>Eamil</b>
-              </td>
-              <td>
-                {{user.email}}
-              </td>
-            </tr>
-    
-            <tr>
-              <td>
-                <b>Contact</b>
-              </td>
-              <td>
-                {{user.contactNumber}}
-              </td>
-            </tr>
-    
-    
-            <tr>
-              <td>
-                <b>Address</b>
-              </td>
-              <td>
-                {{user.address}}
-              </td>
-            </tr>
-          </table>
-          <a  class="btn btn-primary">more</a>
+            <div class="row">
+              <div class="col-md-8 pr-1">
+                <div class="form-group">
+                  <label>Full name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                   
+                    formControlName="fullName"
+                    
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-8 pr-1">
+                <div class="form-group">
+                  <label>Name with initials</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="nameWithInitials"
+                  />
+
+       
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>NIC</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    
+                    formControlName="nic"
+                   
+                  />
+
+
+                </div>
+              </div>
+
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Contact number</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="contactNumber"
+                  />
+
+
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-8 pr-1">
+                <div class="form-group">
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                   
+                    formControlName="email"
+                    
+                  />
+                  
+
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-8 pr-1">
+                <div class="form-group">
+                  <label>Address</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                   
+                    formControlName="address"
+                    
+                  />
+
+                </div>
+              </div>
+            </div>
+
+          </form>
+
+          
         </div>
       </div>
+
+                  <div class="container" *ngIf="!user" style="margin-top: 20%;">
+                    <div class="text-center">
+                        <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                  </div>
+    
+
+    </div>
+    <div class="col-md-4">
+
+
+                <div class="card card-user" *ngIf="user">
+                  <div class="image">
+                    <img src="../assets/img/bg5.jpg" alt="...">
+                  </div>
+                  <div class="card-body">
+                    <div class="author">
+                      <a href="#">
+                        <img class="avatar border-gray" src="{{user.profileImage}}" alt="...">
+                        <h5 class="title">{{user.userName}}</h5>
+                      </a>
+                    
+                      <p >
+                        {{user.nameWithInitial}}
+                      </p>
+                    </div>
+                    <p class="text-center">
+                      {{user.email}}
+                      <br> {{user.contactNumber}}
+                      <br>{{user.address}}
+                    </p>
+                  </div>
+                  <hr>
+                  <hr>
+                  <div class="button-container">
+                    <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+                      <i class="fab fa-facebook-f"></i>
+                    </button>
+                    <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+                      <i class="fab fa-twitter"></i>
+                    </button>
+                    <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+                      <i class="fab fa-google-plus-g"></i>
+                    </button>
+                  </div>
+
+                    
+                  
+                </div>
     </div>
   </div>
+</div>

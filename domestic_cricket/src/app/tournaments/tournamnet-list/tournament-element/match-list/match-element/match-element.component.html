@@ -1,4 +1,4 @@
-  <div class="card" style="width: 40rem; padding-left: 5px; margin-left: 5%;" >
+  <div *ngIf="match" class="card" style="width: 40rem; padding-left: 5px; margin-left: 5%;" >
     <div class="row">
       <div class="col-12">
         <div class="profile-body">
@@ -8,8 +8,13 @@
               <td>
                 <b>Club 1</b>
               </td>
-              <td>
-                {{club01.clubName}}
+              <td *ngIf="!club01">
+                <div class="spinner-border text-center" role="status" style="width: 2rem; height: 2rem;">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </td>
+              <td *ngIf="club01">
+                {{club01?.clubName}}
               </td>
             </tr>
     
@@ -17,8 +22,8 @@
               <td>
                 <b>club02</b>
               </td>
-              <td>
-                {{club02.clubName}}
+              <td *ngIf="club02">
+                {{club01?.clubName}}
               </td>
             </tr>
     
@@ -27,7 +32,7 @@
               <td>
                 <b>tournament Round</b>
               </td>
-              <td>
+              <td *ngIf="match">
                 {{match.tournementRound}}
               </td>
             </tr>
@@ -37,7 +42,7 @@
               <td>
                 <b>Stadium</b>
               </td>
-              <td>
+              <td *ngIf="match">
                 {{match.stadiumId.name}}
                 <!-- {{manager.userId.}} -->
               </td>
@@ -48,14 +53,13 @@
         </div>
       </div>
     </div>
-
-    <!-- <div class="row"  >
-      <div class="text-center" #loading>
-          <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem; align-items: center;">
-              <span class="sr-only">Loading...</span>
-          </div>
-      </div>
-    </div> -->
-
+    
   </div>
 
+    <div class="container" *ngIf="!match">
+    <div class="text-center">
+        <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+  </div>

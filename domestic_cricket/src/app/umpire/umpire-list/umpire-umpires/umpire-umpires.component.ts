@@ -23,7 +23,7 @@ export class UmpireUmpiresComponent implements OnInit {
 
   more(){
     console.log(this.umpire.userId.userId);
-    this.router.navigate(["../user-reset-password",this.umpire.userId.userId], { relativeTo: this.route });
+    this.router.navigate(["../user-profile-view",this.umpire.userId.userId], { relativeTo: this.route });
   }
 
 }

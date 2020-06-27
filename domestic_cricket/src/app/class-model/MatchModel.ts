@@ -30,5 +30,9 @@ export class MatchModel {
     public umpireTwoId: Number,
     public umpireThreeId: Number,
     public tossWinTeam: Number,
+    public clubOneViceCaptain: Number,
+    public clubTwoViceCaptain: Number,
+    public clubOneKeper: Number,
+    public clubTwoKeper: Number,
   ) { }
 }
