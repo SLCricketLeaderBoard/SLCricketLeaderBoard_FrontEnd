@@ -1,0 +1,142 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">T20 Tournement Registration</h4>
+        </div>
+        <div class="card-body">
+
+          <div class="row">
+
+            <div class="col-md-4">
+
+              <div *ngIf="errorMessage" class="alert alert-danger">
+                <button (click)="close()" type="button" aria-hidden="true" class="close">
+                  <i class="now-ui-icons ui-1_simple-remove"></i>
+                </button>
+                <span>
+                  {{ errorMessage }}
+                </span>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Select Team Players</h5>
+                </div>
+                <div class="card-body">
+
+                  <form class="form myForm" [formGroup]="playerSelectionForm">
+
+                    <div class="row fromRow">
+                      <div class="col-sm-6 col-md-6">
+                        <mat-form-field>
+                          <mat-label>Batmans</mat-label>
+                          <mat-select formControlName="batmans" multiple>
+                            <mat-select-trigger>
+                              {{batmansField.value ? (batmansField.value[0]!=null ? batmansField.value[0].userId.nameWithInitial : '') : ''}}
+                              <span *ngIf="batmansField.value?.length > 1" class="example-additional-selection">
+                                (+{{batmansField.value.length - 1}}
+                                {{batmansField.value?.length === 2 ? 'other' : 'others'}})
+                              </span>
+                            </mat-select-trigger>
+                            <mat-option *ngFor="let batman of batmanList" [value]="batman">
+                              {{batman.userId.nameWithInitial}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                        <div
+                          *ngIf=" playerSelectionForm.get('batmans').invalid && playerSelectionForm.get('batmans').touched">
+                          <small *ngIf="batmansField.errors?.required" class="text-danger">Batmans required</small>
+                          <small *ngIf="(batmansField.value?.length < 3) &&  !batmansField.errors?.required"
+                            class="text-danger">At least 3 batmans
+                            required</small>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                    <div class="row fromRow">
+                      <div class="col-sm-6 col-md-6">
+                        <mat-form-field>
+                          <mat-label>Ballers</mat-label>
+                          <mat-select formControlName="ballers" multiple>
+                            <mat-select-trigger>
+                              {{ballersField.value ? (ballersField.value[0]!=null ? ballersField.value[0].userId.nameWithInitial : '') : ''}}
+                              <span *ngIf="ballersField.value?.length > 1" class="example-additional-selection">
+                                (+{{ballersField.value.length - 1}}
+                                {{ballersField.value?.length === 2 ? 'other' : 'others'}})
+                              </span>
+                            </mat-select-trigger>
+                            <mat-option *ngFor="let baller of ballerList" [value]="baller">
+                              {{baller.userId.nameWithInitial}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                        <div
+                          *ngIf=" playerSelectionForm.get('ballers').invalid && playerSelectionForm.get('ballers').touched">
+                          <small *ngIf="ballersField.errors?.required" class="text-danger">Ballers required</small>
+                          <small *ngIf="(ballersField.value?.length < 3) &&  !ballersField.errors?.required"
+                            class="text-danger">At least 3 ballers
+                            required</small>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row fromRow">
+                      <div class="col-sm-6 col-md-6">
+                        <mat-form-field>
+                          <mat-label>All Rounders</mat-label>
+                          <mat-select formControlName="allRounders" multiple>
+                            <mat-select-trigger>
+                              {{allRoundersField.value ? (allRoundersField.value[0]!=null ? allRoundersField.value[0].userId.nameWithInitial : '') : ''}}
+                              <span *ngIf="allRoundersField.value?.length > 1" class="example-additional-selection">
+                                (+{{allRoundersField.value.length - 1}}
+                                {{allRoundersField.value?.length === 2 ? 'other' : 'others'}})
+                              </span>
+                            </mat-select-trigger>
+                            <mat-option *ngFor="let allRounder of allRounderList" [value]="allRounder">
+                              {{allRounder.userId.nameWithInitial}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                        <div
+                          *ngIf=" playerSelectionForm.get('allRounders').invalid && playerSelectionForm.get('allRounders').touched">
+                          <small *ngIf="ballersField.errors?.required" class="text-danger">Allrounders required</small>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                    <button mat-raised-button (click)="submit()" [disabled]="!playerSelectionForm.valid"
+                      class="btn btn-success btn-round">
+                      Submit
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Player Performance</h5>
+                </div>
+                <div class="card-body">
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

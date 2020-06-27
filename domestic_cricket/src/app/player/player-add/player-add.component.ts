@@ -26,8 +26,10 @@ export class PlayerAddComponent implements OnInit {
   ballerTypeList: BallerTypeModel[] = [];
 
   selectPlayerType: String = '';
-  selectBallerType: String = '';
-  selectBatmanType: String = '';
+  selectBallerType: BallerTypeModel;
+  selectBatmanType: BatmanTypeModel;
+
+  isDataLoad: Boolean = false;
 
   swalMessage: SwalMessage = new SwalMessage();
   errorMessage: string = "";
@@ -41,7 +43,7 @@ export class PlayerAddComponent implements OnInit {
     address: ['', [Validators.required]],
     playerType: ['', [Validators.required]],
     batmanType: ['', [Validators.required]],
-    ballerType: ['', [Validators.required]]
+    ballerType: ['', [Validators.required]],
   });
 
 
@@ -112,11 +114,13 @@ export class PlayerAddComponent implements OnInit {
         this.contactNumberField.setValue(this.playerData.userId.contactNumber);
         this.ballerTypeField.setValue(this.playerData.ballerTypeId);
         this.batmanTypeField.setValue(this.playerData.batmanTypeId);
-        this.playerTypeField.setValue(this.playerData.specialType);
+        this.playerTypeField.setValue(+this.playerData.specialType - 1);
 
-        this.selectBallerType = this.playerData.ballerTypeId.type;
-        this.selectBatmanType = this.playerData.batmanTypeId.type;
+        this.selectBallerType = this.playerData.ballerTypeId;
+        this.selectBatmanType = this.playerData.batmanTypeId;
         this.selectPlayerType = this.playerTypeList[+this.playerData.specialType - 1];
+
+        this.isDataLoad = true;
       },
       error => {
         console.log(error);
@@ -147,10 +151,10 @@ export class PlayerAddComponent implements OnInit {
   }
 
   playerFormSubmit() {
+    console.log(this.playerTypeField)
     const profileImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQcUe1moupzaLWXiANaYFIt4jys-rl2OeXwOydel1YWIO22vDW6&usqp=CAU";
     let user: UserModel = new UserModel(this.playerData.userId.userId, this.playerData.userId.userName, this.fullNameField.value, this.nameWithInitialField.value, this.nicField.value, this.contactNumberField.value, 4, this.emailField.value, this.playerData.userId.password, this.addressField.value, new Date(), 1, profileImage);
     let player: PlayerModel = new PlayerModel(this.playerData.playerId, +this.playerTypeField.value + 1, this.batmanTypeField.value, this.ballerTypeField.value, this.playerData.clubId, user);
-
 
     this.playerService.playerUpdate(player).subscribe(
       response => {

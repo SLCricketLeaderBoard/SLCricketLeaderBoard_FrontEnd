@@ -4,7 +4,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">{{playerData.userId.nameWithInitial}}'s Form</h4>
+          <h4 *ngIf="playerData!=null" class="card-title">{{playerData.userId.nameWithInitial}}'s Form</h4>
         </div>
         <div class="card-body">
           <div class="row">
@@ -28,7 +28,7 @@
                   </div>
 
                   <form [formGroup]="playerRegisterForm" (ngSubmit)="playerFormSubmit()">
-                    <div class="row">
+                    <div *ngIf="isDataLoad" class="row">
 
 
                       <div class="col-sm-12 col-lg-12">
@@ -121,7 +121,7 @@
                         <select
                           [class.is-invalid]=" playerRegisterForm.get('playerType').invalid && playerRegisterForm.get('playerType').touched"
                           class="form-control" formControlName="playerType">
-                          <option disabled [ngValue]="playerTypeField.value">{{selectPlayerType}}</option>
+                          <option disabled [ngValue]="null">{{selectPlayerType}}</option>
                           <option *ngFor="let player of playerTypeList; let i=index;" [ngValue]="i">{{ player }}
                           </option>
                         </select>
@@ -136,7 +136,7 @@
                         <select
                           [class.is-invalid]=" playerRegisterForm.get('batmanType').invalid && playerRegisterForm.get('batmanType').touched"
                           class="form-control" formControlName="batmanType">
-                          <option disabled [ngValue]="batmanTypeField.value">{{selectBatmanType}}</option>
+                          <option disabled [ngValue]="selectBatmanType">{{selectBatmanType.type}}</option>
                           <option *ngFor="let batman of batmanTypeList" [ngValue]="batman">{{ batman.type }}</option>
                         </select>
                         <div
@@ -150,7 +150,7 @@
                         <select
                           [class.is-invalid]=" playerRegisterForm.get('ballerType').invalid && playerRegisterForm.get('ballerType').touched"
                           class="form-control" formControlName="ballerType">
-                          <option disabled [ngValue]="ballerTypeField.value">{{selectBallerType}}</option>
+                          <option disabled [ngValue]="selectBallerType">{{selectBallerType.type}}</option>
                           <option *ngFor="let baller of ballerTypeList" [ngValue]="baller">{{ baller.type }}</option>
                         </select>
                         <div

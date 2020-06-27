@@ -43,6 +43,7 @@ import { TournamnetListComponent } from '../../tournaments/tournamnet-list/tourn
 import { MatchElementComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-element/match-element.component';
 
 import { RefereeListComponent } from '../../referee/referee-list/referee-list.component';
+import { PlayerSelectionComponent } from '../../player/player-selection/player-selection.component';
 
 @NgModule({
   imports: [
@@ -91,12 +92,13 @@ import { RefereeListComponent } from '../../referee/referee-list/referee-list.co
     RefereeComponent,
     ProfileImageComponent,
     StadiumRegisterComponent,
-    LiveMatchComponent, 
+    LiveMatchComponent,
     RefereeListComponent,
-    TournamentElementComponent, 
+    TournamentElementComponent,
     TournamnetListComponent,
-    MatchElementComponent
+    MatchElementComponent,
+    PlayerSelectionComponent
 
   ],
 })
-export class AdminLayoutModule {}
+export class AdminLayoutModule { }

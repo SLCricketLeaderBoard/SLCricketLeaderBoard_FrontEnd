@@ -55,9 +55,10 @@ import { PlayerSignupComponent } from './player/player-signup/player-signup.comp
     LoginComponent,
     UserComponent,
     PlayerSignupComponent,
-    
-   
-   
+
+
+
+
   ],
   providers: [
     {
@@ -70,4 +71,4 @@ import { PlayerSignupComponent } from './player/player-signup/player-signup.comp
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

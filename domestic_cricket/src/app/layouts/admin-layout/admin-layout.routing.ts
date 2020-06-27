@@ -31,6 +31,7 @@ import { RefereeListComponent } from '../../referee/referee-list/referee-list.co
 import { TournamnetListComponent } from '../../tournaments/tournamnet-list/tournamnet-list.component';
 import { CreateMatchComponent } from '../../tournaments/tournamnet-list/tournament-element/create-match/create-match.component';
 import { MatchListComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-list.component';
+import { PlayerSelectionComponent } from '../../player/player-selection/player-selection.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -170,6 +171,12 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: "referee-list-list",
     component: RefereeListComponent,
+    canActivate: [RouteGuardService]
+
+  },
+  {
+    path: "player-selection/:tournementId",
+    component: PlayerSelectionComponent,
     canActivate: [RouteGuardService]
 
   }
