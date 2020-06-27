@@ -40,6 +40,7 @@ export const ROUTES: RouteInfo[] = [
   },
 
   { path: "/club-list", title: "Clubs", icon: "design_app", class: "" },
+  { path: "/manager-tournament-list", title: "Tournaments", icon: "design_app", class: "" },
 ];
 
 @Component({
@@ -57,7 +58,7 @@ export class SidebarComponent implements OnInit {
   player: any[]; //(role=3)
   referee: any[]; //(role=4)
 
-  constructor(private clubService: ClubService) {}
+  constructor(private clubService: ClubService) { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter((menuItem) => menuItem);
@@ -65,11 +66,11 @@ export class SidebarComponent implements OnInit {
     this.admin = [
       { path: "/dashboard", title: "Dashboard", icon: "design_app", class: "" },
       { path: "/club-list", title: "Clubs", icon: "design_app", class: "" },
-      { path: "/manager-list", title: "Managers", icon: "design_app",class: "",},
+      { path: "/manager-list", title: "Managers", icon: "design_app", class: "", },
       { path: "/umpire-list", title: "Umpires", icon: "design_app", class: "" },
-      { path: '/referee-list', title: "Referees", icon: "design_app", class: ""},
+      { path: '/referee-list', title: "Referees", icon: "design_app", class: "" },
       { path: "/stadium-register", title: "Stadiums", icon: "design_app", class: "" },
-	   { path: "/tournament-list", title: "Tournament", icon: "design_app", class: "" },
+      { path: "/tournament-list", title: "Tournament", icon: "design_app", class: "" },
     ];
 
     this.manager = [
@@ -77,9 +78,9 @@ export class SidebarComponent implements OnInit {
       { path: "/club-details", title: "Club", icon: "design_app", class: "" },
       { path: "/player-list", title: "Players", icon: "design_app", class: "" },
       { path: "/match-list", title: "Matches", icon: "design_app", class: "" },
-	   { path: "/tournament-list", title: "Tournament", icon: "design_app", class: "" },
+      { path: "/manager-tournament-list", title: "Tournaments", icon: "design_app", class: "" },
     ];
-    
+
   }
   isMobileMenu() {
     if (window.innerWidth > 991) {

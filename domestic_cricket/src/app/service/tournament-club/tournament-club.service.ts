@@ -16,5 +16,9 @@ export class TournamentClubService {
   //   return this.http.post<TournamentClubModel>(`${API_URL}/tournamentclub/${clubId}/${tournamentId}`, {});
   // }
 
+  getClubRegisteredTournaments(clubId: Number) {
+    return this.http.get<TournamentClubModel[]>(`${API_URL}/tournamentclub/registered/${clubId}`, {});
+  }
+
 
 }

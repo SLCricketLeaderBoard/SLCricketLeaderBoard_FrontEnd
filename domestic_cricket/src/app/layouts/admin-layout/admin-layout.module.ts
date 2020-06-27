@@ -45,6 +45,7 @@ import { RefereeListComponent } from '../../referee/referee-list/referee-list.co
 import { PlayerSelectionComponent } from '../../player/player-selection/player-selection.component';
 import { UserComponent } from '../../user/user.component';
 import { MatchDetailsComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-details/match-details.component';
+import { ManagerTournamentListComponent } from '../../tournaments/manager-tournament-list/manager-tournament-list.component';
 
 
 @NgModule({
@@ -103,6 +104,7 @@ import { MatchDetailsComponent } from '../../tournaments/tournamnet-list/tournam
     PlayerSelectionComponent,
     UserComponent,
     MatchDetailsComponent,
+    ManagerTournamentListComponent
 
 
   ],
