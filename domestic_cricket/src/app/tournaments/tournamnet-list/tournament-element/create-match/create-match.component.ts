@@ -172,6 +172,10 @@ export class CreateMatchComponent implements OnInit {
     const umpire2Id: Number = this.createMatch.value['umpire02'];
     const umpire3Id: Number = this.createMatch.value['umpire03'];
     const tossWinTeam: Number = 0;
+    const clubOneViceCaptain: Number = 0;
+    const clubTwoViceCaptain: Number = 0;
+    const clubOneKeper: Number = 0;
+    const clubTwoKeper: Number = 0; 
 
 
 
@@ -199,7 +203,11 @@ export class CreateMatchComponent implements OnInit {
       umpire1Id,
       umpire2Id,
       umpire3Id,
-      tossWinTeam
+      tossWinTeam,
+      clubOneViceCaptain,
+      clubTwoViceCaptain,
+      clubOneKeper,
+      clubTwoKeper
     );
 
      
