@@ -84,17 +84,17 @@ export class CreateMatchComponent implements OnInit {
     this.route.params.subscribe(res => {
       this.tournamentId = res['tournamentId'];
       this.tournamentService.getTournamentById(this.tournamentId).subscribe(res => {
-        console.log(res);
+        // console.log(res);
         this.tournament = res;
 
       })
     })
 
 
-    this.clubService.getClubs(1).subscribe(
+    this.clubService.getClubsForMatches(this.tournamentId).subscribe(
       response => {
         this.clubList = response;
-        // console.log(response);
+        console.log(response);
       },
       error => {
         console.log(error);
@@ -176,7 +176,7 @@ export class CreateMatchComponent implements OnInit {
     const clubTwoViceCaptain: Number = 0;
     const clubOneKeper: Number = 0;
     const clubTwoKeper: Number = 0; 
-
+    const manOfTheMatch: Number =0;
 
 
 
@@ -207,7 +207,8 @@ export class CreateMatchComponent implements OnInit {
       clubOneViceCaptain,
       clubTwoViceCaptain,
       clubOneKeper,
-      clubTwoKeper
+      clubTwoKeper,
+      manOfTheMatch
     );
 
      

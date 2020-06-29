@@ -36,4 +36,11 @@ export class MatchService {
   createMatchInfirebase(match:MatchModel){
    return this.afs.collection('tournaments').doc(`${match.tournamentId.tournamentId}`).collection('matches').doc(`${match.matchId}`).set(match);
   }
+
+  getMatchById(matchId:Number){
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization',jwt);
+    return this.http.get<MatchModel>(`${API_URL}/match/${matchId}`,{headers});
+
+  }
 }
