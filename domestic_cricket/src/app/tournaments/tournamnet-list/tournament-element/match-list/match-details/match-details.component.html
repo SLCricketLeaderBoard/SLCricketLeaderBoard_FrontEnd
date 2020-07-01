@@ -141,6 +141,17 @@
               </table>
               <hr>
               <h4>Players</h4>
+              <table *ngIf="club1Players let players">
+                <tr *ngFor="let player of players">
+                    <td>
+                      Name
+                    </td>
+                    <td>
+                      {{player.userId.userName}}
+                    </td>
+                </tr>
+
+              </table>
             </div>
             <div class="col-5 card" style="padding: 2%; margin-left: 2%;">
               <h3>Team 02</h3>
@@ -161,114 +172,126 @@
               </table>
               <hr>
               <H4>Players</H4>
+
+              <table *ngIf="club2Players let players">
+                <tr *ngFor="let player of players">
+                    <td>
+                      Name
+                    </td>
+                    <td>
+                      {{player.userId.userName}}
+                    </td>
+                </tr>
+
+              </table>
             </div>
+          </div>
+ 
+
+          <div class="row" style="margin-top: 5%; padding: 1%;">
+                <div class="col-12">
+                  <h3>Umpires</h3>
+                </div>
+                        <div class="col-12">
+                                      <div class="row">
+                                        <div class="col-3" *ngIf="umpireOne">
+                                          <h5>1 st</h5>
+                                            <div class="card card-user">
+                                              <div class="card-body">
+                                                <div class="author">
+                                                    <img class="avatar border-gray" src="{{umpireOne.userId.profileImage}}" alt="...">
+                                                    <h5 class="title">{{umpireOne.userId.userName}}</h5>
+                                                
+                                                  <p >
+                                                    {{umpireOne.userId.nameWithInitial}}
+                                                  </p>
+                                                </div>
+                                                <p class="text-center">
+                                                  {{umpireOne.userId.email}}
+                                                  <br> {{umpireOne.userId.contactNumber}}
+                                                  <br>{{umpireOne.userId.address}}
+                                                </p>
+                                              </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-3" *ngIf="umpireTwo">
+                                          <h5>2 nd</h5>
+                                            <div class="card card-user">
+                                              <div class="card-body">
+                                                <div class="author">
+                                                    <img class="avatar border-gray" src="{{umpireTwo.userId.profileImage}}" alt="...">
+                                                    <h5 class="title">{{umpireTwo.userId.userName}}</h5>
+                                                
+                                                  <p >
+                                                    {{umpireTwo.userId.nameWithInitial}}
+                                                  </p>
+                                                </div>
+                                                <p class="text-center">
+                                                  {{umpireTwo.userId.email}}
+                                                  <br> {{umpireTwo.userId.contactNumber}}
+                                                  <br>{{umpireTwo.userId.address}}
+                                                </p>
+                                              </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-3"  *ngIf="umpireThree" >
+                                          <h5>3 rd</h5>
+                                            <div class="card card-user" >
+                                              <div class="card-body">
+                                                <div class="author">
+                                                    <img class="avatar border-gray" src="{{umpireThree.userId.profileImage}}" alt="...">
+                                                    <h5 class="title">{{umpireThree.userId.userName}}</h5>
+                                                
+                                                  <p >
+                                                    {{umpireThree.userId.nameWithInitial}}
+                                                  </p>
+                                                </div>
+                                                <p class="text-center">
+                                                  {{umpireThree.userId.email}}
+                                                  <br> {{umpireThree.userId.contactNumber}}
+                                                  <br>{{umpireThree.userId.address}}
+                                                </p>
+                                              </div>
+                                            </div>
+                                        </div>
+                           </div>
+                  </div>
           </div>
 
 
-
-          <hr>
-
-
-
-          <h4><b>Umpires</b></h4>
-
-          <hr>
-
-          <div class="row">
-                    <div class="col-3">
-                      <h5>1 st</h5>
-                        <div class="card card-user">
-                          <div class="card-body">
-                            <div class="author">
-                                <img class="avatar border-gray" src="{{umpireOne.userId.profileImage}}" alt="...">
-                                <h5 class="title">{{umpireOne.userId.userName}}</h5>
-                            
-                              <p >
-                                {{umpireOne.userId.nameWithInitial}}
-                              </p>
-                            </div>
-                            <p class="text-center">
-                              {{umpireOne.userId.email}}
-                              <br> {{umpireOne.userId.contactNumber}}
-                              <br>{{umpireOne.userId.address}}
-                            </p>
-                          </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-3">
-                      <h5>2 nd</h5>
-                        <div class="card card-user">
-                          <div class="card-body">
-                            <div class="author">
-                                <img class="avatar border-gray" src="{{umpireTwo.userId.profileImage}}" alt="...">
-                                <h5 class="title">{{umpireTwo.userId.userName}}</h5>
-                            
-                              <p >
-                                {{umpireTwo.userId.nameWithInitial}}
-                              </p>
-                            </div>
-                            <p class="text-center">
-                              {{umpireTwo.userId.email}}
-                              <br> {{umpireTwo.userId.contactNumber}}
-                              <br>{{umpireTwo.userId.address}}
-                            </p>
-                          </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-3">
-                      <h5>3 rd</h5>
-                        <div class="card card-user">
-                          <div class="card-body">
-                            <div class="author">
-                                <img class="avatar border-gray" src="{{umpireThree.userId.profileImage}}" alt="...">
-                                <h5 class="title">{{umpireThree.userId.userName}}</h5>
-                            
-                              <p >
-                                {{umpireThree.userId.nameWithInitial}}
-                              </p>
-                            </div>
-                            <p class="text-center">
-                              {{umpireThree.userId.email}}
-                              <br> {{umpireThree.userId.contactNumber}}
-                              <br>{{umpireThree.userId.address}}
-                            </p>
-                          </div>
-                        </div>
-                    </div>
-
-          </div>
-                 
-          <hr>
-
-          <h4><b>Referee</b></h4>
-
-          <hr>
-            <div class="row">
-                    <div class="col-3">
-                        <div class="card card-user">
-                          <div class="card-body">
-                            <div class="author">
-                                <img class="avatar border-gray" src="{{match.refereeId.userId.profileImage}}" alt="...">
-                                <h5 class="title">{{match.refereeId.userId.userName}}</h5>
-                            
-                              <p >
-                                {{match.refereeId.userId.nameWithInitial}}
-                              </p>
-                            </div>
-                            <p class="text-center">
-                              {{match.refereeId.userId.email}}
-                              <br> {{match.refereeId.userId.contactNumber}}
-                              <br>{{match.refereeId.userId.address}}
-                            </p>
-                          </div>
-                        </div>
-                    </div>
+          
+          <div class="row" style="margin-top: 5%; padding: 1%;">
+            <div class="col-12">
+              <h3>Referee</h3>
             </div>
-            
+                    <div class="col-12">
+                                  <div class="row">
+                                          <div class="col-3" *ngIf="match.refereeId">
+                                              <div class="card card-user">
+                                                <div class="card-body">
+                                                  <div class="author">
+                                                      <img class="avatar border-gray" src="{{match.refereeId.userId.profileImage}}" alt="...">
+                                                      <h5 class="title">{{match.refereeId.userId.userName}}</h5>
+                                                  
+                                                    <p >
+                                                      {{match.refereeId.userId.nameWithInitial}}
+                                                    </p>
+                                                  </div>
+                                                  <p class="text-center">
+                                                    {{match.refereeId.userId.email}}
+                                                    <br> {{match.refereeId.userId.contactNumber}}
+                                                    <br>{{match.refereeId.userId.address}}
+                                                  </p>
+                                                </div>
+                                              </div>
+                                          </div>
+                                  </div>
+                         </div>
+            </div>
           </div>
 
         </div>

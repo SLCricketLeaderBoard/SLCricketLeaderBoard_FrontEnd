@@ -32,9 +32,9 @@ interface Food {
 export class CreateMatchComponent implements OnInit {
 
   foods: Food[] = [
-    { value: 'steak-0', viewValue: 'Asass' },
-    { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' }
+    { value: 'Dialog', viewValue: 'Dialog' },
+    { value: 'Abans', viewValue: 'Abans' },
+    { value: 'Pick me', viewValue: 'Pick me' }
   ];
 
   clubList: ClubModel[] = [];
@@ -73,7 +73,7 @@ export class CreateMatchComponent implements OnInit {
       umpire01: new FormControl(null, [Validators.required]),
       umpire02: new FormControl(null, [Validators.required]),
       umpire03: new FormControl(null, [Validators.required]),
-      sponser: new FormControl(null, [Validators.required])
+      // sponser: new FormControl(null, [Validators.required])
     },{
       validators: [ConfirmedValidator('club01','club02'),
       UmpireValidator('umpire01','umpire02','umpire03'),
@@ -163,7 +163,7 @@ export class CreateMatchComponent implements OnInit {
     const finishDate: Date = this.createMatch.value['endDate'];
     const startTime: Timestamp<Time> = this.createMatch.value['time'];
     const winTeamId: Number = 0;
-    const sponser: String = this.createMatch.value['sponser'];
+    const sponser: String = "Dialog"
     const matchTypeId: MatchType = this.createMatch.value['matchType'];
     const tournamentId: TournamentModel = this.tournament;
     const stadiumId: StadiumModel = this.createMatch.value['stadium'];
@@ -241,13 +241,7 @@ export class CreateMatchComponent implements OnInit {
        console.log(error.message);
        this.errorMessage=error.message
        this.done= false; 
-     })
-    
-    
-     
-     
+     }) 
     }
-
-  
 
 }

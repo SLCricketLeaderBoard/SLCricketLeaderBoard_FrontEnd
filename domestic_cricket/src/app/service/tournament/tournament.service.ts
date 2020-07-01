@@ -30,4 +30,16 @@ export class TournamentService {
     const headers = new HttpHeaders().set('Authorization',jwt);
     return this.http.get<TournamentModel>(`${API_URL}/tournament/${tournamentId}`,{headers});
   }
+
+  getRegistrationOpenTournaments():Observable<TournamentModel[]>{
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization',jwt);
+    return this.http.get<TournamentModel[]>(`${API_URL}/tournaments/registrationOpened`,{headers});
+  }
+
+  getRegistrationClosedTournaments():Observable<TournamentModel[]>{
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization',jwt);
+    return this.http.get<TournamentModel[]>(`${API_URL}/tournaments/registrationClosed`,{headers});
+  }
 }

@@ -36,6 +36,9 @@ export class MatchDetailsComponent implements OnInit {
   currentDate : Date
   state:any
 
+  club1Players: PlayerModel[]
+  club2Players: PlayerModel[]
+
   constructor(private route: ActivatedRoute,private matchService:MatchService,private clubService:ClubService,private playerService:PlayerService,private umpireService:UmpireService,private refreeService:RefereeService) {
     
     this.currentDate = new Date();
@@ -61,18 +64,18 @@ export class MatchDetailsComponent implements OnInit {
 
 
                   this.clubService.getClubData(this.match.clubOneId).subscribe(res=>{
-                    console.log(res);
+                    
                     this.club01=res;
                   })
 
                   
                   this.clubService.getClubData(this.match.clubTwoId).subscribe(res=>{
-                    console.log(res);
+                   
                     this.club02=res;
                   })
 
                   this.clubService.getClubData(this.match.tossWinTeam).subscribe(res=>{
-                    console.log(res);
+                   
                     this.tossWinTeam=res;
                   },error=>{
                     console.log(error);
@@ -81,7 +84,7 @@ export class MatchDetailsComponent implements OnInit {
 
 
                   this.clubService.getClubData(this.match.winTeamId).subscribe(res=>{
-                    console.log(res);
+                    
                     this.winTeamId=res;
                   },error=>{
                     console.log(error);
@@ -89,7 +92,7 @@ export class MatchDetailsComponent implements OnInit {
                   })
 
                   this.playerService.getPlayer(this.match.captainClubOne).subscribe(res=>{
-                    console.log(res);
+                   
                     this.captainClubOne=res;
                   },error=>{
                     console.log(error);
@@ -97,7 +100,7 @@ export class MatchDetailsComponent implements OnInit {
                   })
 
                   this.playerService.getPlayer(this.match.captainClubTwo).subscribe(res=>{
-                    console.log(res);
+                   
                     this.captainClubTwo=res;
                   },error=>{
                     console.log(error);
@@ -106,7 +109,7 @@ export class MatchDetailsComponent implements OnInit {
 
 
                   this.playerService.getPlayer(this.match.clubOneViceCaptain).subscribe(res=>{
-                    console.log(res);
+                    
                     this.clubOneViceCaptain=res;
                   },error=>{
                     console.log(error);
@@ -115,7 +118,7 @@ export class MatchDetailsComponent implements OnInit {
 
 
                   this.playerService.getPlayer(this.match.clubTwoViceCaptain).subscribe(res=>{
-                    console.log(res);
+                    
                     this.clubTwoViceCaptain=res;
                   },error=>{
                     console.log(error);
@@ -123,7 +126,7 @@ export class MatchDetailsComponent implements OnInit {
                   })
 
                   this.playerService.getPlayer(this.match.clubOneKeper).subscribe(res=>{
-                    console.log(res);
+                    
                     this.clubOneKeper=res;
                   },error=>{
                     console.log(error);
@@ -132,7 +135,7 @@ export class MatchDetailsComponent implements OnInit {
 
 
                   this.playerService.getPlayer(this.match.clubTwoKeper).subscribe(res=>{
-                    console.log(res);
+                    
                     this.clubTwoKeper=res;
                   },error=>{
                     console.log(error);
@@ -141,7 +144,7 @@ export class MatchDetailsComponent implements OnInit {
 
 
                   this.playerService.getPlayer(this.match.manOfTheMatch).subscribe(res=>{
-                    console.log(res);
+                    
                     this.manOfTheMatch=res;
                   },error=>{
                     console.log(error);
@@ -149,7 +152,7 @@ export class MatchDetailsComponent implements OnInit {
                   })
 
                   this.umpireService.getUmpire(this.match.umpireOneId).subscribe(res=>{
-                    console.log(res);
+                   
                     this.umpireOne=res;
                   },error=>{
                     console.log(error);
@@ -158,7 +161,7 @@ export class MatchDetailsComponent implements OnInit {
 
 
                   this.umpireService.getUmpire(this.match.umpireTwoId).subscribe(res=>{
-                    console.log(res);
+                   
                     this.umpireTwo=res;
                   },error=>{
                     console.log(error);
@@ -166,13 +169,23 @@ export class MatchDetailsComponent implements OnInit {
                   })
 
                   this.umpireService.getUmpire(this.match.umpireThreeId).subscribe(res=>{
-                    console.log(res);
+                   
                     this.umpireThree=res;
                   },error=>{
                     console.log(error);
                     
                   })
 
+                  this.matchService.getSelectedPlayerForMatch(this.match.matchId,this.match.clubOneId).subscribe(res=>{
+                    console.log(res);
+                    this.club1Players=res;
+                  })
+
+
+                  this.matchService.getSelectedPlayerForMatch(this.match.matchId,this.match.clubTwoId).subscribe(res=>{
+                    console.log(res);
+                    this.club2Players=res;
+                  })
 
       })
     })
@@ -180,6 +193,7 @@ export class MatchDetailsComponent implements OnInit {
    }
 
   ngOnInit() {
+
 
   }
 

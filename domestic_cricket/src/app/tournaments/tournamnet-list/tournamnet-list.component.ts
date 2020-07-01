@@ -12,14 +12,21 @@ import { TournamentService } from '../../service/tournament/tournament.service';
 })
 export class TournamnetListComponent implements OnInit {
 
-   tournaments:TournamentModel[]=[];
+   registrationOpenTournaments:TournamentModel[]=[];
+   registrationClosedTournaments:TournamentModel[]=[];
 
   constructor(private router: Router, private route: ActivatedRoute,private tournamentService:TournamentService) { 
 
-    this.tournamentService.getTournaments().subscribe(res=>{
+    this.tournamentService.getRegistrationOpenTournaments().subscribe(res=>{
       console.log("tournemenst");
       console.log(res);
-      this.tournaments= res;
+      this.registrationOpenTournaments= res;
+    })
+
+    this.tournamentService.getRegistrationClosedTournaments().subscribe(res=>{
+      console.log("tournemenst");
+      console.log(res);
+      this.registrationClosedTournaments= res;
     })
   }
 

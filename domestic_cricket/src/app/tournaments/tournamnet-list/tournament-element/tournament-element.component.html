@@ -1,5 +1,5 @@
 
-  <div class="card" style="width: 40rem; padding-left: 5px;">
+  <div class="card" style="width: 40rem; padding: 1%;">
     <div class="row">
       <div class="col-8">
         <div class="profile-body">
@@ -10,7 +10,8 @@
                 <b>Start Date</b>
               </td>
               <td>
-                {{tournement.startDate}}
+                <!-- {{ dateObj | date }}  -->
+                :  {{tournement.startDate| date}}
               </td>
             </tr>
     
@@ -19,16 +20,15 @@
                 <b>End Date</b>
               </td>
               <td>
-                {{tournement.endDate}}
+                :  {{tournement.endDate| date}}
               </td>
             </tr>
           </table>
           <a  class="btn btn-primary" >more</a>
-          <button (click)="createMatch()" class="btn btn-success" data-toggle="tooltip" data-placement="right" title="New Match">Create Match
-          </button>
-
-          <button (click)="viewMatches()" class="btn btn-success" data-toggle="tooltip" data-placement="right" title="New Match">View Matches
-          </button>
+                  <button (click)="createMatch()" *ngIf="active"  class="btn btn-success" data-toggle="tooltip" data-placement="right" title="New Match">Create Match
+                  </button>
+                  <button (click)="viewMatches()" *ngIf="active" class="btn btn-success" data-toggle="tooltip" data-placement="right" title="New Match">View Matches
+                  </button>   
         </div>
       </div>
     </div>
