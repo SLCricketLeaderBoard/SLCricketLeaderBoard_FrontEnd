@@ -1,0 +1,100 @@
+<div class="panel-header panel-header-sm"></div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">{{ mainTitle }}</h4>
+        </div>
+        <div class="card-body">
+          <div *ngIf="errorMessage" class="alert alert-danger">
+            <button (click)="close()" type="button" aria-hidden="true" class="close">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </button>
+            <span>
+              {{ errorMessage }}
+            </span>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">{{ formTitle }}</h5>
+                </div>
+                <div class="card-body">
+                  <form [formGroup]="tournamentRegisterFrom" (ngSubmit)="tournamentFormSubmit()">
+                    <div class="row">
+                      <div class="col-sm-12 col-lg-12">
+                        <div class="form-group">
+                          <input [class.is-invalid]="
+                          tournamentRegisterFrom.get('tournamentName').invalid &&
+                          tournamentRegisterFrom.get('tournamentName').touched
+                            " formControlName="tournamentName" type="text" name="tournament" placeholder="Tournament Name"
+                            class="form-control" />
+                          <div *ngIf="
+                          tournamentRegisterFrom.get('tournamentName').invalid &&
+                          tournamentRegisterFrom.get('tournamentName').touched
+                            ">
+                            <small *ngIf="tournamentNameField.errors?.required" class="text-danger">Tournament Name Required</small>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-lg-12">
+                        <div class="form-group">
+                          <input [class.is-invalid]="
+                          tournamentRegisterFrom.get('tournamentId').invalid &&
+                          tournamentRegisterFrom.get('tournamentId').touched
+                            " formControlName="tournamentId" type="text" name="id" placeholder="Tournament Id"
+                            class="form-control" />
+                          <div *ngIf="
+                          tournamentRegisterFrom.get('tournamentId').invalid &&
+                          tournamentRegisterFrom.get('tournamentId').touched
+                            ">
+                            <small *ngIf="addressField.errors?.required" class="text-danger">Tournament Id 
+                              Required</small>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-12 col-lg-6">
+                        <div class="form-group">
+                          <p>
+                            <mat-form-field class="example-full-width">
+                              <mat-label>End Date</mat-label>
+                              <input matInput [matDatepicker]="end" formControlName="tournamentName">
+                              <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+                              <mat-datepicker #end disabled="false"></mat-datepicker>
+                            </mat-form-field>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-lg-6">
+                        <div class="form-group">
+                          <p>
+                            <mat-form-field class="example-full-width">
+                              <mat-label>End Date</mat-label>
+                              <input matInput [matDatepicker]="end" formControlName="tournamentName">
+                              <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+                              <mat-datepicker #end disabled="false"></mat-datepicker>
+                            </mat-form-field>
+                          </p>
+                        </div>
+                      </div>
+                      <button id="submit-button" type="submit" class="btn btn-success btn-round"
+                        [disabled]="!clubRegisterFrom.valid">
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
