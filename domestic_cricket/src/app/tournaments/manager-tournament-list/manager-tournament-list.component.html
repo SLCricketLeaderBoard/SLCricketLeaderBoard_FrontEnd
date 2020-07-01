@@ -1,0 +1,62 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Tornament List</h4>
+        </div>
+        <div class="card-body">
+
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title">Upcoming Tournaments</h5>
+            </div>
+            <div class="card-body">
+
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title">Registered Tournaments</h5>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="text-secondary">
+                    <th></th>
+                    <th>Tournament Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Registration Close Date</th>
+                    <th>Option</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let tournamentClub of registeredTournaments; let i = index">
+                      <td>{{ i + 1 }})</td>
+                      <td>{{ tournamentClub.tournamentId.tournamentName }}</td>
+                      <td>{{ tournamentClub.tournamentId.startDate }}</td>
+                      <td>{{ tournamentClub.tournamentId.endDate }}</td>
+                      <td>{{tournamentClub.tournamentId.registrationClosingDate}}</td>
+
+                      <td class="text-right">
+                        <a (click)="playerUpdate(player.playerId)"><button type="button" class="btn btn-info btn-sm"
+                            title="Update">
+                            <i class="fas fa-edit"></i></button></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
