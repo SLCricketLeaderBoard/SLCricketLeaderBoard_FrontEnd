@@ -27,18 +27,15 @@ export class UserComponent implements OnInit {
       this.userId = res['id'];
       console.log(this.userId);
     })
-
-
     this.userProfileFrom = this.formBuilder.group({
-      userName: new FormControl("", Validators.required),
-      fullName: new FormControl("", Validators.required),
-      nameWithInitials: new FormControl("", Validators.required),
-      nic: new FormControl("", [Validators.required,]),
-      contactNumber: new FormControl("", [Validators.required]),
-      email: new FormControl("", Validators.required),
-      address: new FormControl("", Validators.required),
+      userName: new FormControl({ value: null, disabled: true }),
+      fullName: new FormControl({ value: null, disabled: true }),
+      nameWithInitials: new FormControl({ value: null, disabled: true }),
+      nic: new FormControl({ value: null, disabled: true }),
+      contactNumber: new FormControl({ value: null, disabled: true }),
+      email: new FormControl({ value: null, disabled: true }),
+      address: new FormControl({ value: null, disabled: true }),
     });
-
   }
 
   ngOnInit() {
