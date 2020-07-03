@@ -35,6 +35,7 @@ import { PlayerSelectionComponent } from '../../player/player-selection/player-s
 import { UserComponent } from '../../user/user.component';
 import { MatchDetailsComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-details/match-details.component';
 import { ManagerTournamentListComponent } from '../../tournaments/manager-tournament-list/manager-tournament-list.component';
+import { MatchSummeryDataInputComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-summery-data-input/match-summery-data-input.component';
 
 
 
@@ -97,6 +98,11 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: "tournament-list/view-matches/:tournamentId/match-details/:matchId",
     component: MatchDetailsComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: "tournament-list/view-matches/:tournamentId/match-summery-input/:matchId",
+    component: MatchSummeryDataInputComponent,
     canActivate: [RouteGuardService]
   },
   {

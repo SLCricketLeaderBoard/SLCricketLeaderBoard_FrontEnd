@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { MatchModel } from '../../../../../class-model/MatchModel';
-import { MatchService } from '../../../../../service/match/match.service';
 import { ClubModel } from '../../../../../class-model/ClubModel';
-import { PlayerModel } from '../../../../../../app/class-model/PlayerModel';
-import { UmpireModel } from '../../../../../../app/class-model/UmpireModel';
+import { PlayerModel } from '../../../../../class-model/PlayerModel';
+import { UmpireModel } from '../../../../../class-model/UmpireModel';
+import { ActivatedRoute } from '@angular/router';
+import { MatchService } from '../../../../../service/match/match.service';
 import { ClubService } from '../../../../../service/club/club.service';
 import { PlayerService } from '../../../../../service/player/player.service';
 import { UmpireService } from '../../../../../service/umpire/umpire.service';
 import { RefereeService } from '../../../../../service/referee/referee.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-match-details',
-  templateUrl: './match-details.component.html',
-  styleUrls: ['./match-details.component.scss']
+  selector: 'app-match-summery-data-input',
+  templateUrl: './match-summery-data-input.component.html',
+  styleUrls: ['./match-summery-data-input.component.scss']
 })
-export class MatchDetailsComponent implements OnInit {
+export class MatchSummeryDataInputComponent implements OnInit {
 
   match:MatchModel;
   matchId: Number;
@@ -39,8 +40,47 @@ export class MatchDetailsComponent implements OnInit {
   club1Players: PlayerModel[]
   club2Players: PlayerModel[]
 
+
+  updateSummeryForm: FormGroup;
+
+  
   constructor(private route: ActivatedRoute,private matchService:MatchService,private clubService:ClubService,private playerService:PlayerService,private umpireService:UmpireService,private refreeService:RefereeService) {
     
+    this.updateSummeryForm = new FormGroup({
+      club1Runs: new FormControl(null, [
+        Validators.required,
+        Validators.min(0),
+      ]),
+      club1Wickets: new FormControl(null, [
+        Validators.required,
+        Validators.min(0),
+        Validators.max(10)
+      ]),
+      club1FacedOvers: new FormControl(null, [
+        Validators.required,
+        Validators.min(0),
+      ]),
+      club2Runs: new FormControl(null, [
+        Validators.required,
+        Validators.min(0),
+      ]),
+      club2Wickets: new FormControl(null, [
+        Validators.required,
+        Validators.min(0),
+        Validators.max(10)
+      ]),
+      club2FacedOvers: new FormControl(null,[
+        Validators.required,
+        Validators.min(0),
+        
+      ]),
+      tossWinTeam: new FormControl(null, Validators.required),
+      winTeam: new FormControl(null, [Validators.required]),
+      manOfTheMatch: new FormControl(null, [Validators.required]),
+    });
+
+
+
     this.currentDate = new Date();
 
     this.route.params.subscribe(res => {
@@ -181,16 +221,14 @@ export class MatchDetailsComponent implements OnInit {
    }
 
   ngOnInit() {
+  }
 
+  updateSummery(){
 
   }
 
-  mathcState(matchDate:Date,matchTime:String){
-
-    
-
-
-    return true;
+  reset(){
+    this.updateSummeryForm.reset();
   }
 
 }

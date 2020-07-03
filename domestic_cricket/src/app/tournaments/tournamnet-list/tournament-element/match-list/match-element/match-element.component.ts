@@ -16,6 +16,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class MatchElementComponent implements OnInit {
   
   @Input() match:MatchModel
+  @Input() played:boolean
   club01:ClubModel;
   club02:ClubModel;
   captainClubOne : PlayerModel
@@ -25,9 +26,17 @@ export class MatchElementComponent implements OnInit {
   umpireTwo: UmpireModel
   umpireThree: UmpireModel
   tossWinClub: ClubModel
+  active:boolean
   constructor(private router:Router,private clubServie:ClubService,private umpireService:UmpireService,private playerService:PlayerService,private route:ActivatedRoute) { }
 
   ngOnInit() {
+
+    if(this.played===true){
+      this.active=true
+    }else{
+      this.active=false
+    }
+
     this.clubServie.getClubData(this.match.clubOneId).subscribe(res=>{
       console.log(res);
       this.club01=res;
@@ -70,6 +79,11 @@ export class MatchElementComponent implements OnInit {
   more(){
     // tournament-list/view-matches/:tournamentId/match/:matchId
     this.router.navigate(["match-details",this.match.matchId], { relativeTo: this.route });
+  }
+
+  setSummery(){
+    // tournament-list/view-matches/:tournamentId/match/:matchId
+    this.router.navigate(["match-summery-input",this.match.matchId], { relativeTo: this.route });
   }
 
 
