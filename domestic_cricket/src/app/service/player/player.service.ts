@@ -28,4 +28,8 @@ export class PlayerService {
     return this.http.get<PlayerModel>(`${API_URL}/player/${playerId}`, {});
   }
 
+  playerAccountDeactivate(playerId: Number) {
+    return this.http.put<Number>(`${API_URL}/player/deactivate/${playerId}`, {});
+  }
+
 }

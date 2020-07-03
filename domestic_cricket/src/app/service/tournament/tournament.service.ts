@@ -9,25 +9,29 @@ import { Observable } from 'rxjs';
 })
 export class TournamentService {
 
-  constructor( private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  registerTournament(stadium : TournamentModel){
+  registerTournament(stadium: TournamentModel) {
     let jwt = sessionStorage.getItem('TOKEN');
-    const headers = new HttpHeaders().set('Authorization',jwt);
-    return this.http.post<TournamentModel>(`${API_URL}/registerTournament`,stadium,{headers,responseType:'text' as 'json'});
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.post<TournamentModel>(`${API_URL}/registerTournament`, stadium, { headers, responseType: 'text' as 'json' });
   }
 
-  getTournaments():Observable<TournamentModel[]>{
+  getTournaments(): Observable<TournamentModel[]> {
     let jwt = sessionStorage.getItem('TOKEN');
-    const headers = new HttpHeaders().set('Authorization',jwt);
-    return this.http.get<TournamentModel[]>(`${API_URL}/tournaments`,{headers});
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.get<TournamentModel[]>(`${API_URL}/tournaments`, { headers });
   }
 
-  
 
-  getTournamentById(tournamentId:Number):Observable<TournamentModel>{
+
+  getTournamentById(tournamentId: Number): Observable<TournamentModel> {
     let jwt = sessionStorage.getItem('TOKEN');
-    const headers = new HttpHeaders().set('Authorization',jwt);
-    return this.http.get<TournamentModel>(`${API_URL}/tournament/${tournamentId}`,{headers});
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.get<TournamentModel>(`${API_URL}/tournament/${tournamentId}`, { headers });
+  }
+
+  getUpcomingTournamentForClub(clubId: Number) {
+    return this.http.get<TournamentModel[]>(`${API_URL}/tournament/upcoming/${clubId}`, {});
   }
 }

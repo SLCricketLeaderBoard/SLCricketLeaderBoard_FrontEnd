@@ -14,7 +14,33 @@
               <h5 class="card-title">Upcoming Tournaments</h5>
             </div>
             <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="text-secondary">
+                    <th></th>
+                    <th>Tournament Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Registration Close Date</th>
+                    <th>Option</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let tournament of upcomingTournaments; let i = index">
+                      <td>{{ i + 1 }})</td>
+                      <td>{{ tournament.tournamentName }}</td>
+                      <td>{{ tournament.startDate | date:'fullDate' }}</td>
+                      <td>{{ tournament.endDate | date:'fullDate'}}</td>
+                      <td>{{ tournament.registartionCloseDate | date:'fullDate'}}</td>
 
+                      <td class="text-right">
+                        <a><button type="button" (click)="register(tournament.tournamentId)" class="btn btn-info btn-sm"
+                            title="Register">
+                            <i class="fas fa-registered"></i></button></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
 
@@ -37,13 +63,14 @@
                     <tr *ngFor="let tournamentClub of registeredTournaments; let i = index">
                       <td>{{ i + 1 }})</td>
                       <td>{{ tournamentClub.tournamentId.tournamentName }}</td>
-                      <td>{{ tournamentClub.tournamentId.startDate }}</td>
-                      <td>{{ tournamentClub.tournamentId.endDate }}</td>
-                      <td>{{tournamentClub.tournamentId.registrationClosingDate}}</td>
+                      <td>{{ tournamentClub.tournamentId.startDate | date:'fullDate' }}</td>
+                      <td>{{ tournamentClub.tournamentId.endDate | date:'fullDate'}}</td>
+                      <td>{{ tournamentClub.tournamentId.registartionCloseDate | date:'fullDate'}}</td>
 
                       <td class="text-right">
-                        <a (click)="playerUpdate(player.playerId)"><button type="button" class="btn btn-info btn-sm"
-                            title="Update">
+                        <a><button [disabled]="isRegistrationClosed(tournamentClub.tournamentId.registartionCloseDate)"
+                            (click)="update(tournamentClub.tournamentId.tournamentId)" type="button"
+                            class="btn btn-info btn-sm" title="Update">
                             <i class="fas fa-edit"></i></button></a>
                       </td>
                     </tr>

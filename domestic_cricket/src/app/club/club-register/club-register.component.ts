@@ -19,98 +19,100 @@ import { SwalMessage } from '../../shared/swal-message';
 export class ClubRegisterComponent implements OnInit {
 
   errorMessage;
-  option:Number;//0-->Register , Any integer greater than zero(clubId)-->Update
-  userRole:Number;
-  selectedManagerName:String;//use when update club data
+  option: Number;//0-->Register , Any integer greater than zero(clubId)-->Update
+  userRole: Number;
+  selectedManagerName: String;//use when update club data
   availableManagers: ManagerModel[] = [];
 
-  mainTitle:String="Club Register";
-  formTitle:String="Registration Form";
-  swalMessage:SwalMessage = new SwalMessage();
+  club_default_log = "https://firebasestorage.googleapis.com/v0/b/crickdom-3accd.appspot.com/o/club%2Fflag-button-round-250.png?alt=media&token=d3e15c36-104a-44bb-ba84-fed70903fc5e";
+
+  mainTitle: String = "Club Register";
+  formTitle: String = "Registration Form";
+  swalMessage: SwalMessage = new SwalMessage();
 
 
-   //reactive form definition
-   clubRegisterFrom=this.fb.group({
-    clubName:['',[Validators.required]],
-    address:['',[Validators.required]],
-    email:['',[Validators.required,Validators.email]],
-    contactNumber:['',[Validators.required,Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
+  //reactive form definition
+  clubRegisterFrom = this.fb.group({
+    clubName: ['', [Validators.required]],
+    address: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    contactNumber: ['', [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
     manager: [null, [Validators.required]]
   });
 
   //getters for reactive form module fields
-  get clubNameField(){
+  get clubNameField() {
     return this.clubRegisterFrom.get('clubName');
   }
-  get addressField(){
+  get addressField() {
     return this.clubRegisterFrom.get('address');
   }
-  get emailField(){
+  get emailField() {
     return this.clubRegisterFrom.get('email');
   }
-  get contactNumberField(){
+  get contactNumberField() {
     return this.clubRegisterFrom.get('contactNumber');
   }
-  get managerField(){
+  get managerField() {
     return this.clubRegisterFrom.get('manager');
   }
 
 
 
   constructor(
-    private clubService : ClubService,
+    private clubService: ClubService,
     private managerService: ManagerService,
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute
-    
+
   ) { }
 
   ngOnInit() {
     this.userRole = +sessionStorage.getItem("userRole");
     this.option = this.route.snapshot.params['option'];
 
-    if(this.userRole!=1 && this.userRole!=2){
+    if (this.userRole != 1 && this.userRole != 2) {
       this.router.navigate(['']);
     }
-    if(this.userRole==2 && this.option==0){
+    if (this.userRole == 2 && this.option == 0) {
       this.router.navigate(['']);
     }
 
-    if(this.option>0){//club Update
+    if (this.option > 0) {//club Update
       this.getClubData(this.option);
     }
 
     this.getAvailableManagers();
   }
 
-  clubFormSubmit(){
-    let club = new ClubModel(-1,this.clubNameField.value,this.addressField.value,this.emailField.value,this.contactNumberField.value,0,0,0,new Date(),1,this.managerField.value);
+  clubFormSubmit() {
+    let club = new ClubModel(-1, this.clubNameField.value, this.addressField.value, this.emailField.value, this.contactNumberField.value, 0, 0, 0, new Date(), 1, this.club_default_log, this.managerField.value);
 
-    if(this.option>0){
+    if (this.option > 0) {
       this.clubUpdate(club);
-    }else{
+    } else {
       this.clubRegister(club);
     }
   }
 
-  clubRegister(club:ClubModel){
-    club.status=0;
+  clubRegister(club: ClubModel) {
+    club.status = 0;
     this.clubService.registerClub(club).subscribe(
       response => {
 
-          if(response==1){
-            this.router.navigate(['club-payment-not-complete-list']);
-            this.swalMessage.successMessage('Club registration successful');
-          }
-          if(response==0){
-            this.errorMessage = 'There is another club has same name or email or address or contactNmber';
-            this.swalMessage.notSuccessMessage('Club registration not successful');
-          }
-          
+        if (response == 1) {
+          this.router.navigate(['club-payment-not-complete-list']);
+          this.swalMessage.successMessage('Club registration successful');
+        }
+        if (response == 0) {
+          this.errorMessage = 'There is another club has same name or email or address or contactNmber';
+          this.swalMessage.notSuccessMessage('Club registration not successful');
+        }
+
       },
-      error =>{
-        this.errorMessage="Please try again."
+      error => {
+        this.errorMessage = "Please try again."
         console.log(error);
         this.swalMessage.notSuccessMessage('Club registration not successful');
       }
@@ -118,34 +120,34 @@ export class ClubRegisterComponent implements OnInit {
   }
 
 
-  clubUpdate(club:ClubModel){
+  clubUpdate(club: ClubModel) {
     club.clubId = this.option;
     this.clubService.updateClub(club).subscribe(
       response => {
-        if(response==1){
+        if (response == 1) {
           this.swalMessage.successMessage('Club data successfully updated');
 
-          if(this.userRole==1){//admin account
+          if (this.userRole == 1) {//admin account
             this.router.navigate(['club-list']);
-          }else{//manager accout
+          } else {//manager accout
             this.router.navigate(['club-details']);
           }
-         
+
         }
-        if(response==0){
-          this.errorMessage="There is another club has same name or email or address or contactNmber";
+        if (response == 0) {
+          this.errorMessage = "There is another club has same name or email or address or contactNmber";
           this.swalMessage.notSuccessMessage('Club data not updated successful');
         }
       },
       error => {
-        this.errorMessage="Please try again."
+        this.errorMessage = "Please try again."
         console.log(error);
         this.swalMessage.notSuccessMessage('Club data not updated successful');
       }
     );
   }
 
-  getAvailableManagers(){
+  getAvailableManagers() {
     this.managerService.getAvailableManagers().subscribe(
       response => {
         this.availableManagers = response;
@@ -156,7 +158,7 @@ export class ClubRegisterComponent implements OnInit {
     );
   }
 
-  getClubData(clubId:Number){
+  getClubData(clubId: Number) {
     this.clubService.getClubData(clubId).subscribe(
       response => {
         this.clubNameField.setValue(response.clubName);
@@ -165,29 +167,29 @@ export class ClubRegisterComponent implements OnInit {
         this.contactNumberField.setValue(response.contactNumber);
         this.managerField.setValue(response.managerId);
 
-        this.selectedManagerName = response.managerId.userId.nameWithInitial+"";
-        this.mainTitle = "Update "+this.clubNameField.value+" Details";
+        this.selectedManagerName = response.managerId.userId.nameWithInitial + "";
+        this.mainTitle = "Update " + this.clubNameField.value + " Details";
         this.formTitle = "Update Form";
       },
       error => {
-        let status:Number = this.ErrorResponse(error);
-        if(status==400){
-          this.errorMessage="There is problem(Bad Request).Please try again";
-        }else if(status==404){
-          this.errorMessage="There is no any club for that id."
-        }else{
-          this.errorMessage="Server side error.Please try again"
+        let status: Number = this.ErrorResponse(error);
+        if (status == 400) {
+          this.errorMessage = "There is problem(Bad Request).Please try again";
+        } else if (status == 404) {
+          this.errorMessage = "There is no any club for that id."
+        } else {
+          this.errorMessage = "Server side error.Please try again"
         }
       }
     );
   }
 
-  close(){
-    this.errorMessage="";
+  close() {
+    this.errorMessage = "";
   }
 
   public ErrorResponse(error: HttpErrorResponse) {
-      return error.status;
+    return error.status;
   };
 
 }

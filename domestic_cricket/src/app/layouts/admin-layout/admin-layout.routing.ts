@@ -184,7 +184,7 @@ export const AdminLayoutRoutes: Routes = [
 
   },
   {
-    path: "player-selection/:tournementId",
+    path: "player-selection/:tournementId/:option",
     component: PlayerSelectionComponent,
     canActivate: [RouteGuardService]
 
