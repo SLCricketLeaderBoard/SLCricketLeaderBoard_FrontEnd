@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer} from '@angular/platform-browser'
 
 @Component({
   selector: 'app-live-match',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LiveMatchComponent implements OnInit {
 
-  constructor() { }
+  safeUrl: any
+  constructor(private _sanitizer: DomSanitizer) { }
 
   ngOnInit() {
   }

@@ -32,9 +32,9 @@ interface Food {
 export class CreateMatchComponent implements OnInit {
 
   foods: Food[] = [
-    { value: 'steak-0', viewValue: 'Asass' },
-    { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' }
+    { value: 'Dialog', viewValue: 'Dialog' },
+    { value: 'Abans', viewValue: 'Abans' },
+    { value: 'Pick me', viewValue: 'Pick me' }
   ];
 
   clubList: ClubModel[] = [];
@@ -73,7 +73,7 @@ export class CreateMatchComponent implements OnInit {
       umpire01: new FormControl(null, [Validators.required]),
       umpire02: new FormControl(null, [Validators.required]),
       umpire03: new FormControl(null, [Validators.required]),
-      sponser: new FormControl(null, [Validators.required])
+      // sponser: new FormControl(null, [Validators.required])
     },{
       validators: [ConfirmedValidator('club01','club02'),
       UmpireValidator('umpire01','umpire02','umpire03'),
@@ -84,17 +84,17 @@ export class CreateMatchComponent implements OnInit {
     this.route.params.subscribe(res => {
       this.tournamentId = res['tournamentId'];
       this.tournamentService.getTournamentById(this.tournamentId).subscribe(res => {
-        console.log(res);
+        // console.log(res);
         this.tournament = res;
 
       })
     })
 
 
-    this.clubService.getClubs(1).subscribe(
+    this.clubService.getClubsForMatches(this.tournamentId).subscribe(
       response => {
         this.clubList = response;
-        // console.log(response);
+        console.log(response);
       },
       error => {
         console.log(error);
@@ -163,7 +163,7 @@ export class CreateMatchComponent implements OnInit {
     const finishDate: Date = this.createMatch.value['endDate'];
     const startTime: Timestamp<Time> = this.createMatch.value['time'];
     const winTeamId: Number = 0;
-    const sponser: String = this.createMatch.value['sponser'];
+    const sponser: String = "Dialog"
     const matchTypeId: MatchType = this.createMatch.value['matchType'];
     const tournamentId: TournamentModel = this.tournament;
     const stadiumId: StadiumModel = this.createMatch.value['stadium'];
@@ -176,7 +176,9 @@ export class CreateMatchComponent implements OnInit {
     const clubTwoViceCaptain: Number = 0;
     const clubOneKeper: Number = 0;
     const clubTwoKeper: Number = 0; 
-
+    const manOfTheMatch: Number =0;
+    const clubOneOvers: Number = 0;
+    const clubTwoOvers: Number = 0;
 
 
 
@@ -207,7 +209,10 @@ export class CreateMatchComponent implements OnInit {
       clubOneViceCaptain,
       clubTwoViceCaptain,
       clubOneKeper,
-      clubTwoKeper
+      clubTwoKeper,
+      manOfTheMatch,
+      clubOneOvers,
+      clubTwoOvers
     );
 
      
@@ -240,13 +245,7 @@ export class CreateMatchComponent implements OnInit {
        console.log(error.message);
        this.errorMessage=error.message
        this.done= false; 
-     })
-    
-    
-     
-     
+     }) 
     }
-
-  
 
 }

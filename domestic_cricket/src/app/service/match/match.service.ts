@@ -5,6 +5,7 @@ import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http
 import { API_URL } from '../../app.constants';
 import { MatchModel } from '../../class-model/MatchModel';
 import { AngularFirestore } from "@angular/fire/firestore"; 
+import { PlayerModel } from '../../class-model/PlayerModel';
 @Injectable({
   providedIn: 'root'
 })
@@ -36,4 +37,19 @@ export class MatchService {
   createMatchInfirebase(match:MatchModel){
    return this.afs.collection('tournaments').doc(`${match.tournamentId.tournamentId}`).collection('matches').doc(`${match.matchId}`).set(match);
   }
+
+  getMatchById(matchId:Number){
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization',jwt);
+    return this.http.get<MatchModel>(`${API_URL}/match/${matchId}`,{headers});
+
+  }
+
+  getSelectedPlayerForMatch(matchId:Number,clubId:Number){
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization',jwt);
+    return this.http.get<PlayerModel[]>(`${API_URL}/match/players/${matchId}/${clubId}`,{headers});
+
+  }
+  
 }

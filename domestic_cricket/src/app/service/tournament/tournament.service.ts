@@ -34,4 +34,16 @@ export class TournamentService {
   getUpcomingTournamentForClub(clubId: Number) {
     return this.http.get<TournamentModel[]>(`${API_URL}/tournament/upcoming/${clubId}`, {});
   }
+
+  getRegistrationOpenTournaments():Observable<TournamentModel[]>{
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization',jwt);
+    return this.http.get<TournamentModel[]>(`${API_URL}/tournaments/registrationOpened`,{headers});
+  }
+
+  getRegistrationClosedTournaments():Observable<TournamentModel[]>{
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization',jwt);
+    return this.http.get<TournamentModel[]>(`${API_URL}/tournaments/registrationClosed`,{headers});
+  }
 }
