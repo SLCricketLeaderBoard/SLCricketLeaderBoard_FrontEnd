@@ -33,6 +33,10 @@ export class TournamnetListComponent implements OnInit {
   ngOnInit() {
   }
 
+  newTournament(){
+    this.router.navigate(["../create-tournament"], { relativeTo: this.route });
+  }
+
   
 }
 

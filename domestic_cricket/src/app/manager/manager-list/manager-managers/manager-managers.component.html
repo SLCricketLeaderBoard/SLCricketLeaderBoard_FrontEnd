@@ -42,12 +42,13 @@
                 <b>Club</b>
               </td>
               <td>
-                Abc Sport club
+               {{club?.clubName}}
                 <!-- {{manager.userId.}} -->
               </td>
             </tr>
           </table>
-          <a  class="btn btn-primary" (click)="more()" >more</a>
+          <a *ngIf="active" class="btn btn-primary" (click)="more()" >more</a>
+          <a  *ngIf="!active" class="btn btn-primary" (click)="accept()"  >Accept</a>
         </div>
       </div>
     </div>

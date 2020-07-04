@@ -11,10 +11,10 @@ export class TournamentService {
 
   constructor(private http: HttpClient) { }
 
-  registerTournament(stadium: TournamentModel) {
+  registerTournament(tournament: TournamentModel) {
     let jwt = sessionStorage.getItem('TOKEN');
     const headers = new HttpHeaders().set('Authorization', jwt);
-    return this.http.post<TournamentModel>(`${API_URL}/registerTournament`, stadium, { headers, responseType: 'text' as 'json' });
+    return this.http.post<TournamentModel>(`${API_URL}/registerTournament`, tournament, { headers, responseType: 'text' as 'json' });
   }
 
   getTournaments(): Observable<TournamentModel[]> {

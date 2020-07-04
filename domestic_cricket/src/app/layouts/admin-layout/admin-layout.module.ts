@@ -48,6 +48,7 @@ import { MatchDetailsComponent } from '../../tournaments/tournamnet-list/tournam
 import { ManagerTournamentListComponent } from '../../tournaments/manager-tournament-list/manager-tournament-list.component';
 import { ManagerDashboardComponent } from '../../dashboard/manager-dashboard/manager-dashboard.component';
 import { MatchSummeryDataInputComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-summery-data-input/match-summery-data-input.component';
+import { CreateTournamnetComponent } from '../../tournaments/create-tournamnet/create-tournamnet.component';
 
 
 
@@ -110,7 +111,7 @@ import { MatchSummeryDataInputComponent } from '../../tournaments/tournamnet-lis
     ManagerTournamentListComponent,
     ManagerDashboardComponent,
     MatchSummeryDataInputComponent,
-
+    CreateTournamnetComponent
 
   ],
 })

@@ -38,6 +38,7 @@ import { ManagerTournamentListComponent } from '../../tournaments/manager-tourna
 
 import { ManagerDashboardComponent } from '../../dashboard/manager-dashboard/manager-dashboard.component';
 import { MatchSummeryDataInputComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-summery-data-input/match-summery-data-input.component';
+import { CreateTournamnetComponent } from '../../tournaments/create-tournamnet/create-tournamnet.component';
 
 
 
@@ -87,6 +88,10 @@ export const AdminLayoutRoutes: Routes = [
     path: "tournament-list",
     component: TournamnetListComponent,
     canActivate: [RouteGuardService],
+  },{
+    path: "create-tournament",
+    component: CreateTournamnetComponent,
+    canActivate: [RouteGuardService],
   },
   {
     path: "tournament-list/create-match/:tournamentId",
@@ -119,7 +124,7 @@ export const AdminLayoutRoutes: Routes = [
     canActivate: [RouteGuardService],
   },
   {
-    path: "manager-register",
+    path: "manager-register/:managerId",
     component: ManagerManagerRegisterComponent,
     canActivate: [RouteGuardService],
   },

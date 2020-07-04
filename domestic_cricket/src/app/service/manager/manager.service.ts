@@ -5,6 +5,7 @@ import { UserModel } from '../../class-model/UserModel';
 import { ManagerModel } from '../../class-model/ManagerModel';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from "@angular/fire/firestore";
+import { ClubModel } from '../../class-model/ClubModel';
 
 
 @Injectable({
@@ -59,6 +60,19 @@ export class ManagerService {
 
   getManager(userId: Number) {
     return this.http.get<ManagerModel>(`${API_URL}/manager/${userId}`);
+  }
+
+
+  getRegistrationAcceptedManagers(){
+    return this.http.get<ManagerModel[]>(`${API_URL}/manager/registrationAccepted`);
+  }
+
+  getRegistrationRequestedManagers(){
+    return this.http.get<ManagerModel[]>(`${API_URL}/manager/registrationRequested`);
+  }
+
+  getClubDetailsByManagerId(managerId:Number){
+    return this.http.get<ClubModel>(`${API_URL}/manager/club/${managerId}`);
   }
 
 }

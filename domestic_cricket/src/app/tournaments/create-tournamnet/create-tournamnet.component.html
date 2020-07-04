@@ -17,74 +17,76 @@
                   </div>
                   <div class="card-body">
                     <form *ngIf="!done" [formGroup]="tournamentRegisterForm" >
-                      <div class="row">
-                        <div class="col-md-8 pr-1">
+                                            
+                      <div class="row fromRow">
+
+                        <div class="col-sm-6 col-lg-6">
                           <div class="form-group">
-                            <label>Tournament Name</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="tournamentname"
-                              formControlName="tournamentName"
-                            />
-                                <div  class="error-message"
-                                    *ngIf="!tournamentRegisterForm.get('tournamentName').valid && tournamentRegisterForm.get('tournamentName').touched" >
-                                    Tournament Name is required
-                                </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-4 pr-1">
-                          <div class="form-group">
-                            <label>Tournament ID</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Tournament ID "
-                              formControlName="tournamentName"
-                            />
-                            <div  class="error-message"
-                            *ngIf="!tournamentRegisterForm.get('tournamentId').valid && tournamentRegisterForm.get('tournamentId').touched" >
-                            Invalid Tournament Id please check again!
-                            </div>
+                            <mat-form-field class="example-full-width">
+                              <mat-label>Tournement Name</mat-label>
+                              <input matInput type="text"  formControlName="tournamentName">
+                            </mat-form-field>
                           </div>
                         </div>
                       </div>
                       <div class="row fromRow">
-                        <div class="col-sm-6 col-lg-3">
-                          <div class="form-group" >
-                              <p>
-                                <mat-form-field class="example-full-width">
-                                  <mat-label>Start Date</mat-label>
-                                  <input matInput [matDatepicker]="std" formControlName="tournamentName">
-                                  <mat-datepicker-toggle matSuffix [for]="std"></mat-datepicker-toggle>
-                                  <mat-datepicker #std disabled="false"></mat-datepicker>
-                                </mat-form-field>
-                              </p>
+
+                        <div class="col-sm-6 col-lg-66">
+                          <div class="form-group">
+                            <p>
+                              <mat-form-field class="example-full-width">
+                                <mat-label>Start Date</mat-label>
+                                <input matInput [matDatepicker]="std" formControlName="startDate">
+                                <mat-datepicker-toggle matSuffix [for]="std"></mat-datepicker-toggle>
+                                <mat-datepicker #std disabled="false"></mat-datepicker>
+                              </mat-form-field>
+                            </p>
+
                           </div>
-                        </div> 
-                        <div class="col-sm-6 col-lg-3">
+                        </div>
+
+                      </div>
+                      <div class="row fromRow">
+
+                        <div class="col-sm-6 col-lg-6">
                           <div class="form-group">
                             <p>
                               <mat-form-field class="example-full-width">
                                 <mat-label>End Date</mat-label>
-                                <input matInput [matDatepicker]="end" formControlName="tournamentName">
+                                <input matInput [matDatepicker]="end" formControlName="endDate">
                                 <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
                                 <mat-datepicker #end disabled="false"></mat-datepicker>
                               </mat-form-field>
                             </p>
 
+                          </div>
                         </div>
-                        </div>
-                     
-                    </div>
-                      <div class="button-container">
-                        <button type="button" class="btn btn-warning" (click)="reset()">Reset</button>
-                        <button type="button" class="btn btn-outline-secondary" (click)="register()"  [disabled]="!valid">Register</button>
+
                       </div>
+                      <div class="row fromRow">
+
+                        <div class="col-sm-6 col-lg-6">
+                          <div class="form-group">
+                            <p>
+                              <mat-form-field class="example-full-width">
+                                <mat-label>Registration closing Date</mat-label>
+                                <input matInput [matDatepicker]="redgend" formControlName="regEndDate">
+                                <mat-datepicker-toggle matSuffix [for]="redgend"></mat-datepicker-toggle>
+                                <mat-datepicker #redgend disabled="false"></mat-datepicker>
+                              </mat-form-field>
+                            </p>
+
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <button mat-raised-button (click)="reset()">Reset</button>
+                      <button mat-raised-button (click)="create()">Create</button>
+                      
                     </form>
                   </div>
+
+
                   <div *ngIf="done" >
                       <p style="margin-top: 20px; margin-left: 100px; color: green;" >Registration successfull!!</p>
                   </div>
