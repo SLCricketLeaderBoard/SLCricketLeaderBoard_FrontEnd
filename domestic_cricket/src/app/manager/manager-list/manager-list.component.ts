@@ -10,24 +10,28 @@ import { ManagerService } from '../../service/manager/manager.service';
 })
 export class ManagerListComponent implements OnInit {
 
-  managers:ManagerModel[];
-  constructor(private managerService:ManagerService,private router: Router, private route: ActivatedRoute) {}
+  managers: ManagerModel[];
+  constructor(private managerService: ManagerService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.managerService.getAllManagers().subscribe(res=>{
+    this.managerService.getAllManagers().subscribe(res => {
       // console.log(res);
-      this.managers=res;
+      this.managers = res;
       console.log(this.managers);
-      
 
-      
+
+
     })
-      
+
   }
 
   register() {
     this.router.navigate(["../manager-register"], { relativeTo: this.route });
   }
 
-  
+  signupRequest() {
+
+  }
+
+
 }

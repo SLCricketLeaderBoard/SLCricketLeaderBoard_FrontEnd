@@ -15,22 +15,20 @@ import { AngularFirestore } from "@angular/fire/firestore";
 
 export class ManagerService {
 
-  constructor( private http : HttpClient, private afs: AngularFirestore) {  }
+  constructor(private http: HttpClient, private afs: AngularFirestore) { }
 
 
-  getUser(email){
+  getUser(email) {
     return this.http.get<UserModel>(`${API_URL}/user/${email}`);
   }
 
-  registerManager(user:UserModel):Observable<UserModel>{
+  registerManager(user: UserModel): Observable<UserModel> {
     console.log(user.email);
     this.firebaseRegisterManager(user);
-    let jwt = sessionStorage.getItem('TOKEN');
-    const headers = new HttpHeaders().set('Authorization',jwt);
-    return this.http.post<UserModel>(`${API_URL}/managerRegister`,user,{headers,responseType:'text' as 'json'});
+    return this.http.post<UserModel>(`${API_URL}/managerRegister`, user);
   }
 
-  firebaseRegisterManager(user:UserModel){
+  firebaseRegisterManager(user: UserModel) {
     console.log(user);
     let users = {};
     users['address'] = user.address;
@@ -49,14 +47,18 @@ export class ManagerService {
 
   }
 
-  getAllManagers():Observable<ManagerModel[]>{
+  getAllManagers(): Observable<ManagerModel[]> {
     let jwt = sessionStorage.getItem('TOKEN');
-    const headers = new HttpHeaders().set('Authorization',jwt);
-    return this.http.get<ManagerModel[]>(`${API_URL}/managers`,{headers});
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.get<ManagerModel[]>(`${API_URL}/managers`, { headers });
   }
 
-  getAvailableManagers(){
+  getAvailableManagers() {
     return this.http.get<[ManagerModel]>(`${API_URL}/manager/available`);
+  }
+
+  getManager(userId: Number) {
+    return this.http.get<ManagerModel>(`${API_URL}/manager/${userId}`);
   }
 
 }

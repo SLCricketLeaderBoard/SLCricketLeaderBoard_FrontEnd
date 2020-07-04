@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './login/login.component';
 import { PlayerSignupComponent } from './player/player-signup/player-signup.component';
+import { ManagerSignupComponent } from './manager/manager-signup/manager-signup.component';
+import { ClubSignupComponent } from './club/club-signup/club-signup.component';
 
 const routes: Routes = [
   {
@@ -15,6 +17,14 @@ const routes: Routes = [
   {
     path: 'player-signup',
     component: PlayerSignupComponent
+  },
+  {
+    path: 'manager-signup',
+    component: ManagerSignupComponent
+  },
+  {
+    path: 'club-signup/:userId',
+    component: ClubSignupComponent
   }
   // {
   //   path: '',

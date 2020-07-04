@@ -10,8 +10,9 @@ import { ClubModel } from "../../class-model/ClubModel";
 })
 export class ClubListComponent implements OnInit {
   clubList: ClubModel[] = [];
+  isClubDataLoad = false;
 
-  constructor(private router: Router, private clubService: ClubService) {}
+  constructor(private router: Router, private clubService: ClubService) { }
 
   ngOnInit() {
     let userRole = +sessionStorage.getItem("userRole");
@@ -25,6 +26,7 @@ export class ClubListComponent implements OnInit {
     this.clubService.getClubs(1).subscribe(
       (response) => {
         this.clubList = response;
+        this.isClubDataLoad = true;
       },
       (error) => {
         console.log(error);

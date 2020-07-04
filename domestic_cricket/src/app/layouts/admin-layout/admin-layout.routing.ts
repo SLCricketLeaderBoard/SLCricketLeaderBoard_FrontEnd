@@ -35,6 +35,7 @@ import { PlayerSelectionComponent } from '../../player/player-selection/player-s
 import { UserComponent } from '../../user/user.component';
 import { MatchDetailsComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-details/match-details.component';
 import { ManagerTournamentListComponent } from '../../tournaments/manager-tournament-list/manager-tournament-list.component';
+import { ManagerDashboardComponent } from '../../dashboard/manager-dashboard/manager-dashboard.component';
 
 
 
@@ -192,6 +193,12 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: "manager-tournament-list",
     component: ManagerTournamentListComponent,
+    canActivate: [RouteGuardService]
+
+  },
+  {
+    path: "manager-dashboard",
+    component: ManagerDashboardComponent,
     canActivate: [RouteGuardService]
 
   }

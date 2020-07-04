@@ -1,0 +1,93 @@
+<div id="playerSignUpForm" class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">
+          <h5>Club Register Form</h5>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <form [formGroup]="clubRegisterFrom" (ngSubmit)="clubFormSubmit()">
+          <div class="row">
+            <div class="col-sm-12 col-lg-12">
+              <div class="form-group">
+                <input [class.is-invalid]="
+                    clubRegisterFrom.get('clubName').invalid &&
+                    clubRegisterFrom.get('clubName').touched
+                  " formControlName="clubName" type="text" name="club" placeholder="Club Name" class="form-control" />
+                <div *ngIf="
+                    clubRegisterFrom.get('clubName').invalid &&
+                    clubRegisterFrom.get('clubName').touched
+                  ">
+                  <small *ngIf="clubNameField.errors?.required" class="text-danger">Club Name Required</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-12">
+              <div class="form-group">
+                <input [class.is-invalid]="
+                    clubRegisterFrom.get('address').invalid &&
+                    clubRegisterFrom.get('address').touched
+                  " formControlName="address" type="text" name="clubAddress" placeholder="Club Address"
+                  class="form-control" />
+                <div *ngIf="
+                    clubRegisterFrom.get('address').invalid &&
+                    clubRegisterFrom.get('address').touched
+                  ">
+                  <small *ngIf="addressField.errors?.required" class="text-danger">Club Address
+                    Required</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-6">
+              <div class="form-group">
+                <input [class.is-invalid]="
+                    clubRegisterFrom.get('email').invalid &&
+                    clubRegisterFrom.get('email').touched
+                  " formControlName="email" type="text" name="clubEmail" placeholder="Email" class="form-control" />
+                <div *ngIf="
+                    clubRegisterFrom.get('email').invalid &&
+                    clubRegisterFrom.get('email').touched
+                  ">
+                  <small *ngIf="emailField.errors?.required" class="text-danger">Email Required</small>
+                  <small *ngIf="emailField.errors?.email" class="text-danger">Required Valid Email</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-6">
+              <div class="form-group">
+                <input [class.is-invalid]="
+                    clubRegisterFrom.get('contactNumber').invalid &&
+                    clubRegisterFrom.get('contactNumber').touched
+                  " formControlName="contactNumber" type="text" name="clubContactNumber" placeholder="Contact Number"
+                  class="form-control" />
+                <div *ngIf="
+                    clubRegisterFrom.get('contactNumber').invalid &&
+                    clubRegisterFrom.get('contactNumber').touched
+                  ">
+                  <small *ngIf="contactNumberField.errors?.required" class="text-danger">Contact Number
+                    Required</small>
+                  <small *ngIf="contactNumberField.errors?.pattern" class="text-danger">Contact Number should
+                    be 10 digit</small>
+                </div>
+              </div>
+            </div>
+
+
+            <button id="submit-button" type="submit" class="btn btn-success btn-round"
+              [disabled]="!clubRegisterFrom.valid">
+              Submit
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
