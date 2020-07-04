@@ -127,9 +127,9 @@
                             <label>Toss winning team</label>
                             <br>
                             <select formControlName="tossWinTeam" id="">
-                              <option value=""></option>
-                              <option value="club01.clubId">{{club01.clubName}}</option>
-                              <option value="club02.clubId">{{club02.clubName}}</option>
+                              <option [value]=""></option>
+                              <option [value]="club01.clubId">{{club01?.clubName}}</option>
+                              <option [value]="club02.clubId">{{club02?.clubName}}</option>
                             
                              </select>                   
                           </div>
@@ -140,10 +140,10 @@
                                 <label>Winning team</label>
                                 <br>
                                 <select formControlName="winTeam" id="">
-                                  <option value=""></option>
-                                  <option value="club01.clubId">{{club01.clubName}}</option>
-                                  <option value="club02.clubId">{{club02.clubName}}</option>
-                                  <option value="0">Draw match</option>
+                                  <option [value]=""></option>
+                                  <option [value]="club01.clubId">{{club01?.clubName}}</option>
+                                  <option [value]="club02.clubId">{{club02?.clubName}}</option>
+                                  <option [value]="0">Draw match</option>
                                  </select>                   
                               </div>
                           </div>
@@ -153,10 +153,10 @@
                                   <div class="form-group">
                                     <label>Man of the match</label>
                                     <br>
-                                    <select formControlName="manOfTheMatch" id="">
+                                    <select formControlName="manOfTheMatch">
                                       <option value=""></option>
-                                      <option  *ngFor="let player of club1Players" value="player.playerId">{{player.userId.nameWithInitial}}</option>
-                                      <option  *ngFor="let player of club2Players" value="player.playerId">{{player.userId.nameWithInitial}}</option>
+                                      <option  *ngFor="let player of club1Players" [value]="player.playerId">{{player.userId?.nameWithInitial}}</option>
+                                      <option  *ngFor="let player of club2Players" [value]="player.playerId">{{player.userId?.nameWithInitial}}</option>
                                      </select>                  
                                   </div>
                               </div>
@@ -167,11 +167,18 @@
                     <!-- end of the win team toss team man of the match div -->
                     </div>   
                   <div class="row" style="padding-left: 35%;">
+                    
                     <div class="button-container">
                       <button type="button" class="btn btn-warning" (click)="reset()">Reset</button>
                       <button type="button" class="btn btn-outline-secondary" (click)="updateSummery()"  [disabled]="!updateSummeryForm.valid">Update summery</button>
                     </div>
                   
+                  </div>
+                  <div class="row" style="padding-left: 35%;">
+                       <p style="color: red;"> {{message}} </p>
+                  </div>
+                  <div  *ngIf="done" class="row" style="padding-left: 35%;">
+                    <p>Updating sucessfull</p>  
                   </div>
 
                   <!-- above div closing for the row of three divs -->                
@@ -190,7 +197,7 @@
                     </b>
                   </td>
                   <td>
-                    :{{match.tournamentId.tournamentName}}
+                    :{{match?.tournamentId.tournamentName}}
                   </td>
                 </tr>
   
@@ -201,7 +208,7 @@
                     </b>
                   </td>
                   <td>
-                    :{{match.tournementRound}}
+                    :{{match?.tournementRound}}
                   </td>
                 </tr>
   
@@ -212,7 +219,7 @@
                     </b>
                   </td>
                   <td>
-                    :{{match.stadiumId.name}}
+                    :{{match?.stadiumId.name}}
                   </td>
                 </tr>
   
@@ -223,7 +230,7 @@
                     </b>
                   </td>
                   <td>
-                    :{{match.matchTypeId.matchType}}
+                    :{{match?.matchTypeId.matchType}}
                   </td>
                 </tr>
   
@@ -234,7 +241,7 @@
                     </b>
                   </td>
                   <td>
-                    :{{match.startDate}}
+                    :{{match?.startDate}}
                   </td>
                 </tr>
   
@@ -245,7 +252,7 @@
                     </b>
                   </td>
                   <td>
-                    :{{match.startTime}}
+                    :{{match?.startTime}}
                   </td>
                 </tr>
               </table>

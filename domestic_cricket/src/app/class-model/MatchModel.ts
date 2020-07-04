@@ -37,5 +37,6 @@ export class MatchModel {
     public manOfTheMatch: Number,
     public clubOneOvers: Number,
     public clubTwoOvers: Number,
+    public state: Number,
   ) { }
 }

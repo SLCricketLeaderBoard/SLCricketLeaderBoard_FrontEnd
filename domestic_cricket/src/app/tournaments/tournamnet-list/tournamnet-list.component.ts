@@ -14,23 +14,24 @@ export class TournamnetListComponent implements OnInit {
 
    registrationOpenTournaments:TournamentModel[]=[];
    registrationClosedTournaments:TournamentModel[]=[];
+   userRole: string
 
   constructor(private router: Router, private route: ActivatedRoute,private tournamentService:TournamentService) { 
 
     this.tournamentService.getRegistrationOpenTournaments().subscribe(res=>{
-      console.log("tournemenst");
-      console.log(res);
       this.registrationOpenTournaments= res;
     })
 
     this.tournamentService.getRegistrationClosedTournaments().subscribe(res=>{
-      console.log("tournemenst");
-      console.log(res);
+     
       this.registrationClosedTournaments= res;
     })
   }
 
   ngOnInit() {
+    this.userRole=sessionStorage.getItem('userRole');
+    console.log(this.userRole);
+    
   }
 
   newTournament(){

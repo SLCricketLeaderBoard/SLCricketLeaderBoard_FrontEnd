@@ -37,6 +37,8 @@ export class CreateTournamnetComponent implements OnInit {
 }
   ngOnInit() {
   }
+
+  
   reset(){
     this.tournamentRegisterForm.reset();
   }

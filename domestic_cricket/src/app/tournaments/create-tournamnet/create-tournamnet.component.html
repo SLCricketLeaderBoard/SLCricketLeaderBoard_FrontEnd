@@ -81,7 +81,7 @@
                       </div>
                       
                       <button mat-raised-button (click)="reset()">Reset</button>
-                      <button mat-raised-button (click)="create()">Create</button>
+                      <button mat-raised-button (click)="create()" [disabled]="!tournamentRegisterForm.valid">Create</button>
                       
                     </form>
                   </div>
