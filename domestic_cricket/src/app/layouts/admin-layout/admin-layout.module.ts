@@ -47,6 +47,8 @@ import { UserComponent } from '../../user/user.component';
 import { MatchDetailsComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-details/match-details.component';
 import { ManagerTournamentListComponent } from '../../tournaments/manager-tournament-list/manager-tournament-list.component';
 import { ManagerDashboardComponent } from '../../dashboard/manager-dashboard/manager-dashboard.component';
+import { MatchSummeryDataInputComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-summery-data-input/match-summery-data-input.component';
+
 
 
 @NgModule({
@@ -106,7 +108,8 @@ import { ManagerDashboardComponent } from '../../dashboard/manager-dashboard/man
     UserComponent,
     MatchDetailsComponent,
     ManagerTournamentListComponent,
-    ManagerDashboardComponent
+    ManagerDashboardComponent,
+    MatchSummeryDataInputComponent,
 
 
   ],

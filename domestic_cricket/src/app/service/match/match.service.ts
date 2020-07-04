@@ -49,7 +49,19 @@ export class MatchService {
     let jwt = sessionStorage.getItem('TOKEN');
     const headers = new HttpHeaders().set('Authorization',jwt);
     return this.http.get<PlayerModel[]>(`${API_URL}/match/players/${matchId}/${clubId}`,{headers});
-
   }
+
+  getPlayedMatches(tournamentId:Number){
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization',jwt);
+    return this.http.get<MatchModel[]>(`${API_URL}/playedMatches/${tournamentId}`,{headers});
+  }
+
+  getToPlayMatches(tournamentId:Number){
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization',jwt);
+    return this.http.get<MatchModel[]>(`${API_URL}/toPlayMatches/${tournamentId}`,{headers});
+  }
+
   
 }

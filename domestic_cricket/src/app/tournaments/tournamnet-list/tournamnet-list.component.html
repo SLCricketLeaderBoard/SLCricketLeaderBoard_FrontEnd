@@ -19,7 +19,7 @@
           <div class="row">
 
             <div class="col-6" style="padding: 3%;">
-              <p>Registrations Opened</p>
+              <h4>Registrations Opened</h4>
               <app-tournament-element *ngFor="let tournement of registrationOpenTournaments" [tournement]="tournement" state="false" ></app-tournament-element>
 
                   <div class="container" *ngIf="!registrationOpenTournaments">
@@ -32,7 +32,7 @@
             </div>
 
             <div class="col-6" style="padding: 3%;">
-              <p>Registration Closed</p>
+              <h4>Registrations Closed</h4>
               <app-tournament-element *ngFor="let tournement of registrationClosedTournaments" [tournement]="tournement" state="true"></app-tournament-element>
 
                 <div class="container" *ngIf="!registrationClosedTournaments">
