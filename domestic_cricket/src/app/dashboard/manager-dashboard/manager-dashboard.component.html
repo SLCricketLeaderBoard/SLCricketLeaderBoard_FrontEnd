@@ -1,0 +1,82 @@
+<div class="panel-header panel-header-lg">
+  <canvas baseChart id="bigDashboardChart" [datasets]="lineBigDashboardChartData" [labels]="lineBigDashboardChartLabels"
+    [colors]="lineBigDashboardChartColors" [options]="lineBigDashboardChartOptions"
+    [chartType]="lineBigDashboardChartType" (chartHover)="chartHovered($event)"
+    (chartClick)="chartClicked($event)"></canvas>
+</div>
+
+<div class="main-content">
+  <div class="row">
+
+    <div class="col-lg-4 col-md-6">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h5 class="card-category">ODI</h5>
+          <h4 class="card-title">ODI Match Wins</h4>
+        </div>
+        <div class="card-body">
+          <div class="chart-area">
+            <!-- <canvas id="lineChartExampleWithNumbersAndGrid"></canvas> -->
+            <canvas baseChart id="odiMatch" [datasets]="odiMatchData" [labels]="odiMatchLabels"
+              [colors]="odiChartColors" [options]="odiChartOptions" [chartType]="odiChartType"
+              (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="now-ui-icons arrows-1_refresh-69"></i> Last 6 months
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h5 class="card-category">T20</h5>
+          <h4 class="card-title">T20 Match Wins</h4>
+        </div>
+        <div class="card-body">
+          <div class="chart-area">
+            <!-- <canvas id="lineChartExampleWithNumbersAndGrid"></canvas> -->
+            <canvas baseChart id="t20Match" [datasets]="t20MatchData" [labels]="t20MatchLabels"
+              [colors]="t20ChartColors" [options]="t20ChartOptions" [chartType]="t20ChartType"
+              (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="now-ui-icons arrows-1_refresh-69"></i> Last 6 months
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-lg-4 col-md-6">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h5 class="card-category">Test</h5>
+          <h4 class="card-title">Test Match Wins</h4>
+        </div>
+        <div class="card-body">
+          <div class="chart-area">
+            <!-- <canvas id="lineChartExampleWithNumbersAndGrid"></canvas> -->
+            <canvas baseChart id="testMatch" [datasets]="testMatchData" [labels]="testMatchLabels"
+              [colors]="testChartColors" [options]="testChartOptions" [chartType]="testChartType"
+              (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="now-ui-icons arrows-1_refresh-69"></i> Last 6 months
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+</div>

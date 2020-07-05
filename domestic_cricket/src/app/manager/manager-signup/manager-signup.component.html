@@ -1,0 +1,127 @@
+<div id="playerSignUpForm" class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">
+          <h5>Manager SignUp Form</h5>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <form *ngIf="!done" [formGroup]="managerRegisterForm">
+          <div class="row">
+            <div class="col-md-8 pr-1">
+              <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="form-control" placeholder="username" formControlName="userName" />
+                <div class="error-message"
+                  *ngIf="!managerRegisterForm.get('userName').valid && managerRegisterForm.get('userName').touched">
+                  Username is required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8 pr-1">
+              <div class="form-group">
+                <label>Full name</label>
+                <input type="text" class="form-control" placeholder="full name" formControlName="fullName" />
+
+                <div class="error-message"
+                  *ngIf="!managerRegisterForm.get('fullName').valid && managerRegisterForm.get('fullName').touched">
+                  Full name is required
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8 pr-1">
+              <div class="form-group">
+                <label>Name with initials</label>
+                <input type="text" class="form-control" placeholder="name with initials"
+                  formControlName="nameWithInitials" />
+
+                <div class="error-message"
+                  *ngIf="!managerRegisterForm.get('nameWithInitials').valid && managerRegisterForm.get('nameWithInitials').touched">
+                  Invalid name
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 pr-1">
+              <div class="form-group">
+                <label>NIC</label>
+                <input type="text" class="form-control" placeholder="national identity card number"
+                  formControlName="nic" />
+
+                <div class="error-message"
+                  *ngIf="!managerRegisterForm.get('nic').valid && managerRegisterForm.get('nic').touched">
+                  Invalid NIC please check again!
+                </div>
+
+              </div>
+            </div>
+
+            <div class="col-md-4 pr-1">
+              <div class="form-group">
+                <label>Contact number</label>
+                <input type="text" class="form-control" placeholder="Contact number" formControlName="contactNumber" />
+
+                <div class="error-message"
+                  *ngIf="!managerRegisterForm.get('contactNumber').valid && managerRegisterForm.get('contactNumber').touched">
+                  Invalid contact number
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8 pr-1">
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" placeholder="email" formControlName="email" />
+
+                <div class="error-message"
+                  *ngIf="!managerRegisterForm.get('email').valid && managerRegisterForm.get('email').touched">
+                  Invalid email
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8 pr-1">
+              <div class="form-group">
+                <label>Address</label>
+                <input type="text" class="form-control" placeholder="address" formControlName="address" />
+
+                <div class="error-message"
+                  *ngIf="!managerRegisterForm.get('address').valid && managerRegisterForm.get('address').touched">
+                  Invalid address
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="button-container">
+            <button type="button" class="btn btn-warning" (click)="reset()">Reset</button>
+            <button type="button" class="btn btn-outline-secondary" (click)="register()"
+              [disabled]="!valid">Register</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>

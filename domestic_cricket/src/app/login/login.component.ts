@@ -90,6 +90,8 @@ export class LoginComponent implements OnInit {
         this.router.navigate(["#"]);
       } else if (response.role == 4) {
         this.router.navigate(["#"]);
+      }else if (response.role == 5) {
+        this.router.navigate(["dashboard"]);
       }
     }
   }
@@ -105,7 +107,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("clubId", response.clubId + "");
 
         if (clubStatus == 1) {
-          this.router.navigate(["dashboard"]);
+          this.router.navigate(["manager-dashboard"]);
         } else {
           this.router.navigate([
             "club-payment",
@@ -117,7 +119,7 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         sessionStorage.setItem("isManagerHasClub", "0");
-        this.router.navigate(["dashboard"]);
+        this.router.navigate(["manager-dashboard"]);
         this.swalMessage.warnningMessage(
           "You haven't assing any club yet.Please inform to admin"
         );
@@ -131,5 +133,9 @@ export class LoginComponent implements OnInit {
 
   playerSignup() {
     this.router.navigate(['player-signup']);
+  }
+
+  managerSignup() {
+    this.router.navigate(['manager-signup']);
   }
 }

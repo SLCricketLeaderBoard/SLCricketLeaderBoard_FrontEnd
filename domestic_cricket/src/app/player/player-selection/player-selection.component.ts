@@ -3,13 +3,12 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { PlayerService } from '../../service/player/player.service';
 import { PlayerModel } from '../../class-model/PlayerModel';
-import { Player } from '@angular/core/src/render3/interfaces/player';
-import { ActivatedRoute } from '@angular/router';
-import { TournamentClubService } from '../../service/tournament-club/tournament-club.service';
-import { TournamentClubModel } from '../../class-model/TournamentClubModel';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SwalMessage } from '../../shared/swal-message';
 import { TournamentClubPlayerService } from '../../service/tournament-club-player/tournament-club-player.service';
 import { PlayerWrapper } from '../../class-model/PlayerWrapper';
+import { TournamentService } from '../../service/tournament/tournament.service';
+import { TournamentModel } from '../../class-model/TournamentModel';
 
 @Component({
   selector: 'app-player-selection',
@@ -18,14 +17,24 @@ import { PlayerWrapper } from '../../class-model/PlayerWrapper';
 })
 export class PlayerSelectionComponent implements OnInit {
 
+  playerTypeList: String[] = ['Baller', 'All Rounder'];
+  selectPlayerType: Number = 0;
+
+  option: Number = -1; //1-->Register , 2-->Update
   clubId: Number = 0;
   tournementId: Number = 0;
+  tournamentData: TournamentModel;
+  isTournamentDataLoad: Boolean = false;
   errorMessage: string = "";
   swalMessage: SwalMessage = new SwalMessage();
 
   batmanList: PlayerModel[] = [];
   ballerList: PlayerModel[] = [];
   allRounderList: PlayerModel[] = [];
+
+  previousBatmanList: PlayerModel[] = [];
+  previousBallerList: PlayerModel[] = [];
+  previousAllRounderList: PlayerModel[] = [];
 
   playerSelectionForm = this.fb.group({
     batmans: new FormControl('', [Validators.required, Validators.minLength(1)]),
@@ -49,16 +58,39 @@ export class PlayerSelectionComponent implements OnInit {
     private fb: FormBuilder,
     private playerSerivce: PlayerService,
     private route: ActivatedRoute,
-    private tournamentClubPlayerService: TournamentClubPlayerService
+    private router: Router,
+    private tournamentClubPlayerService: TournamentClubPlayerService,
+    private tournamentSerive: TournamentService
   ) { }
 
   ngOnInit() {
     this.clubId = +sessionStorage.getItem("clubId");
-    this.tournementId = this.route.snapshot.params['tournementId'];
+    this.tournementId = +this.route.snapshot.params['tournementId'];
+    this.option = this.route.snapshot.params['option'];
+
+    this.getTournament();
     this.getClubPlayerList();
+    if (this.option == 2) {
+      this.getRegisteredClubPlayerList();
+    }
+  }
+
+  getTournament() {
+    this.tournamentSerive.getTournamentById(this.tournementId).subscribe(
+      response => {
+        this.tournamentData = response;
+        this.isTournamentDataLoad = true;
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   getClubPlayerList() {
+    this.batmanList = [];
+    this.ballerList = [];
+    this.allRounderList = [];
     this.playerSerivce.getClubPlayerList(this.clubId, 1).subscribe(
       response => {
         response.forEach(player => {
@@ -76,6 +108,30 @@ export class PlayerSelectionComponent implements OnInit {
       }
     );
   }
+
+  getRegisteredClubPlayerList() {
+    this.previousBatmanList = [];
+    this.previousBallerList = [];
+    this.previousAllRounderList = [];
+    this.tournamentClubPlayerService.tournamentClubPlayerList(this.clubId, this.tournementId).subscribe(
+      response => {
+        response.forEach(player => {
+          if (player.specialType == 1) {
+            this.previousBatmanList.push(player);
+          } else if (player.specialType == 2) {
+            this.previousBallerList.push(player);
+          } else {
+            this.previousAllRounderList.push(player);
+          }
+        });
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+
 
   submit() {
     let teamSize = this.batmansField.value.length + this.ballersField.value.length + this.allRoundersField.value.length;
@@ -96,21 +152,48 @@ export class PlayerSelectionComponent implements OnInit {
       });
 
       //Register club for the tournament and register players for the tournament
-      this.tournamentClubPlayerService.tournamentClubPlayerRegister(this.clubId, this.tournementId, playerWrapper).subscribe(
-        response => {
-          this.swalMessage.successMessage("Tournament Registration Successful");
-        },
-        error => {
-          console.log(error);
-          this.swalMessage.notSuccessMessage("Tournament Registration Not Successful")
-        }
-      );
+      if (this.option == 1) {
+        this.tournamentClubPlayerService.tournamentClubPlayerRegister(this.clubId, this.tournementId, playerWrapper).subscribe(
+          response => {
+            if (response == 1) {
+              this.swalMessage.successMessage("Tournament Team Players Registration Successful");
+            } else {
+              this.swalMessage.warnningMessage("Tournament Team Players Already Registered");
+            }
+            this.router.navigate(['manager-tournament-list']);
+          },
+          error => {
+            console.log(error);
+            this.swalMessage.notSuccessMessage("Tournament Team Players Registration Not Successful");
+          }
+        );
+      }
+
+      //Update data
+      if (this.option == 2) {
+        this.tournamentClubPlayerService.tournamentClubPlayerUpdate(this.clubId, this.tournementId, playerWrapper).subscribe(
+          response => {
+            if (response == 1) {
+              this.swalMessage.successMessage("Tournament Team Players Update Successful");
+              this.getClubPlayerList();
+              this.getRegisteredClubPlayerList();
+            }
+          },
+          error => {
+            this.swalMessage.successMessage("Tournament Team Players Update Not Successful");
+            console.log(error);
+          }
+        );
+      }
 
 
     } else {
       this.errorMessage = "Team Registration not successful.Please select at least 12 players for the team";
     }
-    console.log(teamSize)
+  }
+
+  selectPlayerFunction() {
+    console.log(this.selectPlayerType)
   }
 
 

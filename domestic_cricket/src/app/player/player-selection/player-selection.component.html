@@ -5,9 +5,64 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">T20 Tournement Registration</h4>
+          <h4 *ngIf="isTournamentDataLoad && option==1" class="card-title">{{tournamentData.tournamentName}} Tournement
+            Team Players Registration
+          </h4>
+          <h4 *ngIf="isTournamentDataLoad && option==2" class="card-title">{{tournamentData.tournamentName}} Tournement
+            Team Players Update</h4>
         </div>
         <div class="card-body">
+
+          <div *ngIf="option==2" class="card">
+            <div class="card-header">
+              <h5 class="card-title">Previous Selected Player List</h5>
+            </div>
+
+            <div class="card-body">
+              <div class="row">
+
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-header">
+                      <h6 class="card-title">Batman List</h6>
+                    </div>
+                    <div class="card-body">
+                      <ul *ngFor="let batman of previousBatmanList">
+                        <li>{{batman.userId.nameWithInitial}}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-header">
+                      <h6 class="card-title">Baller List</h6>
+                    </div>
+                    <div class="card-body">
+                      <ul *ngFor="let baller of previousBallerList">
+                        <li>{{baller.userId.nameWithInitial}}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-header">
+                      <h6 class="card-title">Allrounder List</h6>
+                    </div>
+                    <div class="card-body">
+                      <ul *ngFor="let allRounder of previousAllRounderList">
+                        <li>{{allRounder.userId.nameWithInitial}}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
 
           <div class="row">
 
@@ -128,6 +183,32 @@
                 </div>
                 <div class="card-body">
 
+
+                  <div class="row">
+
+                    <div id="playerType" class="col-sm-6 col-lg-6">
+                      <select class="form-control" [(ngModel)]="selectPlayerType">
+                        <option (click)="selectPlayerFunction()" [ngValue]="0" selected>Batman</option>
+                        <ng-container *ngFor="let player of playerTypeList; let i=index">
+                          <option (click)="selectPlayerFunction()" [ngValue]="i+1">{{player}}</option>
+                        </ng-container>
+                      </select>
+                    </div>
+
+                    <div class="col-md-8">
+                      <div class="card">
+                        <div class="card-header">
+                          <h6 *ngIf="selectPlayerType==0" class="card-title">Batmans</h6>
+                          <h6 *ngIf="selectPlayerType==1" class="card-title">Ballers</h6>
+                          <h6 *ngIf="selectPlayerType==2" class="card-title">AllRounders</h6>
+                        </div>
+                        <div class="card-body">
+
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
               </div>
             </div>

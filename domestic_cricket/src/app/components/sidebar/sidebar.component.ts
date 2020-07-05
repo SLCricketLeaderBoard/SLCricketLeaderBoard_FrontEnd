@@ -75,11 +75,20 @@ export class SidebarComponent implements OnInit {
     ];
 
     this.manager = [
-      { path: "/dashboard", title: "Dashboard", icon: "design_app", class: "" },
+      { path: "/manager-dashboard", title: "Dashboard", icon: "design_app", class: "" },
       { path: "/club-details", title: "Club", icon: "design_app", class: "" },
       { path: "/player-list", title: "Players", icon: "design_app", class: "" },
-      { path: "/match-list", title: "Matches", icon: "design_app", class: "" },
+      { path: "/manager-match-list", title: "Matches", icon: "design_app", class: "" },
       { path: "/manager-tournament-list", title: "Tournaments", icon: "design_app", class: "" },
+    ];
+
+    this.referee = [
+      { path: "/dashboard", title: "Dashboard", icon: "design_app", class: "" },
+      { path: "/club-list", title: "Clubs", icon: "design_app", class: "" },
+      { path: "/manager-list", title: "Managers", icon: "design_app", class: "", },
+      { path: "/umpire-list", title: "Umpires", icon: "design_app", class: "" },
+      { path: '/referee-list', title: "Referees", icon: "design_app", class: "" },
+      { path: "/referee-tournament-list", title: "Tournament", icon: "design_app", class: "" },
     ];
 
   }
@@ -94,6 +103,16 @@ export class SidebarComponent implements OnInit {
     if (
       sessionStorage.getItem("userRole") != null &&
       sessionStorage.getItem("userRole") === "1"
+    ) {
+      return true;
+    }
+    return false;
+  }
+
+  isRefree() {
+    if (
+      sessionStorage.getItem("userRole") != null &&
+      sessionStorage.getItem("userRole") === "5"
     ) {
       return true;
     }

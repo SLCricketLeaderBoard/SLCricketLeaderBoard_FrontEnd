@@ -1,4 +1,4 @@
-  <div *ngIf="match" class="card" style="width: 40rem; padding-left: 5px; margin-left: 5%;" >
+  <div *ngIf="match" class="card col" style="width: 40rem; padding-left: 5px; margin-left: 5%;" >
     <div class="row">
       <div class="col-12">
         <div class="profile-body">
@@ -23,11 +23,9 @@
                 <b>club02</b>
               </td>
               <td *ngIf="club02">
-                {{club01?.clubName}}
+                {{club02?.clubName}}
               </td>
             </tr>
-    
-    
             <tr>
               <td>
                 <b>tournament Round</b>
@@ -48,6 +46,7 @@
               </td>
             </tr>
             <a  class="btn btn-primary" (click)="more()" >more</a>
+            <a  class="btn btn-primary" *ngIf="refreeActive" (click)="setSummery()" >Update Details</a>
 
           </table>
         </div>

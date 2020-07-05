@@ -12,18 +12,30 @@ import { TournamentService } from '../../service/tournament/tournament.service';
 })
 export class TournamnetListComponent implements OnInit {
 
-   tournaments:TournamentModel[]=[];
+   registrationOpenTournaments:TournamentModel[]=[];
+   registrationClosedTournaments:TournamentModel[]=[];
+   userRole: string
 
   constructor(private router: Router, private route: ActivatedRoute,private tournamentService:TournamentService) { 
 
-    this.tournamentService.getTournaments().subscribe(res=>{
-      console.log("tournemenst");
-      console.log(res);
-      this.tournaments= res;
+    this.tournamentService.getRegistrationOpenTournaments().subscribe(res=>{
+      this.registrationOpenTournaments= res;
+    })
+
+    this.tournamentService.getRegistrationClosedTournaments().subscribe(res=>{
+     
+      this.registrationClosedTournaments= res;
     })
   }
 
   ngOnInit() {
+    this.userRole=sessionStorage.getItem('userRole');
+    console.log(this.userRole);
+    
+  }
+
+  newTournament(){
+    this.router.navigate(["../create-tournament"], { relativeTo: this.route });
   }
 
   

@@ -13,7 +13,9 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class MatchListComponent implements OnInit {
 
-  matches:MatchModel[]=[];
+  playedMatches:MatchModel[]=[];
+  toPlayMathhes:MatchModel[]=[];
+
   tournamentId:number;
   tournament:TournamentModel;
 
@@ -27,17 +29,23 @@ export class MatchListComponent implements OnInit {
   }
 
   ngOnInit() {
-      console.log("match List");
-      this.matchService.getMatchesByTournamentId(this.tournamentId).subscribe(res=>{
+      
+      this.matchService.getPlayedMatches(this.tournamentId).subscribe(res=>{
         console.log(res);
-        this.matches=res;
+        
+        this.playedMatches=res;
+      })
+
+      this.matchService.getToPlayMatches(this.tournamentId).subscribe(res=>{
+        console.log(res);
+        
+        this.toPlayMathhes=res;
       })
 
       this.tournamentService.getTournamentById(this.tournamentId).subscribe(res=>{
-        console.log(res);
+        
         this.tournament=res;
       })
-    
   }
 
   createMatch(){

@@ -10,12 +10,20 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class TournamentElementComponent implements OnInit {
 
   @Input()tournement:TournamentModel
-  constructor(private router:Router,private route:ActivatedRoute) { }
+  @Input()state
+  active:boolean
+
+  constructor(private router:Router,private route:ActivatedRoute) { 
+
+  }
 
   ngOnInit() {
-   console.log(
-    
-    );
+    if(this.state==='true'){
+      this.active=true
+    }else{
+      this.active=false
+    }
+   
   }
 
   createMatch(){

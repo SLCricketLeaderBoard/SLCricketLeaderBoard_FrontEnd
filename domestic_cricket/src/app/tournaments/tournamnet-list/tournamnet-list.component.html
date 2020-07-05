@@ -16,7 +16,35 @@
           </div>
         </div>
         <div class="card-body">
-          <app-tournament-element *ngFor="let tournement of tournaments" [tournement]="tournement" ></app-tournament-element>
+          <div class="row">
+
+            <div class="col-6" style="padding: 3%;">
+              <h4>Registrations Opened</h4>
+              <app-tournament-element *ngFor="let tournement of registrationOpenTournaments" [tournement]="tournement" state="false" ></app-tournament-element>
+
+                  <div class="container" *ngIf="!registrationOpenTournaments">
+                    <div class="text-center">
+                        <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-6" style="padding: 3%;">
+              <h4>Registrations Closed</h4>
+              <app-tournament-element *ngFor="let tournement of registrationClosedTournaments" [tournement]="tournement" state="true"></app-tournament-element>
+
+                <div class="container" *ngIf="!registrationClosedTournaments">
+                  <div class="text-center">
+                      <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
+                          <span class="sr-only">Loading...</span>
+                      </div>
+                  </div>
+                </div>
+            </div>
+          
+          </div>
         </div>
       </div>
     </div>

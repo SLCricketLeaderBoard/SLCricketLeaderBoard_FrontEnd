@@ -5,24 +5,57 @@
       <div class="card">
         <div class="card-header">
           <div class="row">
-          <div class="col-3">
-            <h4 class="card-title">Managers</h4>
-          </div>
-          <div>
-            <button (click)="register()" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Register Manager"><i class="fas fa-plus"></i>
-            </button>
-          </div>
-        </div>
-        </div>
-        <div class="card-body">
-          <app-manager-managers *ngFor="let manager of managers" [manager]="manager" ></app-manager-managers>
-          <div class="container" *ngIf="!managers">
-            <div class="text-center">
-                <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
-                    <span class="sr-only">Loading...</span>
-                </div>
+            <div class="col-3">
+              <h4 class="card-title">Managers</h4>
+            </div>
+            <div>
+              <!-- <button (click)="register()" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Register Manager"><i class="fas fa-plus"></i>
+            </button> -->
+              <!-- <button (click)="signupRequest()" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="right"
+                title="Signup Request of Manager"><i class="fas fa-plus"></i>
+              </button> -->
             </div>
           </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+
+          
+          <div class="col-6">
+            <div  class="row" style="margin: 3%;">
+              <h4> Registred Club Managers </h4>
+            </div>
+            <div class="row">
+
+                    <app-manager-managers *ngFor="let manager of acceptedManagers" [manager]="manager" state="true"></app-manager-managers>
+                    <div class="container" *ngIf="!acceptedManagers">
+                      <div class="text-center">
+                        <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
+                          <span class="sr-only">Loading...</span>
+                        </div>
+                      </div>
+                    </div>
+            </div>
+          </div>
+         
+          <div class="col-6">
+            <div class="row" style="margin: 3%;">
+              <h4>  Requestings </h4>
+            </div>
+            <div class="row">
+                <app-manager-managers *ngFor="let manager of requestedManagers" [manager]="manager" state="false"></app-manager-managers>
+                <div class="container" *ngIf="!requestedManagers">
+                  <div class="text-center">
+                    <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </div>
+                </div>
+          </div>
+          </div>
+        </div>
+         
+          
         </div>
       </div>
     </div>

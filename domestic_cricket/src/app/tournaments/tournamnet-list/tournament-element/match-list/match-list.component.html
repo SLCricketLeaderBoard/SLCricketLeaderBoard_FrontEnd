@@ -14,15 +14,27 @@
           </div>
         </div>
         </div>
-        <app-match-element *ngFor="let match of matches" [match]="match"></app-match-element>
+        <div class="row">
+          <div class="col-5" style="margin: 2%;">
+            <h4>Played</h4>
+            
+            <app-match-element *ngFor="let match of playedMatches" [match]="match" [played]="true"></app-match-element>
+
+          </div>
+          <div class="col-5" style="margin: 2%;">
+            <h4>Up Comming</h4>
+            <app-match-element *ngFor="let match of toPlayMathhes" [match]="match" [played]="false"></app-match-element>
+          </div>
+        </div>
+       
         
-              <div class="container" *ngIf="!matches">
+              <!-- <div class="container" *ngIf="!matches">
                 <div class="text-center">
                     <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
                         <span class="sr-only">Loading...</span>
                     </div>
                 </div>
-              </div>
+              </div> -->
       </div>
     </div>
   </div>

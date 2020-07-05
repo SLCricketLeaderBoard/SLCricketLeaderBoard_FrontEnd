@@ -48,6 +48,18 @@ import { MatchDetailsComponent } from '../../tournaments/tournamnet-list/tournam
 import { ManagerTournamentListComponent } from '../../tournaments/manager-tournament-list/manager-tournament-list.component';
 import { NonregsponsorsComponent } from '../../Sponsor/nonregsponsors/nonregsponsors.component';
 import { NonregsponsorListComponent } from '../../Sponsor/nonregsponsor-list/nonregsponsor-list.component';
+import { ManagerDashboardComponent } from '../../dashboard/manager-dashboard/manager-dashboard.component';
+
+import { ManagerMatchListComponent } from '../../tournaments/manager-match-list/manager-match-list.component';
+import { MoreDetailsMatchComponent } from '../../tournaments/manager-match-list/more-details-match/more-details-match.component';
+
+import { CreateTournamnetComponent } from '../../tournaments/create-tournamnet/create-tournamnet.component';
+import { RefreeTournamentsComponent } from '../../refereeFunctions/refree-tournaments/refree-tournaments.component';
+import { RefereeMatchListComponent } from '../../refereeFunctions/referee-match-list/referee-match-list.component';
+import { MatchSummeryDataInputComponent } from '../../refereeFunctions/match-summery-data-input/match-summery-data-input.component';
+
+
+
 
 @NgModule({
   imports: [
@@ -108,6 +120,14 @@ import { NonregsponsorListComponent } from '../../Sponsor/nonregsponsor-list/non
     ManagerTournamentListComponent,
     NonregsponsorsComponent,
     NonregsponsorListComponent,
+    ManagerDashboardComponent,
+    MatchSummeryDataInputComponent,
+    ManagerMatchListComponent,
+    MoreDetailsMatchComponent,
+
+    CreateTournamnetComponent,
+    RefreeTournamentsComponent,
+    RefereeMatchListComponent
 
 
   ],

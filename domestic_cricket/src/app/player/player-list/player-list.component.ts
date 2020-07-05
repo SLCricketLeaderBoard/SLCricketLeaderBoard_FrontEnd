@@ -15,6 +15,7 @@ export class PlayerListComponent implements OnInit {
   playerList: PlayerModel[] = [];
   playerRequestList: PlayerModel[] = [];
   swalMessage: SwalMessage = new SwalMessage();
+  errorMessage: String = "";
 
   constructor(
     private router: Router,
@@ -57,12 +58,18 @@ export class PlayerListComponent implements OnInit {
     );
   }
 
-  deactivateAccount(userId: Number, userName: String) {
-    this.userService.userAccountDeactivate(userId).subscribe(
+  deactivateAccount(playerId: Number, userName: String) {
+    this.playerService.playerAccountDeactivate(playerId).subscribe(
       response => {
-        this.swalMessage.successMessage(userName + "'s account deactivated.")
-        this.getClubPlayerList();
-        this.getPlayerRequest();
+        if (response == 0) {
+          this.swalMessage.notSuccessMessage(userName + "'s account not deactivated.");
+          this.errorMessage = "Player already registered current tournament or upcoming tournament.Cannot deativate player's account";
+        }
+        if (response == 1) {
+          this.swalMessage.successMessage(userName + "'s account deactivated.");
+          this.getClubPlayerList();
+          this.getPlayerRequest();
+        }
       },
       error => {
         console.log(error);
@@ -73,6 +80,10 @@ export class PlayerListComponent implements OnInit {
 
   playerUpdate(playerId: Number) {
     this.router.navigate(['player-add', playerId]);
+  }
+
+  close() {
+    this.errorMessage = "";
   }
 
 }

@@ -34,5 +34,9 @@ export class MatchModel {
     public clubTwoViceCaptain: Number,
     public clubOneKeper: Number,
     public clubTwoKeper: Number,
+    public manOfTheMatch: Number,
+    public clubOneOvers: Number,
+    public clubTwoOvers: Number,
+    public state: Number,
   ) { }
 }

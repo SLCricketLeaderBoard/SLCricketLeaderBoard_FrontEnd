@@ -89,4 +89,10 @@ export class UserServiceService {
     return this.http.put<Number>(`${API_URL}/user/deactivate/${userId}`, {});
   }
 
+  updateUserState(user:UserModel){
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.post<String>(`${API_URL}/user/updateProfile`,user,{ headers, responseType: 'text' as 'json' });
+  }
+
 }

@@ -1,0 +1,266 @@
+<div class="panel-header panel-header-sm"></div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+          <div class="col-3">
+            <h4 class="card-title">Summery</h4>
+          </div>
+        </div>
+        </div>
+        <div class="card-body">
+
+          <form  [formGroup]="updateSummeryForm" >
+          
+                  <div class="row">
+
+                    <!-- team 1 details start here -->
+                    <div class="col-3 card" style="padding: 2%; margin-left: 2%;">
+                      <h3>Team 01</h3>
+                      <h4>{{club01?.clubName}}</h4>
+                    
+                      <div class="row">
+
+                          <div class="form-group">
+                            <label>Runs</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              placeholder="runs"
+                              formControlName="club1Runs"
+                            />                     
+                          </div>
+                        </div>
+                      <div class="row">
+                        
+                          <div class="form-group">
+                            <label>Wickets</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              placeholder="wickets"
+                              formControlName="club1Wickets"
+                            />                     
+                          </div>
+                      
+                      </div>
+                      <div class="row">
+
+                          <div class="form-group">
+                            <label>Faced Overs</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              placeholder="Faced overs"
+                              formControlName="club1FacedOvers"
+                            />                     
+                          </div>
+
+                      </div>
+                    
+                    </div>
+
+                    <!-- Team 1 details ends here -->
+
+
+
+
+
+
+                    <!-- Team 2 details tag start here -->
+                    <div class="col-3 card" style="padding: 2%; margin-left: 2%;">
+                      <h3>Team 02</h3>
+                      <h4>{{club02?.clubName}}</h4>
+                    
+                      <div class="row">
+
+                          <div class="form-group">
+                            <label>Runs</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              placeholder="runs"
+                              formControlName="club2Runs"
+                            />                     
+                          </div>
+                        </div>
+                      <div class="row">
+                        
+                          <div class="form-group">
+                            <label>Wickets</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              placeholder="wickets"
+                              formControlName="club2Wickets"
+                            />                     
+                          </div>
+                      
+                      </div>
+                      <div class="row">
+
+                          <div class="form-group">
+                            <label>Faced Overs</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              placeholder="Faced overs"
+                              formControlName="club2FacedOvers"
+                            />                     
+                          </div>
+
+                      </div>
+                    
+                    </div>
+
+                    <!-- // team two inputs end here -->
+
+
+                    <!-- Strat of the win team toss team man of the mathc here -->
+                    <div class="col-3 card" style="padding: 2%; margin-left: 2%;">
+
+                          
+                      <div class="row" style="margin-bottom: 20px;">
+                          <div class="form-group">
+                            <label>Toss winning team</label>
+                            <br>
+                            <select formControlName="tossWinTeam" id="">
+                              <option [value]=""></option>
+                              <option [value]="club01.clubId">{{club01?.clubName}}</option>
+                              <option [value]="club02.clubId">{{club02?.clubName}}</option>
+                            
+                             </select>                   
+                          </div>
+                        </div>
+
+                          <div class="row" style="margin-bottom: 20px;">
+                              <div class="form-group">
+                                <label>Winning team</label>
+                                <br>
+                                <select formControlName="winTeam" id="">
+                                  <option [value]=""></option>
+                                  <option [value]="club01.clubId">{{club01?.clubName}}</option>
+                                  <option [value]="club02.clubId">{{club02?.clubName}}</option>
+                                  <option [value]="0">Draw match</option>
+                                 </select>                   
+                              </div>
+                          </div>
+
+
+                              <div class="row" style="margin-bottom: 20px;">
+                                  <div class="form-group">
+                                    <label>Man of the match</label>
+                                    <br>
+                                    <select formControlName="manOfTheMatch">
+                                      <option value=""></option>
+                                      <option  *ngFor="let player of club1Players" [value]="player.playerId">{{player.userId?.nameWithInitial}}</option>
+                                      <option  *ngFor="let player of club2Players" [value]="player.playerId">{{player.userId?.nameWithInitial}}</option>
+                                     </select>                  
+                                  </div>
+                              </div>
+                    
+                              
+                    
+                    </div>
+                    <!-- end of the win team toss team man of the match div -->
+                    </div>   
+                  <div class="row" style="padding-left: 35%;">
+                    
+                    <div class="button-container">
+                      <button type="button" class="btn btn-warning" (click)="reset()">Reset</button>
+                      <button type="button" class="btn btn-outline-secondary" (click)="updateSummery()"  [disabled]="!updateSummeryForm.valid">Update summery</button>
+                    </div>
+                  
+                  </div>
+                  <div class="row" style="padding-left: 35%;">
+                       <p style="color: red;"> {{message}} </p>
+                  </div>
+                  <div  *ngIf="done" class="row" style="padding-left: 35%;">
+                    <p>Updating sucessfull</p>  
+                  </div>
+
+                  <!-- above div closing for the row of three divs -->                
+          </form>
+
+
+          <!-- Match common details -->
+
+          <div class="row" style="margin-top: 5%;">
+            <div class="card col" style="padding: 4%; margin-left: 2%;">
+              <table class="table">
+                <tr>
+                  <td> 
+                    <b>
+                    Tournament   
+                    </b>
+                  </td>
+                  <td>
+                    :{{match?.tournamentId.tournamentName}}
+                  </td>
+                </tr>
+  
+                <tr>
+                  <td> 
+                    <b>
+                    Tournament round   
+                    </b>
+                  </td>
+                  <td>
+                    :{{match?.tournementRound}}
+                  </td>
+                </tr>
+  
+                <tr>
+                  <td>
+                    <b>
+                      Stadium
+                    </b>
+                  </td>
+                  <td>
+                    :{{match?.stadiumId.name}}
+                  </td>
+                </tr>
+  
+                <tr>
+                  <td>
+                    <b>
+                      Type
+                    </b>
+                  </td>
+                  <td>
+                    :{{match?.matchTypeId.matchType}}
+                  </td>
+                </tr>
+  
+                <tr>
+                  <td>
+                    <b>
+                      On
+                    </b>
+                  </td>
+                  <td>
+                    :{{match?.startDate}}
+                  </td>
+                </tr>
+  
+                <tr>
+                  <td>
+                    <b>
+                      Start at
+                    </b>
+                  </td>
+                  <td>
+                    :{{match?.startTime}}
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!-- End of the match common details -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

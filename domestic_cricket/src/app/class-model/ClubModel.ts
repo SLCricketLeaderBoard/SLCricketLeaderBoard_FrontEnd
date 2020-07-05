@@ -12,6 +12,7 @@ export class ClubModel {
     public growMatch: Number,
     public regDate: Date,
     public status: Number,
+    public clubLogo: String,
     public managerId: ManagerModel
-  ) {}
+  ) { }
 }

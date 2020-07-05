@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ClubModel } from '../../class-model/ClubModel';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { API_URL } from '../../app.constants';
 
 
@@ -31,6 +31,12 @@ export class ClubService {
 
   getClubDataOfManager(userId:Number){
     return this.http.get<ClubModel>(`${API_URL}/club/manager/${userId}`);
+  }
+
+  getClubsForMatches(tournamentId:Number){
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization',jwt);
+    return this.http.get<ClubModel[]>(`${API_URL}/tournamentclub/registeredClubs/${tournamentId}`,{headers});
   }
   
 }

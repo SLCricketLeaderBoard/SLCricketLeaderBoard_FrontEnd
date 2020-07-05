@@ -12,11 +12,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 export class CreateTournamnetComponent implements OnInit {
-    tournamentCreateForm: FormGroup;
+  tournamentRegisterForm: FormGroup;
     done: boolean = false;
     valid: boolean = false;
     user:TournamentModel= null;
-
 
     startDate :Date = new Date();
     endDate :Date = new Date();
@@ -28,27 +27,45 @@ export class CreateTournamnetComponent implements OnInit {
 
     let nicRanger = /^[vV0-9]+$/;
 
-    this.tournamentCreateForm = new FormGroup({
+    this.tournamentRegisterForm = new FormGroup({
     tournamentName: new FormControl(null,Validators.required),
-    tournamentId: new FormControl(null,[Validators.required]),
     startDate: new FormControl(null,[Validators.required]),
-    endDate: new FormControl(null,[Validators.required])
+    endDate: new FormControl(null,[Validators.required]),
+    regEndDate: new FormControl(null,[Validators.required]),
 
   })
 }
   ngOnInit() {
-
-  
-
   }
-  reset(){
+
   
+  reset(){
+    this.tournamentRegisterForm.reset();
   }
   create(){
+    const tournamentId: Number  = null; 
+    const tournamentName: String = this.tournamentRegisterForm.value['tournamentName'];
+    const startDate: Date = this.tournamentRegisterForm.value['startDate'];
+    const finishDate: Date = this.tournamentRegisterForm.value['endDate'];
+    const registartionCloseDate: Date = this.tournamentRegisterForm.value['regEndDate'];
 
-    //
+    const tournament: TournamentModel = new TournamentModel(
+      tournamentId,
+      tournamentName,
+      startDate,
+      finishDate,
+      registartionCloseDate
+    );
+    console.log(tournament);
+
+    this.tournamentService.registerTournament(tournament).subscribe(res=>{
+
+      console.log(res);
+      this.done=!this.done;
+      
+    },error=>{
+      console.log(error);
+    })
   }
-  
-
   }
 ;
