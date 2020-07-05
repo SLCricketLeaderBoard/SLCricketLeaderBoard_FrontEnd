@@ -29,6 +29,9 @@ export class PlayerAddComponent implements OnInit {
   selectBallerType: BallerTypeModel;
   selectBatmanType: BatmanTypeModel;
 
+  batmanNotSpecify: BatmanTypeModel;
+  ballerNotSpecify: BallerTypeModel;
+
   isDataLoad: Boolean = false;
 
   swalMessage: SwalMessage = new SwalMessage();
@@ -132,6 +135,7 @@ export class PlayerAddComponent implements OnInit {
     this.batamnTypeService.getBatmanTypeList().subscribe(
       response => {
         this.batmanTypeList = response;
+        this.batmanNotSpecify = this.batmanTypeList[2];
       },
       error => {
         console.log(error);
@@ -143,6 +147,8 @@ export class PlayerAddComponent implements OnInit {
     this.ballerTypeService.getBallerTypeList().subscribe(
       response => {
         this.ballerTypeList = response;
+        this.ballerNotSpecify = this.ballerTypeList[4];
+        this.specialPlayerSelection();
       },
       error => {
         console.log(error);
@@ -171,6 +177,27 @@ export class PlayerAddComponent implements OnInit {
         this.swalMessage.notSuccessMessage('Player Registration Not Successful');
       }
     );
+  }
+
+  specialPlayerSelection() {
+    let selection = this.playerTypeField.value;
+
+    if (this.batmanTypeList.length != 3) {
+      this.batmanTypeList.push(this.batmanNotSpecify);
+    }
+
+    if (this.ballerTypeList.length != 5) {
+      this.ballerTypeList.push(this.ballerNotSpecify);
+    }
+
+    if (selection == 0) {//Batman
+      this.batmanTypeList.pop();
+    } else if (selection == 1) {//Baller
+      this.ballerTypeList.pop();
+    } else {
+      this.batmanTypeList.pop();
+      this.ballerTypeList.pop();
+    }
   }
 
   close() {

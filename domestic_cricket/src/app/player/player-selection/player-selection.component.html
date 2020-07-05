@@ -5,10 +5,10 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 *ngIf="isTournamentDataLoad && option==1" class="card-title">{{tournamentData.tournamentName}} Tournement
+          <h4 *ngIf="isTournamentDataLoad && option==1" class="card-title">{{tournamentData.tournamentName}} Tournament
             Team Players Registration
           </h4>
-          <h4 *ngIf="isTournamentDataLoad && option==2" class="card-title">{{tournamentData.tournamentName}} Tournement
+          <h4 *ngIf="isTournamentDataLoad && option==2" class="card-title">{{tournamentData.tournamentName}} Tournament
             Team Players Update</h4>
         </div>
         <div class="card-body">
@@ -24,7 +24,7 @@
                 <div class="col-md-4">
                   <div class="card">
                     <div class="card-header">
-                      <h6 class="card-title">Batman List</h6>
+                      <h6 class="card-title">Batmen List</h6>
                     </div>
                     <div class="card-body">
                       <ul *ngFor="let batman of previousBatmanList">
@@ -88,7 +88,7 @@
                     <div class="row fromRow">
                       <div class="col-sm-6 col-md-6">
                         <mat-form-field>
-                          <mat-label>Batmans</mat-label>
+                          <mat-label>Batmens</mat-label>
                           <mat-select formControlName="batmans" multiple>
                             <mat-select-trigger>
                               {{batmansField.value ? (batmansField.value[0]!=null ? batmansField.value[0].userId.nameWithInitial : '') : ''}}
@@ -106,7 +106,7 @@
                           *ngIf=" playerSelectionForm.get('batmans').invalid && playerSelectionForm.get('batmans').touched">
                           <small *ngIf="batmansField.errors?.required" class="text-danger">Batmans required</small>
                           <small *ngIf="(batmansField.value?.length < 3) &&  !batmansField.errors?.required"
-                            class="text-danger">At least 3 batmans
+                            class="text-danger">At least 3 batmens
                             required</small>
                         </div>
                       </div>
@@ -183,12 +183,19 @@
                 </div>
                 <div class="card-body">
 
+                  <div class="container" *ngIf="isDataLoad">
+                    <div class="text-center">
+                      <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                    </div>
+                  </div>
 
                   <div class="row">
 
                     <div id="playerType" class="col-sm-6 col-lg-6">
                       <select class="form-control" [(ngModel)]="selectPlayerType">
-                        <option (click)="selectPlayerFunction()" [ngValue]="0" selected>Batman</option>
+                        <option (click)="selectPlayerFunction()" [ngValue]="0" selected>Batmen</option>
                         <ng-container *ngFor="let player of playerTypeList; let i=index">
                           <option (click)="selectPlayerFunction()" [ngValue]="i+1">{{player}}</option>
                         </ng-container>
@@ -198,7 +205,7 @@
                     <div class="col-md-8">
                       <div class="card">
                         <div class="card-header">
-                          <h6 *ngIf="selectPlayerType==0" class="card-title">Batmans</h6>
+                          <h6 *ngIf="selectPlayerType==0" class="card-title">Batmens</h6>
                           <h6 *ngIf="selectPlayerType==1" class="card-title">Ballers</h6>
                           <h6 *ngIf="selectPlayerType==2" class="card-title">AllRounders</h6>
                         </div>
