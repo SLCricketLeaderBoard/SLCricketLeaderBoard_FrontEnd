@@ -98,6 +98,41 @@
             </div>
           </div>
 
+
+
+
+
+
+
+          <div class="row">
+            <div class="col-md-4 pr-1">
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" placeholder="national identity card number"
+                  formControlName="password" />
+
+                <div class="error-message"
+                  *ngIf="!managerRegisterForm.get('password').valid && managerRegisterForm.get('password').touched">
+                  Invalid Password please check again!
+                </div>
+
+              </div>
+            </div>
+
+            <div class="col-md-4 pr-1">
+              <div class="form-group">
+                <label>Confirm passoword</label>
+                <input type="password" class="form-control" placeholder="Contact number" formControlName="confirmPassword" />
+
+                <div class="error-message"
+                  *ngIf="!managerRegisterForm.get('confirmPassword').valid && managerRegisterForm.get('confirmPassword').touched">
+                  Invalid
+                </div>
+
+              </div>
+            </div>
+          </div>
+
           <div class="row">
             <div class="col-md-8 pr-1">
               <div class="form-group">
