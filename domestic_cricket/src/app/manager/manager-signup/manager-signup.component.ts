@@ -34,7 +34,6 @@ export class ManagerSignupComponent implements OnInit {
     this.managerRegisterForm = new FormGroup({
       userName: new FormControl(null, [
         Validators.required,
-        Validators.minLength(6),
       ]),
       fullName: new FormControl(null, [
         Validators.required,

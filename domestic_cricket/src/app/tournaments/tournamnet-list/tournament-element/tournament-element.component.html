@@ -23,6 +23,15 @@
                 :  {{tournement.endDate| date}}
               </td>
             </tr>
+
+            <tr>
+              <td>
+                <b>Registration closing Date</b>
+              </td>
+              <td>
+                :  {{tournement.registartionCloseDate| date}}
+              </td>
+            </tr>
           </table>
           <a  class="btn btn-primary" >more</a>
                   <button (click)="createMatch()" *ngIf="active"  class="btn btn-success" data-toggle="tooltip" data-placement="right" title="New Match">Create Match
