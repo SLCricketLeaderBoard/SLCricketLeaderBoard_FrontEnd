@@ -49,7 +49,7 @@ export class ManagerManagerRegisterComponent implements OnInit {
       ]),
       contactNumber: new FormControl(null, [
         Validators.required,
-        Validators.minLength(9),
+        Validators.minLength(10),
       ]),
       email: new FormControl(null, [Validators.required, Validators.email]),
       address: new FormControl(null, [Validators.required]),

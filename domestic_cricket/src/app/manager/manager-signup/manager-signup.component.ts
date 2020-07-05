@@ -6,6 +6,7 @@ import { ClubService } from '../../service/club/club.service';
 import { Router } from '@angular/router';
 import { GUEST_USER_EMAIL, GUEST_USER_PASSWORD } from '../../app.constants';
 import { UserAuthenticationServiceService } from '../../service/user/user-authentication-service.service';
+import { ConfirmedValidator } from '../../validators/matchClubValidators.validator';
 
 
 @Component({
@@ -52,11 +53,14 @@ export class ManagerSignupComponent implements OnInit {
         Validators.required,
         this.forbiddenContactNumbersValidator.bind(this),
         Validators.pattern(numericRegex),
-        Validators.minLength(9),
+        Validators.minLength(10),
       ]),
       email: new FormControl(null, [Validators.required, Validators.email]),
       address: new FormControl(null, [Validators.required]),
-    });
+      password:  new FormControl(null, [Validators.required,Validators.minLength(6)]),
+      confirmPassword: new FormControl(null,[Validators.required,Validators.minLength(6)])
+    },{
+    validators: this.password.bind(this)});
   }
 
 
@@ -92,6 +96,12 @@ export class ManagerSignupComponent implements OnInit {
       );
   }
 
+  password(formGroup: FormGroup) {
+    const { value: newPassword } = formGroup.get('password');
+    const { value: confirmPassword } = formGroup.get('confirmPassword');
+    return newPassword === confirmPassword ? null : { passwordNotMatch: true };
+  }
+
 
   register() {
     const userName: String = this.managerRegisterForm.value["userName"];
@@ -105,7 +115,7 @@ export class ManagerSignupComponent implements OnInit {
     ];
     const email: String = this.managerRegisterForm.value["email"];
     const address: String = this.managerRegisterForm.value["address"];
-    const password: String = this.managerRegisterForm.value["nic"];
+    const password: String = this.managerRegisterForm.value["password"];
     const role: Number = 2;
     const id = 0;
     const regDate: Date = new Date();
@@ -172,5 +182,4 @@ export class ManagerSignupComponent implements OnInit {
     }
     return null;
   }
-
 }

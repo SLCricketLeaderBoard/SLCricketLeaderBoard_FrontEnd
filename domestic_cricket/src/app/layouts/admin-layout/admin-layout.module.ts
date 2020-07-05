@@ -46,6 +46,8 @@ import { PlayerSelectionComponent } from '../../player/player-selection/player-s
 import { UserComponent } from '../../user/user.component';
 import { MatchDetailsComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-details/match-details.component';
 import { ManagerTournamentListComponent } from '../../tournaments/manager-tournament-list/manager-tournament-list.component';
+import { NonregsponsorsComponent } from '../../Sponsor/nonregsponsors/nonregsponsors.component';
+import { NonregsponsorListComponent } from '../../Sponsor/nonregsponsor-list/nonregsponsor-list.component';
 import { ManagerDashboardComponent } from '../../dashboard/manager-dashboard/manager-dashboard.component';
 
 import { ManagerMatchListComponent } from '../../tournaments/manager-match-list/manager-match-list.component';
@@ -116,6 +118,8 @@ import { MatchSummeryDataInputComponent } from '../../refereeFunctions/match-sum
     UserComponent,
     MatchDetailsComponent,
     ManagerTournamentListComponent,
+    NonregsponsorsComponent,
+    NonregsponsorListComponent,
     ManagerDashboardComponent,
     MatchSummeryDataInputComponent,
     ManagerMatchListComponent,
