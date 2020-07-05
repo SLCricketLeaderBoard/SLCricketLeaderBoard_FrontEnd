@@ -161,7 +161,8 @@
                 [class.is-invalid]=" playerRegisterForm.get('playerType').invalid && playerRegisterForm.get('playerType').touched"
                 class="form-control" formControlName="playerType">
                 <option value="" disabled selected>Select a player special type</option>
-                <option *ngFor="let player of playerTypeList; let i=index;" [ngValue]="i">{{ player }}
+                <option (click)="specialPlayerSelection()" *ngFor="let player of playerTypeList; let i=index;"
+                  [ngValue]="i">{{ player }}
                 </option>
               </select>
               <div
