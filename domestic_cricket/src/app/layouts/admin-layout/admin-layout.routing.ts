@@ -35,8 +35,8 @@ import { PlayerSelectionComponent } from '../../player/player-selection/player-s
 import { UserComponent } from '../../user/user.component';
 import { MatchDetailsComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-details/match-details.component';
 import { ManagerTournamentListComponent } from '../../tournaments/manager-tournament-list/manager-tournament-list.component';
-
-
+import { NonregsponsorsComponent } from '../../Sponsor/nonregsponsors/nonregsponsors.component';
+import { NonregsponsorListComponent } from '../../Sponsor/nonregsponsor-list/nonregsponsor-list.component';
 
 export const AdminLayoutRoutes: Routes = [
   { path: "user-profile", component: UserProfileComponent },
@@ -192,6 +192,18 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: "manager-tournament-list",
     component: ManagerTournamentListComponent,
+    canActivate: [RouteGuardService]
+
+  },
+  {
+    path: "nonregsponsors",
+    component:NonregsponsorsComponent,
+    canActivate: [RouteGuardService]
+
+  },
+  {
+    path: "nonregsponsors-list",
+    component:NonregsponsorListComponent,
     canActivate: [RouteGuardService]
 
   }

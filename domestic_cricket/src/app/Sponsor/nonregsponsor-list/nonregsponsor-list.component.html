@@ -1,0 +1,26 @@
+<div class="panel-header panel-header-sm"></div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+          <div class="col-3">
+            <h4 class="card-title">Sponsor Requests</h4>
+          </div>
+        </div>
+        </div>
+        <div class="card-body">
+          <app-nonregsponsors *ngFor="let Sponsor of sponsors" [sponsor]="sponsor" ></app-nonregsponsors>
+          <div class="container" *ngIf="!sponsors">
+            <div class="text-center">
+                <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
