@@ -132,9 +132,9 @@ export class ManagerSignupComponent implements OnInit {
 
     this.managerService.registerManager(user).subscribe(
       (res) => {
-        console.log("Hellllllllllllllllllllll")
-        console.log(res.userId)
-        this.router.navigate(["club-singup", res.userId]);
+        console.log("Helllllllllllllllll")
+        console.log(res.userId);
+        this.router.navigate(['club-signup', res.userId]);
         console.log(res);
         //const date = new Date();
         //this.done = !this.done;

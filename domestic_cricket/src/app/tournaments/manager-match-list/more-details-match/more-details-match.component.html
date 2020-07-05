@@ -1,0 +1,154 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 *ngIf="matchData!=null" class="card-title">{{matchData.matchTypeId.matchType}} Match Details</h4>
+        </div>
+        <div *ngIf="matchData!=null" class="card-body">
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <tr>
+                        <td>Tournament Name</td>
+                        <td>: {{matchData.tournamentId.tournamentName}}</td>
+                      </tr>
+                      <tr>
+                        <td>Tournament Round</td>
+                        <td>: {{matchData.tournementRound}}</td>
+                      </tr>
+                      <tr>
+                        <td>Start Date</td>
+                        <td>: {{matchData.startDate}}</td>
+                      </tr>
+                      <tr>
+                        <td>Finish Date Date</td>
+                        <td>: {{matchData.finishDate}}</td>
+                      </tr>
+                      <tr>
+                        <td>Stadium</td>
+                        <td>: {{matchData.stadiumId.name}}</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <tr>
+                        <td>Umpire 01</td>
+                        <td>:{{umpireNameList[0]}}</td>
+                      </tr>
+                      <tr>
+                        <td>Umpire 02</td>
+                        <td>:{{umpireNameList[1]}}</td>
+                      </tr>
+                      <tr>
+                        <td>Umpire 03</td>
+                        <td>:{{umpireNameList[1]}}</td>
+                      </tr>
+                      <tr>
+                        <td>Referee</td>
+                        <td>:{{matchData.refereeId.userId.nameWithInitial}}</td>
+                      </tr>
+                      <tr>
+                        <td>Sponsor</td>
+                        <td>:</td>
+                      </tr>
+
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Team 01 : {{clubNameList[0]}} <i *ngIf="winTeam[0]=='win'"
+                      class="fas fa-trophy"></i></h5>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <tr>
+                        <td>Total Score</td>
+                        <td>:{{matchData.clubOneMark}}</td>
+                      </tr>
+                      <tr>
+                        <td>Overs</td>
+                        <td>:{{matchData.clubTwoOvers}}</td>
+                      </tr>
+                      <tr>
+                        <td>Wickets</td>
+                        <td>:{{matchData.clubOneWicket}}</td>
+                      </tr>
+                      <tr>
+                        <td>Captain</td>
+                        <td>:{{playerNamesList[0]}}</td>
+                      </tr>
+                      <tr>
+                        <td>ViceCaptain</td>
+                        <td>:{{playerNamesList[1]}}</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Team 2 : {{clubNameList[1]}} <i *ngIf="winTeam[1]=='win'"
+                      class="fas fa-trophy"></i></h5>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <tr>
+                        <td>Total Score</td>
+                        <td>:{{matchData.clubTwoMark}}</td>
+                      </tr>
+                      <tr>
+                        <td>Overs</td>
+                        <td>:{{matchData.clubTwoOvers}}</td>
+                      </tr>
+                      <tr>
+                        <td>Wickets</td>
+                        <td>:{{matchData.clubTwoWicket}}</td>
+                      </tr>
+                      <tr>
+                        <td>Captain</td>
+                        <td>:{{playerNamesList[3]}}</td>
+                      </tr>
+                      <tr>
+                        <td>ViceCaptain</td>
+                        <td>:{{playerNamesList[4]}}</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

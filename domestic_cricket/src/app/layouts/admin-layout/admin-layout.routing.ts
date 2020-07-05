@@ -38,6 +38,8 @@ import { ManagerTournamentListComponent } from '../../tournaments/manager-tourna
 
 import { ManagerDashboardComponent } from '../../dashboard/manager-dashboard/manager-dashboard.component';
 import { MatchSummeryDataInputComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-summery-data-input/match-summery-data-input.component';
+import { ManagerMatchListComponent } from '../../tournaments/manager-match-list/manager-match-list.component';
+import { MoreDetailsMatchComponent } from '../../tournaments/manager-match-list/more-details-match/more-details-match.component';
 
 
 
@@ -209,5 +211,15 @@ export const AdminLayoutRoutes: Routes = [
     component: ManagerDashboardComponent,
     canActivate: [RouteGuardService]
 
+  },
+  {
+    path: "manager-match-list",
+    component: ManagerMatchListComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: "match-more-details/:matchId",
+    component: MoreDetailsMatchComponent,
+    canActivate: [RouteGuardService]
   }
 ];
