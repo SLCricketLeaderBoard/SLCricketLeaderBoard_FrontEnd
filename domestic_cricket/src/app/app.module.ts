@@ -58,7 +58,9 @@ import { ClubSignupComponent } from './club/club-signup/club-signup.component';
     LoginComponent,
     PlayerSignupComponent,
     ManagerSignupComponent,
-    ClubSignupComponent
+    ClubSignupComponent,
+
+
   ],
   providers: [
     {

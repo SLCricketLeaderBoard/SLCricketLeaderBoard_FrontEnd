@@ -47,9 +47,15 @@ import { UserComponent } from '../../user/user.component';
 import { MatchDetailsComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-details/match-details.component';
 import { ManagerTournamentListComponent } from '../../tournaments/manager-tournament-list/manager-tournament-list.component';
 import { ManagerDashboardComponent } from '../../dashboard/manager-dashboard/manager-dashboard.component';
-import { MatchSummeryDataInputComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-summery-data-input/match-summery-data-input.component';
+
 import { ManagerMatchListComponent } from '../../tournaments/manager-match-list/manager-match-list.component';
 import { MoreDetailsMatchComponent } from '../../tournaments/manager-match-list/more-details-match/more-details-match.component';
+
+import { CreateTournamnetComponent } from '../../tournaments/create-tournamnet/create-tournamnet.component';
+import { RefreeTournamentsComponent } from '../../refereeFunctions/refree-tournaments/refree-tournaments.component';
+import { RefereeMatchListComponent } from '../../refereeFunctions/referee-match-list/referee-match-list.component';
+import { MatchSummeryDataInputComponent } from '../../refereeFunctions/match-summery-data-input/match-summery-data-input.component';
+
 
 
 
@@ -112,9 +118,14 @@ import { MoreDetailsMatchComponent } from '../../tournaments/manager-match-list/
     ManagerTournamentListComponent,
     ManagerDashboardComponent,
     MatchSummeryDataInputComponent,
-
     ManagerMatchListComponent,
-    MoreDetailsMatchComponent
+    MoreDetailsMatchComponent,
+
+    CreateTournamnetComponent,
+    RefreeTournamentsComponent,
+    RefereeMatchListComponent
+
+
   ],
 })
 export class AdminLayoutModule { }

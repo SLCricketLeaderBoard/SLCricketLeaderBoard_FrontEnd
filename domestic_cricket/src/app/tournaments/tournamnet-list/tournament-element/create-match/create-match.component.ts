@@ -179,6 +179,7 @@ export class CreateMatchComponent implements OnInit {
     const manOfTheMatch: Number =0;
     const clubOneOvers: Number = 0;
     const clubTwoOvers: Number = 0;
+    const state : Number = 0;
 
 
 
@@ -212,7 +213,8 @@ export class CreateMatchComponent implements OnInit {
       clubTwoKeper,
       manOfTheMatch,
       clubOneOvers,
-      clubTwoOvers
+      clubTwoOvers,
+      state
     );
 
      

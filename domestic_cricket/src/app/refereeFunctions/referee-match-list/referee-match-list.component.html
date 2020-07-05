@@ -1,0 +1,54 @@
+<div class="panel-header panel-header-sm"></div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+          <div class="col-3">
+            <h4 class="card-title" *ngIf="tournament">{{tournament.tournamentName}}</h4>
+          </div>
+          <div>
+            <button (click)="createMatch()" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Register Manager"><i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-5" style="margin: 2%;">
+            <h4>Update Pending</h4>
+            
+            <app-match-element *ngFor="let match of playedMatches" [match]="match" [played]="true"></app-match-element>
+            <div class="row" *ngIf="!playedMatches" style="margin-left: 20%; margin-top: 20%; ">
+              <p>No Matches Pendding</p>
+            </div>
+
+          </div>
+          <div class="col-5" style="margin: 2%;">
+            <h4>Up Comming</h4>
+            <app-match-element *ngFor="let match of toPlayMatches" [match]="match" [played]="false"></app-match-element>
+            <div class="row" *ngIf="!toPlayMatches" style="margin-left: 20%; margin-top: 20%; ">
+                <p>No Matches Comming up</p>
+            </div>
+          </div>
+
+          <div class="col-5" style="margin: 2%;">
+            <h4>Updated</h4>
+            <app-match-element *ngFor="let match of updatedMatches" [match]="match" [played]="true"></app-match-element>
+            <div class="row" *ngIf="!updatedMatches" style="margin-left: 20%; margin-top: 20%; ">
+              <p>No Matches Updated</p>
+          </div>
+          </div>
+
+        </div>
+               
+              
+      </div>
+    </div>
+  </div>
+</div>
+
+ 
+      
+    
+ 

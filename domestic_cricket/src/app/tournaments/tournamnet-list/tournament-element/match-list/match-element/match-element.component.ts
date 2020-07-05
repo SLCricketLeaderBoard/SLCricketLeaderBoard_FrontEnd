@@ -27,9 +27,19 @@ export class MatchElementComponent implements OnInit {
   umpireThree: UmpireModel
   tossWinClub: ClubModel
   active:boolean
+  userRole:any
+  refreeActive:boolean
   constructor(private router:Router,private clubServie:ClubService,private umpireService:UmpireService,private playerService:PlayerService,private route:ActivatedRoute) { }
 
   ngOnInit() {
+
+    this.userRole=sessionStorage.getItem('userRole')
+
+    if(this.userRole==='5'){
+      this.refreeActive=true
+    }else{
+      false
+    }
 
     if(this.played===true){
       this.active=true

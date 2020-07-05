@@ -46,7 +46,7 @@
               </td>
             </tr>
             <a  class="btn btn-primary" (click)="more()" >more</a>
-            <a  class="btn btn-primary" (click)="setSummery()" >Update Details</a>
+            <a  class="btn btn-primary" *ngIf="refreeActive" (click)="setSummery()" >Update Details</a>
 
           </table>
         </div>

@@ -18,11 +18,11 @@ export class TournamentElementComponent implements OnInit {
   }
 
   ngOnInit() {
-   if(this.state==='true'){
-     this.active=true
-   }else{
-     this.active=false
-   }
+    if(this.state==='true'){
+      this.active=true
+    }else{
+      this.active=false
+    }
    
   }
 

@@ -9,7 +9,7 @@
         <div class="card-body">
           <div class="main-content">
             <div class="row">
-              <div class="col-md-2"></div>
+              
               <div class="col-md-8">
                 <div class="card">
                   <div class="card-header">
@@ -131,13 +131,61 @@
                   </div>
                   <div *ngIf="done">
                     <p style="margin-top: 20px; margin-left: 100px; color: green;">Registration successfull!!</p>
-
+                    <a  style="margin-left: 20%;" class="btn btn-primary" (click)="back()" >Back</a>
                     <!-- <app-user  [user]="user">  </app-user> -->
 
 
                   </div>
                 </div>
               </div>
+
+
+
+
+              <div class="col-md-4">
+
+
+                <div class="card card-user" *ngIf="user">
+                  <div class="image">
+                    <img src="../assets/img/bg5.jpg" alt="...">
+                  </div>
+                  <div class="card-body">
+                    <div class="author">
+                      <a href="#">
+                        <img class="avatar border-gray" src="{{user.profileImage}}" alt="...">
+                        <h5 class="title">{{user.userName}}</h5>
+                      </a>
+                    
+                      <p >
+                        {{user.nameWithInitial}}
+                      </p>
+                    </div>
+                    <p class="text-center">
+                      {{user.email}}
+                      <br> {{user.contactNumber}}
+                      <br>{{user.address}}
+                    </p>
+                  </div>
+                  <hr>
+                  <hr>
+                  <div class="button-container">
+                    <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+                      <i class="fab fa-facebook-f"></i>
+                    </button>
+                    <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+                      <i class="fab fa-twitter"></i>
+                    </button>
+                    <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+                      <i class="fab fa-google-plus-g"></i>
+                    </button>
+                  </div>
+
+                    
+                  
+                </div>
+              </div>
+
+
             </div>
           </div>
         </div>

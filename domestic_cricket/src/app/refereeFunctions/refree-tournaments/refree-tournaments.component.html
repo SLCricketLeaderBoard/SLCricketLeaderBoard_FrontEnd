@@ -1,0 +1,141 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-3">
+              <h4 class="card-title">Tournaments</h4>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <div class="row" style="padding-left: 20%;">
+                <h5>registration Opned</h5>
+              </div>
+
+              <div class="row" *ngIf="registrationOpenTournaments let tournaments" style="padding: 2%;" >
+
+
+                                  <div class="card" style="width: 40rem; padding: 3%;" *ngFor="let tournement of tournaments">
+                                    <div class="row">
+                                      <div class="col-8">
+                                        <div class="profile-body">
+                                          <h4 class="card-title">{{tournement.tournamentName}}</h4>
+                                          <table>
+                                            <tr>
+                                              <td>
+                                                <b>Start Date</b>
+                                              </td>
+                                              <td>
+                                                <!-- {{ dateObj | date }}  -->
+                                                :  {{tournement.startDate| date}}
+                                              </td>
+                                            </tr>
+                                    
+                                            <tr>
+                                              <td>
+                                                <b>End Date</b>
+                                              </td>
+                                              <td>
+                                                :  {{tournement.endDate| date}}
+                                              </td>
+                                            </tr>
+
+                                            <tr>
+                                              <td>
+                                                <b>Registration Closing Date</b>
+                                              </td>
+                                              <td>
+                                                :  {{tournement.registartionCloseDate| date}}
+                                              </td>
+                                            </tr>
+
+                                          </table>
+                                          
+                                           
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+              </div>
+
+              <div class="container" *ngIf="!registrationOpenTournaments">
+                <div class="text-center">
+                  <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="col-6">
+              <div class="row" style="margin-left: 20%;">
+                <h5>Registration Closed</h5>
+              </div>
+
+              <div class="row" *ngIf="registrationClosedTournaments let tournaments">
+
+                                          <div class="card" style="width: 40rem; padding: 3%;" *ngFor="let tournement of tournaments">
+                                            <div class="row">
+                                              <div class="col-8">
+                                                <div class="profile-body">
+                                                  <h4 class="card-title">{{tournement.tournamentName}}</h4>
+                                                  <table>
+                                                    <tr>
+                                                      <td>
+                                                        <b>Start Date</b>
+                                                      </td>
+                                                      <td>
+                                                        <!-- {{ dateObj | date }}  -->
+                                                        :  {{tournement.startDate| date}}
+                                                      </td>
+                                                    </tr>
+                                            
+                                                    <tr>
+                                                      <td>
+                                                        <b>End Date</b>
+                                                      </td>
+                                                      <td>
+                                                        :  {{tournement.endDate| date}}
+                                                      </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                      <td>
+                                                        <b>Registration Closing Date</b>
+                                                      </td>
+                                                      <td>
+                                                        :  {{tournement.registartionCloseDate| date}}
+                                                      </td>
+                                                    </tr>
+
+                                                  </table>
+                                                  <button (click)="viewMatches(tournement)" class="btn btn-success" data-toggle="tooltip" data-placement="right" title="View Match">View Matches
+                                                  </button>    
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+
+              </div>
+
+              <div class="container" *ngIf="!registrationClosedTournaments">
+                <div class="text-center">
+                  <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
