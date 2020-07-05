@@ -36,7 +36,7 @@ export class PlayerSignupComponent implements OnInit {
     fullName: ['', [Validators.required]],
     nameWithInitial: ['', [Validators.required]],
     nic: ['', [Validators.required, Validators.pattern('^\\d{9,9}[v,V]$')]],
-    contactNumber: ['', [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{9}$')]],
+    contactNumber: ['', [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
     email: ['', [Validators.required, Validators.email]],
     address: ['', [Validators.required]],
     playerType: ['', [Validators.required]],
