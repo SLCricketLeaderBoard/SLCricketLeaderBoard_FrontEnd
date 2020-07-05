@@ -176,13 +176,13 @@
               <select
                 [class.is-invalid]=" playerRegisterForm.get('batmanType').invalid && playerRegisterForm.get('batmanType').touched"
                 class="form-control" formControlName="batmanType">
-                <option value="" disabled selected>Select a batman type</option>
+                <option value="" disabled selected>Select a batmen type</option>
                 <option *ngFor="let batman of batmanTypeList" [ngValue]="batman">{{ batman.type }}</option>
               </select>
               <div
                 *ngIf=" playerRegisterForm.get('batmanType').invalid && playerRegisterForm.get('batmanType').touched">
                 <small *ngIf="batmanTypeField.errors?.required" class="text-danger">please select a
-                  batman type</small>
+                  batmen type</small>
               </div>
             </div>
 

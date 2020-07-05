@@ -17,6 +17,8 @@ import { TournamentModel } from '../../class-model/TournamentModel';
 })
 export class PlayerSelectionComponent implements OnInit {
 
+  isDataLoad = false;
+
   playerTypeList: String[] = ['Baller', 'All Rounder'];
   selectPlayerType: Number = 0;
 
@@ -134,8 +136,9 @@ export class PlayerSelectionComponent implements OnInit {
 
 
   submit() {
+    this.isDataLoad = true;
     let teamSize = this.batmansField.value.length + this.ballersField.value.length + this.allRoundersField.value.length;
-    if (teamSize >= 3) {
+    if (teamSize >= 6) {
       let selectPlayerList: PlayerModel[] = [];
       let playerWrapper: PlayerWrapper = new PlayerWrapper(selectPlayerList);
 
@@ -155,6 +158,7 @@ export class PlayerSelectionComponent implements OnInit {
       if (this.option == 1) {
         this.tournamentClubPlayerService.tournamentClubPlayerRegister(this.clubId, this.tournementId, playerWrapper).subscribe(
           response => {
+            this.isDataLoad = false;
             if (response == 1) {
               this.swalMessage.successMessage("Tournament Team Players Registration Successful");
             } else {
@@ -163,6 +167,7 @@ export class PlayerSelectionComponent implements OnInit {
             this.router.navigate(['manager-tournament-list']);
           },
           error => {
+            this.isDataLoad = false;
             console.log(error);
             this.swalMessage.notSuccessMessage("Tournament Team Players Registration Not Successful");
           }
@@ -178,6 +183,7 @@ export class PlayerSelectionComponent implements OnInit {
               this.getClubPlayerList();
               this.getRegisteredClubPlayerList();
             }
+            this.isDataLoad = false;
           },
           error => {
             this.swalMessage.successMessage("Tournament Team Players Update Not Successful");
@@ -189,6 +195,7 @@ export class PlayerSelectionComponent implements OnInit {
 
     } else {
       this.errorMessage = "Team Registration not successful.Please select at least 12 players for the team";
+      this.isDataLoad = false;
     }
   }
 
