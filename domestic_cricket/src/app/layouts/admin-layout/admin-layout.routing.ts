@@ -48,6 +48,8 @@ import { CreateTournamnetComponent } from '../../tournaments/create-tournamnet/c
 import { RefreeTournamentsComponent } from '../../refereeFunctions/refree-tournaments/refree-tournaments.component';
 import { RefereeMatchListComponent } from '../../refereeFunctions/referee-match-list/referee-match-list.component';
 import { MatchSummeryDataInputComponent } from '../../refereeFunctions/match-summery-data-input/match-summery-data-input.component';
+import { RefereeTeamPlayersComponent } from '../../refereeFunctions/referee-team-players/referee-team-players.component';
+import { RefreePlayerRecordDataInputComponent } from '../../refereeFunctions/refree-player-record-data-input/refree-player-record-data-input.component';
 
 
 
@@ -262,6 +264,16 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: "referee-tournament-list/match-list/:tournamentId/match-summery-input/:matchId",
     component: MatchSummeryDataInputComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: "referee-tournament-list/match-list/:tournamentId/match-players/:matchId",
+    component: RefereeTeamPlayersComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: "referee-tournament-list/match-list/:tournamentId/match-players/:matchId/player-record/:selectedPlayerId",
+    component: RefreePlayerRecordDataInputComponent,
     canActivate: [RouteGuardService]
   },
   {

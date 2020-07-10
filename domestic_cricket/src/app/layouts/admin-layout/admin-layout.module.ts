@@ -57,8 +57,9 @@ import { CreateTournamnetComponent } from '../../tournaments/create-tournamnet/c
 import { RefreeTournamentsComponent } from '../../refereeFunctions/refree-tournaments/refree-tournaments.component';
 import { RefereeMatchListComponent } from '../../refereeFunctions/referee-match-list/referee-match-list.component';
 import { MatchSummeryDataInputComponent } from '../../refereeFunctions/match-summery-data-input/match-summery-data-input.component';
-
-
+import { RefereeTeamPlayersComponent } from '../../refereeFunctions/referee-team-players/referee-team-players.component';
+import { RefreePlayerListElementComponent } from '../../refereeFunctions/refree-player-list-element/refree-player-list-element.component';
+import { RefreePlayerRecordDataInputComponent } from '../../refereeFunctions/refree-player-record-data-input/refree-player-record-data-input.component';
 
 
 @NgModule({
@@ -127,7 +128,10 @@ import { MatchSummeryDataInputComponent } from '../../refereeFunctions/match-sum
 
     CreateTournamnetComponent,
     RefreeTournamentsComponent,
-    RefereeMatchListComponent
+    RefereeMatchListComponent,
+    RefereeTeamPlayersComponent,
+    RefreePlayerListElementComponent,
+    RefreePlayerRecordDataInputComponent,
 
 
   ],

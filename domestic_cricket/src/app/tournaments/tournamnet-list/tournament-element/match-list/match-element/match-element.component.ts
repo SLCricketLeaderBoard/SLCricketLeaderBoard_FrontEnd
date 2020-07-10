@@ -95,6 +95,10 @@ export class MatchElementComponent implements OnInit {
     // tournament-list/view-matches/:tournamentId/match/:matchId
     this.router.navigate(["match-summery-input",this.match.matchId], { relativeTo: this.route });
   }
+  viewPlayers(){
+    this.router.navigate(["match-players",this.match.matchId], { relativeTo: this.route ,queryParams
+    :{clubOneId:this.club01.clubId,clubTwoId:this.club02.clubId} });
+  }
 
 
 }
