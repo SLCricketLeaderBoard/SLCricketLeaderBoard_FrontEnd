@@ -19,8 +19,10 @@ export class RefereeTeamPlayersComponent implements OnInit {
   club1:ClubModel;
   club2:ClubModel;
 
-  selectedPlayesClub1 : SelectedPlayerModel[];
-  selectedPlayesClub2 : SelectedPlayerModel[];
+  selectedPlayesClub1Updated : SelectedPlayerModel[];
+  selectedPlayesClub1NotUpdated : SelectedPlayerModel[];
+  selectedPlayesClub2Updated : SelectedPlayerModel[];
+  selectedPlayesClub2NotUpdated : SelectedPlayerModel[];
 
   constructor(private router:Router,private route:ActivatedRoute,private clubService:ClubService,private selectedPlayerService:SelectedPlayersService) { 
 
@@ -31,16 +33,28 @@ export class RefereeTeamPlayersComponent implements OnInit {
     this.route.params.subscribe(res => {
       this.matchId = res['matchId'];
       
-      this.selectedPlayerService.getSelectedPlayers(this.matchId,this.club01Id).subscribe(res=>{
+      this.selectedPlayerService.getSelectedPlayersUpdated(this.matchId,this.club01Id).subscribe(res=>{
         console.log(res);
-        this.selectedPlayesClub1=res;
+        this.selectedPlayesClub1Updated=res;
       })
 
 
 
-      this.selectedPlayerService.getSelectedPlayers(this.matchId,this.club02Id).subscribe(res=>{
+      this.selectedPlayerService.getSelectedPlayersNotUpdated(this.matchId,this.club01Id).subscribe(res=>{
         console.log(res);
-        this.selectedPlayesClub2=res;
+        this.selectedPlayesClub1NotUpdated=res;
+      })
+
+
+      this.selectedPlayerService.getSelectedPlayersUpdated(this.matchId,this.club02Id).subscribe(res=>{
+        console.log(res);
+        this.selectedPlayesClub2Updated=res;
+      })
+
+
+      this.selectedPlayerService.getSelectedPlayersNotUpdated(this.matchId,this.club02Id).subscribe(res=>{
+        console.log(res);
+        this.selectedPlayesClub2NotUpdated=res;
       })
 
     },error=>{
