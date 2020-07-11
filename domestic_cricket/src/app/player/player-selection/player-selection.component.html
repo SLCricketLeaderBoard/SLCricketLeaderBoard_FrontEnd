@@ -19,6 +19,9 @@
             </div>
 
             <div class="card-body">
+              <P *ngIf="isCaptainsLoad"><b>Captain:</b> {{previousCaptainViceCaptain[0].userId.nameWithInitial}}</P>
+              <P *ngIf="isCaptainsLoad"><b>Vice-Captain:</b> {{previousCaptainViceCaptain[1].userId.nameWithInitial}}
+              </P>
               <div class="row">
 
                 <div class="col-md-4">
@@ -97,7 +100,7 @@
                                 {{batmansField.value?.length === 2 ? 'other' : 'others'}})
                               </span>
                             </mat-select-trigger>
-                            <mat-option *ngFor="let batman of batmanList" [value]="batman">
+                            <mat-option (click)=teamSelect() *ngFor="let batman of batmanList" [value]="batman">
                               {{batman.userId.nameWithInitial}}
                             </mat-option>
                           </mat-select>
@@ -126,7 +129,7 @@
                                 {{ballersField.value?.length === 2 ? 'other' : 'others'}})
                               </span>
                             </mat-select-trigger>
-                            <mat-option *ngFor="let baller of ballerList" [value]="baller">
+                            <mat-option (click)=teamSelect() *ngFor="let baller of ballerList" [value]="baller">
                               {{baller.userId.nameWithInitial}}
                             </mat-option>
                           </mat-select>
@@ -153,7 +156,8 @@
                                 {{allRoundersField.value?.length === 2 ? 'other' : 'others'}})
                               </span>
                             </mat-select-trigger>
-                            <mat-option *ngFor="let allRounder of allRounderList" [value]="allRounder">
+                            <mat-option (click)=teamSelect() *ngFor="let allRounder of allRounderList"
+                              [value]="allRounder">
                               {{allRounder.userId.nameWithInitial}}
                             </mat-option>
                           </mat-select>
@@ -166,6 +170,35 @@
                     </div>
 
 
+                    <div class="row fromRow">
+                      <div class="col-sm-6 col-md-6">
+                        <mat-form-field appearance="fill">
+                          <mat-label>Captain</mat-label>
+                          <mat-select formControlName="captain" name="captain">
+                            <mat-option (click)="captainSelect()" *ngFor="let player of playerListForCaptain"
+                              [value]="player" [disabled]="captainFormDisable">
+                              {{player.userId.nameWithInitial}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row fromRow">
+                      <div class="col-sm-6 col-md-6">
+                        <mat-form-field appearance="fill">
+                          <mat-label>Vice-Captain</mat-label>
+                          <mat-select formControlName="viceCaptain" name="viceCaptain">
+                            <mat-option (click)="viceCaptainSelect()" *ngFor="let player of playerListForViceCaptain"
+                              [disabled]="viceCaptainFormDisable" [value]="player">
+                              {{player.userId.nameWithInitial}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+
 
                     <button mat-raised-button (click)="submit()" [disabled]="!playerSelectionForm.valid"
                       class="btn btn-success btn-round">
@@ -174,6 +207,7 @@
                   </form>
                 </div>
               </div>
+
             </div>
 
             <div class="col-md-8">

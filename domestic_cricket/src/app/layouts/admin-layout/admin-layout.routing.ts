@@ -50,6 +50,7 @@ import { RefereeMatchListComponent } from '../../refereeFunctions/referee-match-
 import { MatchSummeryDataInputComponent } from '../../refereeFunctions/match-summery-data-input/match-summery-data-input.component';
 import { RefereeTeamPlayersComponent } from '../../refereeFunctions/referee-team-players/referee-team-players.component';
 import { RefreePlayerRecordDataInputComponent } from '../../refereeFunctions/refree-player-record-data-input/refree-player-record-data-input.component';
+import { CaptainChangeComponent } from '../../tournaments/manager-match-list/captain-change/captain-change.component';
 
 
 
@@ -100,7 +101,7 @@ export const AdminLayoutRoutes: Routes = [
     path: "tournament-list",
     component: TournamnetListComponent,
     canActivate: [RouteGuardService],
-  }, 
+  },
   {
     path: "create-tournament",
     component: CreateTournamnetComponent,
@@ -224,7 +225,7 @@ export const AdminLayoutRoutes: Routes = [
   },
   {
     path: "nonregsponsors",
-    component:NonregsponsorListComponent,
+    component: NonregsponsorListComponent,
     canActivate: [RouteGuardService]
 
   },
@@ -236,7 +237,7 @@ export const AdminLayoutRoutes: Routes = [
   },
   {
     path: "nonregsponsors-list",
-    component:NonregsponsorListComponent,
+    component: NonregsponsorListComponent,
     canActivate: [RouteGuardService]
 
   },
@@ -281,7 +282,11 @@ export const AdminLayoutRoutes: Routes = [
     component: MatchDetailsComponent,
     canActivate: [RouteGuardService]
   },
-
+  {
+    path: "captain-change/:matchId/:clubId/:type",
+    component: CaptainChangeComponent,
+    canActivate: [RouteGuardService]
+  },
 
 
 ];
