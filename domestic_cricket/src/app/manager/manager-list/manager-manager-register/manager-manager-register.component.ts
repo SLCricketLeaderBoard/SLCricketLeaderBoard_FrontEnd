@@ -9,6 +9,7 @@ import { UserModel } from "../../../class-model/UserModel";
 import { ManagerService } from "../../../service/manager/manager.service";
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserServiceService } from '../../../service/user/user-service.service';
+import { AngularFirestore } from "@angular/fire/firestore";
 
 
 @Component({
@@ -24,7 +25,7 @@ export class ManagerManagerRegisterComponent implements OnInit {
   userId: any
   message:any
 
-  constructor(private router: Router,private managerService: ManagerService,private route: ActivatedRoute,private userService:UserServiceService) {
+  constructor(private router: Router,private managerService: ManagerService,private route: ActivatedRoute,private userService:UserServiceService, private afs: AngularFirestore) {
 
     this.route.params.subscribe(res => {
       this.userId = res['managerId'];
@@ -88,6 +89,7 @@ export class ManagerManagerRegisterComponent implements OnInit {
 
   register() {
     this.user.status=1;
+    this.afs.collection('users').doc(this.user.nic.toString()).update({registered: true});
     this.userService.updateUserState(this.user).subscribe(res=>{
       console.log(res);
       this.message=res;
@@ -95,7 +97,7 @@ export class ManagerManagerRegisterComponent implements OnInit {
 
     },error=>{
       console.log(error);
-      
+
     })
 
   }

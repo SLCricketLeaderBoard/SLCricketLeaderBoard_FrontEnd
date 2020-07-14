@@ -46,7 +46,6 @@ export class ManagerService {
     users['profileImage'] = user.profileImage;
     users['registered'] = false;
     return this.afs.collection('users').doc(user.nic.toString()).set(users);
-
   }
 
   getAllManagers(): Observable<ManagerModel[]> {

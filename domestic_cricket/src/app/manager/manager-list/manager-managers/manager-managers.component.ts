@@ -4,7 +4,7 @@ import { ManagerModel } from '../../../class-model/ManagerModel';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ClubModel } from '../../../class-model/ClubModel';
 import { ClubService } from '../../../service/club/club.service';
-import { AngularFirestore } from "@angular/fire/firestore";
+
 
 
 
@@ -23,7 +23,7 @@ export class ManagerManagersComponent implements OnInit {
 
   club:ClubModel
 
-  constructor(private router:Router,private route:ActivatedRoute,private clubService:ClubService, private afs: AngularFirestore) {
+  constructor(private router:Router,private route:ActivatedRoute,private clubService:ClubService) {
    }
 
   ngOnInit() {
@@ -46,8 +46,7 @@ export class ManagerManagersComponent implements OnInit {
   }
 
   accept(){
-    let users = {};
-    this.afs.collection('users').doc(this.manager.userId.nic.toString()).update(users["registered"] = true);
+
     this.router.navigate(["../manager-register",this.manager.userId.userId], { relativeTo: this.route });
   }
 
