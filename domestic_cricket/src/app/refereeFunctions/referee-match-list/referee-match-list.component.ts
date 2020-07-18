@@ -27,19 +27,19 @@ export class RefereeMatchListComponent implements OnInit {
   ngOnInit() {
 
     this.matchService.getRefereeMatchesPlayed(this.tournamentId,this.userId).subscribe(res=>{
-      console.log(res);
+     
       this.playedMatches=res;
     })
 
 
 
     this.matchService.getRefereeMatchesUpcomming(this.tournamentId,this.userId).subscribe(res=>{
-      console.log(res);
+     
       this.toPlayMatches=res;
     })
 
     this.matchService.getRefereeMatchesPlayedUpdated(this.tournamentId,this.userId).subscribe(res=>{
-      console.log(res);
+     
       this.updatedMatches=res;
     })
 

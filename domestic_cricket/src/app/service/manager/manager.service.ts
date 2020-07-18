@@ -39,13 +39,13 @@ export class ManagerService {
     users['nameWithInitial'] = user.nameWithInitial;
     users['nic'] = user.nic;
     users['password'] = user.password;
-    users['regDate'] = user.regDate;
+    users['regDate'] = user.regDate.toString();
     users['role'] = user.role;
     users['userId'] = user.userId;
     users['userName'] = user.userName;
     users['profileImage'] = user.profileImage;
+    users['registered'] = false;
     return this.afs.collection('users').doc(user.nic.toString()).set(users);
-
   }
 
   getAllManagers(): Observable<ManagerModel[]> {

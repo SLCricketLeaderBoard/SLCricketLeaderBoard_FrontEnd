@@ -187,13 +187,13 @@ export class MatchSummeryDataInputComponent implements OnInit {
                   })
 
                   this.matchService.getSelectedPlayerForMatch(this.match.matchId,this.match.clubOneId).subscribe(res=>{
-                    console.log(res);
+                  
                     this.club1Players=res;
                   })
 
 
                   this.matchService.getSelectedPlayerForMatch(this.match.matchId,this.match.clubTwoId).subscribe(res=>{
-                    console.log(res);
+                    
                     this.club2Players=res;
                   })
 
@@ -237,7 +237,7 @@ export class MatchSummeryDataInputComponent implements OnInit {
     console.log(this.match);
 
     this.matchService.updateMatch(this.match).subscribe(res=>{
-      console.log(res);
+     
       this.done=true;
     },error=>{
       console.log(error);

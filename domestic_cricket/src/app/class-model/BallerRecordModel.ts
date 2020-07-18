@@ -1,6 +1,6 @@
 import { SelectedPlayerModel } from './SelectedPlayerModel';
 
-export class BallerRecord {
+export class BallerRecordModel {
     constructor(
         public ballerRecordId: Number,
         public overs: Number,
