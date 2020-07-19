@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { API_URL } from '../../app.constants';
 import { PlayerWrapper } from '../../class-model/PlayerWrapper';
 import { PlayerModel } from '../../class-model/PlayerModel';
+import { TournamentClubModel } from '../../class-model/TournamentClubModel';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class TournamentClubPlayerService {
   ) { }
 
   tournamentClubPlayerRegister(clubId: Number, tournamentId: Number, playerWrapper: PlayerWrapper) {
-    return this.http.post<Number>(`${API_URL}/tournamentclubplayer/${clubId}/${tournamentId}`, playerWrapper);
+    return this.http.post<TournamentClubModel>(`${API_URL}/tournamentclubplayer/${clubId}/${tournamentId}`, playerWrapper);
   }
 
   tournamentClubPlayerList(clubId: Number, tournamentId: Number) {
@@ -22,6 +23,6 @@ export class TournamentClubPlayerService {
   }
 
   tournamentClubPlayerUpdate(clubId: Number, tournamentId: Number, playerWrapper: PlayerWrapper) {
-    return this.http.put<Number>(`${API_URL}/tournamentclubplayer/${clubId}/${tournamentId}`, playerWrapper);
+    return this.http.put<TournamentClubModel>(`${API_URL}/tournamentclubplayer/${clubId}/${tournamentId}`, playerWrapper);
   }
 }

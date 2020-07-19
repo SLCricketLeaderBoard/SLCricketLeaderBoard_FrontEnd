@@ -96,6 +96,8 @@ export class MatchService {
     return this.http.post<MatchModel>(`${API_URL}/createMatch`, match, { headers });
   }
 
-
+  getUpcomingMatchList(clubId: Number) {
+    return this.http.get<MatchModel[]>(`${API_URL}/match/upcoming/${clubId}`, {});
+  }
 
 }

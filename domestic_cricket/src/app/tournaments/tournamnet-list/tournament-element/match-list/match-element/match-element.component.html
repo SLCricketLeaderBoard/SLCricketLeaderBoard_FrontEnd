@@ -45,8 +45,20 @@
                 <!-- {{manager.userId.}} -->
               </td>
             </tr>
+
+            <!-- <tr>
+              <td>
+                <b>Date On</b>
+              </td>
+              <td *ngIf="match">
+                {{match?.startDate | date}}
+                
+              </td>
+            </tr> -->
+
             <a  class="btn btn-primary" (click)="more()" >more</a>
             <a  class="btn btn-primary" *ngIf="refreeActive" (click)="setSummery()" >Update Details</a>
+            <a  class="btn btn-primary" *ngIf="refreeActive" (click)="viewPlayers()" >Players Details</a>
 
           </table>
         </div>

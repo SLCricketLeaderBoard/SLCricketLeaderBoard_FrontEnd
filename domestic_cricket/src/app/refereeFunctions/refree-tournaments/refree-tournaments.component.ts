@@ -29,7 +29,6 @@ export class RefreeTournamentsComponent implements OnInit {
   }
 
   viewMatches(tournament: TournamentModel){
-    console.log(tournament);
     this.router.navigate(["match-list",tournament.tournamentId], { relativeTo: this.route });
 
   }

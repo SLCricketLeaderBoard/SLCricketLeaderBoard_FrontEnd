@@ -5,10 +5,10 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 *ngIf="isTournamentDataLoad && option==1" class="card-title">{{tournamentData.tournamentName}} Tournement
+          <h4 *ngIf="isTournamentDataLoad && option==1" class="card-title">{{tournamentData.tournamentName}} Tournament
             Team Players Registration
           </h4>
-          <h4 *ngIf="isTournamentDataLoad && option==2" class="card-title">{{tournamentData.tournamentName}} Tournement
+          <h4 *ngIf="isTournamentDataLoad && option==2" class="card-title">{{tournamentData.tournamentName}} Tournament
             Team Players Update</h4>
         </div>
         <div class="card-body">
@@ -19,12 +19,15 @@
             </div>
 
             <div class="card-body">
+              <P *ngIf="isCaptainsLoad"><b>Captain:</b> {{previousCaptainViceCaptain[0].userId.nameWithInitial}}</P>
+              <P *ngIf="isCaptainsLoad"><b>Vice-Captain:</b> {{previousCaptainViceCaptain[1].userId.nameWithInitial}}
+              </P>
               <div class="row">
 
                 <div class="col-md-4">
                   <div class="card">
                     <div class="card-header">
-                      <h6 class="card-title">Batman List</h6>
+                      <h6 class="card-title">Batmen List</h6>
                     </div>
                     <div class="card-body">
                       <ul *ngFor="let batman of previousBatmanList">
@@ -88,7 +91,7 @@
                     <div class="row fromRow">
                       <div class="col-sm-6 col-md-6">
                         <mat-form-field>
-                          <mat-label>Batmans</mat-label>
+                          <mat-label>Batmens</mat-label>
                           <mat-select formControlName="batmans" multiple>
                             <mat-select-trigger>
                               {{batmansField.value ? (batmansField.value[0]!=null ? batmansField.value[0].userId.nameWithInitial : '') : ''}}
@@ -97,7 +100,7 @@
                                 {{batmansField.value?.length === 2 ? 'other' : 'others'}})
                               </span>
                             </mat-select-trigger>
-                            <mat-option *ngFor="let batman of batmanList" [value]="batman">
+                            <mat-option (click)=teamSelect() *ngFor="let batman of batmanList" [value]="batman">
                               {{batman.userId.nameWithInitial}}
                             </mat-option>
                           </mat-select>
@@ -106,7 +109,7 @@
                           *ngIf=" playerSelectionForm.get('batmans').invalid && playerSelectionForm.get('batmans').touched">
                           <small *ngIf="batmansField.errors?.required" class="text-danger">Batmans required</small>
                           <small *ngIf="(batmansField.value?.length < 3) &&  !batmansField.errors?.required"
-                            class="text-danger">At least 3 batmans
+                            class="text-danger">At least 3 batmens
                             required</small>
                         </div>
                       </div>
@@ -126,7 +129,7 @@
                                 {{ballersField.value?.length === 2 ? 'other' : 'others'}})
                               </span>
                             </mat-select-trigger>
-                            <mat-option *ngFor="let baller of ballerList" [value]="baller">
+                            <mat-option (click)=teamSelect() *ngFor="let baller of ballerList" [value]="baller">
                               {{baller.userId.nameWithInitial}}
                             </mat-option>
                           </mat-select>
@@ -153,7 +156,8 @@
                                 {{allRoundersField.value?.length === 2 ? 'other' : 'others'}})
                               </span>
                             </mat-select-trigger>
-                            <mat-option *ngFor="let allRounder of allRounderList" [value]="allRounder">
+                            <mat-option (click)=teamSelect() *ngFor="let allRounder of allRounderList"
+                              [value]="allRounder">
                               {{allRounder.userId.nameWithInitial}}
                             </mat-option>
                           </mat-select>
@@ -166,6 +170,35 @@
                     </div>
 
 
+                    <div class="row fromRow">
+                      <div class="col-sm-6 col-md-6">
+                        <mat-form-field appearance="fill">
+                          <mat-label>Captain</mat-label>
+                          <mat-select formControlName="captain" name="captain">
+                            <mat-option (click)="captainSelect()" *ngFor="let player of playerListForCaptain"
+                              [value]="player" [disabled]="captainFormDisable">
+                              {{player.userId.nameWithInitial}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="row fromRow">
+                      <div class="col-sm-6 col-md-6">
+                        <mat-form-field appearance="fill">
+                          <mat-label>Vice-Captain</mat-label>
+                          <mat-select formControlName="viceCaptain" name="viceCaptain">
+                            <mat-option (click)="viceCaptainSelect()" *ngFor="let player of playerListForViceCaptain"
+                              [disabled]="viceCaptainFormDisable" [value]="player">
+                              {{player.userId.nameWithInitial}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+
 
                     <button mat-raised-button (click)="submit()" [disabled]="!playerSelectionForm.valid"
                       class="btn btn-success btn-round">
@@ -174,6 +207,7 @@
                   </form>
                 </div>
               </div>
+
             </div>
 
             <div class="col-md-8">
@@ -183,12 +217,19 @@
                 </div>
                 <div class="card-body">
 
+                  <div class="container" *ngIf="isDataLoad">
+                    <div class="text-center">
+                      <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                    </div>
+                  </div>
 
                   <div class="row">
 
                     <div id="playerType" class="col-sm-6 col-lg-6">
                       <select class="form-control" [(ngModel)]="selectPlayerType">
-                        <option (click)="selectPlayerFunction()" [ngValue]="0" selected>Batman</option>
+                        <option (click)="selectPlayerFunction()" [ngValue]="0" selected>Batmen</option>
                         <ng-container *ngFor="let player of playerTypeList; let i=index">
                           <option (click)="selectPlayerFunction()" [ngValue]="i+1">{{player}}</option>
                         </ng-container>
@@ -198,7 +239,7 @@
                     <div class="col-md-8">
                       <div class="card">
                         <div class="card-header">
-                          <h6 *ngIf="selectPlayerType==0" class="card-title">Batmans</h6>
+                          <h6 *ngIf="selectPlayerType==0" class="card-title">Batmens</h6>
                           <h6 *ngIf="selectPlayerType==1" class="card-title">Ballers</h6>
                           <h6 *ngIf="selectPlayerType==2" class="card-title">AllRounders</h6>
                         </div>

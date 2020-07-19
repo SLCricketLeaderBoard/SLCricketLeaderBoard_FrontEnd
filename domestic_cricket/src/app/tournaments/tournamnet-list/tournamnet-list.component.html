@@ -20,7 +20,7 @@
 
             <div class="col-6" style="padding: 3%;">
               <h4>Registrations Opened</h4>
-              <app-tournament-element *ngFor="let tournement of registrationOpenTournaments" [tournement]="tournement" state="false" ></app-tournament-element>
+              <app-tournament-element *ngFor="let tournement of registrationOpenTournaments" [tournement]="tournement" state="true" ></app-tournament-element>
 
                   <div class="container" *ngIf="!registrationOpenTournaments">
                     <div class="text-center">

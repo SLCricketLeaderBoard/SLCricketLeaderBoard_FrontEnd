@@ -77,7 +77,7 @@ export class MatchSummeryDataInputComponent implements OnInit {
         
       ]),
       tossWinTeam: new FormControl(null, Validators.required),
-      winTeam: new FormControl(null, [Validators.required]),
+      // winTeam: new FormControl(null, [Validators.required]),
       manOfTheMatch: new FormControl(null, [Validators.required]),
     });
 
@@ -187,13 +187,13 @@ export class MatchSummeryDataInputComponent implements OnInit {
                   })
 
                   this.matchService.getSelectedPlayerForMatch(this.match.matchId,this.match.clubOneId).subscribe(res=>{
-                    console.log(res);
+                  
                     this.club1Players=res;
                   })
 
 
                   this.matchService.getSelectedPlayerForMatch(this.match.matchId,this.match.clubTwoId).subscribe(res=>{
-                    console.log(res);
+                    
                     this.club2Players=res;
                   })
 
@@ -225,14 +225,19 @@ export class MatchSummeryDataInputComponent implements OnInit {
     this.match.clubTwoOvers= +club2FacedOvers;
     
     this.match.tossWinTeam= +tossWinTeam;
-    this.match.winTeamId= +winTeam;
+    // this.match.winTeamId= +winTeam;
     this.match.manOfTheMatch= +manOfTheMatch;
     this.match.state = +1;
+    if(club1Runs>club2Runs){
+      this.match.winTeamId = this.match.clubOneId;
+    }else{
+      this.match.winTeamId = this.match.clubTwoId;
+    }
 
     console.log(this.match);
 
     this.matchService.updateMatch(this.match).subscribe(res=>{
-      console.log(res);
+     
       this.done=true;
     },error=>{
       console.log(error);

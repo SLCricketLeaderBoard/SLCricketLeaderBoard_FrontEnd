@@ -17,7 +17,7 @@
                     <h5 class="title">Create Match</h5>
                   </div>
                   <div class="card-body">
-                    <form class="form myForm" [formGroup]="createMatch">
+                    <form *ngIf="!done" class="form myForm" [formGroup]="createMatch">
                       <div class="row fromRow">
                         <div class="col-sm-6 col-lg-6">
                           <div class="form-group">
@@ -236,7 +236,7 @@
                       </div> -->
 
                       <button mat-raised-button (click)="reset()">Reset</button>
-                      <button mat-raised-button (click)="create()">Create</button>
+                      <button mat-raised-button (click)="create()" [disabled]="!createMatch.valid">Create</button>
 
                     </form>
                   </div>

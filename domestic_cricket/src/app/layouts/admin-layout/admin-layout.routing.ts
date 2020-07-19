@@ -35,7 +35,6 @@ import { PlayerSelectionComponent } from '../../player/player-selection/player-s
 import { UserComponent } from '../../user/user.component';
 import { MatchDetailsComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-details/match-details.component';
 import { ManagerTournamentListComponent } from '../../tournaments/manager-tournament-list/manager-tournament-list.component';
-import { NonregsponsorsComponent } from '../../Sponsor/nonregsponsors/nonregsponsors.component';
 import { NonregsponsorListComponent } from '../../Sponsor/nonregsponsor-list/nonregsponsor-list.component';
 
 import { ManagerDashboardComponent } from '../../dashboard/manager-dashboard/manager-dashboard.component';
@@ -49,6 +48,9 @@ import { CreateTournamnetComponent } from '../../tournaments/create-tournamnet/c
 import { RefreeTournamentsComponent } from '../../refereeFunctions/refree-tournaments/refree-tournaments.component';
 import { RefereeMatchListComponent } from '../../refereeFunctions/referee-match-list/referee-match-list.component';
 import { MatchSummeryDataInputComponent } from '../../refereeFunctions/match-summery-data-input/match-summery-data-input.component';
+import { RefereeTeamPlayersComponent } from '../../refereeFunctions/referee-team-players/referee-team-players.component';
+import { RefreePlayerRecordDataInputComponent } from '../../refereeFunctions/refree-player-record-data-input/refree-player-record-data-input.component';
+import { CaptainChangeComponent } from '../../tournaments/manager-match-list/captain-change/captain-change.component';
 
 
 
@@ -99,7 +101,7 @@ export const AdminLayoutRoutes: Routes = [
     path: "tournament-list",
     component: TournamnetListComponent,
     canActivate: [RouteGuardService],
-  }, 
+  },
   {
     path: "create-tournament",
     component: CreateTournamnetComponent,
@@ -223,7 +225,7 @@ export const AdminLayoutRoutes: Routes = [
   },
   {
     path: "nonregsponsors",
-    component:NonregsponsorsComponent,
+    component: NonregsponsorListComponent,
     canActivate: [RouteGuardService]
 
   },
@@ -235,7 +237,7 @@ export const AdminLayoutRoutes: Routes = [
   },
   {
     path: "nonregsponsors-list",
-    component:NonregsponsorListComponent,
+    component: NonregsponsorListComponent,
     canActivate: [RouteGuardService]
 
   },
@@ -266,11 +268,25 @@ export const AdminLayoutRoutes: Routes = [
     canActivate: [RouteGuardService]
   },
   {
+    path: "referee-tournament-list/match-list/:tournamentId/match-players/:matchId",
+    component: RefereeTeamPlayersComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: "referee-tournament-list/match-list/:tournamentId/match-players/:matchId/player-record/:selectedPlayerId",
+    component: RefreePlayerRecordDataInputComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
     path: "referee-tournament-list/match-list/:tournamentId/match-details/:matchId",
     component: MatchDetailsComponent,
     canActivate: [RouteGuardService]
   },
-
+  {
+    path: "captain-change/:matchId/:clubId/:type",
+    component: CaptainChangeComponent,
+    canActivate: [RouteGuardService]
+  },
 
 
 ];

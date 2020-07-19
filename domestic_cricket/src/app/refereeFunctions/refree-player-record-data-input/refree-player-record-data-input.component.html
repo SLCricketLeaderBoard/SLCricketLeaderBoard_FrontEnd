@@ -1,0 +1,231 @@
+<div class="panel-header panel-header-sm"></div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Player record</h4>
+        </div>
+
+        <div *ngIf="done" class="card-body" style="padding: 2%;">
+          
+            <form [formGroup]="playerRecordForm" >
+              <div class="row">
+
+                <div class="col">
+                  <h6>Batting perfomances</h6>
+                </div>
+
+              </div>
+              <div class="row">
+
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>Batting Runs</label>
+                    <input type="number" class="form-control" placeholder="Runs" formControlName="battingRuns" />
+                    <div class="error-message"
+                      *ngIf="!playerRecordForm.get('battingRuns').valid && playerRecordForm.get('battingRuns').touched">
+                     Invalid
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>Faced Balls</label>
+                    <input type="text" class="form-control" placeholder="Faced Balls" formControlName="facedBalls" />
+                    <div class="error-message"
+                      *ngIf="!playerRecordForm.get('facedBalls').valid && playerRecordForm.get('facedBalls').touched">
+                      Invalid
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>Number of Fours</label>
+                    <input type="text" class="form-control" placeholder="Fours" formControlName="fours" />
+                    <div class="error-message"
+                      *ngIf="!playerRecordForm.get('fours').valid && playerRecordForm.get('fours').touched">
+                      Invalid
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>Number of Sixes</label>
+                    <input type="text" class="form-control" placeholder="Sixes" formControlName="sixes" />
+                    <div class="error-message"
+                      *ngIf="!playerRecordForm.get('sixes').valid && playerRecordForm.get('sixes').touched">
+                      Invalid
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="row">
+
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>notOut</label>
+
+                    <select class="form-control" formControlName="notOut">
+                        <option value="1">Not out</option>
+                        <option value="0">Out</option>
+                    </select>
+                    <div class="error-message"
+                      *ngIf="!playerRecordForm.get('notOut').valid && playerRecordForm.get('notOut').touched">
+                      Invalid
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="row">
+
+                <div class="col">
+                  <h6>Bowlling perfomances</h6>
+                </div>
+
+              </div>
+              <div class="row">
+
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>Overs</label>
+                    <input type="number" class="form-control" placeholder="Sixes" formControlName="overs" />
+                    <div class="error-message"
+                      *ngIf="!playerRecordForm.get('overs').valid && playerRecordForm.get('overs').touched">
+                      Invalid
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>Against runs</label>
+                    <input type="number" class="form-control" placeholder="Against runs" formControlName="numberOfRunsAgainst" />
+                    <div class="error-message"
+                      *ngIf="!playerRecordForm.get('numberOfRunsAgainst').valid && playerRecordForm.get('numberOfRunsAgainst').touched">
+                      Invalid
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="row">
+
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>Wickets</label>
+                    <input type="number" class="form-control" placeholder="Wickets" formControlName="wickets" />
+                    <div class="error-message"
+                      *ngIf="!playerRecordForm.get('wickets').valid && playerRecordForm.get('wickets').touched">
+                      Invalid
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>HatTriks</label>
+                    <input type="number" class="form-control" placeholder="HatTriks" formControlName="hatTriks" />
+                    <div class="error-message"
+                      *ngIf="!playerRecordForm.get('hatTriks').valid && playerRecordForm.get('hatTriks').touched">
+                      Invalid
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>Number of No balls</label>
+                    <input type="number" class="form-control" placeholder="nos" formControlName="numNos" />
+                    <div class="error-message"
+                      *ngIf="!playerRecordForm.get('numNos').valid && playerRecordForm.get('numNos').touched">
+                      Invalid
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>Number of Wide balls</label>
+                    <input type="number" class="form-control" placeholder="wides" formControlName="numWides" />
+                    <div class="error-message"
+                      *ngIf="!playerRecordForm.get('numWides').valid && playerRecordForm.get('numWides').touched">
+                      Invalid
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>Average ball Speed</label>
+                    <input type="number" class="form-control" placeholder="average" formControlName="avgBallSpeed" />
+                    <div class="error-message"
+                      *ngIf="!playerRecordForm.get('avgBallSpeed').valid && playerRecordForm.get('avgBallSpeed').touched">
+                      Invalid
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+
+                <div class="col">
+                  <h6>Feilding perfomances</h6>
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>Catches</label>
+                    <input type="number" class="form-control" placeholder="Catches" formControlName="catches" />
+                    <div class="error-message"
+                      *ngIf="!playerRecordForm.get('catches').valid && playerRecordForm.get('catches').touched">
+                      Invalid
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+
+              <div class="row">
+                <button class="btn btn-primary" (click)="reset()">Reset</button>
+                <button class="btn btn-primary" (click)="submit()">Submit</button>
+              </div>
+
+              
+            </form>
+          
+        </div>
+
+        <div  *ngIf="!done" class="card-body" style="padding: 2%;">
+          <p *ngIf="response==1"style="color: blue">Data Recoded</p>
+          <p *ngIf="response==0" style="color: red;">Action faild</p>  
+        </div>
+
+
+
+     </div>
+    </div>
+  </div>
+</div>
+

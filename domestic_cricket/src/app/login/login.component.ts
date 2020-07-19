@@ -83,15 +83,15 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem("userName", response.userName);
 
       if (response.role === 1) {
-        this.router.navigate(["dashboard"]);
+        this.router.navigate(["tournament-list"]);
       } else if (response.role == 2) {
         this.getClubData();
       } else if (response.role == 3) {
         this.router.navigate(["#"]);
       } else if (response.role == 4) {
         this.router.navigate(["#"]);
-      }else if (response.role == 5) {
-        this.router.navigate(["dashboard"]);
+      } else if (response.role == 5) {
+        this.router.navigate(["referee-tournament-list"]);
       }
     }
   }

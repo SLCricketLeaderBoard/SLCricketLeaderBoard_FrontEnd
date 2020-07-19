@@ -1,0 +1,67 @@
+<div class="panel-header panel-header-sm"></div>
+  <div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="row" style="padding-left: 5%;">
+              <h3>Players</h3>
+            </div>
+          </div>
+
+          <div class="row" >
+            <!-- for the club one -->
+            <div class="col-6 clubDiv"  >
+              <div class="row" *ngIf="club1 let club" style="padding-left: 20%;" >
+                
+                <h4>  {{club.clubName}} </h4>
+                
+              </div>
+
+              <div class="row">
+                <div class="col-12" *ngIf="selectedPlayesClub1NotUpdated let players">
+                  <h4>Not Updated players</h4>
+                  <app-refree-player-list-element *ngFor="let player of players" [player]="player">
+                  </app-refree-player-list-element>     
+                </div>
+
+                <div class="col-12" *ngIf="selectedPlayesClub1Updated let players">
+                  <h4>Updated Players</h4>
+                  <app-refree-player-list-element *ngFor="let player of players" [player]="player">
+                  </app-refree-player-list-element>     
+                </div>
+              </div>
+            </div>
+            <!-- for the club one end -->
+
+
+            <!-- for the club 2 -->
+            <div class="col-6 clubDiv">
+              <div class="row" *ngIf="club2 let club" >
+                
+                 <h4> {{club.clubName}} </h4>
+                
+              </div>
+
+              <div class="row">
+                <div class="col-12" *ngIf="selectedPlayesClub2NotUpdated let players">
+                  <h4>Not Updated players</h4>
+                  <app-refree-player-list-element *ngFor="let player of players" [player]="player">
+                  </app-refree-player-list-element>     
+                </div>
+
+                <div class="col-12" *ngIf="selectedPlayesClub2Updated let players">
+                  <h4>Updated Players</h4>
+                  <app-refree-player-list-element *ngFor="let player of players" [player]="player">
+                  </app-refree-player-list-element>     
+                </div>
+              </div>
+            </div>
+            <!-- for the club 2 end -->
+          </div>
+
+
+        </div>
+        </div>
+  </div>
+</div>

@@ -9,6 +9,7 @@ import { ClubService } from '../../../service/club/club.service';
 
 
 
+
 @Component({
   selector: 'app-manager-managers',
   templateUrl: './manager-managers.component.html',
@@ -26,7 +27,6 @@ export class ManagerManagersComponent implements OnInit {
    }
 
   ngOnInit() {
-
     if(this.state==='true'){
       this.active=true
     }else{
@@ -36,7 +36,7 @@ export class ManagerManagersComponent implements OnInit {
     this.clubService.getClubDataOfManager(this.manager.managerId).subscribe(res=>{
       this.club=res;
       console.log(res);
-      
+
     })
   }
 
@@ -46,6 +46,7 @@ export class ManagerManagersComponent implements OnInit {
   }
 
   accept(){
+
     this.router.navigate(["../manager-register",this.manager.userId.userId], { relativeTo: this.route });
   }
 
