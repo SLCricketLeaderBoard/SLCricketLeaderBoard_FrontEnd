@@ -15,10 +15,10 @@ export class NonregsponsorListComponent implements OnInit {
 
   ngOnInit() {
 
-    this.sponsorService. getNonregsponsors().subscribe(res=>{
-      // console.log(res);
-      this.sponsors=res;
-      console.log(this.sponsors);
+    this.sponsorService.getNonregsponsors().subscribe(res=>{
+      console.log(res);
+      //this.sponsors=res;
+      //console.log(this.sponsors);
       
 
       

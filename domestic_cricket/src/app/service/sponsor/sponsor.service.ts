@@ -16,7 +16,7 @@ export class SponsorService {
 
 
   getUser(email){
-    return this.http.get<UserModel>(`${API_URL}/user/${email}`);
+    return this.http.get<SponsorModel[]>(`${API_URL}/user/${email}`);
   }
 
  
