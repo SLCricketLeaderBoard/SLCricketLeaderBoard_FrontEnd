@@ -26,6 +26,10 @@ export class SponsorService {
   return this.http.get<SponsorModel[]>(`${API_URL}/nonregsponsors`);
     
 }
+
+sponsorAccept(userId: Number) {
+  return this.http.put<Number>(`${API_URL}/sponsorAccept/${userId}`, {});
+}
    
 
 }

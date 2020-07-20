@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { SponsorModel } from '../../class-model/SponsorModel';
 import { Router, ActivatedRoute } from '@angular/router';
 import {UserModel} from '../../class-model/UserModel';
-import { UserServiceService } from '../../service/user/user-service.service';
-
+//import { UserServiceService } from '../../service/user/user-service.service';
+import { SponsorService } from '../../service/sponsor/sponsor.service';
 
 @Component({
   selector: 'app-nonregsponsors',
@@ -21,7 +21,7 @@ export class NonregsponsorsComponent implements OnInit {
   done: boolean = false;
   message:any
 
-  constructor(private router:Router,private route:ActivatedRoute,private userService:UserServiceService) { }
+  constructor(private router:Router,private route:ActivatedRoute,private sponsorService:SponsorService) { }
 
   
   ngOnInit() {
@@ -32,7 +32,7 @@ export class NonregsponsorsComponent implements OnInit {
   }
 
   accept(){
-    this.userService.updateUserState(this.sponsor.userId).subscribe(res=>{
+    this.sponsorService.sponsorAccept(this.sponsor.userId.userId).subscribe(res=>{
       console.log(res);
       this.message=res;
       this.done=!this.done;
