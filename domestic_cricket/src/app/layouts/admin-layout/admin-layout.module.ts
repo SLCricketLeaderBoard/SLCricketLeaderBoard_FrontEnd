@@ -60,6 +60,7 @@ import { MatchSummeryDataInputComponent } from '../../refereeFunctions/match-sum
 import { RefereeTeamPlayersComponent } from '../../refereeFunctions/referee-team-players/referee-team-players.component';
 import { RefreePlayerListElementComponent } from '../../refereeFunctions/refree-player-list-element/refree-player-list-element.component';
 import { RefreePlayerRecordDataInputComponent } from '../../refereeFunctions/refree-player-record-data-input/refree-player-record-data-input.component';
+import { CaptainChangeComponent } from '../../tournaments/manager-match-list/captain-change/captain-change.component';
 
 
 @NgModule({
@@ -133,7 +134,7 @@ import { RefreePlayerRecordDataInputComponent } from '../../refereeFunctions/ref
     RefreePlayerListElementComponent,
     RefreePlayerRecordDataInputComponent,
 
-
+    CaptainChangeComponent
   ],
 })
 export class AdminLayoutModule { }

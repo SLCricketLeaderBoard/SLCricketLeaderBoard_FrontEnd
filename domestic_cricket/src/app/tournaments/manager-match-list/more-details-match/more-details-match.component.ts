@@ -5,6 +5,7 @@ import { MatchService } from '../../../service/match/match.service';
 import { UmpireService } from '../../../service/umpire/umpire.service';
 import { PlayerService } from '../../../service/player/player.service';
 import { ClubService } from '../../../service/club/club.service';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-more-details-match',
@@ -78,6 +79,9 @@ export class MoreDetailsMatchComponent implements OnInit {
     this.playerService.getPlayer(playerId).subscribe(
       response => {
         this.playerNamesList.push(response.userId.nameWithInitial);
+      },
+      error => {
+        console.log(error);
       }
     );
   }

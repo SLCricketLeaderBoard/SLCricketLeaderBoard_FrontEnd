@@ -25,17 +25,20 @@
                     <th>Option</th>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let tournament of upcomingTournaments; let i = index">
+                    <tr *ngFor="let match of upComingMatchList; let i = index">
                       <td>{{ i + 1 }})</td>
-                      <td>{{ tournament.tournamentName }}</td>
-                      <td>{{ tournament.startDate | date:'fullDate' }}</td>
-                      <td>{{ tournament.endDate | date:'fullDate'}}</td>
-                      <td>{{ tournament.registartionCloseDate | date:'fullDate'}}</td>
+                      <td>{{  match.tournamentId.tournamentName }}</td>
+                      <td>{{ match.startDate | date:'fullDate' }}</td>
+                      <td>{{ match.finishDate | date:'fullDate'}}</td>
+                      <td>{{ match.matchTypeId.matchType}}</td>
 
-                      <td class="text-right">
-                        <a><button type="button" (click)="register(tournament.tournamentId)" class="btn btn-info btn-sm"
-                            title="Register">
-                            <i class="fas fa-registered"></i></button></a>
+                      <td class="text-left">
+                        <a><button type="button" (click)="updateCaptains(match.matchId,1)" class="btn btn-info btn-sm"
+                            title="Captain Change">
+                            <i class="fas fa-edit"></i></button></a>
+                        <a><button type="button" (click)="updateCaptains(match.matchId,2)" class="btn btn-info btn-sm"
+                            title="Vice-Captain Change">
+                            <i class="fas fa-edit"></i></button></a>
                       </td>
                     </tr>
                   </tbody>
@@ -69,8 +72,8 @@
                       <td>{{ match.matchTypeId.matchType}}</td>
                       <td>{{winTeamNamesList[i]}}</td>
                       <td class="text-left">
-                        <a><button (click)="matchMoreDetails(match.matchId)" type="button" class="btn btn-info btn-sm"
-                            title="More Details">
+                        <a><button (click)="matchMoreDetails(match.matchId)" type="button"
+                            class="btn btn-success btn-sm" title="More Details">
                             <i class="fas fa-eye"></i></button></a>
                       </td>
                     </tr>

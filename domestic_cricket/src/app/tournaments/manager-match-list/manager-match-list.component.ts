@@ -15,7 +15,7 @@ export class ManagerMatchListComponent implements OnInit {
   clubId: Number = -1;
   clubData: ClubModel;
   playedMatchList: MatchModel[] = [];
-  upComingMatchList: MatchModel;
+  upComingMatchList: MatchModel[] = [];
   winTeamNamesList: String[] = [];
 
   constructor(
@@ -28,6 +28,7 @@ export class ManagerMatchListComponent implements OnInit {
     this.clubId = +sessionStorage.getItem("clubId");
     this.getClubData();
     this.getPlayedMatchList();
+    this.getUpcomingMatchList();
   }
 
   getPlayedMatchList() {
@@ -35,6 +36,17 @@ export class ManagerMatchListComponent implements OnInit {
       response => {
         this.playedMatchList = response;
         this.winTeamNames();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  getUpcomingMatchList() {
+    this.matchService.getUpcomingMatchList(this.clubId).subscribe(
+      response => {
+        this.upComingMatchList = response;
       },
       error => {
         console.log(error);
@@ -98,6 +110,10 @@ export class ManagerMatchListComponent implements OnInit {
           console.log(this.winTeamNamesList)
         })
       );
+  }
+
+  updateCaptains(matchId: Number, type: Number) {
+    this.router.navigate(['captain-change', matchId, this.clubId, type]);
   }
 
   matchMoreDetails(matchId: Number) {
