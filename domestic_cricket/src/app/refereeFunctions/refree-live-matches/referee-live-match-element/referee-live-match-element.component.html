@@ -1,0 +1,194 @@
+
+
+
+       <div class="card-body" style="padding: 2%;">
+         <h5>Live Data recording</h5>
+        <form [formGroup]="liveMatchDataForm" >
+
+          <div class="row">
+
+              <!-- Start of the batting side  -->
+            <div class="col-6" style="padding: 3% 5% 3% 5%;">
+              <div class="row">
+                <h6> Batting Side</h6>
+              </div>
+              <div class="row">     
+                
+                <table class="table">
+
+                  <tr>
+                    <th>
+                      <label>Batting team</label>
+                    </th>
+                    <th>
+                      <select formControlName="team" id="" (change)="checkCheckBoxvalue($event)">
+                        
+                        <option *ngFor="let club of clubs" [value]="club.clubId">{{club.clubName}}</option>
+                        
+                      </select>  
+                    </th>
+                  </tr>
+
+                  <tr>
+                    <th>
+                      <label>Fielding team</label>
+                    </th>
+                    <th id="fieldingClub">
+                      
+                    </th>
+                  </tr>
+
+
+                  <tr>
+                    <th>
+                      <label>Striker</label>
+                    </th>
+                    <th id="striker">
+                      <select formControlName="striker" id="">
+                      <option *ngFor="let player of battingPlayers" [value]="player">{{player.userId?.nameWithInitial}}</option>
+                      </select>
+                    </th>
+                  </tr>
+
+
+
+                  <tr>
+                    <th>
+                      <label>Non Striker</label>
+                    </th>
+                    <th id="nonStriker">
+                      <select formControlName="nonStriker" id="">
+                      <option *ngFor="let player of battingPlayers" [value]="player">{{player.userId?.nameWithInitial}}</option>
+                      </select>
+                    </th>
+                  </tr>
+
+
+                  <tr>
+                    <th>
+                      <label>Bowler</label>
+                    </th>
+                    <th id="bowler">
+                      <select formControlName="bowler" id="">
+                      <option *ngFor="let player of feildingPlayers" [value]="player">{{player.userId?.nameWithInitial}}</option>
+                      </select>
+                    </th>
+                  </tr>
+
+                  <tr>
+                    <th>
+                      <label>Runs per ball</label>
+                    </th>
+                    <th>
+                      <select formControlName="runs" id="">
+                        <option [value]=0>0</option>
+                        <option [value]=1>1</option>
+                        <option [value]=2>2</option>
+                        <option [value]=3>3</option>
+                        <option [value]=4>4</option>
+                      </select>  
+                    </th>
+                  </tr>
+
+                  <tr>
+                    <th>
+                      <label>
+                        LegBy
+                      </label>
+                    </th>
+                    <th>
+                       <input type="checkbox" formControlName="legBy" [value]=1  (change)="checkCheckBoxvalue($event)">
+                    </th>
+                  </tr>
+
+                  <tr>
+                    <th>
+                      <label>
+                        Wicket
+                      </label>
+                    </th>
+                    <th>
+                       <input type="checkbox" formControlName="wicket" [value]=1>
+                    </th>
+                  </tr>
+                  
+                  <tr>
+                    <th>
+                      <label>
+                        Ball state
+                      </label>
+                    </th>
+                    <th>
+                      <select formControlName="ballState">
+                       <option *ngFor="let ball of balls" [value]="ball.value">{{ball.viewValue}}</option>
+                      </select> 
+                    </th>
+                  </tr>
+
+                </table>
+              
+              </div>
+              
+              <button class="btn" (click)="addData()">Add</button>
+            </div>
+            <!-- End of the batting side -->
+
+
+            <!-- start of the bowling side -->
+
+            <div class="col-6" style="padding: 3% 5% 3% 5%;">
+              <h4>For live reocrds</h4>
+              <table class="table">
+                <tr>
+                  <th>
+                    Batting team
+                  </th>
+                  <th id="liveBattingTeamName">
+                   
+                  </th>
+                </tr>
+
+                <tr>
+                  <th>
+                  Fielding team
+                  </th>
+                  <th id="livefieldingTeamName">
+                    
+                  </th>
+                </tr>
+              </table>
+            </div>
+
+
+
+          </div>
+        
+        </form>
+
+        <div class="row">
+
+          <div class="col-6">
+            <h5>Players of Club one</h5>
+            <ul>
+              <li *ngFor="let player of clubOnePlayerList">{{player.userId?.nameWithInitial}}</li>
+            </ul>
+
+          </div>
+
+
+          <div class="col-6">
+            <h5>Players of Club Two</h5>
+
+            <ul>
+              <li *ngFor="let player of clubTwoPlayerList">{{player.userId?.nameWithInitial}}</li>
+            </ul>
+
+          </div>
+
+
+        </div>
+
+
+        </div>
+
+          

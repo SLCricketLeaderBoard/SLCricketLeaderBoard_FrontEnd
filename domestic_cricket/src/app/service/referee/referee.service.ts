@@ -4,6 +4,7 @@ import { API_URL } from '../../app.constants';
 import { UserModel } from '../../class-model/UserModel';
 import { RefereeModel } from '../../class-model/RefereeModel';
 import { Observable } from 'rxjs';
+import { MatchModel } from '../../class-model/MatchModel';
 
 
 
@@ -34,6 +35,8 @@ export class RefereeService {
   getAvailableReferees(){
     return this.http.get<[RefereeModel]>(`${API_URL}/referee/available`);
   }
+
+
 
   
 }
