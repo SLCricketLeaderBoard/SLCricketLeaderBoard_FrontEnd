@@ -32,7 +32,7 @@
                       <label>Inning</label>
                     </th>
                     <th>
-                      <select formControlName="inning" id="">
+                      <select formControlName="inning" id="" (change)="inningChange($event)">
                         <option [value]=1>1</option>
                         <option [value]=2>2</option>
                         <option *ngIf="match.matchTypeId.matchType==='3 4 Days'" [value]=3>3</option>
@@ -186,14 +186,14 @@
                      <input type="number" formControlName="ballsPlayed" [value]="0" >
                     </th>
                   </tr>
-                  <button class="btn btn-danger" (click)="setValues()" *ngIf="spe">Set values</button>
+                  <button class="btn btn-danger" (click)="setValues()" *ngIf="spe" [disabled]="!liveMatchDataForm.valid">Set values</button>
                   <hr>
 
                 </table>
               
               </div>
               
-              <button class="btn btn-success" (click)="addData()">Add</button>
+              <button class="btn btn-success" (click)="addData()" [disabled]="!liveMatchDataForm.valid">Add</button>
               <button class="btn btn-success" (click)="setScore()">Reset Score</button>
               
               
@@ -206,6 +206,17 @@
             <div class="col-6" style="padding: 3% 5% 3% 5%;">
               <h4>For live reocrds</h4>
               <table class="table">
+
+                <tr>
+                  <th>
+                   Inning
+                  </th>
+                  <th id="inning">
+                   
+                  </th>
+                </tr>
+
+                
                 <tr>
                   <th>
                     Batting team

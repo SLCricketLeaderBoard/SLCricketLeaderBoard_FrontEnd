@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, Input, OnInit,OnDestroy } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PlayerModel } from '../../../class-model/PlayerModel';
 import { ClubModel } from '../../../class-model/ClubModel';
 import { MatchModel } from '../../../class-model/MatchModel';
@@ -7,6 +7,7 @@ import { ClubService } from '../../../service/club/club.service';
 import { MatchService } from '../../../service/match/match.service';
 import { UserModel } from '../../../class-model/UserModel';
 import { AngularFirestore } from "@angular/fire/firestore";
+import { ConfirmedValidator } from '../../../validators/matchClubValidators.validator';
 
 
 interface ballState {
@@ -66,17 +67,20 @@ export class RefereeLiveMatchElementComponent implements OnInit {
   ballsClubTwo: Number =0;
   oversClubTwo: Number=0;
   runrateClubTwo : Number = 0;
+  tosWiningTeam: ClubModel;
+
+  inning: any;
 
 
-  constructor(private matchService:MatchService,private clubService:ClubService,private afs: AngularFirestore) {
+  constructor(private matchService:MatchService,private clubService:ClubService,private afs: AngularFirestore,private formBuilder:FormBuilder) {
 
     this.userId=sessionStorage.getItem('userId');
     
 
-    this.liveMatchDataForm = new FormGroup(
+    this.liveMatchDataForm = this.formBuilder.group(
       {
         striker: new FormControl(null, [Validators.required]),
-        inning:new FormControl(null, [Validators.required]),
+        inning:new FormControl(null, [Validators.required,Validators.min(0)]),
         nonStriker: new FormControl(null, [Validators.required]),
         bowler :new FormControl(null,[Validators.required]),
         team: new FormControl(null, [Validators.required]),
@@ -87,13 +91,16 @@ export class RefereeLiveMatchElementComponent implements OnInit {
         ballsPlayed: new FormControl(null, [Validators.min(0)]),
         teamScore: new FormControl(null, [Validators.min(0)]),
         wicketsFallen: new FormControl(null, [Validators.min(0),Validators.max(10)]),
+      },{
+        validators: [ConfirmedValidator('striker','nonStriker')]
       });
    }
 
   ngOnInit() {
     let matchDocId=this.match.matchId;
 
-    this.afs.collection('liveMatches').doc(`${this.userId}`).collection('match').doc(`${matchDocId}`).set(this.match);
+    this.afs.collection('liveMatchesRecords').doc(`${this.userId}`).collection('match').doc(`${matchDocId}`).set(this.match);
+    this.afs.collection('liveMatches').doc(`${this.match.matchId}`).update({liveState:"active"});
 
     console.log(this.match);
     this.clubService.getClubData(this.match.clubOneId).subscribe(res=>{
@@ -252,14 +259,14 @@ export class RefereeLiveMatchElementComponent implements OnInit {
 
     if(wicket){
       if(x==this.clubOne.clubId){
-        this.wicketsClubOne = (+this.wicketsClubOne) + (1);
-        document.getElementById('wicketsClubOne').innerHTML=this.wicketsClubOne.toString();
+        this.wicketsClubOne = (+this.wicketsClubOne) + 1;
         numberOfWickets=(+this.wicketsClubOne);
+       
         
       }else{
-        this.wicketsClubTwo = (+this.wicketsClubTwo) + (1);
-        document.getElementById('wicketsClubTwo').innerHTML=this.wicketsClubTwo.toString();
+        this.wicketsClubTwo = (+this.wicketsClubTwo) + 1;
         numberOfWickets=(+this.wicketsClubTwo);
+        
       }
 
       console.log("wicket Gone");
@@ -272,7 +279,24 @@ export class RefereeLiveMatchElementComponent implements OnInit {
 
     runrate=(+score)/(+numberofBalls);
 
-    this.afs.collection('liveMatches').doc(`${this.userId}`).collection('match').doc(`${this.match.matchId}`).collection('eachBaller').add(
+    this.afs.collection('liveMatchesRecords').doc(`${this.userId}`).collection('match').doc(`${this.match.matchId}`).collection('eachBaller').add(
+      { inning:inning,
+        battingClub:this.battingClub,
+        fieldingClub:this.fieldingClub,
+        runs: +runs,
+        wicket:wicket,
+        ballerState:ballState,
+        striker:striker,
+        nonStriker:nonStriker,
+        bowler:bowler,
+        score:score,
+        numberofBalls:numberofBalls,
+        runrate:runrate,
+        numberOfWickets:numberOfWickets
+      }
+    )
+
+    this.afs.collection('liveMatches').doc(`${this.match.matchId}`).set(
       { inning:inning,
         battingClub:this.battingClub,
         fieldingClub:this.fieldingClub,
@@ -294,8 +318,8 @@ export class RefereeLiveMatchElementComponent implements OnInit {
     console.log(event);
     const x =this.liveMatchDataForm.value["team"];
     console.log(x);
-    this.battingClub=x;
     if(x==this.clubOne.clubId){
+      this.battingClub=this.clubOne;
       this.fieldingClub=this.clubTwo;
       console.log(this.fieldingClub.clubId);
       document.getElementById('fieldingClub').innerHTML=this.fieldingClub.clubName.toString();
@@ -306,9 +330,10 @@ export class RefereeLiveMatchElementComponent implements OnInit {
         this.battingPlayers.push(element);
       })
 
-
-
       this.feildingPlayers=this.clubTwoPlayerList;
+      if(this.inning===1){
+        this.tosWiningTeam=this.clubOne;
+      }
       
     }else{
       this.fieldingClub=this.clubOne;
@@ -323,7 +348,13 @@ export class RefereeLiveMatchElementComponent implements OnInit {
       this.clubOnePlayerList.forEach(element=>{
         this.feildingPlayers.push(element)
       })
+
+      if(this.inning===1){
+        this.tosWiningTeam=this.clubTwo;
+      }
     }
+
+    
   }
   
 
@@ -345,6 +376,21 @@ export class RefereeLiveMatchElementComponent implements OnInit {
     console.log(event);
     const x = this.liveMatchDataForm.value["bowler"];
     document.getElementById('activeBowler').innerHTML=x;
+  }
+
+  inningChange(event){
+    const x = this.liveMatchDataForm.value["inning"];
+    this.inning=x;
+    document.getElementById('inning').innerHTML=x;
+    if(x==1){
+      let x=this.liveMatchDataForm.value["team"];
+      if(x===this.clubOne.clubId){
+        this.tosWiningTeam=this.clubOne;
+      }else{
+        this.tosWiningTeam=this.clubTwo;
+      }
+    }
+
   }
 
   setValues(){
@@ -382,6 +428,15 @@ export class RefereeLiveMatchElementComponent implements OnInit {
       this.wicketsClubTwo=wicketsFallen;
     }
 
+    let winTeamId=null;
+    if(this.scoreClubOne>this.scoreClubTwo){
+      winTeamId=this.clubOne.clubId;
+    }else{
+      winTeamId=this.clubTwo.clubId;
+    }
+
+    let tossWinTeam = this.tosWiningTeam.clubId;
+
     this.afs.collection('liveMatches').doc(`${this.userId}`).collection('match').doc(`${this.match.matchId}`).update(
       {
         clubOneMark:this.scoreClubOne,
@@ -390,13 +445,53 @@ export class RefereeLiveMatchElementComponent implements OnInit {
         clubTwoWicket:this.wicketsClubTwo,
         clubOneOvers:this.ballsClubOne,
         clubTwoOvers:this.ballsClubTwo,
+        winTeamId:winTeamId,
+        tossWinTeam:tossWinTeam
+
       }
     )   
+  }
+
+  saveState(){
+
+    let winTeamId=null;
+    if(this.scoreClubOne>this.scoreClubTwo){
+      winTeamId=this.clubOne.clubId;
+    }else{
+      winTeamId=this.clubTwo.clubId;
+    }
+
+    let tossWinTeam = this.tosWiningTeam.clubId;
+
+    this.afs.collection('liveMatchesRecords').doc(`${this.userId}`).collection('match').doc(`${this.match.matchId}`).update(
+      {
+        winTeamId: winTeamId,
+        tossWinTeam: tossWinTeam,
+        clubOneMark:this.scoreClubOne,
+        clubTwoMark:this.scoreClubTwo,
+        clubOneWicket:this.wicketsClubOne,
+        clubTwoWicket:this.wicketsClubTwo,
+        clubOneOvers:this.ballsClubOne,
+        clubTwoOvers:this.ballsClubTwo,
+      }
+    )  
   }
 
 
   setScore(){
     this.spe=!this.spe;
+  }
+
+  ngOnDestroy(){
+    this.afs.collection('liveMatches').doc(`${this.match.matchId}`).update({liveState:"inactive"}); 
+    
+    console.log(this.scoreClubOne);
+    console.log(this.scoreClubTwo);
+    
+    
+    this.saveState(); 
+
+
   }
 
 }
