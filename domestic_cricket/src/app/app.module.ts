@@ -34,8 +34,6 @@ import { SponsorSignupComponent } from './sponsor-signup/sponsor-signup.componen
 
 
 
-
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -62,6 +60,8 @@ import { SponsorSignupComponent } from './sponsor-signup/sponsor-signup.componen
     ManagerSignupComponent,
     ClubSignupComponent,
     SponsorSignupComponent,
+
+
 
 
   ],

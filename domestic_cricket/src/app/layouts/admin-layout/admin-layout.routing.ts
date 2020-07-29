@@ -51,6 +51,9 @@ import { MatchSummeryDataInputComponent } from '../../refereeFunctions/match-sum
 import { RefereeTeamPlayersComponent } from '../../refereeFunctions/referee-team-players/referee-team-players.component';
 import { RefreePlayerRecordDataInputComponent } from '../../refereeFunctions/refree-player-record-data-input/refree-player-record-data-input.component';
 import { CaptainChangeComponent } from '../../tournaments/manager-match-list/captain-change/captain-change.component';
+import { PlayerRateChartComponent } from '../../player/player-selection/player-rate-chart/player-rate-chart.component';
+import { RefreeLiveMatchesComponent } from '../../refereeFunctions/refree-live-matches/refree-live-matches.component';
+
 
 
 
@@ -263,6 +266,11 @@ export const AdminLayoutRoutes: Routes = [
     canActivate: [RouteGuardService]
   },
   {
+    path: "referee-live-matches",
+    component: RefreeLiveMatchesComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
     path: "referee-tournament-list/match-list/:tournamentId/match-summery-input/:matchId",
     component: MatchSummeryDataInputComponent,
     canActivate: [RouteGuardService]
@@ -285,6 +293,11 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: "captain-change/:matchId/:clubId/:type",
     component: CaptainChangeComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: "player-rate",
+    component: PlayerRateChartComponent,
     canActivate: [RouteGuardService]
   },
 
