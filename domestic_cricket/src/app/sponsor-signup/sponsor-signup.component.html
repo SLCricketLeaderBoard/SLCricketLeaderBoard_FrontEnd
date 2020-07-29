@@ -1,0 +1,105 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Register Sponsor</h4>
+        </div>
+        <div class="card-body">
+
+          <div *ngIf="errorMessage" class="alert alert-danger">
+            <button (click)="close()" type="button" aria-hidden="true" class="close">
+              <i  class="now-ui-icons ui-1_simple-remove"></i>
+            </button>
+            <span>
+              error
+            </span>
+          </div>
+          
+           <div class="row">
+             <div class="col-md-2"></div>
+             <div class="col-md-8">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Sponsor Register Form</h5>
+                </div>
+                <div class="card-body">
+                  
+                  <form [formGroup]="sponsorRegisterFrom" (ngSubmit)="sFormSubmit()">
+
+                    <div class="row">
+
+
+                      <div class="col-sm-12 col-lg-12">
+                        <div class="form-group">
+                            <input [class.is-invalid]="sponsorRegisterFrom.get('company_name').invalid && sponsorRegisterFrom.get('company_name').touched" formControlName="company_name"  type="text" name="company_name" placeholder="Name of the Company" class="form-control"/>
+                            <div *ngIf="sponsorRegisterFrom.get('company_name').invalid && sponsorRegisterFrom.get('company_name').touched">
+                              <small *ngIf="nameField.errors?.required" class="text-danger">Sponsor Name Required</small>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-12 col-lg-12">
+                        <div class="form-group">
+                            <input [class.is-invalid]="sponsorRegisterFrom.get('address').invalid && sponsorRegisterFrom.get('address').touched" formControlName="address"  type="text" name="address" placeholder="Address of the Company" class="form-control"/>
+                            <div *ngIf="sponsorRegisterFrom.get('address').invalid && sponsorRegisterFrom.get('address').touched">
+                              <small *ngIf="addressField.errors?.required" class="text-danger">Address Required</small>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-12 col-lg-12">
+                        <div class="form-group">
+                            <input [class.is-invalid]="sponsorRegisterFrom.get('email').invalid && sponsorRegisterFrom.get('email').touched" formControlName="email"  type="text" name="email" placeholder="Email of the Company" class="form-control"/>
+                            <div *ngIf="sponsorRegisterFrom.get('email').invalid && sponsorRegisterFrom.get('email').touched">
+                              <small *ngIf="addressField.errors?.required" class="text-danger">Email Required</small>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-12 col-lg-12">
+                        <div class="form-group">
+                            <input [class.is-invalid]="sponsorRegisterFrom.get('contact_number').invalid && sponsorRegisterFrom.get('contact_number').touched" formControlName="contact_number"  type="text" name="contact_number" placeholder="Conatct Number" class="form-control"/>
+                            <div *ngIf="sponsorRegisterFrom.get('contact_number').invalid && sponsorRegisterFrom.get('contact_number').touched">
+                              <small *ngIf="addressField.errors?.required" class="text-danger">Contact Number Required</small>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-12 col-lg-12">
+                        <div class="form-group">
+                            <input [class.is-invalid]="sponsorRegisterFrom.get('responsible_person').invalid && sponsorRegisterFrom.get('responsible_person').touched" formControlName="responsible_person"  type="text" name="responsible_person" placeholder="Name of the responsible person" class="form-control"/>
+                            <div *ngIf="sponsorRegisterFrom.get('responsible_person').invalid && sponsorRegisterFrom.get('responsible_person').touched">
+                              <small *ngIf="addressField.errors?.required" class="text-danger">Responsible Person Name Required</small>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-12 col-lg-12">
+                        <div class="form-group">
+                            <input [class.is-invalid]="sponsorRegisterFrom.get('nic').invalid && sponsorRegisterFrom.get('nic').touched" formControlName="nic"  type="text" name="nic" placeholder="National Identity Card Number" class="form-control"/>
+                            <div *ngIf="sponsorRegisterFrom.get('nic').invalid && sponsorRegisterFrom.get('nic').touched">
+                              <small *ngIf="addressField.errors?.required" class="text-danger">National Identity Card Number Required</small>
+                            </div>
+                        </div>
+                      </div>
+
+                      <button id="submit-button" type="submit" class="btn btn-success btn-round" [disabled]="!sponsorRegisterFrom.valid">Submit</button>
+                    </div>
+
+                  </form>
+
+                </div>
+              </div>
+             </div>
+             <div class="col-md-2"></div>
+           </div>
+
+        </div>
+      </div>
+    </div>
+   
+  </div>
+</div>
