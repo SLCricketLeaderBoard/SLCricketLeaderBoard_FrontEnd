@@ -32,7 +32,7 @@
                               clubRegisterFrom.get('clubName').invalid &&
                               clubRegisterFrom.get('clubName').touched
                             " formControlName="clubName" type="text" name="club" placeholder="Club Name"
-                            class="form-control" />
+                            class="form-control" [attr.disabled]="userRole==1 ? '' : null" />
                           <div *ngIf="
                               clubRegisterFrom.get('clubName').invalid &&
                               clubRegisterFrom.get('clubName').touched
@@ -48,7 +48,7 @@
                               clubRegisterFrom.get('address').invalid &&
                               clubRegisterFrom.get('address').touched
                             " formControlName="address" type="text" name="clubAddress" placeholder="Club Address"
-                            class="form-control" />
+                            class="form-control" [attr.disabled]="userRole==1 ? '' : null" />
                           <div *ngIf="
                               clubRegisterFrom.get('address').invalid &&
                               clubRegisterFrom.get('address').touched
@@ -65,7 +65,7 @@
                               clubRegisterFrom.get('email').invalid &&
                               clubRegisterFrom.get('email').touched
                             " formControlName="email" type="text" name="clubEmail" placeholder="Email"
-                            class="form-control" />
+                            class="form-control" [attr.disabled]="userRole==1 ? '' : null" />
                           <div *ngIf="
                               clubRegisterFrom.get('email').invalid &&
                               clubRegisterFrom.get('email').touched
@@ -82,7 +82,8 @@
                               clubRegisterFrom.get('contactNumber').invalid &&
                               clubRegisterFrom.get('contactNumber').touched
                             " formControlName="contactNumber" type="text" name="clubContactNumber"
-                            placeholder="Contact Number" class="form-control" />
+                            placeholder="Contact Number" class="form-control"
+                            [attr.disabled]="userRole==1 ? '' : null" />
                           <div *ngIf="
                               clubRegisterFrom.get('contactNumber').invalid &&
                               clubRegisterFrom.get('contactNumber').touched
