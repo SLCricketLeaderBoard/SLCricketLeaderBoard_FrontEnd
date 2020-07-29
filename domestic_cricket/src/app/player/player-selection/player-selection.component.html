@@ -217,26 +217,26 @@
                 </div>
                 <div class="card-body">
 
-                  <div class="container" *ngIf="isDataLoad">
-                    <div class="text-center">
-                      <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
-                        <span class="sr-only">Loading...</span>
-                      </div>
-                    </div>
-                  </div>
-
                   <div class="row">
 
-                    <div id="playerType" class="col-sm-6 col-lg-6">
+                    <div id="playerType" class="col-sm-6 col-lg-3">
                       <select class="form-control" [(ngModel)]="selectPlayerType">
-                        <option (click)="selectPlayerFunction()" [ngValue]="0" selected>Batmen</option>
+                        <option [ngValue]="null" selected disabled>Select Player Type</option>
                         <ng-container *ngFor="let player of playerTypeList; let i=index">
-                          <option (click)="selectPlayerFunction()" [ngValue]="i+1">{{player}}</option>
+                          <option (click)="getPlayerRateList()" [ngValue]="i">{{player}}</option>
+                        </ng-container>
+                      </select>
+                    </div>
+                    <div id="playerType" class="col-sm-6 col-lg-3">
+                      <select class="form-control" [(ngModel)]="selectOrder">
+                        <option [ngValue]="null" selected disabled>Select Order</option>
+                        <ng-container *ngFor="let order of orderList; let i=index">
+                          <option (click)="changePlayerRateOrder()" [ngValue]="i">{{order}}</option>
                         </ng-container>
                       </select>
                     </div>
 
-                    <div class="col-md-8">
+                    <div class="col-md-10">
                       <div class="card">
                         <div class="card-header">
                           <h6 *ngIf="selectPlayerType==0" class="card-title">Batmens</h6>
@@ -244,7 +244,42 @@
                           <h6 *ngIf="selectPlayerType==2" class="card-title">AllRounders</h6>
                         </div>
                         <div class="card-body">
+                          <div class="table-responsive">
+                            <table class="table">
+                              <thead class="text-secondary">
+                                <th></th>
+                                <th>Name</th>
 
+                                <th *ngIf="selectOrder==0">ODI</th>
+                                <th *ngIf="selectOrder==0">T20</th>
+                                <th *ngIf="selectOrder==0">Test</th>
+
+                                <th *ngIf="selectOrder==1">T20</th>
+                                <th *ngIf="selectOrder==1">ODI</th>
+                                <th *ngIf="selectOrder==1">Test</th>
+
+                                <th *ngIf="selectOrder==2">Test</th>
+                                <th *ngIf="selectOrder==2">ODI</th>
+                                <th *ngIf="selectOrder==2">T20</th>
+
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let playerRate of playerRateList; let i = index">
+                                  <td>{{ i + 1 }})</td>
+                                  <td>{{ playerRate.name }}</td>
+                                  <td (click)="playerMatchData(playerRate.playerId,playerRate.name,0)" class="link">
+                                    {{ playerRate.rate1 }}
+                                  </td>
+                                  <td (click)="playerMatchData(playerRate.playerId,playerRate.name,1)" class="link">
+                                    {{playerRate.rate2}}
+                                  </td>
+                                  <td (click)="playerMatchData(playerRate.playerId,playerRate.name,2)" class="link">
+                                    {{playerRate.rate3}}
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
                       </div>
                     </div>
