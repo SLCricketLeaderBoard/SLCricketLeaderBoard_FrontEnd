@@ -6,6 +6,7 @@ import { MatchModel } from '../../../class-model/MatchModel';
 import { ClubService } from '../../../service/club/club.service';
 import { MatchService } from '../../../service/match/match.service';
 import { UserModel } from '../../../class-model/UserModel';
+import { AngularFirestore } from "@angular/fire/firestore";
 
 
 interface ballState {
@@ -21,7 +22,7 @@ interface ballState {
 })
 export class RefereeLiveMatchElementComponent implements OnInit {
 
-  @Input() match :MatchModel
+  @Input()match:MatchModel
 
   balls: ballState[] = [
     { value: 'Live',viewValue:'Live ball'},
@@ -66,8 +67,11 @@ export class RefereeLiveMatchElementComponent implements OnInit {
   oversClubTwo: Number=0;
   runrateClubTwo : Number = 0;
 
-  constructor(private matchService:MatchService,private clubService:ClubService) {
 
+  constructor(private matchService:MatchService,private clubService:ClubService,private afs: AngularFirestore) {
+
+    this.userId=sessionStorage.getItem('userId');
+    
 
     this.liveMatchDataForm = new FormGroup(
       {
@@ -87,6 +91,10 @@ export class RefereeLiveMatchElementComponent implements OnInit {
    }
 
   ngOnInit() {
+    let matchDocId=this.match.matchId;
+
+    this.afs.collection('liveMatches').doc(`${this.userId}`).collection('match').doc(`${matchDocId}`).set(this.match);
+
     console.log(this.match);
     this.clubService.getClubData(this.match.clubOneId).subscribe(res=>{
       this.clubOne=res;
@@ -117,6 +125,7 @@ export class RefereeLiveMatchElementComponent implements OnInit {
   }
 
   addData(){
+    const inning: any = this.liveMatchDataForm.value["inning"];
     const runs : Number = this.liveMatchDataForm.value["runs"];
     const legBy : Number = this.liveMatchDataForm.value["legBy"];
     const wicket : Number = this.liveMatchDataForm.value["wicket"];
@@ -124,9 +133,11 @@ export class RefereeLiveMatchElementComponent implements OnInit {
     const striker : any = this.liveMatchDataForm.value["striker"];
     const nonStriker : any = this.liveMatchDataForm.value["nonStriker"];
     const bowler : any = this.liveMatchDataForm.value["bowler"];
-    const ballsPlayed : any = this.liveMatchDataForm.value["ballsPlayed"];
-    const teamScore : any = this.liveMatchDataForm.value["teamScore"];
-    const wicketsFallen : any = this.liveMatchDataForm.value["wicketsFallen"];
+    let score =0;
+    let numberofBalls=0;
+    let numberOfWickets=0;
+    let runrate =0;
+
 
     this.activeStrike=striker;
     this.activeNonStrike=nonStriker;
@@ -134,10 +145,11 @@ export class RefereeLiveMatchElementComponent implements OnInit {
 
     const x =this.liveMatchDataForm.value["team"];
     console.log(x);
-    this.battingClub=x;
+    
     if(x==this.clubOne.clubId){
+      this.battingClub=this.clubOne;
       this.scoreClubOne = (+this.scoreClubOne) + (+runs);
-      this.wicketsClubOne = (+this.wicketsClubOne) + (+wicket);
+      
 
       switch (ballState) {
         case "No":
@@ -153,11 +165,15 @@ export class RefereeLiveMatchElementComponent implements OnInit {
       }  
         this.runrateClubOne= (+this.scoreClubOne)/(+this.ballsClubTwo);
         this.oversClubTwo = Math.floor(((+this.ballsClubTwo)/6)); 
+        runrate= (+this.runrateClubOne);
+        score =(+this.scoreClubOne);
+        numberofBalls = (+this.ballsClubTwo);
+
 
     }else{
 
       this.scoreClubTwo = (+this.scoreClubTwo) + (+runs);
-      this.wicketsClubTwo = (+this.wicketsClubTwo) + (+wicket);
+      
 
       switch (ballState) {
         case "No":
@@ -173,7 +189,9 @@ export class RefereeLiveMatchElementComponent implements OnInit {
       }  
         this.runrateClubTwo= (+this.scoreClubTwo)/(+this.ballsClubOne);
         this.oversClubOne = Math.floor(((+this.ballsClubOne)/6)); 
-
+        runrate= (+this.runrateClubTwo);
+        score =(+this.scoreClubTwo);
+        numberofBalls = (+this.ballsClubOne);
     }
     
     switch (+runs) {
@@ -233,6 +251,17 @@ export class RefereeLiveMatchElementComponent implements OnInit {
     document.getElementById('activeBowler').innerHTML=this.activeBowler;
 
     if(wicket){
+      if(x==this.clubOne.clubId){
+        this.wicketsClubOne = (+this.wicketsClubOne) + (1);
+        document.getElementById('wicketsClubOne').innerHTML=this.wicketsClubOne.toString();
+        numberOfWickets=(+this.wicketsClubOne);
+        
+      }else{
+        this.wicketsClubTwo = (+this.wicketsClubTwo) + (1);
+        document.getElementById('wicketsClubTwo').innerHTML=this.wicketsClubTwo.toString();
+        numberOfWickets=(+this.wicketsClubTwo);
+      }
+
       console.log("wicket Gone");
       this.activeNonStrike=null;
       this.activeStrike=null;
@@ -240,8 +269,25 @@ export class RefereeLiveMatchElementComponent implements OnInit {
       document.getElementById('activeNonStriker').innerHTML=this.activeNonStrike;     
       this.liveMatchDataForm.patchValue({striker:null,nonStriker:null});
     }
-    
 
+    runrate=(+score)/(+numberofBalls);
+
+    this.afs.collection('liveMatches').doc(`${this.userId}`).collection('match').doc(`${this.match.matchId}`).collection('eachBaller').add(
+      { inning:inning,
+        battingClub:this.battingClub,
+        fieldingClub:this.fieldingClub,
+        runs: +runs,
+        wicket:wicket,
+        ballerState:ballState,
+        striker:striker,
+        nonStriker:nonStriker,
+        bowler:bowler,
+        score:score,
+        numberofBalls:numberofBalls,
+        runrate:runrate,
+        numberOfWickets:numberOfWickets
+      }
+    )
   }
 
   checkCheckBoxvalue(event){
@@ -311,9 +357,10 @@ export class RefereeLiveMatchElementComponent implements OnInit {
     
     const x =this.liveMatchDataForm.value["team"];
     console.log(x);
-    this.battingClub=x;
+    
 
     if(x!=this.clubOne.clubId){
+      this.battingClub=this.clubOne;
       this.ballsClubOne=ballsPlayed;
     }else{
       this.ballsClubTwo=ballsPlayed;
@@ -335,8 +382,16 @@ export class RefereeLiveMatchElementComponent implements OnInit {
       this.wicketsClubTwo=wicketsFallen;
     }
 
-
-   
+    this.afs.collection('liveMatches').doc(`${this.userId}`).collection('match').doc(`${this.match.matchId}`).update(
+      {
+        clubOneMark:this.scoreClubOne,
+        clubTwoMark:this.scoreClubTwo,
+        clubOneWicket:this.wicketsClubOne,
+        clubTwoWicket:this.wicketsClubTwo,
+        clubOneOvers:this.ballsClubOne,
+        clubTwoOvers:this.ballsClubTwo,
+      }
+    )   
   }
 
 
