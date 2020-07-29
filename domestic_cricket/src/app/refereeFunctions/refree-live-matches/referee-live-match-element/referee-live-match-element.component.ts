@@ -489,7 +489,7 @@ export class RefereeLiveMatchElementComponent implements OnInit {
     console.log(this.scoreClubTwo);
     
     
-    this.saveState(); 
+    // this.saveState(); 
 
 
   }
