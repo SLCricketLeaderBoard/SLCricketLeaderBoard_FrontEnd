@@ -29,7 +29,7 @@ export class ManagerSignupComponent implements OnInit {
   ) {
     let numericRegex = /^[0-9]+$/;
 
-    let nicRanger = /^[vV0-9]+$/;
+    // let nicRanger = /^[vV0-9]+$/;
 
     this.managerRegisterForm = new FormGroup({
       userName: new FormControl(null, [
@@ -45,7 +45,7 @@ export class ManagerSignupComponent implements OnInit {
       ]),
       nic: new FormControl(null, [
         Validators.required,
-        Validators.pattern(nicRanger),
+        Validators.pattern('^\\d{9,9}[v,V]$'),
         Validators.minLength(9),
       ]),
       contactNumber: new FormControl(null, [

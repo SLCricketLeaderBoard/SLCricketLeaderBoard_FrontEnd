@@ -52,6 +52,8 @@ import { RefereeTeamPlayersComponent } from '../../refereeFunctions/referee-team
 import { RefreePlayerRecordDataInputComponent } from '../../refereeFunctions/refree-player-record-data-input/refree-player-record-data-input.component';
 import { CaptainChangeComponent } from '../../tournaments/manager-match-list/captain-change/captain-change.component';
 import { PlayerRateChartComponent } from '../../player/player-selection/player-rate-chart/player-rate-chart.component';
+import { RefreeLiveMatchesComponent } from '../../refereeFunctions/refree-live-matches/refree-live-matches.component';
+
 
 
 
@@ -261,6 +263,11 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: "referee-tournament-list/match-list/:tournamentId",
     component: RefereeMatchListComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: "referee-live-matches",
+    component: RefreeLiveMatchesComponent,
     canActivate: [RouteGuardService]
   },
   {

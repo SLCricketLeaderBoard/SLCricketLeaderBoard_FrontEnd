@@ -39,6 +39,8 @@ export class RefreePlayerRecordDataInputComponent implements OnInit {
   bowllingPoints:Number=0;
   fieldingPoints:Number=0;
   response:Number;
+  done = true;
+  pending = false;
 
 
   playerRecord:PlayerRecordModel
@@ -55,6 +57,9 @@ export class RefreePlayerRecordDataInputComponent implements OnInit {
       numberOfRunsAgainst:new FormControl(null,[Validators.required]),
       wickets:new FormControl(null,[Validators.required]),
       hatTriks:new FormControl(null,[Validators.required]),
+      avgBallSpeed:new FormControl(null,[Validators.required]),
+      numWides:new FormControl(null,[Validators.required]),
+      numNos:new FormControl(null,[Validators.required]),
       catches:new FormControl(null,[Validators.required]),
     })
     
@@ -86,6 +91,9 @@ export class RefreePlayerRecordDataInputComponent implements OnInit {
       wickets:res.ballerRecord.wickets,
       hatTriks:res.ballerRecord.hatTriks,
       catches:res.fieldingRecord.catches,
+      avgBallSpeed:res.ballerRecord.avgSpeed,
+      numWides:res.ballerRecord.numberOfWides,
+      numNos:res.ballerRecord.numberOfNos
       })
     }) 
   }
@@ -100,17 +108,20 @@ export class RefreePlayerRecordDataInputComponent implements OnInit {
     this.playerRecord.ballerRecord.selectedPlayerId=this.selectedPlayer;
     this.playerRecord.batmanRecord.selectedPlayerId=this.selectedPlayer;
     this.playerRecord.fieldingRecord.selectedPlayerId=this.selectedPlayer;
-    
     this.playerRecord.batmanRecord.battingRuns = +this.playerRecordForm.value["battingRuns"];
     this.playerRecord.batmanRecord.facedBalls = +this.playerRecordForm.value["facedBalls"];
     this.playerRecord.batmanRecord.fours = +this.playerRecordForm.value["fours"];
     this.playerRecord.batmanRecord.sixes = +this.playerRecordForm.value["sixes"];
     this.playerRecord.batmanRecord.notOut = +this.playerRecordForm.value["notOut"];
+    this.playerRecord.batmanRecord.strikeRate = (+this.playerRecordForm.value["battingRuns"])/( +this.playerRecordForm.value["facedBalls"])
     this.playerRecord.ballerRecord.overs = +this.playerRecordForm.value["overs"];
     this.playerRecord.ballerRecord.numberOfRunsAgainst = +this.playerRecordForm.value["numberOfRunsAgainst"];
     this.playerRecord.ballerRecord.wickets = +this.playerRecordForm.value["wickets"];
     this.playerRecord.ballerRecord.hatTriks = this.playerRecordForm.value["hatTriks"];
     this.playerRecord.fieldingRecord.catches = this.playerRecordForm.value["catches"];
+    this.playerRecord.ballerRecord.numberOfWides = this.playerRecordForm.value["numWides"];
+    this.playerRecord.ballerRecord.numberOfNos = this.playerRecordForm.value["numNos"];
+    this.playerRecord.ballerRecord.avgSpeed = this.playerRecordForm.value["avgBallSpeed"];
     
     this.selectedPlayer.state=1;
     
@@ -135,18 +146,19 @@ export class RefreePlayerRecordDataInputComponent implements OnInit {
 
     this.playerRecord.fieldingRecord.fieldingPoints= (+this.playerRecord.batmanRecord.battingPoints)+(+this.playerRecord.ballerRecord.ballingPoints);
 
-
-
     
     this.playerRecordService.playerRecordRecord(this.playerRecord).subscribe(res=>{
       console.log(res);
       this.response=res;
+      this.done=false;
     },error=>{
       console.log(error);
       this.response=0;
+      this.done=false
     })
     
 
   }
+
 
 }

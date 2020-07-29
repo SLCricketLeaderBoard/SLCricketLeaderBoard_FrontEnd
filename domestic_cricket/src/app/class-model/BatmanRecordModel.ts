@@ -15,6 +15,7 @@ export class BatmanRecordModel {
         public tripleSentury :Number,
         public foubleSentury :Number,
         public fivebleSentury :Number,
-        public battingPoints :Number,                
+        public battingPoints :Number,   
+        public strikeRate : Number             
     ) { }
 }

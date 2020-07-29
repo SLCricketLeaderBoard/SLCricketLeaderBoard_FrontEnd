@@ -62,6 +62,9 @@ import { RefreePlayerListElementComponent } from '../../refereeFunctions/refree-
 import { RefreePlayerRecordDataInputComponent } from '../../refereeFunctions/refree-player-record-data-input/refree-player-record-data-input.component';
 import { CaptainChangeComponent } from '../../tournaments/manager-match-list/captain-change/captain-change.component';
 import { PlayerRateChartComponent } from '../../player/player-selection/player-rate-chart/player-rate-chart.component';
+import { RefreeLiveMatchesComponent } from '../../refereeFunctions/refree-live-matches/refree-live-matches.component';
+import { RefereeLiveMatchElementComponent } from '../../refereeFunctions/refree-live-matches/referee-live-match-element/referee-live-match-element.component';
+
 
 
 @NgModule({
@@ -134,6 +137,9 @@ import { PlayerRateChartComponent } from '../../player/player-selection/player-r
     RefereeTeamPlayersComponent,
     RefreePlayerListElementComponent,
     RefreePlayerRecordDataInputComponent,
+    RefreeLiveMatchesComponent,
+    RefereeLiveMatchElementComponent,
+
 
     CaptainChangeComponent,
     PlayerRateChartComponent
