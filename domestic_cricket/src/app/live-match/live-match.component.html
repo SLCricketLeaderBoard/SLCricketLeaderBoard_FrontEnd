@@ -5,11 +5,35 @@
 <div class="row" *ngFor="let match of liveMatch">
 
     <div class="col-2">
+        {{match.battingClub.clubName}}
+    </div>
+    <div class="col-8" style="align-items: center; margin: auto;">
+        <div class="row" style="margin: auto; background-color: aqua;" >
+            <p>
+                {{match.score}} / {{match.numberOfWickets}} : &nbsp; &nbsp;<app-match-overs [numberofBalls]="match.numberofBalls" ></app-match-overs> 
+            </p>
+        </div>
+        <div class="row">
+
+            <table class="table">
+                <tr>
+                    <th>
+                        <label for="">{{match.striker}} <small>OnStike</small></label><br>
+                        <label for="">{{match.nonStriker}}</label>
+                    </th>
+                    <th>
+                        <label for="">{{match.bowler}}</label>
+                    </th>
+                </tr>
+            </table>
+
+
+        </div>
+        
 
     </div>
-
     <div class="col-2">
-        
+        {{match.fieldingClub.clubName}}
     </div>
 
 </div>

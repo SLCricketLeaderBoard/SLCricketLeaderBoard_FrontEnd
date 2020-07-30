@@ -13,11 +13,11 @@ import { LiveScoreModel } from '../class-model/LiveMatch.Model';
 export class LiveMatchComponent implements OnInit {
 
   safeUrl: any
-  liveMatch:Observable<LiveScoreModel[]>
+  liveMatch:LiveScoreModel[]
   constructor(private _sanitizer: DomSanitizer,private db:AngularFirestore) { }
 
   ngOnInit() {
-    this.liveMatch=this.db.collection('liveMatches').snapshotChanges()
+    this.db.collection('liveMatches').snapshotChanges()
     .pipe(
       map((action) =>
         action.map((a) => {
@@ -26,12 +26,10 @@ export class LiveMatchComponent implements OnInit {
           return {...data };
         })
       )
-    );
+    ).subscribe(res=>{
+      this.liveMatch=res;
+    });
 
-    this.liveMatch.subscribe(res=>{
-      console.log(res);
-      
-    })
 
   }
 
