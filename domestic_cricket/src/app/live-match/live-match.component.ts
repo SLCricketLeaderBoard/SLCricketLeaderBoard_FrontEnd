@@ -21,7 +21,7 @@ export class LiveMatchComponent implements OnInit {
     .pipe(
       map((action) =>
         action.map((a) => {
-          const data = a.payload.doc.data() as LiveScoreModel;
+          const data = a.payload.doc.data() as ;
           const id = a.payload.doc.id;
           return {...data };
         })
