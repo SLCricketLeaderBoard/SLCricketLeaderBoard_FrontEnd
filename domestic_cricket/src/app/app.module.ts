@@ -27,6 +27,7 @@ import { PlayerSignupComponent } from './player/player-signup/player-signup.comp
 import { ManagerSignupComponent } from './manager/manager-signup/manager-signup.component';
 import { ClubSignupComponent } from './club/club-signup/club-signup.component';
 import { SponsorSignupComponent } from './sponsor-signup/sponsor-signup.component';
+import { LiveMatchComponent } from './live-match/live-match.component'
 
 
 
@@ -60,6 +61,7 @@ import { SponsorSignupComponent } from './sponsor-signup/sponsor-signup.componen
     ManagerSignupComponent,
     ClubSignupComponent,
     SponsorSignupComponent,
+    LiveMatchComponent
 
 
 

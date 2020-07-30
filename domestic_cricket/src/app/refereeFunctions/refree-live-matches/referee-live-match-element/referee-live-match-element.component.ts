@@ -8,12 +8,15 @@ import { MatchService } from '../../../service/match/match.service';
 import { UserModel } from '../../../class-model/UserModel';
 import { AngularFirestore } from "@angular/fire/firestore";
 import { ConfirmedValidator } from '../../../validators/matchClubValidators.validator';
+import { LiveScoreModel } from '../../../class-model/LiveMatch.Model';
 
 
 interface ballState {
   value: string;
   viewValue: string;
 }
+
+export interface Item { name: string; }
 
 
 @Component({
@@ -132,14 +135,14 @@ export class RefereeLiveMatchElementComponent implements OnInit {
   }
 
   addData(){
-    const inning: any = this.liveMatchDataForm.value["inning"];
+    const inning: Number = this.liveMatchDataForm.value["inning"];
     const runs : Number = this.liveMatchDataForm.value["runs"];
     const legBy : Number = this.liveMatchDataForm.value["legBy"];
-    const wicket : Number = this.liveMatchDataForm.value["wicket"];
-    const ballState : any = this.liveMatchDataForm.value["ballState"];
-    const striker : any = this.liveMatchDataForm.value["striker"];
-    const nonStriker : any = this.liveMatchDataForm.value["nonStriker"];
-    const bowler : any = this.liveMatchDataForm.value["bowler"];
+    const wicket : Boolean = this.liveMatchDataForm.value["wicket"];
+    const ballState : String = this.liveMatchDataForm.value["ballState"];
+    const striker : String = this.liveMatchDataForm.value["striker"];
+    const nonStriker : String = this.liveMatchDataForm.value["nonStriker"];
+    const bowler : String = this.liveMatchDataForm.value["bowler"];
     let score =0;
     let numberofBalls=0;
     let numberOfWickets=0;
@@ -178,7 +181,7 @@ export class RefereeLiveMatchElementComponent implements OnInit {
 
 
     }else{
-
+      this.fieldingClub=this.clubTwo;
       this.scoreClubTwo = (+this.scoreClubTwo) + (+runs);
       
 
@@ -279,6 +282,12 @@ export class RefereeLiveMatchElementComponent implements OnInit {
 
     runrate=(+score)/(+numberofBalls);
 
+    var liveScoreMode = new LiveScoreModel(inning,this.battingClub,this.fieldingClub,runs,wicket,ballState,striker,nonStriker,bowler,score,numberofBalls,runrate,numberOfWickets);
+
+
+    console.log(liveScoreMode);
+    
+    
     this.afs.collection('liveMatchesRecords').doc(`${this.userId}`).collection('match').doc(`${this.match.matchId}`).collection('eachBaller').add(
       { inning:inning,
         battingClub:this.battingClub,
@@ -294,6 +303,7 @@ export class RefereeLiveMatchElementComponent implements OnInit {
         runrate:runrate,
         numberOfWickets:numberOfWickets
       }
+
     )
 
     this.afs.collection('liveMatches').doc(`${this.match.matchId}`).set(
@@ -311,7 +321,7 @@ export class RefereeLiveMatchElementComponent implements OnInit {
         runrate:runrate,
         numberOfWickets:numberOfWickets
       }
-    )
+         )
   }
 
   checkCheckBoxvalue(event){

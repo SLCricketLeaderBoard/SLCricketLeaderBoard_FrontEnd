@@ -114,7 +114,7 @@ import { RefereeLiveMatchElementComponent } from '../../refereeFunctions/refree-
     RefereeComponent,
     ProfileImageComponent,
     StadiumRegisterComponent,
-    LiveMatchComponent,
+    // LiveMatchComponent,
     RefereeListComponent,
     TournamentElementComponent,
     TournamnetListComponent,
