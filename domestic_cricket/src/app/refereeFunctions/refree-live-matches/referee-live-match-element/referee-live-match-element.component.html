@@ -3,18 +3,43 @@
 
        <div class="card-body" style="padding: 2%;">
          <h5>Live Data recording</h5>
+         <div class="row">
+           <div class="col-6" style="padding: 2%;">
+
+            {{clubOne?.clubName}} &nbsp;
+            {{scoreClubOne}}/ {{wicketsClubOne}} &nbsp; :    {{oversClubTwo}}.{{ballsClubTwo%6}}
+
+           </div>
+
+           <div class="col-6" style="padding: 2%;">
+            {{clubTwo?.clubName}} &nbsp;
+            {{scoreClubTwo}}/ {{wicketsClubTwo}} &nbsp;  :    {{oversClubOne}}.{{ballsClubOne%6}}
+          </div>
+         </div>
         <form [formGroup]="liveMatchDataForm" >
-
           <div class="row">
-
               <!-- Start of the batting side  -->
             <div class="col-6" style="padding: 3% 5% 3% 5%;">
               <div class="row">
-                <h6> Batting Side</h6>
+                <h6> Setup Data </h6>
               </div>
               <div class="row">     
                 
                 <table class="table">
+
+                  <tr>
+                    <th>
+                      <label>Inning</label>
+                    </th>
+                    <th>
+                      <select formControlName="inning" id="" (change)="inningChange($event)">
+                        <option [value]=1>1</option>
+                        <option [value]=2>2</option>
+                        <option *ngIf="match.matchTypeId.matchType==='3 4 Days'" [value]=3>3</option>
+                        <option *ngIf="match.matchTypeId.matchType==='3 4 Days'" [value]=4>4</option>
+                      </select>  
+                    </th>
+                  </tr>
 
                   <tr>
                     <th>
@@ -39,13 +64,13 @@
                   </tr>
 
 
-                  <tr>
+                  <tr *ngIf="battingPlayers">
                     <th>
                       <label>Striker</label>
                     </th>
                     <th id="striker">
-                      <select formControlName="striker" id="">
-                      <option *ngFor="let player of battingPlayers" [value]="player">{{player.userId?.nameWithInitial}}</option>
+                      <select formControlName="striker" (change)="changeStriker($event)">
+                      <option *ngFor="let player of battingPlayers"  [value]="player.userId.nameWithInitial">{{player.userId?.nameWithInitial}}</option>
                       </select>
                     </th>
                   </tr>
@@ -57,8 +82,8 @@
                       <label>Non Striker</label>
                     </th>
                     <th id="nonStriker">
-                      <select formControlName="nonStriker" id="">
-                      <option *ngFor="let player of battingPlayers" [value]="player">{{player.userId?.nameWithInitial}}</option>
+                      <select formControlName="nonStriker" id="" (change)="changeNonStriker($event)">
+                      <option *ngFor="let player of battingPlayers" [value]="player.userId.nameWithInitial">{{player.userId?.nameWithInitial}}</option>
                       </select>
                     </th>
                   </tr>
@@ -69,12 +94,16 @@
                       <label>Bowler</label>
                     </th>
                     <th id="bowler">
-                      <select formControlName="bowler" id="">
-                      <option *ngFor="let player of feildingPlayers" [value]="player">{{player.userId?.nameWithInitial}}</option>
+                      <select formControlName="bowler" id=""  (change)="changeBowller($event)">
+                      <option *ngFor="let player of feildingPlayers" [value]="player.userId.nameWithInitial">{{player.userId?.nameWithInitial}}</option>
                       </select>
                     </th>
                   </tr>
 
+                 
+
+                
+                  
                   <tr>
                     <th>
                       <label>Runs per ball</label>
@@ -86,6 +115,7 @@
                         <option [value]=2>2</option>
                         <option [value]=3>3</option>
                         <option [value]=4>4</option>
+                        <option [value]=4>6</option>
                       </select>  
                     </th>
                   </tr>
@@ -97,7 +127,7 @@
                       </label>
                     </th>
                     <th>
-                       <input type="checkbox" formControlName="legBy" [value]=1  (change)="checkCheckBoxvalue($event)">
+                       <input type="checkbox" formControlName="legBy" [value]=1  >
                     </th>
                   </tr>
 
@@ -125,11 +155,48 @@
                     </th>
                   </tr>
 
+                  <hr>
+                  <br>
+                  <br>
+
+                  <p  *ngIf="spe"><small>First Select the team and then insert data according to the inning</small></p>
+                  <tr *ngIf="spe" style="color: red;">
+                    <th>
+                      <label>Score</label>
+                    </th>
+                    <th id="">
+                     <input type="number" formControlName="teamScore" [value]="0" >
+                    </th>
+                  </tr>
+
+                  <tr *ngIf="spe" style="color: red;">
+                    <th>
+                      <label>Wickets Fallen</label>
+                    </th>
+                    <th id="">
+                     <input type="number" formControlName="wicketsFallen" [value]="0" >
+                    </th>
+                  </tr>
+
+                  <tr *ngIf="spe" style="color: red;">
+                    <th>
+                      <label>Number of balls Played in the inning</label>
+                    </th>
+                    <th id="">
+                     <input type="number" formControlName="ballsPlayed" [value]="0" >
+                    </th>
+                  </tr>
+                  <button class="btn btn-danger" (click)="setValues()" *ngIf="spe" [disabled]="!liveMatchDataForm.valid">Set values</button>
+                  <hr>
+
                 </table>
               
               </div>
               
-              <button class="btn" (click)="addData()">Add</button>
+              <button class="btn btn-success" (click)="addData()" [disabled]="!liveMatchDataForm.valid">Add</button>
+              <button class="btn btn-success" (click)="setScore()">Reset Score</button>
+              
+              
             </div>
             <!-- End of the batting side -->
 
@@ -139,6 +206,17 @@
             <div class="col-6" style="padding: 3% 5% 3% 5%;">
               <h4>For live reocrds</h4>
               <table class="table">
+
+                <tr>
+                  <th>
+                   Inning
+                  </th>
+                  <th id="inning">
+                   
+                  </th>
+                </tr>
+
+                
                 <tr>
                   <th>
                     Batting team
@@ -156,6 +234,105 @@
                     
                   </th>
                 </tr>
+
+                <tr>
+                  <th>
+                  Striker
+                  </th>
+                  <th id="activeStriker">
+                  </th>
+                </tr>
+
+                <tr>
+                  <th>
+                  Non Striker
+                  </th>
+                  <th id="activeNonStriker">
+                  </th>
+                </tr>
+
+                <tr>
+                  <th>
+                  Bowller
+                  </th>
+                  <th id="activeBowler">
+                  </th>
+                </tr>
+
+                <tr *ngIf="wicketsClubOne!=0">
+                  <th>
+                    wickets of {{clubOne.clubName}}
+                  </th>
+                  <th id="wicketsClubOne">
+                    {{wicketsClubOne}}
+                  </th>
+                </tr>
+
+
+                <tr *ngIf="scoreClubOne!=0">
+                  <th>
+                    Runs of {{clubOne.clubName}}
+                  </th>
+                  <th id="scoreClubOne">
+                    {{scoreClubOne}}
+                  </th>
+                </tr>
+
+                <tr *ngIf="oversClubOne!=0">
+                  <th>
+                    Overs of {{clubOne.clubName}}
+                  </th>
+                  <th id="oversClubOne">
+                    {{oversClubOne}}
+                  </th>
+                </tr>
+
+                <tr *ngIf="runrateClubOne!=0">
+                  <th>
+                    Runrate of {{clubOne.clubName}}
+                  </th>
+                  <th id="runrateClubOne">
+                    {{runrateClubOne}}
+                  </th>
+                </tr>
+
+                <tr *ngIf="wicketsClubTwo!=0">
+                  <th>
+                    wickets of {{clubTwo.clubName}}
+                  </th>
+                  <th id="wicketsClubTwo">
+                    {{wicketsClubTwo}}
+                  </th>
+                </tr>
+
+
+                <tr *ngIf="scoreClubTwo!=0">
+                  <th>
+                    Runs of {{clubTwo.clubName}}
+                  </th>
+                  <th id="scoreClubTwo">
+                    {{scoreClubTwo}}
+                  </th>
+                </tr>
+
+                <tr *ngIf="oversClubTwo!=0">
+                  <th>
+                    Overs of {{clubTwo.clubName}}
+                  </th>
+                  <th id="oversClubTwo">
+                    {{oversClubTwo}}
+                  </th>
+                </tr>
+
+                <tr *ngIf="runrateClubTwo!=0">
+                  <th>
+                    Runrate of {{clubTwo.clubName}}
+                  </th>
+                  <th id="runrateClubTwo">
+                    {{runrateClubTwo}}
+                  </th>
+                </tr>
+
               </table>
             </div>
 
