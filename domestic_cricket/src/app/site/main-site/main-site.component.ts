@@ -17,4 +17,8 @@ export class MainSiteComponent implements OnInit {
     this.router.navigate(["login"], { relativeTo: this.route });
   }
 
+  live(){
+    this.router.navigate(["/live-now"], { relativeTo: this.route });
+  }
+
 }
