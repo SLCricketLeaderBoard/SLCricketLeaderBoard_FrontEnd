@@ -16,7 +16,7 @@ export class SponsorService {
 
 
   getUser(email){
-    return this.http.get<UserModel>(`${API_URL}/user/${email}`);
+    return this.http.get<SponsorModel[]>(`${API_URL}/user/${email}`);
   }
 
  
@@ -25,6 +25,10 @@ export class SponsorService {
   //console.log(this.http.get<SponsorModel[]>(`${API_URL}/nonregsponsors`));
   return this.http.get<SponsorModel[]>(`${API_URL}/nonregsponsors`);
     
+}
+
+sponsorAccept(userId: Number) {
+  return this.http.put<Number>(`${API_URL}/sponsorAccept/${userId}`, {});
 }
    
 

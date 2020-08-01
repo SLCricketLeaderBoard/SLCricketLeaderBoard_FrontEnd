@@ -138,4 +138,8 @@ export class LoginComponent implements OnInit {
   managerSignup() {
     this.router.navigate(['manager-signup']);
   }
+
+  sponsorSignup() {
+    this.router.navigate(['sponsor-signup']);
+  }
 }

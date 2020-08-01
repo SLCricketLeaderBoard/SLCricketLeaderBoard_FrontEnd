@@ -90,14 +90,21 @@ export class MatchService {
     return this.http.get<MatchModel[]>(`${API_URL}/refereeMatchesPlayedUpdated/${tournamentId}/${x}`, { headers });
   }
 
+  //Player Ranking
   updateMatch(match: MatchModel): Observable<MatchModel> {
     let jwt = sessionStorage.getItem('TOKEN');
     const headers = new HttpHeaders().set('Authorization', jwt);
-    return this.http.post<MatchModel>(`${API_URL}/createMatch`, match, { headers });
+    return this.http.post<MatchModel>(`${API_URL}/updateMatch`, match, { headers });
   }
 
   getUpcomingMatchList(clubId: Number) {
     return this.http.get<MatchModel[]>(`${API_URL}/match/upcoming/${clubId}`, {});
+  }
+
+  getLivetodayMatchForReferee(refereeId: String) {
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.get<MatchModel[]>(`${API_URL}/getLiveMatchTodayForReferee/${refereeId}`, { headers });
   }
 
 }
