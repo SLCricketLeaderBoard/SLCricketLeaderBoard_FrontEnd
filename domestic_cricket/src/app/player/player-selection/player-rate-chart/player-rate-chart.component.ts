@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { PlayerRecordModel } from '../../../class-model/PlayerRecordModel';
+import { PlayerScoreService } from '../../../service/player-score/player-score.service';
+import { PlayerMatchRecordModel } from '../../../class-model/PlayerMatchRecordModel';
 
 @Component({
   selector: 'app-player-rate-chart',
@@ -13,9 +16,11 @@ export class PlayerRateChartComponent implements OnInit {
   @Input() matchType;
   @Input() playerType;
   @Input() playerName;
+  @Input() clubId;
 
   orderList: String[] = ['ODI', 'T20', 'Test'];
   playerTypeList: String[] = ['Batmen', 'Baller', 'All Rounder'];
+  playerRecordList: PlayerMatchRecordModel[] = [];
 
   public canvas: any;
   public ctx;
@@ -26,10 +31,11 @@ export class PlayerRateChartComponent implements OnInit {
   public odiChartType;
   public odiMatchData: Array<any>;
   public odiChartOptions: any;
-  public odiMatchLabels: Array<any>;
+  // public odiMatchLabels: Array<any>;
   public odiChartColors: Array<any>;
 
-  public rateData: number[] = [50, 50, 50, 80, 50, 10];
+  public rateData: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  public odiMatchLabels: String[] = ["", "", "", "", "", "", "", "", "", ""];
 
   public gradientChartOptionsConfigurationWithNumbersAndGrid: any;
 
@@ -55,12 +61,11 @@ export class PlayerRateChartComponent implements OnInit {
 
   constructor(
     public activeModal: NgbActiveModal,
+    private playerScoreService: PlayerScoreService,
+
   ) { }
 
   ngOnInit() {
-    // console.log(this.playerId)
-    // console.log(this.matchType)
-    // console.log(this.playerType);
 
     this.gradientChartOptionsConfigurationWithNumbersAndGrid = {
       maintainAspectRatio: false,
@@ -122,7 +127,7 @@ export class PlayerRateChartComponent implements OnInit {
 
     this.odiMatchData = [
       {
-        label: "Runs",
+        label: "Points",
         pointBorderWidth: 2,
         pointHoverRadius: 4,
         pointHoverBorderWidth: 1,
@@ -140,39 +145,77 @@ export class PlayerRateChartComponent implements OnInit {
         backgroundColor: this.gradientFill
       }
     ];
-    this.odiMatchLabels = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN"];
+    //this.odiMatchLabels = ["", "", "", "", "", "", "", "", "", ""];
     this.odiChartOptions = this.gradientChartOptionsConfigurationWithNumbersAndGrid;
 
     this.odiChartType = 'line';
 
 
     this.getPlayerRateData();
+    this.getPlayerRateLabels();
+  }
+
+  getPlayerRateLabels() {
+
+    this.playerScoreService.getPlayerMatchRecord(this.playerId, this.playerType + 1, this.matchType + 1).subscribe(
+      response => {
+        // console.log(response)
+        this.playerRecordList = response;
+
+        var newLabels = [];
+
+        this.playerRecordList.forEach(element => {
+          newLabels.push(element.date);
+        });
+
+        this.odiMatchLabels = newLabels;
+
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+
+    // let label = "";
+    // if (this.playerType == 0) {
+    //   label = "Runs";
+    // } else if (this.playerType == 1) {
+    //   label = "Wickets";
+    // }
+    //this.changeLabels([]);
   }
 
   getPlayerRateData() {
-    this.rateData = [100, 50, 10, 80, 50, 200]
 
-    let label = "";
-    if (this.playerType == 0) {
-      label = "Runs";
-    } else if (this.playerType == 1) {
-      label = "Wickets";
-    }
+    this.playerScoreService.getPlayerMatchRecord(this.playerId, this.playerType + 1, this.matchType + 1).subscribe(
+      response => {
 
+        this.playerRecordList = response;
+        this.rateData = [];
 
-    this.odiMatchData = [
-      {
-        label: label,
-        pointBorderWidth: 2,
-        pointHoverRadius: 4,
-        pointHoverBorderWidth: 1,
-        pointRadius: 4,
-        fill: true,
-        borderWidth: 2,
-        data: this.rateData
+        this.playerRecordList.forEach(element => {
+          this.rateData.push(+element.points);
+        });
+
+        this.odiMatchData = [
+          {
+            label: "Points",
+            pointBorderWidth: 2,
+            pointHoverRadius: 4,
+            pointHoverBorderWidth: 1,
+            pointRadius: 4,
+            fill: true,
+            borderWidth: 2,
+            data: this.rateData
+          }
+        ];
+
+      },
+      error => {
+        console.log(error);
       }
-    ];
-    this.odiMatchLabels = ["2020-01-04", "2020-01-04", "2020-01-04", "2020-01-04", "2020-01-04", "2020-01-04"];
+    );
   }
 
 }
