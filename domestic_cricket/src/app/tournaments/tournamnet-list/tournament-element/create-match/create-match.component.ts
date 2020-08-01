@@ -180,7 +180,7 @@ export class CreateMatchComponent implements OnInit {
     const clubOneOvers: Number = 0;
     const clubTwoOvers: Number = 0;
     const state : Number = 0;
-
+    const testMatchId : Number =0; 
 
 
     const match: MatchModel = new MatchModel(
@@ -214,7 +214,8 @@ export class CreateMatchComponent implements OnInit {
       manOfTheMatch,
       clubOneOvers,
       clubTwoOvers,
-      state
+      state,
+      testMatchId
     );
 
      
