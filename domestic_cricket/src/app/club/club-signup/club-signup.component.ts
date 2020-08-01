@@ -7,6 +7,8 @@ import { ManagerService } from '../../service/manager/manager.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ClubModel } from '../../class-model/ClubModel';
+import { AngularFirestore } from "@angular/fire/firestore";
+
 
 @Component({
   selector: 'app-club-signup',
@@ -57,10 +59,12 @@ export class ClubSignupComponent implements OnInit {
     private managerService: ManagerService,
     private fb: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private afs: AngularFirestore
   ) { }
 
   ngOnInit() {
+
     this.userId = this.route.snapshot.params['userId'];
     console.log(this.userId);
     this.getManager();
@@ -84,6 +88,7 @@ export class ClubSignupComponent implements OnInit {
 
   firebaseClubRegister(club: ClubModel){
     let clubs = {};
+    clubs["clubId"] = club.clubId;
     clubs["clubName"] = club.address.toString();
     clubs["clubLogo"] = club.clubLogo.toString();
     clubs["clubName"] = club.clubName.toString();
@@ -93,7 +98,8 @@ export class ClubSignupComponent implements OnInit {
     clubs["growMatch"] = club.growMatch.toString();
     clubs["regDate"] = club.regDate.toString();
     clubs["winMatch"] = club.winMatch.toString();
-
+    clubs["payment"] = false;
+    return this.afs.collection("clubs").doc(this.manager.userId.nic.toString()).set(clubs);
 
   }
 

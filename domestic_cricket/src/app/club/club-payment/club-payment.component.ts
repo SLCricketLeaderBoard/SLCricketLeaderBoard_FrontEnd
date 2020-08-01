@@ -8,6 +8,7 @@ import { SwalMessage } from "../../shared/swal-message";
 import Swal from "sweetalert2";
 import * as moment from "moment";
 import { AnnualClubPaymentModel } from "../../class-model/AnnualClubPaymentModel";
+import { AngularFirestore } from "@angular/fire/firestore";
 
 @Component({
   selector: "app-club-payment",
@@ -83,6 +84,10 @@ export class ClubPaymentComponent implements OnInit {
     }
   }
 
+  updatePaymentFirebase(){
+
+  }
+
   clubPaymentFormSubmit() {
     Swal.fire({
       title: "Are you sure?",
@@ -114,6 +119,7 @@ export class ClubPaymentComponent implements OnInit {
                   this.getClubPaymentData();
                   this.getPaymentYears();
                   this.isPaymentAdd = false;
+                  this.updatePaymentFirebase();
                 }
                 if (response == 2) {
                   this.swalMessage.successMessage(
