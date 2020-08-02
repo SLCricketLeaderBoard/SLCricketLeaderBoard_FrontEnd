@@ -10,6 +10,7 @@ import { ManagerSignupComponent } from './manager/manager-signup/manager-signup.
 import { ClubSignupComponent } from './club/club-signup/club-signup.component';
 import { SponsorSignupComponent } from './sponsor-signup/sponsor-signup.component';
 import { MainSiteComponent } from './site/main-site/main-site.component';
+import { ClubRankingComponent } from './club-ranking/club-ranking.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path: 'sponsor-signup',
     component: SponsorSignupComponent
+  },
+  {
+    path: 'club-ranking',
+    component: ClubRankingComponent
   }
   // {
   //   path: '',

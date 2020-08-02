@@ -1,0 +1,58 @@
+<div class="card">
+  <div class="card-header">
+    <h4 class="card-title">Club Ranking</h4>
+  </div>
+  <div class="card-body">
+
+    <div class="row">
+
+      <div class="col-md-5">
+        <h5 class="card-title">{{orderList[selectOrder]}} Club Ranking</h5>
+
+        <div ngbDropdown class="dropdown" placement="bottom-left">
+          <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>Select Match Category</button>
+          <div ngbDropdownMenu>
+
+
+            <a class="dropdown-item cursor" (click)="getClubRankingData(0)">ODI</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item cursor" (click)="getClubRankingData(2)">T20</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item cursor" (click)="getClubRankingData(1)">Test</a>
+
+          </div>
+        </div>
+
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Rank</th>
+              <th scope="col">Club</th>
+              <th scope="col">Matches</th>
+              <th scope="col">Points</th>
+              <th scope="col">Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rank of clubRankingList; let i = index">
+              <th scope="row">{{i+1}}</th>
+              <td>
+                <img class="avatar border-gray" src="{{rank.clubId.clubLogo}}" alt="..." id="image-align">
+                {{rank.clubId.clubName}}
+              </td>
+              <td>{{rank.numMatch}}</td>
+              <td>{{rank.points}}</td>
+              <td>{{rank.rating}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-md-7">
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
