@@ -77,22 +77,22 @@ export class ClubSignupComponent implements OnInit {
 
 
   clubFormSubmit() {
-    let club = new ClubModel(-1, this.clubNameField.value, this.addressField.value, this.emailField.value, this.contactNumberField.value, 0, 0, 0, new Date(), 1, this.club_default_log, this.manager);
+    let club = new ClubModel(-1, this.clubNameField.value, this.addressField.value, this.emailField.value, this.contactNumberField.value, new Date(), 1, this.club_default_log, this.manager);
     this.clubRegister(club);
     this.firebaseClubRegister(club);
   }
 
-  firebaseClubRegister(club: ClubModel){
+  firebaseClubRegister(club: ClubModel) {
     let clubs = {};
     clubs["clubName"] = club.address.toString();
     clubs["clubLogo"] = club.clubLogo.toString();
     clubs["clubName"] = club.clubName.toString();
     clubs["contactNumber"] = club.contactNumber.toString();
     clubs["email"] = club.email.toString();
-    clubs["failMatch"] = club.failMatch.toString();
-    clubs["growMatch"] = club.growMatch.toString();
+    //clubs["failMatch"] = club.failMatch.toString();
+    //clubs["growMatch"] = club.growMatch.toString();
     clubs["regDate"] = club.regDate.toString();
-    clubs["winMatch"] = club.winMatch.toString();
+    //clubs["winMatch"] = club.winMatch.toString();
 
 
   }
