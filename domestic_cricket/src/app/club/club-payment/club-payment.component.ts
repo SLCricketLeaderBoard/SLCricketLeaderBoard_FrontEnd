@@ -51,7 +51,8 @@ export class ClubPaymentComponent implements OnInit {
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private clubSetivce: ClubService,
-    private clubPaymentService: ClubPaymentService
+    private clubPaymentService: ClubPaymentService,
+    private afs: AngularFirestore
   ) {}
 
   ngOnInit() {
@@ -85,7 +86,11 @@ export class ClubPaymentComponent implements OnInit {
   }
 
   updatePaymentFirebase(){
-
+    this.afs.collection('clubs', ref => ref.where('club_Id', '==', this.clubId)).snapshotChanges().subscribe( (res: any) => {
+      let id = res[0].payload.doc.id;
+      console.log(id)
+      this.afs.collection("clubs").doc(id).update({payment: true});
+    })
   }
 
   clubPaymentFormSubmit() {
