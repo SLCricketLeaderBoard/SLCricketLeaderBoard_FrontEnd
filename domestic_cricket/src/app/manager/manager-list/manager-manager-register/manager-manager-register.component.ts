@@ -89,7 +89,7 @@ export class ManagerManagerRegisterComponent implements OnInit {
 
   register() {
     this.user.status=1;
-    this.afs.collection('users').doc(this.user.nic.toString()).update({registered: true});
+    this.afs.collection('users').doc(this.user.nic.toString()).update({registered: true});  // update registerd as true when admin accept the manager
     this.userService.updateUserState(this.user).subscribe(res=>{
       console.log(res);
       this.message=res;

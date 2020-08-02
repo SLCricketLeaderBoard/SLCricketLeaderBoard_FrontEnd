@@ -11,6 +11,7 @@ import { SwalMessage } from '../../shared/swal-message';
 import { PlayerService } from '../../service/player/player.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Route } from '@angular/compiler/src/core';
+import { AngularFirestore } from "@angular/fire/firestore";
 
 
 @Component({
@@ -94,13 +95,13 @@ export class PlayerAddComponent implements OnInit {
     private clubService: ClubService,
     private playerService: PlayerService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private afs: AngularFirestore
   ) { }
 
   ngOnInit() {
     let playerId: Number = +this.route.snapshot.params['playerId'];
     this.getPlayerData(playerId);
-
     this.getBatmanTypeList();
     this.getBallerTypeList();
   }
@@ -156,6 +157,29 @@ export class PlayerAddComponent implements OnInit {
     );
   }
 
+  submitPlayerFirebase( player: PlayerModel, user: UserModel ) {
+
+    return this.afs.collection("users").doc(user.nic.toString()).update({
+      special_type: player.specialType,
+      playerId: player.playerId,
+      club_id: player.clubId,
+      ballerTypeId: player.ballerTypeId,
+      batmanTypeId: player.batmanTypeId,
+      address: user.address,
+      contactNumber: user.contactNumber,
+      email: user.email,
+      fullName: user.fullName,
+      nameWithInitial: user.nameWithInitial,
+      nic: user.nic,
+      regDate: user.regDate.toString(),
+      role: user.role,
+      userId: user.userId,
+      userName: user.userName,
+      profileImage: user.profileImage,
+      registered: true
+    });
+  }
+
   playerFormSubmit() {
     console.log(this.playerTypeField)
     const profileImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQcUe1moupzaLWXiANaYFIt4jys-rl2OeXwOydel1YWIO22vDW6&usqp=CAU";
@@ -166,6 +190,7 @@ export class PlayerAddComponent implements OnInit {
       response => {
         if (response == 1) {
           this.router.navigate(['player-list']);
+          this.submitPlayerFirebase(player, user);
           this.swalMessage.successMessage('Player Registration Successful');
         } else {
           this.errorMessage = "There is another user has same  Email or Nic";
@@ -204,5 +229,3 @@ export class PlayerAddComponent implements OnInit {
     this.errorMessage = "";
   }
 }
-
-
