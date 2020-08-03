@@ -29,7 +29,8 @@ import { ClubSignupComponent } from './club/club-signup/club-signup.component';
 import { SponsorSignupComponent } from './sponsor-signup/sponsor-signup.component';
 import { LiveMatchComponent } from './live-match/live-match.component';
 import { MatchOversComponent } from './live-match/match-overs/match-overs.component';
-import { MainSiteComponent } from './site/main-site/main-site.component'
+import { MainSiteComponent } from './site/main-site/main-site.component';
+import { WelcomePageComponent } from './site/main-site/welcome-page/welcome-page.component'
 
 
 
@@ -65,7 +66,8 @@ import { MainSiteComponent } from './site/main-site/main-site.component'
     SponsorSignupComponent,
     LiveMatchComponent,
     MatchOversComponent,
-    MainSiteComponent
+    MainSiteComponent,
+    WelcomePageComponent
 
 
 

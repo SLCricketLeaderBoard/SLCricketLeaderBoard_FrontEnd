@@ -10,11 +10,17 @@ import { ManagerSignupComponent } from './manager/manager-signup/manager-signup.
 import { ClubSignupComponent } from './club/club-signup/club-signup.component';
 import { SponsorSignupComponent } from './sponsor-signup/sponsor-signup.component';
 import { MainSiteComponent } from './site/main-site/main-site.component';
+import { LiveMatchComponent } from './live-match/live-match.component';
+import { WelcomePageComponent } from './site/main-site/welcome-page/welcome-page.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: MainSiteComponent
+    component: MainSiteComponent,
+      children:[
+        {path:'',component:WelcomePageComponent},
+        {path:'live-now',component:LiveMatchComponent}
+      ]
   },
   {
     path: 'login',
@@ -36,6 +42,7 @@ const routes: Routes = [
     path: 'sponsor-signup',
     component: SponsorSignupComponent
   }
+
   // {
   //   path: '',
   //   redirectTo: 'dashboard',

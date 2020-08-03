@@ -37,6 +37,7 @@ export class MatchSummeryDataInputComponent implements OnInit {
   currentDate : Date
   state:any
 
+
   club1Players: PlayerModel[]
   club2Players: PlayerModel[]
 
@@ -44,6 +45,7 @@ export class MatchSummeryDataInputComponent implements OnInit {
   updateSummeryForm: FormGroup;
   message:any
   done:any
+  showInning=false;
 
   
   constructor(private route: ActivatedRoute,private matchService:MatchService,private clubService:ClubService,private playerService:PlayerService,private umpireService:UmpireService,private refreeService:RefereeService) {
@@ -79,6 +81,7 @@ export class MatchSummeryDataInputComponent implements OnInit {
       tossWinTeam: new FormControl(null, Validators.required),
       // winTeam: new FormControl(null, [Validators.required]),
       manOfTheMatch: new FormControl(null, [Validators.required]),
+      inning : new FormControl(null, [Validators.required]),
     });
 
 
@@ -87,11 +90,26 @@ export class MatchSummeryDataInputComponent implements OnInit {
 
     this.route.params.subscribe(res => {
       this.matchId = res['matchId'];
+      console.log(this.matchId);
+      
       this.matchService.getMatchById(this.matchId).subscribe(res=>{
         console.log(res);
+        if(res.matchTypeId.matchTypeId==2){
+          this.showInning=true;
+        }
         this.match=res;
 
-        
+        this.updateSummeryForm.setValue({
+          club1Runs: res.clubOneMark,
+          club1Wickets: res.clubOneWicket,
+          club1FacedOvers: res.clubTwoOvers,
+          club2Runs: res.clubTwoMark,
+          club2Wickets: res.clubTwoWicket,
+          club2FacedOvers: res.clubOneOvers,
+          tossWinTeam: res.tossWinTeam,
+          manOfTheMatch:res.manOfTheMatch,
+          inning:0          
+        });
    
                   this.clubService.getClubData(this.match.clubOneId).subscribe(res=>{
                     
@@ -203,6 +221,9 @@ export class MatchSummeryDataInputComponent implements OnInit {
    }
 
   ngOnInit() {
+
+ 
+
   }
 
   updateSummery(){
@@ -216,7 +237,19 @@ export class MatchSummeryDataInputComponent implements OnInit {
     const tossWinTeam : Number = this.updateSummeryForm.value["tossWinTeam"];
     const winTeam : Number = this.updateSummeryForm.value["winTeam"];
     const manOfTheMatch : Number = this.updateSummeryForm.value["manOfTheMatch"];
-    
+    const inning : Number = this.updateSummeryForm.value["inning"];
+
+    if(inning==0){
+      this.match.testMatchId=0;
+    }else if(inning==1){
+      this.match.testMatchId=this.match.matchId;
+    }else if(inning==2){
+      this.match.testMatchId=this.match.matchId;
+      this.match.matchId=null;
+    }else{
+      this.match.testMatchId=0;
+    }
+
     this.match.clubOneMark= +club1Runs;
     this.match.clubOneWicket= +club1Wickets;
     this.match.clubOneOvers= +club1FacedOvers;
