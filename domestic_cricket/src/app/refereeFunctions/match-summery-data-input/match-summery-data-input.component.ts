@@ -18,13 +18,13 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class MatchSummeryDataInputComponent implements OnInit {
 
-  match:MatchModel;
+  match: MatchModel;
   matchId: Number;
-  club01:ClubModel;
-  club02:ClubModel;
-  captainClubOne : PlayerModel
-  captainClubTwo : PlayerModel
-  winTeamId:ClubModel
+  club01: ClubModel;
+  club02: ClubModel;
+  captainClubOne: PlayerModel
+  captainClubTwo: PlayerModel
+  winTeamId: ClubModel
   umpireOne: UmpireModel
   umpireTwo: UmpireModel
   umpireThree: UmpireModel
@@ -33,9 +33,9 @@ export class MatchSummeryDataInputComponent implements OnInit {
   clubTwoViceCaptain: PlayerModel
   clubOneKeper: PlayerModel
   clubTwoKeper: PlayerModel
-  manOfTheMatch: PlayerModel  
-  currentDate : Date
-  state:any
+  manOfTheMatch: PlayerModel
+  currentDate: Date
+  state: any
 
 
   club1Players: PlayerModel[]
@@ -47,9 +47,10 @@ export class MatchSummeryDataInputComponent implements OnInit {
   done:any
   showInning=false;
 
-  
-  constructor(private route: ActivatedRoute,private matchService:MatchService,private clubService:ClubService,private playerService:PlayerService,private umpireService:UmpireService,private refreeService:RefereeService) {
-    
+
+
+  constructor(private route: ActivatedRoute, private matchService: MatchService, private clubService: ClubService, private playerService: PlayerService, private umpireService: UmpireService, private refreeService: RefereeService) {
+
     this.updateSummeryForm = new FormGroup({
       club1Runs: new FormControl(null, [
         Validators.required,
@@ -73,10 +74,10 @@ export class MatchSummeryDataInputComponent implements OnInit {
         Validators.min(0),
         Validators.max(10)
       ]),
-      club2FacedOvers: new FormControl(null,[
+      club2FacedOvers: new FormControl(null, [
         Validators.required,
         Validators.min(0),
-        
+
       ]),
       tossWinTeam: new FormControl(null, Validators.required),
       // winTeam: new FormControl(null, [Validators.required]),
@@ -217,8 +218,8 @@ export class MatchSummeryDataInputComponent implements OnInit {
 
       })
     })
-    
-   }
+
+  }
 
   ngOnInit() {
 
@@ -259,30 +260,32 @@ export class MatchSummeryDataInputComponent implements OnInit {
     
     this.match.tossWinTeam= +tossWinTeam;
     // this.match.winTeamId= +winTeam;
-    this.match.manOfTheMatch= +manOfTheMatch;
-    this.match.state = +1;
-    if(club1Runs>club2Runs){
+    this.match.manOfTheMatch = +manOfTheMatch;
+    //this.match.state = +1;//This will change by backend
+
+    if (club1Runs > club2Runs) {
       this.match.winTeamId = this.match.clubOneId;
-    }else{
+    } else {
       this.match.winTeamId = this.match.clubTwoId;
     }
 
     console.log(this.match);
 
-    this.matchService.updateMatch(this.match).subscribe(res=>{
-     
-      this.done=true;
-    },error=>{
+    this.matchService.updateMatch(this.match).subscribe(res => {
+
+      this.done = true;
+      this.match.state = 1;//Completed update
+    }, error => {
       console.log(error);
-      this.message=error.message;
+      this.message = error.message;
     })
-    
+
   }
 
-  reset(){
+  reset() {
     this.updateSummeryForm.reset();
-    this.done=false;
-    this.message=null;
+    this.done = false;
+    this.message = null;
   }
 
 }

@@ -7,6 +7,8 @@ import { ManagerService } from '../../service/manager/manager.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ClubModel } from '../../class-model/ClubModel';
+import { AngularFirestore } from "@angular/fire/firestore";
+
 
 @Component({
   selector: 'app-club-signup',
@@ -57,10 +59,12 @@ export class ClubSignupComponent implements OnInit {
     private managerService: ManagerService,
     private fb: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private afs: AngularFirestore
   ) { }
 
   ngOnInit() {
+
     this.userId = this.route.snapshot.params['userId'];
     console.log(this.userId);
     this.getManager();
@@ -77,22 +81,25 @@ export class ClubSignupComponent implements OnInit {
 
 
   clubFormSubmit() {
-    let club = new ClubModel(-1, this.clubNameField.value, this.addressField.value, this.emailField.value, this.contactNumberField.value, 0, 0, 0, new Date(), 1, this.club_default_log, this.manager);
+    let club = new ClubModel(-1, this.clubNameField.value, this.addressField.value, this.emailField.value, this.contactNumberField.value, new Date(), 1, this.club_default_log, this.manager);
     this.clubRegister(club);
     this.firebaseClubRegister(club);
   }
 
-  firebaseClubRegister(club: ClubModel){
+  firebaseClubRegister(club: ClubModel) {
     let clubs = {};
+    clubs["clubId"] = club.clubId;
     clubs["clubName"] = club.address.toString();
     clubs["clubLogo"] = club.clubLogo.toString();
     clubs["clubName"] = club.clubName.toString();
     clubs["contactNumber"] = club.contactNumber.toString();
     clubs["email"] = club.email.toString();
-    clubs["failMatch"] = club.failMatch.toString();
-    clubs["growMatch"] = club.growMatch.toString();
+    //clubs["failMatch"] = club.failMatch.toString();
+    //clubs["growMatch"] = club.growMatch.toString();
     clubs["regDate"] = club.regDate.toString();
-    clubs["winMatch"] = club.winMatch.toString();
+    //clubs["winMatch"] = club.winMatch.toString();
+    clubs["payment"] = false;
+    return this.afs.collection("clubs").doc(this.manager.userId.nic.toString()).set(clubs);
 
 
   }
