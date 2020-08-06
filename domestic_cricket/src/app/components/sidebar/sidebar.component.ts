@@ -57,6 +57,7 @@ export class SidebarComponent implements OnInit {
   manager: any[]; //(role=2)
   player: any[]; //(role=3)
   referee: any[]; //(role=4)
+  sponsor: any[]; //(role=7)
 
   constructor(private clubService: ClubService) { }
 
@@ -91,6 +92,12 @@ export class SidebarComponent implements OnInit {
       { path: "/referee-tournament-list", title: "Tournament", icon: "design_app", class: "" },
       { path: "/referee-live-matches", title: "Live Today", icon: "design_app", class: "" },
     ];
+
+    this.sponsor = [
+      { path: "/dashboard", title: "Dashboard", icon: "design_app", class: "" },
+      { path: "/club-list", title: "Clubs", icon: "design_app", class: "" },
+      { path: "/manager-list", title: "Managers", icon: "design_app", class: "", },
+    ]
 
   }
   isMobileMenu() {
@@ -132,6 +139,14 @@ export class SidebarComponent implements OnInit {
       if (isManagerHasClub == 0 || isClubActivated == 0) {
         this.isManagerHasClub = false;
       }
+      return true;
+    }
+    return false;
+  }
+
+  isSponsor(){
+    if(sessionStorage.getItem("userRole") != null &&
+    sessionStorage.getItem("userRole") === "7"){
       return true;
     }
     return false;

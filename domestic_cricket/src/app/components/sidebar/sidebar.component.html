@@ -39,4 +39,13 @@
             </a>
         </li>
     </ul>
+
+    <ul *ngIf="isSponsor()" class="nav">
+        <li  routerLinkActive="active" *ngFor="let menuItem of sponsor" class="{{menuItem.class}} nav-item">
+            <a [routerLink]="[menuItem.path]">
+                <i class="now-ui-icons {{menuItem.icon}}"></i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
 </div>
