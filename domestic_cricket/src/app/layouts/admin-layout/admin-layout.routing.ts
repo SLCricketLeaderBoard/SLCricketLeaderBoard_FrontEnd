@@ -53,7 +53,7 @@ import { RefreePlayerRecordDataInputComponent } from '../../refereeFunctions/ref
 import { CaptainChangeComponent } from '../../tournaments/manager-match-list/captain-change/captain-change.component';
 import { PlayerRateChartComponent } from '../../player/player-selection/player-rate-chart/player-rate-chart.component';
 import { RefreeLiveMatchesComponent } from '../../refereeFunctions/refree-live-matches/refree-live-matches.component';
-import { SponsorDashboardComponent } from '../../Sponsor/Sponsor-DashBoard/sponsor-dashboard/sponsor-dashboard.component'
+
 
 
 
@@ -299,12 +299,6 @@ export const AdminLayoutRoutes: Routes = [
     path: "player-rate",
     component: PlayerRateChartComponent,
     canActivate: [RouteGuardService]
-  },
-  {
-    path: "sponsor-dashboard",
-    component: SponsorDashboardComponent
-    //canActivate: [RouteGuardService]
-
   },
 
 
