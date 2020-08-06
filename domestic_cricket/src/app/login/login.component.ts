@@ -78,7 +78,6 @@ export class LoginComponent implements OnInit {
       response.userId > 0 &&
       response.status == 1
     ) {
-
       sessionStorage.setItem("userId", response.userId);
       sessionStorage.setItem("userRole", response.role);
       sessionStorage.setItem("userName", response.userName);
@@ -93,8 +92,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(["#"]);
       } else if (response.role == 5) {
         this.router.navigate(["referee-tournament-list"]);
-      }  else if (response.role == 7) {
-        this.router.navigate(["sponsor-dashboard"]);
       }
     }
   }
@@ -145,5 +142,4 @@ export class LoginComponent implements OnInit {
   sponsorSignup() {
     this.router.navigate(['sponsor-signup']);
   }
-  
 }
