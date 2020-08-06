@@ -30,6 +30,15 @@ export class SponsorService {
 sponsorAccept(userId: Number) {
   return this.http.put<Number>(`${API_URL}/sponsorAccept/${userId}`, {});
 }
+
+  sponsorClubRequest(data: any){
+    console.log(data);
+    let jwt = sessionStorage.getItem('TOKEN');
+    console.log(jwt)
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.post<any>(`${API_URL}/sponsorclubrequest`, data, { headers, responseType: 'text' as 'json' });
+
+  }
    
 
 }
