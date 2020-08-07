@@ -42,6 +42,8 @@ export class NavbarComponent implements OnInit {
       this.userRoleName = "Player"
     } else if (this.userRole == 5) {
       this.userRoleName = "Referee"
+    } else if (this.userRole == 7) {
+      this.userRoleName = "Sponsor"
     }
 
     this.listTitles = ROUTES.filter(listTitle => listTitle);
