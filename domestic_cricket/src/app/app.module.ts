@@ -31,7 +31,9 @@ import { LiveMatchComponent } from './live-match/live-match.component';
 import { MatchOversComponent } from './live-match/match-overs/match-overs.component';
 import { MainSiteComponent } from './site/main-site/main-site.component';
 import { WelcomePageComponent } from './site/main-site/welcome-page/welcome-page.component'
-import { ClubRankingComponent } from './club-ranking/club-ranking.component'
+import { ClubRankingComponent } from './club-ranking/club-ranking.component';
+import { PlayerRankingComponent } from './player-ranking/player-ranking.component';
+import { PlayerRankingElementComponent } from './player-ranking/player-ranking-element/player-ranking-element.component'
 
 
 
@@ -69,7 +71,9 @@ import { ClubRankingComponent } from './club-ranking/club-ranking.component'
     MatchOversComponent,
     MainSiteComponent,
     WelcomePageComponent,
-    ClubRankingComponent
+    ClubRankingComponent,
+    PlayerRankingComponent,
+    PlayerRankingElementComponent
 
 
 
