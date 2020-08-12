@@ -11,6 +11,11 @@ import { TournamentService } from '../../service/tournament/tournament.service';
 import { TournamentModel } from '../../class-model/TournamentModel';
 import { TournamentClubCaptainService } from '../../service/tournament-club-captain.service';
 import { TournamentClubCaptainModel } from '../../class-model/TournamentClubCaptainModel';
+import { PlayerRateModel } from '../../class-model/PlayerRateModel';
+import { PlayerScoreService } from '../../service/player-score/player-score.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PlayerRateChartComponent } from './player-rate-chart/player-rate-chart.component';
+import { element } from 'protractor';
 
 
 @Component({
@@ -22,8 +27,7 @@ export class PlayerSelectionComponent implements OnInit {
 
   isDataLoad = false;
 
-  playerTypeList: String[] = ['Baller', 'All Rounder'];
-  selectPlayerType: Number = 0;
+
 
   option: Number = -1; //1-->Register , 2-->Update
   clubId: Number = 0;
@@ -43,6 +47,14 @@ export class PlayerSelectionComponent implements OnInit {
   previousBallerList: PlayerModel[] = [];
   previousAllRounderList: PlayerModel[] = [];
   previousCaptainViceCaptain: PlayerModel[] = [];
+
+  playerRateList: PlayerRateModel[] = [];
+  orderList: String[] = ['ODI', 'T20', 'Test'];
+  selectOrder: Number = 0;
+  playerTypeList: String[] = ['Batmen', 'Baller', 'All Rounder'];
+  selectPlayerType: Number = 0;
+  previousSelectOrder: Number = 0;
+  currentOrder: Number = 0;
 
   captainFormDisable = false;
   viceCaptainFormDisable = false;
@@ -84,7 +96,9 @@ export class PlayerSelectionComponent implements OnInit {
     private router: Router,
     private tournamentClubPlayerService: TournamentClubPlayerService,
     private tournamentSerive: TournamentService,
-    private tournamentClubCaptainService: TournamentClubCaptainService
+    private tournamentClubCaptainService: TournamentClubCaptainService,
+    private playerScoreService: PlayerScoreService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -98,6 +112,7 @@ export class PlayerSelectionComponent implements OnInit {
       this.getRegisteredClubPlayerList();
       this.getTournamentCaptain();
     }
+    this.getPlayerRateList();
   }
 
   getTournament() {
@@ -288,10 +303,127 @@ export class PlayerSelectionComponent implements OnInit {
     this.viceCaptainFormDisable = true;
   }
 
-  selectPlayerFunction() {
-
+  getPlayerRateList() {
+    this.selectOrder = 0;
+    this.playerScoreService.getPlayerRateList(this.clubId, +this.selectPlayerType + 1, +this.selectOrder + 1).subscribe(
+      response => {
+        this.currentOrder = 0;
+        this.previousSelectOrder = 0;
+        this.playerRateList = response;
+        if (this.selectPlayerType == 2) {//All rounder
+          this.sortingPlayerRate();
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
+  changePlayerRateOrder() {
+    this.previousSelectOrder = this.currentOrder;
+    this.currentOrder = this.selectOrder;
+
+    //console.log('pre: ' + this.previousSelectOrder + '  curr: ' + this.currentOrder);
+
+    if (this.previousSelectOrder == 0) {//ODI,T20,Test
+      if (this.currentOrder == 1) {//T20,ODI,Test
+        this.playerRateList.forEach(element => {
+          let odi = element.rate1;
+          element.rate1 = element.rate2;
+          element.rate2 = odi;
+        });
+      } else {//current Order==2 Test,ODI,T20
+        this.playerRateList.forEach(element => {
+          let odi = element.rate1;
+          let t20 = element.rate2;
+
+          element.rate1 = element.rate3;
+          element.rate2 = odi;
+          element.rate3 = t20;
+        })
+      }
+    } else if (this.previousSelectOrder == 1) {//T20,ODI,Test
+      if (this.currentOrder == 0) {// ODI, T20, Test
+        this.playerRateList.forEach(element => {
+          let t20 = element.rate1;
+          element.rate1 = element.rate2;
+          element.rate2 = t20;
+        });
+      } else {//current order=2 Test,ODI,T20
+        console.log('##########')
+        this.playerRateList.forEach(element => {
+          let t20 = element.rate1;
+          element.rate1 = element.rate3;
+          element.rate3 = t20;
+        });
+      }
+    } else {//previousOrder==2 Test,ODI,T20
+      if (this.currentOrder == 0) {//ODI, T20, Test
+        this.playerRateList.forEach(element => {
+          let test = element.rate1;
+          let odi = element.rate2;
+          element.rate1 = odi;
+          element.rate2 = element.rate3;
+          element.rate3 = test;
+        });
+      } else {//current order=1  T20, ODI, Test
+        this.playerRateList.forEach(element => {
+          let test = element.rate1;
+          element.rate1 = element.rate3;
+          element.rate3 = test;
+        });
+      }
+    }
+
+    this.sortingPlayerRate();
+  }
+
+  //Insertion Sort
+  sortingPlayerRate() {
+    let currInd;
+    for (let pos = 0; pos < this.playerRateList.length; pos++) {
+      currInd = pos;
+      while (currInd > 0 && (this.playerRateList[currInd].rate1 > this.playerRateList[currInd - 1].rate1)) {
+        let tem = this.playerRateList[currInd - 1];
+        this.playerRateList[currInd - 1] = this.playerRateList[currInd];
+        this.playerRateList[currInd] = tem;
+
+        currInd = currInd - 1;
+      }
+    }
+  }
+
+  playerMatchData(playerId, playerName, index) {
+    const modalRef = this.modalService.open(PlayerRateChartComponent, { centered: true });
+    modalRef.componentInstance.playerId = playerId;
+    modalRef.componentInstance.playerName = playerName;
+    modalRef.componentInstance.playerType = this.selectPlayerType;
+    modalRef.componentInstance.clubId = this.clubId;
+
+    let matchType = 0;//[ODI,T20,Test]
+    if (this.selectOrder == 0) {//[ODI,T20,Test]
+      matchType = index;
+    } else if (this.selectOrder == 1) {//[T20,ODI,Test]
+      if (index == 0) {
+        matchType = 1;
+      } else if (index == 1) {
+        matchType = 0;
+      } else {
+        matchType = 2;
+      }
+    } else if (this.selectOrder == 2) {//[Test,ODI,T20]
+      if (index == 0) {
+        matchType = 2;
+      } else if (index == 1) {
+        matchType = 0;
+      } else {
+        matchType = 1;
+      }
+    }
+
+    modalRef.componentInstance.matchType = matchType;
+  }
 
   close() {
     this.errorMessage = "";

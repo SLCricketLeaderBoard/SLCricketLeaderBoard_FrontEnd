@@ -160,6 +160,17 @@
                                      </select>                  
                                   </div>
                               </div>
+
+                              <div class="row" style="margin-bottom: 20px;" *ngIf="showInning">
+                                <div class="form-group">
+                                  <label>Inning</label>
+                                  <br>
+                                  <select formControlName="inning">
+                                    <option [value]=1>1</option>
+                                    <option [value]=2>2</option>
+                                  </select>            
+                                </div>
+                            </div>
                     
                               
                     

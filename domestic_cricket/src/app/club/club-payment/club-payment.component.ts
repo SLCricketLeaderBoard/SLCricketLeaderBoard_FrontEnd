@@ -8,6 +8,7 @@ import { SwalMessage } from "../../shared/swal-message";
 import Swal from "sweetalert2";
 import * as moment from "moment";
 import { AnnualClubPaymentModel } from "../../class-model/AnnualClubPaymentModel";
+import { AngularFirestore } from "@angular/fire/firestore";
 
 @Component({
   selector: "app-club-payment",
@@ -50,7 +51,8 @@ export class ClubPaymentComponent implements OnInit {
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private clubSetivce: ClubService,
-    private clubPaymentService: ClubPaymentService
+    private clubPaymentService: ClubPaymentService,
+    private afs: AngularFirestore
   ) {}
 
   ngOnInit() {
@@ -81,6 +83,14 @@ export class ClubPaymentComponent implements OnInit {
         }
       }
     }
+  }
+
+  updatePaymentFirebase(){
+    this.afs.collection('clubs', ref => ref.where('club_Id', '==', this.clubId)).snapshotChanges().subscribe( (res: any) => {
+      let id = res[0].payload.doc.id;
+      console.log(id)
+      this.afs.collection("clubs").doc(id).update({payment: true});
+    })
   }
 
   clubPaymentFormSubmit() {
@@ -114,6 +124,7 @@ export class ClubPaymentComponent implements OnInit {
                   this.getClubPaymentData();
                   this.getPaymentYears();
                   this.isPaymentAdd = false;
+                  this.updatePaymentFirebase();
                 }
                 if (response == 2) {
                   this.swalMessage.successMessage(

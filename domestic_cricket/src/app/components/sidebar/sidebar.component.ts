@@ -90,6 +90,7 @@ export class SidebarComponent implements OnInit {
       { path: "/umpire-list", title: "Umpires", icon: "design_app", class: "" },
       { path: '/referee-list', title: "Referees", icon: "design_app", class: "" },
       { path: "/referee-tournament-list", title: "Tournament", icon: "design_app", class: "" },
+      { path: "/referee-live-matches", title: "Live Today", icon: "design_app", class: "" },
     ];
 
     this.sponsor = [

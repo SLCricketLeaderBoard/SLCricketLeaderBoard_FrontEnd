@@ -8,10 +8,23 @@ import { LoginComponent } from './login/login.component';
 import { PlayerSignupComponent } from './player/player-signup/player-signup.component';
 import { ManagerSignupComponent } from './manager/manager-signup/manager-signup.component';
 import { ClubSignupComponent } from './club/club-signup/club-signup.component';
+import { SponsorSignupComponent } from './sponsor-signup/sponsor-signup.component';
+import { MainSiteComponent } from './site/main-site/main-site.component';
+import { LiveMatchComponent } from './live-match/live-match.component';
+import { WelcomePageComponent } from './site/main-site/welcome-page/welcome-page.component';
+import { ClubRankingComponent } from './club-ranking/club-ranking.component';
 
 const routes: Routes = [
   {
     path: '',
+    component: MainSiteComponent,
+      children:[
+        {path:'',component:WelcomePageComponent},
+        {path:'live-now',component:LiveMatchComponent}
+      ]
+  },
+  {
+    path: 'login',
     component: LoginComponent
   },
   {
@@ -25,7 +38,16 @@ const routes: Routes = [
   {
     path: 'club-signup/:userId',
     component: ClubSignupComponent
+  },
+  {
+    path: 'sponsor-signup',
+    component: SponsorSignupComponent
+  },
+  {
+    path: 'club-ranking',
+    component: ClubRankingComponent
   }
+
   // {
   //   path: '',
   //   redirectTo: 'dashboard',

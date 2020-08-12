@@ -14,6 +14,7 @@ import { UserAuthenticationServiceService } from '../../service/user/user-authen
 import { GUEST_USER_EMAIL, GUEST_USER_PASSWORD } from '../../app.constants';
 import { ClubModel } from '../../class-model/ClubModel';
 import { MustMatch } from '../../shared/custom_validators';
+import { AngularFirestore } from "@angular/fire/firestore";
 
 @Component({
   selector: 'app-player-signup',
@@ -115,7 +116,8 @@ export class PlayerSignupComponent implements OnInit {
     private clubService: ClubService,
     private playerService: PlayerService,
     private router: Router,
-    private userAuthenticationService: UserAuthenticationServiceService
+    private userAuthenticationService: UserAuthenticationServiceService,
+    private afs: AngularFirestore
   ) { }
 
   ngOnInit() {
@@ -179,15 +181,41 @@ export class PlayerSignupComponent implements OnInit {
     );
   }
 
+  firebasePlayerRegister(player: PlayerModel, user: UserModel){
+    let players = {};
+    players["special_type"] = player.specialType;
+    players["playerId"] = player.playerId;
+    players["club_id"] = player.clubId;
+    players["ballerTypeId"] = player.ballerTypeId;
+    players["batmanTypeId"] = player.batmanTypeId;
+    players['address'] = user.address;
+    players['contactNumber'] = user.contactNumber;
+    players['email'] = user.email;
+    players['fullName'] = user.fullName;
+    players['nameWithInitial'] = user.nameWithInitial;
+    players['nic'] = user.nic;
+    players['password'] = user.password;
+    players['regDate'] = user.regDate.toString();
+    players['role'] = user.role;
+    players['userId'] = user.userId;
+    players['userName'] = user.userName;
+    players['profileImage'] = user.profileImage;
+    players['registered'] = false;
+    return this.afs.collection("users").doc(user.nic.toString()).set(players);
+
+  }
+
   playerFormSubmit() {
     const profileImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQcUe1moupzaLWXiANaYFIt4jys-rl2OeXwOydel1YWIO22vDW6&usqp=CAU";
     let user: UserModel = new UserModel(0, this.userNameField.value, this.fullNameField.value, this.nameWithInitialField.value, this.nicField.value, this.contactNumberField.value, 4, this.emailField.value, this.passwordField.value, this.addressField.value, new Date(), 0, profileImage);
     let player: PlayerModel = new PlayerModel(0, +this.playerTypeField.value + 1, this.batmanTypeField.value, this.ballerTypeField.value, this.clubField.value, user);
 
+
     this.playerService.playerSignup(player).subscribe(
       response => {
         if (response == 1) {
-          this.swalMessage.successMessage('You Request Successful.');
+          this.swalMessage.successMessage('Your Request Successful.');
+          this.firebasePlayerRegister(player, user);
           this.router.navigate(['']);
         } else {
           this.errorMessage = "Please change your  Email or Nic";

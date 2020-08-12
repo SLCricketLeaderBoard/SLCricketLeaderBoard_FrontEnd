@@ -1,2 +1,46 @@
+<!-- 
+<iframe width="1046" height="597" src="https://www.youtube.com/embed/zcAalMeaKso" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 
-<iframe width="1046" height="597" src="https://www.youtube.com/embed/zcAalMeaKso" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="1046" height="597" src="https://www.youtube.com/embed/ZCMkDzveNZU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="row" *ngFor="let match of liveMatch" style="margin-top: 2%; padding: 2%;">
+
+    <div class="col-3" style="background-color: blue; color: aliceblue; padding-top: 5%; padding-left: 2%;">
+        {{match.battingClub.clubName}}
+    </div>
+    <div class="col-6" style="padding: 3%;" >
+        
+            <p style="color: #333 ; font-size:large ;">
+                {{match.score}} / {{match.numberOfWickets}} : &nbsp; &nbsp;<app-match-overs [numberofBalls]="match.numberofBalls" ></app-match-overs> 
+            </p>
+       
+        <div class="row">
+
+            <table class="table">
+                <tr>
+                    <th>
+                        <label for="">{{match.striker}} <small>OnStike</small></label><br>
+                        <label for="">{{match.nonStriker}}</label>
+
+                    </th>
+                    <th>
+                        <label for="">{{match.bowler}}</label>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        Run rate :  {{match.runrate}}
+                    </td>
+                    
+                </tr>
+            </table>
+
+
+        </div>
+        
+
+    </div>
+    <div class="col-3" style="background-color: blue; color: aliceblue; padding: 5%;">
+        {{match.fieldingClub.clubName}}
+    </div>
+
+</div>
