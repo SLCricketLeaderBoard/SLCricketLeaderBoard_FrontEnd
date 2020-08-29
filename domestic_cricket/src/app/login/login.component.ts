@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit {
       response.status == 1
      
     ) {
-      response.role = 7;
+      // response.role = 7;
       console.log(response.role);
       sessionStorage.setItem("userId", response.userId);
       sessionStorage.setItem("userRole", response.role);

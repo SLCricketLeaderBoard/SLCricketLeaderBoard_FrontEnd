@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PlayerRankingElementComponent implements OnInit {
 
-  @Input() playerReord : any;
+  @Input() players : any[];
   @Input() i : any;
   
   constructor() { }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BallerScoreModel } from '../class-model/BallerScoreModel';
-import { PlayerRankingService } from '../service/player-ranking/player-ranking.service';
+
 
 @Component({
   selector: 'app-player-ranking',
@@ -10,12 +11,15 @@ import { PlayerRankingService } from '../service/player-ranking/player-ranking.s
 export class PlayerRankingComponent implements OnInit {
 
   topBallersOneday: BallerScoreModel[];
-  constructor(private playerRankingService:PlayerRankingService) { }
+  constructor(private router:Router,private route:ActivatedRoute) { }
   ngOnInit() {
-    this.playerRankingService.getTopBallersOneDay().subscribe(res=>{
-      this.topBallersOneday=res;
-      console.log(res);
-      
-    })
+   
+  }
+
+  oneDay(){
+    this.router.navigate(["oneDay"], { relativeTo: this.route });
+  }
+  threeFourDays(){
+    this.router.navigate(["threeFourDays"], { relativeTo: this.route });
   }
 }
