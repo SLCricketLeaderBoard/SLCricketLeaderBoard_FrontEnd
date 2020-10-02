@@ -12,7 +12,12 @@ import { UmpireService } from '../../service/umpire/umpire.service';
 export class UmpireListComponent implements OnInit {
 
   umpires:UmpireModel[];
-  constructor(private umpireService:UmpireService,private router: Router, private route: ActivatedRoute) { }
+  userAdmin = false;
+  constructor(private umpireService:UmpireService,private router: Router, private route: ActivatedRoute) {
+    if (sessionStorage.getItem("userRole")=="1") {
+      this.userAdmin = true; 
+    } 
+   }
 
   ngOnInit() {
     this.umpireService.getAllUmpires().subscribe(res=>{

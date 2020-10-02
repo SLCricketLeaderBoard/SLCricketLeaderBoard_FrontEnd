@@ -12,18 +12,23 @@ import { RefereeService } from '../service/referee/referee.service';
 export class RefereeComponent implements OnInit {
 
   referees:RefereeModel[];
-  constructor(private refereeService:RefereeService,private router: Router, private route: ActivatedRoute) { }
+  userAdmin = false;
+
+  constructor(private refereeService:RefereeService,private router: Router, private route: ActivatedRoute) {
+    if (sessionStorage.getItem("userRole")=="1") {
+      this.userAdmin = true; 
+    }    
+   }
 
   ngOnInit() {
 
     this.refereeService.getAllReferees().subscribe(res=>{
       // console.log(res);
       this.referees=res;
-      console.log(this.referees);
-      
-
-      
+      // console.log(this.referees);     
     })
+    
+    
   }
 
   register() {

@@ -21,12 +21,12 @@ export class ThreeFourDaysPlayerRankingsComponent implements OnInit {
   ngOnInit() {
     this.playerRankingService.getTopBallers34Days().subscribe(res=>{
       this.topBallers=res;
-      // console.log(res);
+      console.log(res);
     })
 
     this.playerRankingService.getTopBatmen34Days().subscribe(res=>{
       this.topBatmen=res;
-      // console.log(res);
+      console.log(res);
     })
     
     this.playerRankingService.getTopFilder34Days().subscribe(res=>{

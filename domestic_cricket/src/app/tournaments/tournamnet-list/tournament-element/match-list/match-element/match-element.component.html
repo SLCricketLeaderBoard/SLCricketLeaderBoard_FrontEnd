@@ -1,11 +1,9 @@
-  <div *ngIf="match" class="card col" style="width: 40rem; padding-left: 5px; margin-left: 5%;" >
+  <div *ngIf="match" class="card col" style="width: 40rem; padding-left: 5px;" >
     <div class="row">
-      <div class="col-12">
-        <div class="profile-body">
-       
+      
           <table style="margin-left: 4%; margin-top: 4%;">
-            <tr>
-              <td>
+            <tr >
+              <td style="padding-left: -20px;">
                 <b>Club 1</b>
               </td>
               <td *ngIf="!club01">
@@ -13,7 +11,7 @@
                   <span class="sr-only">Loading...</span>
                 </div>
               </td>
-              <td *ngIf="club01">
+              <td  *ngIf="club01">
                 {{club01?.clubName}}
               </td>
             </tr>
@@ -26,9 +24,11 @@
                 {{club02?.clubName}}
               </td>
             </tr>
+
+
             <tr>
-              <td>
-                <b>tournament Round</b>
+              <td style=" width:30%;">
+                <b>Tour.. Round</b>
               </td>
               <td *ngIf="match">
                 {{match.tournementRound}}
@@ -55,14 +55,18 @@
                 
               </td>
             </tr> -->
+            <tr  >
+              <td colspan="2">
 
-            <a  class="btn btn-primary" (click)="more()" >more</a>
-            <a  class="btn btn-primary" *ngIf="refreeActive" (click)="setSummery()" >Update Details</a>
-            <a  class="btn btn-primary" *ngIf="refreeActive" (click)="viewPlayers()" >Players Details</a>
+                <a  class="btn btn-primary" (click)="more()" >more</a>
+                <a  class="btn btn-primary" *ngIf="refreeActive" (click)="setSummery()" >Update Details</a>
+                <a  class="btn btn-primary" *ngIf="refreeActive" (click)="viewPlayers()" >Players Details</a>
+              </td>
+            </tr>
+
 
           </table>
-        </div>
-      </div>
+        
     </div>
     
   </div>
