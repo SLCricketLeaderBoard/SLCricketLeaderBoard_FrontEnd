@@ -139,13 +139,21 @@ export class RefreePlayerRecordDataInputComponent implements OnInit {
       this.halfentury=1;
     }
 
-    
-    this.playerRecord.batmanRecord.battingPoints = (+this.playerRecord.batmanRecord.battingRuns/20)+(+this.playerRecord.batmanRecord.notOut)*(0.005);
 
-    this.playerRecord.ballerRecord.ballingPoints= (+this.playerRecord.ballerRecord.wickets)-((+this.playerRecord.ballerRecord.numberOfRunsAgainst)/((+this.playerRecord.ballerRecord.overs)*6));
+    if(+this.playerRecordForm.value["facedBalls"]==0){
+      this.playerRecord.batmanRecord.battingPoints=0;
+    }else{
+      this.playerRecord.batmanRecord.battingPoints = (+this.playerRecord.batmanRecord.battingRuns/20)+(+this.playerRecord.batmanRecord.notOut)*(0.005);
+    }
+
+    if(+this.playerRecordForm.value["overs"]==0){
+      this.playerRecord.ballerRecord.ballingPoints=0;
+    }else{
+      this.playerRecord.ballerRecord.ballingPoints= (+this.playerRecord.ballerRecord.wickets)-((+this.playerRecord.ballerRecord.numberOfRunsAgainst)/((+this.playerRecord.ballerRecord.overs)*6));
+    }
 
     this.playerRecord.fieldingRecord.fieldingPoints= (+this.playerRecord.batmanRecord.battingPoints)+(+this.playerRecord.ballerRecord.ballingPoints);
-
+  
     
     this.playerRecordService.playerRecordRecord(this.playerRecord).subscribe(res=>{
       console.log(res);

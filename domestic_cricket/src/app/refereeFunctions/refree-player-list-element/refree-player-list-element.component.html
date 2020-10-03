@@ -2,14 +2,14 @@
 
   <div class="col card"  style="width: 40rem; margin-left: 3%; padding: 2%;">
     <div class="row">
+      <div class="col-3" style="align-items: flex-end;">
+        <img class="profile-image" src="{{player.playerId.userId.profileImage}}" width="150px" height="auto" alt="Card image cap">
+      </div>
       <div class="col-7">
         <div class="profile-body" style="align-items: center; align-content: center; text-align: center; padding-top: 5%;">
           <p>{{player.playerId.userId.nameWithInitial}}</p> 
           <button class="btn btn-sucess" (click)="insertDetails()">Insert Records</button>     
         </div>
-      </div>
-      <div class="col-3" style="align-items: flex-end;">
-        <img class="profile-image" src="{{player.playerId.userId.profileImage}}" width="150px" height="150px" alt="Card image cap">
       </div>
     </div>
     

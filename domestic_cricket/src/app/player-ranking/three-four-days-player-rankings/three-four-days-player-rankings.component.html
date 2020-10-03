@@ -1,0 +1,43 @@
+<div class="row">
+  <h3>3 4 Days</h3>
+</div>
+<div class="row" style="padding:2%;">
+  
+  <div class="col-lg-3 col-md-6 col-sm-12 card" style="margin-left: 20px;">
+    <div class="row" style="padding:2%; background-color: blue;">
+      <h5 style="color: aliceblue;">
+        Bowling
+      </h5>
+    </div>
+    <div class="row" style="padding:2%">
+      <app-player-ranking-element *ngIf="topBallers ; let players" [players]="players" ></app-player-ranking-element>
+    </div>
+    <div class="row">
+    </div>
+  </div>
+
+  <div class="col-lg-3 col-md-6 col-sm-12 card" style="margin-left: 20px;">
+    <div class="row" style="padding:2%; background-color: blue;">
+      <h5 style="color: aliceblue;">
+        Batting
+      </h5>
+    </div>
+    <div class="row" style="padding:2%">
+      <app-player-ranking-element *ngIf="topBatmen ; let players" [players]="players" ></app-player-ranking-element>
+      <!-- <app-player-ranking-element *ngFor="let playerReord of topBallersOneday ; index as i" [i]="i" [playerReord]="playerReord" ></app-player-ranking-element> -->
+    </div>
+  </div>
+
+  <div class="col-lg-3 col-md-6 col-sm-12 card" style="margin-left: 20px;">
+    <div class="row" style="padding:2%; background-color: blue;">
+      <h5 style="color: aliceblue;">
+        All-Rounder
+      </h5>
+    </div>
+    <div class="row" style="padding:2%">
+      <app-player-ranking-element *ngIf="topAllRounders ; let players" [players]="players" ></app-player-ranking-element>
+      <!-- <app-player-ranking-element *ngFor="let playerReord of topBallersOneday ; index as i" [i]="i" [playerReord]="playerReord" ></app-player-ranking-element> -->
+    </div>
+  </div>
+
+</div>

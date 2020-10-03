@@ -11,14 +11,49 @@
         </div>
         </div>
         <div class="card-body">
-          <app-nonregsponsors *ngFor="let sponser of sponsors" [sponsor]="sponser" ></app-nonregsponsors>
-          <div class="container" *ngIf="!sponsors">
+          <div class="row">
+            <div class="col-6">
+              <div  class="row" style="margin: 3%;">
+                <h4> Registred ---- </h4>
+              </div>
+              <div class="row">
+                <app-nonregsponsors *ngFor="let sponser of sponsors" [sponsor]="sponser" ></app-nonregsponsors>
+                <div class="container" *ngIf="!sponsors">
+                  <div class="text-center">
+                    <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="row" style="margin: 3%;">
+                <h4>  Requestings </h4>
+              </div>
+              <div class="row">
+
+                <app-nonregsponsors *ngFor="let sponser of sponsors" [sponsor]="sponser" ></app-nonregsponsors>
+                <div class="container" *ngIf="!sponsors">
+                  <div class="text-center">
+                    <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- <app-nonregsponsors *ngFor="let sponser of sponsors" [sponsor]="sponser" ></app-nonregsponsors> -->
+          <!-- <div class="container" *ngIf="!sponsors">
             <div class="text-center">
                 <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
                     <span class="sr-only">Loading...</span>
                 </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

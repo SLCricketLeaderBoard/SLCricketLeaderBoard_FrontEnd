@@ -21,8 +21,16 @@ export class MainSiteComponent implements OnInit {
     this.router.navigate(["/live-now"], { relativeTo: this.route });
   }
 
+
   clubRank() {
     this.router.navigate(["/club-ranking"], { relativeTo: this.route });
   }
+
+
+
+  playerRankings() {
+    this.router.navigate(["/player-rankings"], { relativeTo: this.route });
+  }
+
 
 }

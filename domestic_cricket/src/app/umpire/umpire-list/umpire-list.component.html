@@ -8,7 +8,7 @@
           <div class="col-3">
             <h4 class="card-title">Umpires</h4>
           </div>
-          <div>
+          <div *ngIf="userAdmin">
             <button (click)="register()" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Register Umpire"><i class="fas fa-plus"></i>
             </button>
           </div>

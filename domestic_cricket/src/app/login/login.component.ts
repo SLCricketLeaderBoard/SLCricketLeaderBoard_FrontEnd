@@ -77,11 +77,14 @@ export class LoginComponent implements OnInit {
       response.userId != null &&
       response.userId > 0 &&
       response.status == 1
+     
     ) {
+      // response.role = 7;
+      console.log(response.role);
       sessionStorage.setItem("userId", response.userId);
       sessionStorage.setItem("userRole", response.role);
       sessionStorage.setItem("userName", response.userName);
-
+     console.log(response.role)
       if (response.role === 1) {
         this.router.navigate(["tournament-list"]);
       } else if (response.role == 2) {
@@ -92,6 +95,9 @@ export class LoginComponent implements OnInit {
         this.router.navigate(["#"]);
       } else if (response.role == 5) {
         this.router.navigate(["referee-tournament-list"]);
+      } else if (response.role == 7) {
+        console.log("navigated")
+        this.router.navigate(["sponsor-dashboard"]);
       }
     }
   }
