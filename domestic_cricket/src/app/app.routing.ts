@@ -18,10 +18,11 @@ const routes: Routes = [
   {
     path: '',
     component: MainSiteComponent,
-      children:[
-        {path:'',component:WelcomePageComponent},
-        {path:'live-now',component:LiveMatchComponent}
-      ]
+    children: [
+      { path: '', component: WelcomePageComponent },
+      { path: 'live-now', component: LiveMatchComponent },
+      { path: 'club-ranking', component: ClubRankingComponent }
+    ]
   },
   {
     path: 'login',
@@ -42,12 +43,7 @@ const routes: Routes = [
   {
     path: 'sponsor-signup',
     component: SponsorSignupComponent
-  },
-  {
-    path: 'club-ranking',
-    component: ClubRankingComponent
   }
-
   // {
   //   path: '',
   //   redirectTo: 'dashboard',

@@ -6,7 +6,7 @@
 
     <div class="row">
 
-      <div class="col-md-5">
+      <div class="col-md-7">
         <h5 class="card-title">{{orderList[selectOrder]}} Club Ranking</h5>
 
         <div ngbDropdown class="dropdown" placement="bottom-left">
@@ -36,7 +36,7 @@
           <tbody>
             <tr *ngFor="let rank of clubRankingList; let i = index">
               <th scope="row">{{i+1}}</th>
-              <td>
+              <td class="cursor" (click)="getClubData(rank.clubId.clubId)">
                 <img class="avatar border-gray" src="{{rank.clubId.clubLogo}}" alt="..." id="image-align">
                 {{rank.clubId.clubName}}
               </td>
@@ -48,8 +48,58 @@
         </table>
       </div>
 
-      <div class="col-md-7">
+      <div *ngIf="isClubSelect" class="col-md-5">
+        <div id="club" class="card">
+          <div class="card-header">
+            <h5 class="card-title">{{clubData.clubName}}</h5>
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th scope="row">Manager</th>
+                  <td>{{clubData.managerId.userId.nameWithInitial}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Address</th>
+                  <td>{{clubData.address}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Tel</th>
+                  <td>{{clubData.contactNumber}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Email</th>
+                  <td>{{clubData.email}}</td>
+                </tr>
+              </tbody>
+            </table>
 
+            <br />
+            <h6 class="card-title">Players</h6>
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let player of clubPlayerList; let i=index;">
+                  <th scope="row">{{i+1}}</th>
+                  <td>
+                    <img class="avatar border-gray" src="{{player.userId.profileImage}}" alt="..." id="image-align">
+                    {{player.userId.nameWithInitial}}
+                  </td>
+                  <td *ngIf="player.specialType==1">Batmen</td>
+                  <td *ngIf="player.specialType==2">Baller</td>
+                  <td *ngIf="player.specialType==3">All Rounder</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
 
     </div>
