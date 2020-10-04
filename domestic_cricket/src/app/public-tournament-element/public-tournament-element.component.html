@@ -1,0 +1,29 @@
+
+  <div class="card" style="width: 40rem; padding: 3%;" (click)="getMatches()">
+    <div class="row">
+      <div class="col-8">
+        <div class="profile-body">
+          <h4 class="card-title">{{tournement.tournamentName}}</h4>
+          <table>
+            <tr>
+              <td>
+                <b>Start Date</b>
+              </td>
+              <td>
+                :  {{tournement.startDate| date}}
+              </td>
+            </tr>
+    
+            <tr>
+              <td>
+                <b>End Date</b>
+              </td>
+              <td>
+                :  {{tournement.endDate| date}}
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
