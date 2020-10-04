@@ -36,6 +36,17 @@ export class PlayerProfileSummeryComponent implements OnInit {
       this.asBatman=res;
       console.log(res);
     })
+
+    this.playerService.getPlayerBowllingDetails(this.playerId).subscribe(res=>{
+      this.asBallers=res;
+      console.log(res);
+    })
+
+    this.playerService.getPlayerFieldingDetails(this.playerId).subscribe(res=>{
+      this.asAllRounders=res;
+      console.log(res);
+    })
+
   }
 
 

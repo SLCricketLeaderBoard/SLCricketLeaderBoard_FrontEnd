@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { PlayerModel } from '../../class-model/PlayerModel';
 import { API_URL } from '../../app.constants';
 import { BatmanScoreModel } from '../../class-model/BatmanScoreModel';
+import { BallerScoreModel } from '../../class-model/BallerScoreModel';
+import { FieldingScoreModel } from '../../class-model/FieldingScoreModel';
 
 @Injectable({
   providedIn: 'root'
@@ -43,11 +45,11 @@ export class PlayerService {
   }
 
   getPlayerBowllingDetails(playerId: Number) {
-    return this.http.get<PlayerModel>(`${API_URL}/playeRanking/player/bowllingDetials/${playerId}`, {});
+    return this.http.get<BallerScoreModel>(`${API_URL}/playeRanking/player/bowllingDetials/${playerId}`, {});
   }
 
   getPlayerFieldingDetails(playerId: Number) {
-    return this.http.get<PlayerModel>(`${API_URL}/playeRanking/player/fieldingDetials/${playerId}`, {});
+    return this.http.get<FieldingScoreModel>(`${API_URL}/playeRanking/player/fieldingDetials/${playerId}`, {});
   }
 
 

@@ -65,6 +65,7 @@ import { SponsorDashboardComponent } from '../../Sponsor/Sponsor-DashBoard/spons
 import { PlayerRateChartComponent } from '../../player/player-selection/player-rate-chart/player-rate-chart.component';
 import { RefreeLiveMatchesComponent } from '../../refereeFunctions/refree-live-matches/refree-live-matches.component';
 import { RefereeLiveMatchElementComponent } from '../../refereeFunctions/refree-live-matches/referee-live-match-element/referee-live-match-element.component';
+import { MatchElementThreefourdayComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-element-threefourday/match-element-threefourday.component';
 
 
 
@@ -145,7 +146,8 @@ import { RefereeLiveMatchElementComponent } from '../../refereeFunctions/refree-
     CaptainChangeComponent,
     SponsorDashboardComponent,
 
-    PlayerRateChartComponent
+    PlayerRateChartComponent,
+    MatchElementThreefourdayComponent
   ],
 })
 export class AdminLayoutModule { }

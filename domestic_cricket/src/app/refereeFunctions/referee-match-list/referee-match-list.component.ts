@@ -117,10 +117,6 @@ export class RefereeMatchListComponent implements OnInit {
         }
       })
       
-      this.threeFourDayMathcesPlayedUpdated.forEach(x=>{
-        console.log(x);
-        console.log("kjshdchjsvjhsgdvc");
-      })
     })
 
   }

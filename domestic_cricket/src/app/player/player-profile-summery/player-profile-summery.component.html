@@ -1,16 +1,16 @@
-<div *ngIf="player" class="row" style="background-color: red;">
-  <div class="col-5" style="background-color: blue;">
+<div *ngIf="player" class="row">
+  <div class="col-5">
     <div class="row" style="padding: 5%;">
       <img [src]="player.userId.profileImage" alt="" height="300px" width="auto">
     </div>
     <div class="row">
       <table class="table" style="font-size: large;">
         <tr>
-          <th>
-            Name
-          </th>
-          <td>
-            {{player?.userId.nameWithInitial}}
+          
+          <td colspan="2" style="color: darkblue; text-align: center;">
+            <b>
+              {{player?.userId.nameWithInitial}}
+            </b>            
           </td>
         </tr>
         <tr>
@@ -41,7 +41,6 @@
         </tr>
         
         <br>
-        <hr>
         <br>
 
         <tr>
@@ -53,12 +52,22 @@
       </table>
     </div>
   </div>
-  <div class="col-7">
+  <div class="col-1">
+
+  </div>
+  <div class="col-4" style="font-size: larger;">
 
 
     <div class="row">
-        <h3>Batting</h3>
-        <table>
+      
+      <div class="col-12">
+
+        <table class="table">
+          <tr>
+            <td colspan="2" style="color: blue;"> 
+              <h4> Batting </h4>
+            </td>
+          </tr>
           <tr>
             <th>
               Total Mathces
@@ -81,7 +90,7 @@
               {{asBatman.facedBalls}}
             </td>
           </tr>
-
+          
           <tr>
             <th>
               Half Centuries
@@ -90,7 +99,7 @@
               {{asBatman.halfCenturies}}
             </td>
           </tr>
-
+          
           <tr>
             <th>
               Centuries
@@ -99,7 +108,7 @@
               {{asBatman.centuries}}
             </td>
           </tr>
-
+          
           <tr>
             <th>
               Double Centuries
@@ -108,7 +117,7 @@
               {{asBatman.doubleCenturies}}
             </td>
           </tr>
-
+          
           <tr>
             <th>
               Strike Rate
@@ -117,7 +126,7 @@
               {{asBatman.strikeRate}}
             </td>
           </tr>
-
+          
           <tr>
             <th>
               Not Out Matches
@@ -127,23 +136,89 @@
             </td>
           </tr>
 
+          <tr>
+            <td colspan="2" style="color: blue;">
+              <h4>
+                Bowlling
+              </h4>
+            </td>
+          </tr>
+
+          <tr>
+            <th>
+              Total Matches
+            </th>
+            <td>
+              {{asBallers.matchCount}}
+            </td>
+          </tr>
+          <tr>
+            <th>Overs</th>
+            <td>
+              {{asBallers.overs}}
+            </td>
+          </tr>
+          
+          <tr>
+            <th>Wickets</th>
+            <td>
+              {{asBallers.wickets}}
+            </td>
+          </tr>
+          
+          <tr>
+            <th>Runs Against</th>
+            <td>
+              {{asBallers.numberOfRunsAgainst}}
+            </td>
+          </tr>
+          <tr *ngIf="asBallers.hatricks>0">
+            <td>
+              Hatricks
+            </td>
+            <th>
+              {{asBallers.hatricks}}
+            </th>
+          </tr>
+          <tr>
+            <th>Points</th>
+            <td>{{asBallers.points}}</td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="color: blue;"> 
+              <h4>
+                Fielding
+              </h4>
+            </td>
+          </tr>
+
+          <tr>
+            <th>
+              Number of Catches
+            </th>
+            <td>
+              {{asAllRounders.numberOfCatch}}
+            </td>
+          </tr>
+          
+          <tr>
+            <th>
+              Points
+            </th>
+            <td>
+              {{asAllRounders.points}}
+            </td>
+          </tr>
+          
         </table>
-
-    </div>
-
-    <div class="row">
-        <h3>Bowlling</h3>
-
-
-    </div>
-
-    <div class="row">
-        <h3>Fielding</h3>
-
+      </div>
         
+    </div>  
+      
     </div>
 
+    <div class="col-1">
 
+    </div>    
   </div>
-
-</div>

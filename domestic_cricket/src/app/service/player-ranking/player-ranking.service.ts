@@ -4,6 +4,7 @@ import { BatmanScoreModel } from '../../class-model/BatmanScoreModel';
 import { API_URL } from '../../app.constants';
 import { BallerScoreModel } from '../../class-model/BallerScoreModel';
 import { FieldingScoreModel } from '../../class-model/FieldingScoreModel';
+import { ClubModel } from '../../class-model/ClubModel';
 
 @Injectable({
   providedIn: 'root'
@@ -46,5 +47,9 @@ export class PlayerRankingService {
 
   getTopFilderT20() {
     return this.http.get<FieldingScoreModel[]>(`${API_URL}/playeRanking/topFilderT20`,{});
+  }
+
+  getClubDataForPublic(clubId:Number){
+    return this.http.get<ClubModel>(`${API_URL}/playeRanking/club/${clubId}`,{});
   }
 }

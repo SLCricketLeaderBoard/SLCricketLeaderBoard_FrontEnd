@@ -18,6 +18,8 @@ import { OneDayPlayerRankingsComponent } from './player-ranking/one-day-player-r
 import { ThreeFourDaysPlayerRankingsComponent } from './player-ranking/three-four-days-player-rankings/three-four-days-player-rankings.component';
 import { TTwentyPlayerRankingsComponent } from './player-ranking/t-twenty-player-rankings/t-twenty-player-rankings.component';
 import { PlayerProfileSummeryComponent } from './player/player-profile-summery/player-profile-summery.component';
+import { MatchCalenderComponent } from './match-calender/match-calender.component';
+import { PublicMatchElementComponent } from './match-calender/public-match-element/public-match-element.component';
 
 const routes: Routes = [
   {
@@ -32,6 +34,9 @@ const routes: Routes = [
           {path: 'TTwenty' ,component:TTwentyPlayerRankingsComponent},
         ]},
         {path:'player/:userId',component:PlayerProfileSummeryComponent},
+        {path: 'match-calender' , component: MatchCalenderComponent, children:[
+          {path: ':tournamentId' , component: PublicMatchElementComponent}
+        ]},
         
       ]
   },

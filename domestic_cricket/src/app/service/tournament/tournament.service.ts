@@ -23,6 +23,11 @@ export class TournamentService {
     return this.http.get<TournamentModel[]>(`${API_URL}/tournaments`, { headers });
   }
 
+  getTournamentsForCalender(): Observable<TournamentModel[]> {
+    
+    return this.http.get<TournamentModel[]>(`${API_URL}/playeRanking/tournaments`);
+  }
+  
 
 
   getTournamentById(tournamentId: Number): Observable<TournamentModel> {
