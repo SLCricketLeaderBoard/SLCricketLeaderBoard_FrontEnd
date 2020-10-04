@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayerRankingService } from '../../service/player-ranking/player-ranking.service';
 import { BallerScoreModel } from '../../class-model/BallerScoreModel';
+import { BatmanScoreModel } from '../../class-model/BatmanScoreModel';
+import { FieldingScoreModel } from '../../class-model/FieldingScoreModel';
 
 
 @Component({
@@ -10,13 +12,29 @@ import { BallerScoreModel } from '../../class-model/BallerScoreModel';
 })
 export class OneDayPlayerRankingsComponent implements OnInit {
 
-  topBallersOneday: BallerScoreModel[];
+  topBallers: BallerScoreModel[];
+  topBatmen: BatmanScoreModel[];
+  topAllRounders: FieldingScoreModel[];
+  render: number = 0;
+
   constructor(private playerRankingService:PlayerRankingService) { }
   ngOnInit() {
     this.playerRankingService.getTopBallersOneDay().subscribe(res=>{
-      this.topBallersOneday=res;
-      console.log(res);
-      
+      this.topBallers=res;
+      // console.log(res);
+      this.render=this.render+1;
+    })
+
+    this.playerRankingService.getTopBatmenOneDay().subscribe(res=>{
+      this.topBatmen=res;
+      // console.log(res);
+      this.render=this.render+1;
+    })
+
+    this.playerRankingService.getTopFilderOneDay().subscribe(res=>{
+      this.topAllRounders=res;
+      // console.log(res);
+      this.render=this.render+1;
     })
   }
 
