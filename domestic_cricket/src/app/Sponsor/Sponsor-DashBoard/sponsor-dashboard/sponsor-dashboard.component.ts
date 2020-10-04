@@ -34,8 +34,13 @@ export class SponsorDashboardComponent implements OnInit {
   }
 
   sendRequest(clubId: number){
-    let dummySponsorClub = {"status": 0, "sponsor_id": 1, "club_id": 2}
-    this.sponsorService.sponsorClubRequest(dummySponsorClub).subscribe(
+
+    let sponsor_id = sessionStorage.getItem("userId");
+   // let SponsorClub = {"status": 0, sponsor_id, clubId}
+
+  
+
+    this.sponsorService.sponsorClubRequest(sponsor_id,clubId).subscribe(
       (response) => {
         console.log(response)
       },
