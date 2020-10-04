@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -11,9 +12,15 @@ export class PlayerRankingElementComponent implements OnInit {
   @Input() players : any[];
   @Input() i : any;
   
-  constructor() { }
+  constructor(private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit() {
+  }
+
+  playerProfile(id: Number){
+    console.log(id);
+    this.router.navigate(["player",id]);
+    
   }
 
 }

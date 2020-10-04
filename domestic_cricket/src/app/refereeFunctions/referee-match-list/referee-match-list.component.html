@@ -35,6 +35,8 @@
               </div>
               
               <app-match-element *ngFor="let match of updatedMatches" [match]="match" [played]="true"></app-match-element>
+              <app-match-element *ngFor="let match of threeFourDayMathcesPlayedUpdated" [match]="match" [played]="true"></app-match-element>
+              
               <div class="row" *ngIf="!updatedMatches" style="margin-left: 20%; margin-top: 20%; ">
                 <p>No Matches Updated</p>
             </div>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BallerScoreModel } from '../class-model/BallerScoreModel';
 
 
 @Component({
@@ -10,9 +9,9 @@ import { BallerScoreModel } from '../class-model/BallerScoreModel';
 })
 export class PlayerRankingComponent implements OnInit {
 
-  topBallersOneday: BallerScoreModel[];
   constructor(private router:Router,private route:ActivatedRoute) { }
   ngOnInit() {
+    this.oneDay();
    
   }
 
@@ -21,5 +20,10 @@ export class PlayerRankingComponent implements OnInit {
   }
   threeFourDays(){
     this.router.navigate(["threeFourDays"], { relativeTo: this.route });
+  }
+
+
+  TTwenty(){
+    this.router.navigate(["TTwenty"], { relativeTo: this.route });
   }
 }

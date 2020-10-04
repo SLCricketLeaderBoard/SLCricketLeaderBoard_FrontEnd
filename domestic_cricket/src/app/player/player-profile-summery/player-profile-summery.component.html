@@ -1,0 +1,149 @@
+<div *ngIf="player" class="row" style="background-color: red;">
+  <div class="col-5" style="background-color: blue;">
+    <div class="row" style="padding: 5%;">
+      <img [src]="player.userId.profileImage" alt="" height="300px" width="auto">
+    </div>
+    <div class="row">
+      <table class="table" style="font-size: large;">
+        <tr>
+          <th>
+            Name
+          </th>
+          <td>
+            {{player?.userId.nameWithInitial}}
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Role
+          </th>
+          <td>
+            Batting
+          </td>
+        </tr>
+
+        <tr>
+          <th>
+            Batting Style
+          </th>
+          <td>
+            {{player.batmanTypeId.type}}
+          </td>
+        </tr>
+
+        <tr>
+          <th>
+            Bowling Style
+          </th>
+          <td>
+            {{player.ballerTypeId.type}}
+          </td>
+        </tr>
+        
+        <br>
+        <hr>
+        <br>
+
+        <tr>
+          <td>{{player.clubId.clubName}}</td>
+          <td>
+            <img [src]="player.clubId.clubLogo" alt="" height="50px">
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="col-7">
+
+
+    <div class="row">
+        <h3>Batting</h3>
+        <table>
+          <tr>
+            <th>
+              Total Mathces
+            </th>
+            <td>
+              {{asBatman.matchCount}}
+            </td>
+          </tr>
+          <tr>
+            <th>
+              Totol Runs
+            </th>
+            <td>{{asBatman.runs}}</td>
+          </tr>
+          <tr>
+            <th>
+              Total Faced Balls
+            </th>
+            <td>
+              {{asBatman.facedBalls}}
+            </td>
+          </tr>
+
+          <tr>
+            <th>
+              Half Centuries
+            </th>
+            <td>
+              {{asBatman.halfCenturies}}
+            </td>
+          </tr>
+
+          <tr>
+            <th>
+              Centuries
+            </th>
+            <td>
+              {{asBatman.centuries}}
+            </td>
+          </tr>
+
+          <tr>
+            <th>
+              Double Centuries
+            </th>
+            <td>
+              {{asBatman.doubleCenturies}}
+            </td>
+          </tr>
+
+          <tr>
+            <th>
+              Strike Rate
+            </th>
+            <td>
+              {{asBatman.strikeRate}}
+            </td>
+          </tr>
+
+          <tr>
+            <th>
+              Not Out Matches
+            </th>
+            <td>
+              {{asBatman.notOut}}
+            </td>
+          </tr>
+
+        </table>
+
+    </div>
+
+    <div class="row">
+        <h3>Bowlling</h3>
+
+
+    </div>
+
+    <div class="row">
+        <h3>Fielding</h3>
+
+        
+    </div>
+
+
+  </div>
+
+</div>

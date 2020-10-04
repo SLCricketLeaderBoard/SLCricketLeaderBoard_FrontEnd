@@ -16,6 +16,8 @@ import { ClubRankingComponent } from './club-ranking/club-ranking.component';
 import { PlayerRankingComponent } from './player-ranking/player-ranking.component';
 import { OneDayPlayerRankingsComponent } from './player-ranking/one-day-player-rankings/one-day-player-rankings.component';
 import { ThreeFourDaysPlayerRankingsComponent } from './player-ranking/three-four-days-player-rankings/three-four-days-player-rankings.component';
+import { TTwentyPlayerRankingsComponent } from './player-ranking/t-twenty-player-rankings/t-twenty-player-rankings.component';
+import { PlayerProfileSummeryComponent } from './player/player-profile-summery/player-profile-summery.component';
 
 const routes: Routes = [
   {
@@ -27,7 +29,9 @@ const routes: Routes = [
         {path: 'player-rankings',component: PlayerRankingComponent, children: [
           {path: 'oneDay',component: OneDayPlayerRankingsComponent},
           {path: 'threeFourDays',component: ThreeFourDaysPlayerRankingsComponent},
+          {path: 'TTwenty' ,component:TTwentyPlayerRankingsComponent},
         ]},
+        {path:'player/:userId',component:PlayerProfileSummeryComponent},
         
       ]
   },
