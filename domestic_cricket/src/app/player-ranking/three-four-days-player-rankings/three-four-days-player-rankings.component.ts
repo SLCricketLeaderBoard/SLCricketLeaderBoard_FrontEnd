@@ -16,22 +16,26 @@ export class ThreeFourDaysPlayerRankingsComponent implements OnInit {
   topBatmen: BatmanScoreModel[];
 
   topAllRounders: FieldingScoreModel[];
+  render: number = 0;
 
   constructor(private playerRankingService:PlayerRankingService) { }
   ngOnInit() {
     this.playerRankingService.getTopBallers34Days().subscribe(res=>{
       this.topBallers=res;
-      console.log(res);
+      this.render=this.render+1;
+      // console.log(res);
     })
 
     this.playerRankingService.getTopBatmen34Days().subscribe(res=>{
       this.topBatmen=res;
-      console.log(res);
+      this.render=this.render+1;
+      // console.log(res);
     })
     
     this.playerRankingService.getTopFilder34Days().subscribe(res=>{
       this.topAllRounders=res;
-      console.log(this.topAllRounders);
+      this.render=this.render+1;
+      // console.log(this.topAllRounders);
     })
   }
 }

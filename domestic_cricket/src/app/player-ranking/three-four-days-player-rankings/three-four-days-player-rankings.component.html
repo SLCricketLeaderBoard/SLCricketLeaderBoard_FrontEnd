@@ -1,5 +1,11 @@
-<div class="row">
-  <h3>3 4 Days</h3>
+<div *ngIf="render===3" class="container-fluid">
+  
+  <div class="row">
+    <div class="col-4" style="align-content: flex-end;">
+      <h3>3 4 Days</h3>
+    </div>
+  <div class="col-4" >
+  </div>
 </div>
 <div class="row" style="padding:2%;">
   
@@ -15,7 +21,7 @@
     <div class="row">
     </div>
   </div>
-
+  
   <div class="col-lg-3 col-md-6 col-sm-12 card" style="margin-left: 20px;">
     <div class="row" style="padding:2%; background-color: blue;">
       <h5 style="color: aliceblue;">
@@ -40,4 +46,16 @@
     </div>
   </div>
 
+</div>
+
+</div>
+
+<div class="container-fluid">
+  <div *ngIf="render!=3"  style="padding-bottom: 700px">
+    <div class="text-center">
+      <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
 </div>
