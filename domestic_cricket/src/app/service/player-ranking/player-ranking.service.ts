@@ -25,7 +25,7 @@ export class PlayerRankingService {
   }
 
   getTopBatmenOneDay() {
-    return this.http.get<BallerScoreModel[]>(`${API_URL}/playeRanking/topBatmenOneDay`,{});
+    return this.http.get<BatmanScoreModel[]>(`${API_URL}/playeRanking/topBatmenOneDay`,{});
   }
 
   getTopBatmen34Days() {
@@ -33,11 +33,11 @@ export class PlayerRankingService {
   }
 
   getTopBatmenT20() {
-    return this.http.get<BallerScoreModel[]>(`${API_URL}/playeRanking/topBatmenT20`,{});
+    return this.http.get<BatmanScoreModel[]>(`${API_URL}/playeRanking/topBatmenT20`,{});
   }
 
   getTopFilderOneDay() {
-    return this.http.get<BallerScoreModel[]>(`${API_URL}/playeRanking/topFilderOneDay`,{});
+    return this.http.get<FieldingScoreModel[]>(`${API_URL}/playeRanking/topFilderOneDay`,{});
   }
 
   getTopFilder34Days() {
@@ -45,6 +45,6 @@ export class PlayerRankingService {
   }
 
   getTopFilderT20() {
-    return this.http.get<BallerScoreModel[]>(`${API_URL}/playeRanking/topFilderT20`,{});
+    return this.http.get<FieldingScoreModel[]>(`${API_URL}/playeRanking/topFilderT20`,{});
   }
 }
