@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ClubService } from "../../service/club/club.service";
 import { ClubModel } from "../../class-model/ClubModel";
+import { ReportService } from '../../service/report/report.service';
+import { RepositionScrollStrategy } from '@angular/cdk/overlay';
 
 @Component({
   selector: "app-club-list",
@@ -12,7 +14,7 @@ export class ClubListComponent implements OnInit {
   clubList: ClubModel[] = [];
   isClubDataLoad = false;
 
-  constructor(private router: Router, private clubService: ClubService) { }
+  constructor(private router: Router, private clubService: ClubService, private reportService: ReportService) { }
 
   ngOnInit() {
     let userRole = +sessionStorage.getItem("userRole");
@@ -49,4 +51,6 @@ export class ClubListComponent implements OnInit {
   clubNotPaymentList() {
     this.router.navigate(["club-payment-not-complete-list"]);
   }
+
+
 }

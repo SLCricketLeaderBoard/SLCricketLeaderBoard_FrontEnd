@@ -73,6 +73,7 @@ export class SidebarComponent implements OnInit {
       { path: "/stadium-register", title: "Stadiums", icon: "design_app", class: "" },
       { path: "/tournament-list", title: "Tournament", icon: "design_app", class: "" },
       { path: "/nonregsponsors", title: "Sponsors", icon: "design_app", class: "" },
+      { path: "/report", title: "Reports", icon: "files_paper", class: "" },
     ];
 
     this.manager = [
@@ -144,9 +145,9 @@ export class SidebarComponent implements OnInit {
     return false;
   }
 
-  isSponsor(){
-    if(sessionStorage.getItem("userRole") != null &&
-    sessionStorage.getItem("userRole") === "7"){
+  isSponsor() {
+    if (sessionStorage.getItem("userRole") != null &&
+      sessionStorage.getItem("userRole") === "7") {
       return true;
     }
     return false;

@@ -54,6 +54,7 @@ import { CaptainChangeComponent } from '../../tournaments/manager-match-list/cap
 import { SponsorDashboardComponent } from '../../Sponsor/Sponsor-DashBoard/sponsor-dashboard/sponsor-dashboard.component';
 import { PlayerRateChartComponent } from '../../player/player-selection/player-rate-chart/player-rate-chart.component';
 import { RefreeLiveMatchesComponent } from '../../refereeFunctions/refree-live-matches/refree-live-matches.component';
+import { ReportComponent } from '../../report/report/report.component';
 
 
 
@@ -304,6 +305,11 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: "player-rate",
     component: PlayerRateChartComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: "report",
+    component: ReportComponent,
     canActivate: [RouteGuardService]
   },
 
