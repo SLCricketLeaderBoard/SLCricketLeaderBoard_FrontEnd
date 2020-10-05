@@ -35,7 +35,7 @@ import { ClubRankingComponent } from './club-ranking/club-ranking.component';
 import { PlayerRankingComponent } from './player-ranking/player-ranking.component';
 import { PlayerRankingElementComponent } from './player-ranking/player-ranking-element/player-ranking-element.component';
 import { OneDayPlayerRankingsComponent } from './player-ranking/one-day-player-rankings/one-day-player-rankings.component';
-import { ThreeFourDaysPlayerRankingsComponent } from './player-ranking/three-four-days-player-rankings/three-four-days-player-rankings.component';
+
 
 
 
@@ -78,8 +78,7 @@ import { ThreeFourDaysPlayerRankingsComponent } from './player-ranking/three-fou
     ClubRankingComponent,
     PlayerRankingComponent,
     PlayerRankingElementComponent,
-    OneDayPlayerRankingsComponent,
-    ThreeFourDaysPlayerRankingsComponent,
+    OneDayPlayerRankingsComponent
 
 
 

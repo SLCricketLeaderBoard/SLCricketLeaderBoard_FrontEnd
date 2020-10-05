@@ -15,7 +15,6 @@ import { WelcomePageComponent } from './site/main-site/welcome-page/welcome-page
 import { ClubRankingComponent } from './club-ranking/club-ranking.component';
 import { PlayerRankingComponent } from './player-ranking/player-ranking.component';
 import { OneDayPlayerRankingsComponent } from './player-ranking/one-day-player-rankings/one-day-player-rankings.component';
-import { ThreeFourDaysPlayerRankingsComponent } from './player-ranking/three-four-days-player-rankings/three-four-days-player-rankings.component';
 
 const routes: Routes = [
   {
@@ -29,7 +28,6 @@ const routes: Routes = [
       {
         path: 'player-rankings', component: PlayerRankingComponent, children: [
           { path: 'oneDay', component: OneDayPlayerRankingsComponent },
-          { path: 'threeFourDays', component: ThreeFourDaysPlayerRankingsComponent },
         ]
       },
 
