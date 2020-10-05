@@ -18,7 +18,8 @@ import { Time } from '@angular/common';
 import { Timestamp } from 'rxjs/internal/operators/timestamp';
 import { ConfirmedValidator } from '../../../../validators/matchClubValidators.validator';
 import { UmpireValidator } from '../../../../validators/matchUmpireValidators.validator';
-
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../../../shared/confirm-dialog/confirm-dialog.component';
 interface Food {
   value: string;
   viewValue: string;
@@ -58,7 +59,8 @@ export class CreateMatchComponent implements OnInit {
     private tournamentService: TournamentService,
     private refereeService: RefereeService,
     private route: ActivatedRoute,
-    private formBuilder:FormBuilder) {
+    private formBuilder:FormBuilder,
+    private dialog: MatDialog) {
 
     this.createMatch = this.formBuilder.group({
       club01: new FormControl(null, [Validators.required]),
@@ -183,72 +185,110 @@ export class CreateMatchComponent implements OnInit {
     const testMatchId : Number =0; 
 
 
-    const match: MatchModel = new MatchModel(
-      matchId,
-      club1Id,
-      club2Id,
-      captainClub1,
-      captainClub2,
-      club1Mark,
-      club2Mark,
-      club1Wicket,
-      club2Wicket,
-      tournementRound,
-      startDate,
-      finishDate,
-      startTime,
-      winTeamId,
-      sponser,
-      matchTypeId,
-      tournamentId,
-      stadiumId,
-      refereeId,
-      umpire1Id,
-      umpire2Id,
-      umpire3Id,
-      tossWinTeam,
-      clubOneViceCaptain,
-      clubTwoViceCaptain,
-      clubOneKeper,
-      clubTwoKeper,
-      manOfTheMatch,
-      clubOneOvers,
-      clubTwoOvers,
-      state,
-      testMatchId
-    );
 
-     
-     let x = this.matchService.createMatch(match).subscribe(response=>{
-       this.matchService.createMatchInfirebase(response).then(res=>{
-         console.log(res);
-         
-          this.done=true;
-          setTimeout(()=>{
-            this.createMatch.reset();
-            this.createMatch.clearValidators();
-          },1000)
+
+    var date = new Date(this.tournament.endDate);
+    var year = date.getFullYear();
+    var month = date.getMonth();
+    var day = date.getDate();
+    const tournamentEndDate = (year*10000)+(month*100)+day;
+    const matchEndDate = finishDate.getFullYear()*10000+finishDate.getMonth()*100+finishDate.getDate();
+    
+console.log(tournamentEndDate +"tournament end date");
+console.log(matchEndDate+" mathc end date");
+
+
+
+
+    if(startDate>finishDate){
+      alert("Please Double check your Start and End Dates of the match");
+        
+    }else if(tournamentEndDate < matchEndDate){
+      alert("Please Double check your organizing dates. There is a mismatch with the tournament organizing dates")
+    }else{  
+        const match: MatchModel = new MatchModel(
+          matchId,
+          club1Id,
+          club2Id,
+          captainClub1,
+          captainClub2,
+          club1Mark,
+          club2Mark,
+          club1Wicket,
+          club2Wicket,
+          tournementRound,
+          startDate,
+          finishDate,
+          startTime,
+          winTeamId,
+          sponser,
+          matchTypeId,
+          tournamentId,
+          stadiumId,
+          refereeId,
+          umpire1Id,
+          umpire2Id,
+          umpire3Id,
+          tossWinTeam,
+          clubOneViceCaptain,
+          clubTwoViceCaptain,
+          clubOneKeper,
+          clubTwoKeper,
+          manOfTheMatch,
+          clubOneOvers,
+          clubTwoOvers,
+          state,
+          testMatchId
+        );
+
+        
+        //  let x = this.matchService.createMatch(match).subscribe(response=>{
+        //    this.matchService.createMatchInfirebase(response).then(res=>{
+        //      console.log(res);
+            
+        //       this.done=true;
+        //       setTimeout(()=>{
+        //         this.createMatch.reset();
+        //         this.createMatch.clearValidators();
+        //       },1000)
+        //    }
+            
+        //    ).catch(error=>{
+        //     setTimeout(()=>{
+        //       this.createMatch.reset();
+        //       this.createMatch.clearAsyncValidators();
+        //     },2000)
+
+        //      this.errorMessage=error.message
+        //      this.done=false;
+        //    })
+        //  },error=>{
+        //   setTimeout(()=>{
+        //     this.createMatch.reset();
+        //     this.createMatch.clearAsyncValidators();
+        //   },1000)
+
+        //    console.log(error.message);
+        //    this.errorMessage=error.message
+        //    this.done= false; 
+        //  }) 
+
+      }
+    }
+
+
+    openDialog(){
+      let dialogRef = this.dialog.open(ConfirmDialogComponent);
+      
+      dialogRef.afterClosed().subscribe(result=>{
+      console.log(result);
+        if(result=='true'){
+        this.create();
+       }else{
+        
        }
-         
-       ).catch(error=>{
-        setTimeout(()=>{
-          this.createMatch.reset();
-          this.createMatch.clearAsyncValidators();
-        },2000)
-
-         this.errorMessage=error.message
-         this.done=false;
-       })
-     },error=>{
-      setTimeout(()=>{
-        this.createMatch.reset();
-        this.createMatch.clearAsyncValidators();
-      },1000)
-
-       console.log(error.message);
-       this.errorMessage=error.message
-       this.done= false; 
-     }) 
+  
+      })
     }
 
 }

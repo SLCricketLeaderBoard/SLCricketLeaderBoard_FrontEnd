@@ -42,6 +42,8 @@ import { PublicTournamentElementComponent } from './match-calender/public-tourna
 import { MatchCalenderComponent } from './match-calender/match-calender.component';
 import { PublicMatchElementComponent } from './match-calender/public-match-element/public-match-element.component';
 import { PublicMatchElementDetailComponent } from './match-calender/public-match-element-detail/public-match-element-detail.component';
+import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -65,6 +67,7 @@ import { PublicMatchElementDetailComponent } from './match-calender/public-match
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireStorageModule,
+    MatDialogModule
   ],
   declarations: [
     AppComponent,
@@ -92,6 +95,7 @@ import { PublicMatchElementDetailComponent } from './match-calender/public-match
     PublicTournamentElementComponent,
     PublicMatchElementComponent,
     PublicMatchElementDetailComponent,
+  
 
 
 

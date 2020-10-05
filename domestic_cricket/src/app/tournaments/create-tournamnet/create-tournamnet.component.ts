@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { TournamentModel } from '../../class-model/TournamentModel';
 import { TournamentService } from '../../service/tournament/tournament.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
+import { MatDialog,MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-tournamnet',
@@ -21,7 +23,7 @@ export class CreateTournamnetComponent implements OnInit {
     endDate :Date = new Date();
     
 
-  constructor(private tournamentService:TournamentService) { 
+  constructor(private tournamentService:TournamentService,private dialog: MatDialog) { 
 
     let numericRegex = /^[0-9]+$/;
 
@@ -49,23 +51,60 @@ export class CreateTournamnetComponent implements OnInit {
     const finishDate: Date = this.tournamentRegisterForm.value['endDate'];
     const registartionCloseDate: Date = this.tournamentRegisterForm.value['regEndDate'];
 
-    const tournament: TournamentModel = new TournamentModel(
-      tournamentId,
-      tournamentName,
-      startDate,
-      finishDate,
-      registartionCloseDate
-    );
-    console.log(tournament);
-
-    this.tournamentService.registerTournament(tournament).subscribe(res=>{
-
-      console.log(res);
-      this.done=!this.done;
+    
+    if(startDate<finishDate){
+      if(registartionCloseDate>startDate){
       
-    },error=>{
-      console.log(error);
+        alert("ok")
+            // const tournament: TournamentModel = new TournamentModel(
+            //   tournamentId,
+            //   tournamentName,
+            //   startDate,
+            //   finishDate,
+            //   registartionCloseDate
+            // );
+            // console.log(tournament);
+
+            // this.tournamentService.registerTournament(tournament).subscribe(res=>{
+
+            //   console.log(res);
+            //   this.done=!this.done;
+              
+            // },error=>{
+            //   console.log(error);
+            // })
+            
+      }else{
+        alert("Please Double check your Dates");
+      }
+    }else{
+      alert("Please Double check your Dates"); 
+    }
+    
+    
+    
+  }
+
+
+  openDialog(){
+    let dialogRef = this.dialog.open(DialogContentExampleDialog);
+    
+    dialogRef.afterClosed().subscribe(result=>{
+    console.log(result);
+      if(result=='true'){
+      this.create();
+     }else{
+      
+     }
+
     })
   }
+  
   }
 ;
+
+@Component({
+  selector: 'dialog-content-example-dialog',
+  templateUrl: 'dialog-content-example-dialog.html',
+})
+export class DialogContentExampleDialog {}

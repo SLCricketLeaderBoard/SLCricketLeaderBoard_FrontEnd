@@ -41,6 +41,7 @@ export class RefreePlayerRecordDataInputComponent implements OnInit {
   response:Number;
   done = true;
   pending = false;
+  showSpinner = false;
 
 
   playerRecord:PlayerRecordModel
@@ -48,19 +49,19 @@ export class RefreePlayerRecordDataInputComponent implements OnInit {
   constructor(private router:Router,private route:ActivatedRoute,private selectedPlayerService:SelectedPlayersService,private playerRecordService:PlayerRecordService) { 
     
     this.playerRecordForm =  new FormGroup({
-      battingRuns: new FormControl(null,[Validators.required]),
-      facedBalls: new FormControl(null,[Validators.required]),
-      fours: new FormControl(null,[Validators.required]),
-      sixes:new FormControl(null,[Validators.required]),
+      battingRuns: new FormControl(null,[Validators.required,Validators.min(0)]),
+      facedBalls: new FormControl(null,[Validators.required,Validators.min(0)]),
+      fours: new FormControl(null,[Validators.required,Validators.min(0)]),
+      sixes:new FormControl(null,[Validators.required,Validators.min(0)]),
       notOut:new FormControl(null,[Validators.required]),
-      overs:new FormControl(null,[Validators.required]),
-      numberOfRunsAgainst:new FormControl(null,[Validators.required]),
-      wickets:new FormControl(null,[Validators.required]),
-      hatTriks:new FormControl(null,[Validators.required]),
-      avgBallSpeed:new FormControl(null,[Validators.required]),
-      numWides:new FormControl(null,[Validators.required]),
-      numNos:new FormControl(null,[Validators.required]),
-      catches:new FormControl(null,[Validators.required]),
+      overs:new FormControl(null,[Validators.required,Validators.min(0),Validators.max(50)]),
+      numberOfRunsAgainst:new FormControl(null,[Validators.required,Validators.min(0)]),
+      wickets:new FormControl(null,[Validators.required,Validators.min(0),Validators.max(10)]),
+      hatTriks:new FormControl(null,[Validators.required,Validators.min(0)]),
+      avgBallSpeed:new FormControl(null,[Validators.required,Validators.min(0)]),
+      numWides:new FormControl(null,[Validators.required,Validators.min(0)]),
+      numNos:new FormControl(null,[Validators.required,Validators.min(0)]),
+      catches:new FormControl(null,[Validators.required,Validators.min(0)]),
     })
     
     
@@ -104,6 +105,7 @@ export class RefreePlayerRecordDataInputComponent implements OnInit {
   }
 
   submit(){
+    this.showSpinner = true;
 
     this.playerRecord.ballerRecord.selectedPlayerId=this.selectedPlayer;
     this.playerRecord.batmanRecord.selectedPlayerId=this.selectedPlayer;
@@ -142,6 +144,7 @@ export class RefreePlayerRecordDataInputComponent implements OnInit {
 
     if(+this.playerRecordForm.value["facedBalls"]==0){
       this.playerRecord.batmanRecord.battingPoints=0;
+      this.playerRecord.batmanRecord.strikeRate=0;
     }else{
       this.playerRecord.batmanRecord.battingPoints = (+this.playerRecord.batmanRecord.battingRuns/20)+(+this.playerRecord.batmanRecord.notOut)*(0.005);
     }
@@ -156,10 +159,12 @@ export class RefreePlayerRecordDataInputComponent implements OnInit {
   
     
     this.playerRecordService.playerRecordRecord(this.playerRecord).subscribe(res=>{
+      this.showSpinner=false;
       console.log(res);
       this.response=res;
       this.done=false;
     },error=>{
+      this.showSpinner=false;
       console.log(error);
       this.response=0;
       this.done=false

@@ -3,7 +3,7 @@ export class StadiumModel {
     public stadiumId: Number,
     public name: String,
     public address: String,
-    public contactum: String,
+    public contactnum: String,
     public capacity: Number,
   ) { }
 }

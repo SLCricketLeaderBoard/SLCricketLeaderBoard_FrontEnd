@@ -40,7 +40,7 @@
               <div class="row" *ngIf="!playedMatches" style="margin-left: 20%; margin-top: 20%; ">
                 <p>No Matches Pendding</p>
               </div>
-
+              
             </div>
             <div class="col-3" style="margin: 2%;">
               <div class="row"
@@ -48,10 +48,10 @@
                 <h4 style="color: #ffffff;">Up Comming</h4>
               </div>
               <hr>
-              <div class="row" *ngIf="oneDayPlayedUpdatedMatches.length>0">
+              <div class="row" *ngIf="oneDayUpcommingMatches.length>0">
                 <h5>One Day</h5>
                 <div class="col">
-                  <app-match-element *ngFor="let match of oneDayPlayedUpdatedMatches" [match]="match" [played]="false">
+                  <app-match-element *ngFor="let match of oneDayUpcommingMatches" [match]="match" [played]="false">
                   </app-match-element>
                 </div>
               </div>

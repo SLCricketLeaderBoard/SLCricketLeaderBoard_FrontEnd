@@ -81,14 +81,14 @@
                       </div>
                       
                       <button mat-raised-button (click)="reset()">Reset</button>
-                      <button mat-raised-button (click)="create()" [disabled]="!tournamentRegisterForm.valid">Create</button>
+                      <button mat-raised-button (click)="openDialog()" [disabled]="!tournamentRegisterForm.valid">Create</button>
                       
                     </form>
                   </div>
 
 
                   <div *ngIf="done" >
-                      <p style="margin-top: 20px; margin-left: 100px; color: green;" >Registration successfull!!</p>
+                      <p style="margin-top: 20px; margin-left: 100px; color: green;" >Creation successfull!!</p>
                   </div>
                 </div>
               </div>

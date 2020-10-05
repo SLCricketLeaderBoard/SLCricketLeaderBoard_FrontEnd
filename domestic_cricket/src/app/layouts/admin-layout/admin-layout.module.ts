@@ -67,6 +67,7 @@ import { RefreeLiveMatchesComponent } from '../../refereeFunctions/refree-live-m
 import { RefereeLiveMatchElementComponent } from '../../refereeFunctions/refree-live-matches/referee-live-match-element/referee-live-match-element.component';
 import { ReportComponent } from '../../report/report/report.component';
 import { MatchElementTrefordyComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-element-trefordy/match-element-trefordy.component';
+import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
 
 
 
@@ -149,7 +150,11 @@ import { MatchElementTrefordyComponent } from '../../tournaments/tournamnet-list
 
     PlayerRateChartComponent,
     ReportComponent,
-    MatchElementTrefordyComponent
+    MatchElementTrefordyComponent,
+    ConfirmDialogComponent,
   ],
+  exports:[
+    ConfirmDialogComponent
+  ]
 })
 export class AdminLayoutModule { }
