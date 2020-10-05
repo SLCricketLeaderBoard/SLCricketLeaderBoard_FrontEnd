@@ -49,7 +49,6 @@ import { PublicMatchElementDetailComponent } from './match-calender/public-match
 
 
 
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -89,10 +88,11 @@ import { PublicMatchElementDetailComponent } from './match-calender/public-match
     TTwentyPlayerRankingsComponent,
     PlayerProfileSummeryComponent,
     MatchCalenderComponent,
-    TournamentElementComponent,
+    // TournamentElementComponent,
     PublicTournamentElementComponent,
     PublicMatchElementComponent,
     PublicMatchElementDetailComponent,
+    
   
 
   ],
