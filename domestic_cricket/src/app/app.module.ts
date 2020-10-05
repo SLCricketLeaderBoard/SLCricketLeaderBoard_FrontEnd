@@ -35,9 +35,14 @@ import { ClubRankingComponent } from './club-ranking/club-ranking.component';
 import { PlayerRankingComponent } from './player-ranking/player-ranking.component';
 import { PlayerRankingElementComponent } from './player-ranking/player-ranking-element/player-ranking-element.component';
 import { OneDayPlayerRankingsComponent } from './player-ranking/one-day-player-rankings/one-day-player-rankings.component';
-import { ThreeFourDaysPlayerRankingsComponent } from './player-ranking/three-four-days-player-rankings/three-four-days-player-rankings.component'
-
-
+import { ThreeFourDaysPlayerRankingsComponent } from './player-ranking/three-four-days-player-rankings/three-four-days-player-rankings.component';
+import { TTwentyPlayerRankingsComponent } from './player-ranking/t-twenty-player-rankings/t-twenty-player-rankings.component';
+import { PlayerProfileSummeryComponent } from './player/player-profile-summery/player-profile-summery.component';
+import { MatchCalenderComponent } from './match-calender/match-calender.component';
+import { TournamentElementComponent } from './tournaments/tournamnet-list/tournament-element/tournament-element.component';
+import { PublicTournamentElementComponent } from './match-calender/public-tournament-element/public-tournament-element.component';
+import { PublicMatchElementComponent } from './match-calender/public-match-element/public-match-element.component';
+import { PublicMatchElementDetailComponent } from './match-calender/public-match-element-detail/public-match-element-detail.component';
 
 
 
@@ -79,10 +84,16 @@ import { ThreeFourDaysPlayerRankingsComponent } from './player-ranking/three-fou
     PlayerRankingComponent,
     PlayerRankingElementComponent,
     OneDayPlayerRankingsComponent,
-    ThreeFourDaysPlayerRankingsComponent
-
-
-
+    ThreeFourDaysPlayerRankingsComponent,
+    TTwentyPlayerRankingsComponent,
+    PlayerProfileSummeryComponent,
+    MatchCalenderComponent,
+    // TournamentElementComponent,
+    PublicTournamentElementComponent,
+    PublicMatchElementComponent,
+    PublicMatchElementDetailComponent,
+    
+  
 
   ],
   providers: [

@@ -1,0 +1,80 @@
+<div *ngIf="match" class="card col" style="width: 40rem; padding-left: 5px;" >
+  <div class="row">
+    
+        <table style="margin-left: 4%; margin-top: 4%;">
+          <tr >
+            <td style="padding-left: -20px;">
+                  <b>Club 1</b>
+            </td>
+            <td *ngIf="!club01">
+              <div class="spinner-border text-center" role="status" style="width: 2rem; height: 2rem;">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </td>
+            <td  *ngIf="club01">
+              {{club01?.clubName}}
+            </td>
+          </tr>
+  
+          <tr>
+            <td>
+              <b>club02</b>
+            </td>
+            <td *ngIf="club02">
+              {{club02?.clubName}}
+            </td>
+          </tr>
+
+
+          <tr>
+            <td style=" width:30%;">
+              <b>Tour.. Round</b>
+            </td>
+            <td *ngIf="match">
+              {{match.firstInning.tournementRound}}
+            </td>
+          </tr>
+  
+  
+          <tr>
+            <td>
+              <b>Stadium</b>
+            </td>
+            <td *ngIf="match">
+              {{match.firstInning.stadiumId.name}}
+              <!-- {{manager.userId.}} -->
+            </td>
+          </tr>
+
+          <!-- <tr>
+            <td>
+              <b>Date On</b>
+            </td>
+            <td *ngIf="match">
+              {{match?.startDate | date}}
+              
+            </td>
+          </tr> -->
+          <tr  >
+            <td colspan="2">
+
+              <a  class="btn btn-primary" (click)="more()" >more</a>
+              <a  class="btn btn-primary" *ngIf="refreeActive" (click)="setSummery()" >Update Details</a>
+              <a  class="btn btn-primary" *ngIf="refreeActive" (click)="viewPlayers()" >Players Details</a>
+            </td>
+          </tr>
+
+
+        </table>
+      
+  </div>
+  
+</div>
+
+  <div class="container" *ngIf="!match">
+  <div class="text-center">
+      <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
+          <span class="sr-only">Loading...</span>
+      </div>
+  </div>
+</div>

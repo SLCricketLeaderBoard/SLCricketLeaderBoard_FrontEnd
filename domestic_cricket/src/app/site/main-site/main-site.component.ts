@@ -24,5 +24,9 @@ export class MainSiteComponent implements OnInit {
   playerRankings(){
     this.router.navigate(["/player-rankings"], { relativeTo: this.route });
   }
+
+  matchCalender(){
+    this.router.navigate(["/match-calender"], { relativeTo: this.route });  
+  }
   
 }
