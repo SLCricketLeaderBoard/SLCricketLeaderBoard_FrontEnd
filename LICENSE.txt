@@ -1,0 +1,87 @@
+Software License Agreement - CrickDom
+	   Group -21
+
+These terms and conditions as revised and updated by CrickDom Pvt Ltd  from time to time (here in after referred to as “General Terms and Conditions” or “GTC”) shall constitute a legally binding agreement made between you, (“Customer : clubs,players,sponsors,visitors”) and CrickDom( “we,” “us” or “our”), concerning your use of CrickDom Services (defined below). By accessing and using the Services you unequivocally accept and agree to be bound by the General Terms and Conditions. IF YOU DO NOT AGREE WITH ALL OF THE TERMS AND CONDITIONS HEREIN, YOU SHOULD NOT USE THE SERVICES.
+
+1. DEFINITIONS
+	*Unless the context otherwise requires, the different terms and expressions used in these General Terms and Conditions shall have the meaning assigned to them in the following paragraph.
+	*“Agreement” means these General Terms and Conditions, any policies/guidelines formulated by CrickDom from time to time in respect of the Services and any amendments made thereto by CrickDom from time to time.
+	*“CrickDom Services” or “Services” means the match organizing and ranking system services offered by CrickDom to Customers utilizing the System which facilitates Customers to match organizing,creating sponsor player connections,display summarized scoreboard and procure other affiliated services of CrickDom.
+	*“CrickDom System or System” means the software, hardware and infrastructure developed and owned by CrickDom or licensed to CrickDom, through which CrickDom Services are provided to Customers.
+	*“CrickDom Service Fee” means the fee charged by CrickDom from Clubs for the Services provided to Clubs.
+ 
+2. USE OF SERVICE
+
+	*You shall strictly use the Services only in accordance with the provisions of the Agreement.
+	*You shall ensure that all information you furnish to avail the Services are true, accurate, complete and up-to-date. You shall not obtain the Services through impersonation or by furnishing incorrect or false information.
+	*You shall not do or permit any third party to do any of the following.
+	*Use the Services for any unethical, obscene, defamatory, scandalous, nuisance or any illegal activity or purpose.
+	*Use the Services through unauthorized interfaces or protocols.
+	*Use the Service to transmit any content that is abusive, pornographic, violent, racist, discriminatory, offensive, vulgar, obscene, defamatory, invasive of personal privacy, harassing, threatening, or otherwise objectionable.
+	*Translate, reverse-engineer, reverse compile, decompile, disassemble, or modify the Services or make derivative works from the Services
+	*Translate, reverse-engineer, reverse compile, decompile, disassemble, reformat or modify the CrickDom System or make derivative works from the CrickDom System.
+	*To sub-license, re-sell or re-distribute the Services, in whole or in part.
+	*To interfere or tamper or to attempt to interfere or tamper with the integrity or security of the Services and/or the CrickDom System.
+	*Take any action that imposes an unreasonable or large load on the CrickDom System.
+	*Upload invalid data, viruses, worms, or other harmful software to the Services and/or to the CrickDom System.
+	*Use automated means, including spiders, robots, crawlers, data mining tools, or the like to download data from the CrickDom System, unless expressly permitted by CrickDom.
+	*Use the Services in a way that disables the Services or prevents or inhibits anyone from using the Services.
+	*Impersonate any person or entity in order to use, or through use of, the Services.
+
+
+3. PRICING
+	*CrickDom gets annual payment from Clubs.
+	*You(clubs) understand that your use of the Services shall be subject to charges.
+	*CrickDom reserves the right, at any time and at its sole discretion to revise the CrickDom Service Fee without any notification to the Customer. CrickDom may publish changes to CrickDom’s Service fee on its Website.
+	*The Customer is required to bear all taxes and levies applicable on the Services availed by the Customer.
+
+
+4. CHANGES TO THE SERVICES
+
+	*CrickDom reserves the right to change, modify, update, upgrade, suspend or discontinue the Services in its entirety or any portion thereof at any time without any notification to you.
+	*CrickDom has the right to assign any rights, licenses, or obligations arising out of or relating to this Agreement and the Services without any restriction and without any notification to the Customer.
+ 
+ 
+5. DATA PROTECTION AND PRIVACY
+
+	*The data that we are collecting corresponds with the National and International GDPR policies. Further the following data protection and privacy areas will be considered.
+	*The data will be processed in a fair and transparent manner.
+	*The data will be collected for specific, explicit, and legitimate purposes.
+	*The data will be adequate and limited to what is necessary.
+	*The data will be accurate and kept up to date.
+	*The data will be processed in a manner that offers adequate security.
+	*The data will not be outsourced or exposed to any third party under any circumstance.
+	*The data will be used for the analytical purposes and to show the output of the data to  the public.
+
+
+6. DISCLAIMERS AND LIMITATION OF LIABILITY
+	*The information contained in this website is for general information purposes only. The information is provided for the Development of the platform and while we endeavour to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the data with respect to the website or the information, products, services. Any reliance you place on such information is therefore strictly at your own risk.
+ 
+ 
+7. TERMINATION OF THE SERVICES
+
+	*Without prejudice to the rights accrued to CrickDom under this Agreement, CrickDom may suspend or disconnect the Club’s access to the Service partially or fully due to non-payment of amounts payable in respect of the Services.
+	*Without prejudice to the rights accrued to CrickDom under this Agreement, CrickDom may suspend or disconnect the Customer’s access to the Service partially or fully if the Customer in CrickDom’s opinion has misused the Services or has breached any of the terms and conditions in this Agreement.
+	*CrickDom reserves the right to suspend or cancel the Services without adducing any reasons thereof and without any compensation to Customers or any third party.
+ 
+ 
+8. MISCELLANEOUS
+	*Confidentiality: The Customer shall keep in strict confidence all information obtained from CrickDom irrespective of whether the information is marked as Confidential or with a similar legend.
+	*Assignment: The Customer shall not assign or transfer his/her rights and obligations under this Agreement without the prior written approval of CrickDom. CrickDom has the right to assign any rights, licenses, or obligations arising out of or relating to this Agreement and the Services without any restriction and without any notification to the Customer.
+	*No Waiver: No decision of CrickDom to refrain from exercising or enforcing, or failure to exercise or enforce, its rights under any provision of this Agreement shall constitute a waiver thereof, or a waiver of the right of CrickDom to enforce any other provision of this Agreement, and no waiver by CrickDom of any violation of any provision or stipulation of this Agreement shall be deemed to be a waiver of any violation of any other provision or stipulation thereof.
+	*Amendments: This Agreement is subject to change from time to time by CrickDom at its sole discretion and the Customer undertakes to abide by such changes.
+
+	*Severance:
+		*If a court or any other competent authority finds that any provision of the Agreement (or part of any provision) is invalid, illegal or unenforceable, that provision or part-provision shall, to the extent required, be deemed deleted, and the validity and enforceability of the other provisions of the Agreement shall not be affected.
+		*If any invalid, unenforceable or illegal provision of the Agreement would be valid, enforceable and legal if some part of it were deleted, the provision shall apply with the minimum modification necessary to make it legal, valid and enforceable.
+
+	*No partnership: Nothing in this Agreement is intended to, or shall be deemed to, constitute a partnership or joint venture of any kind between any of the parties, nor constitute any party the agent of another party for any purpose. No party shall have authority to act as agent for, or to bind, the other party in any way.
+
+	*Set off : CrickDom reserves the right to set off any outstanding payments due for the Service from any other contract entered into between CrickDom and the Customer and to recover the outstanding payment due from another contract from the amounts paid by Customer under this Agreement.
+
+	*Governing law and jurisdiction: The Agreement, and any dispute or claim arising out of or in connection with it or its subject matter or formation (including non-contractual disputes or claims), shall be governed by, and construed in accordance with, the law of Sri Lanka, and the parties irrevocably submit to the exclusive jurisdiction of the courts of Sri Lanka.
+
+	*CrickDom reserves all rights not expressly granted in this Agreement.
+ 
+
+												                                                  *****************************
