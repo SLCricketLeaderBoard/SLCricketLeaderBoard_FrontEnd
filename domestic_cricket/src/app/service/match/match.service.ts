@@ -107,4 +107,10 @@ export class MatchService {
     return this.http.get<MatchModel[]>(`${API_URL}/getLiveMatchTodayForReferee/${refereeId}`, { headers });
   }
 
+
+  getMatchesForCalender(tournamentId: Number) {
+    
+    return this.http.get<MatchModel[]>(`${API_URL}/playeRanking/matchesForCalender/${tournamentId}`);
+  }
+
 }
