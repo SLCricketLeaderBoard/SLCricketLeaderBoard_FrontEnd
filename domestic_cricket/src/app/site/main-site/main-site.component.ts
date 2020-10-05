@@ -33,4 +33,8 @@ export class MainSiteComponent implements OnInit {
   }
 
 
+  matchCalender() {
+    this.router.navigate(["/match-calender"], { relativeTo: this.route });
+  }
+
 }
