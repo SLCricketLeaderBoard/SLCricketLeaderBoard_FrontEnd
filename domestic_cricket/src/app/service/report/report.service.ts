@@ -14,4 +14,8 @@ export class ReportService {
   getClubReport() {
     return this.http.get<any>(`${API_URL}/report/club`);
   }
+
+  getClubPaymentReport(year) {
+    return this.http.get<any>(`${API_URL}/report/club/payment/${year}`);
+  }
 }

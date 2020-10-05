@@ -32,4 +32,19 @@ export class ReportComponent implements OnInit {
     )
   }
 
+  clubPaymentReport(year) {
+    this.showSpinner = true;
+    this.reportService.getClubPaymentReport(year).subscribe(
+      response => {
+        this.showSpinner = false;
+        console.log(response.fileName);
+        window.open("assets/reports/" + response.fileName);
+      },
+      error => {
+        this.showSpinner = false;
+        console.log(error);
+      }
+    )
+  }
+
 }
