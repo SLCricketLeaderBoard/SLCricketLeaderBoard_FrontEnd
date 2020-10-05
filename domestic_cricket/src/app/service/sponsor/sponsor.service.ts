@@ -37,10 +37,10 @@ sponsorAccept(userId: Number) {
   return this.http.put<Number>(`${API_URL}/sponsorAccept/${userId}`, {});
 }
 
-  sponsorClubRequest(data: any){
-    let jwt = sessionStorage.getItem('TOKEN');
-    const headers = new HttpHeaders().set('Authorization', jwt);
-    return this.http.post<any>(`${API_URL}/sponsorclubrequest`, data, { headers, responseType: 'text' as 'json' });
+  sponsorClubRequest(sponsorId,clubId){
+    console.log(sponsorId);
+    console.log(clubId);
+    return this.http.post<Boolean>(`${API_URL}/sponsorclubrequest/${sponsorId}/${clubId}`, {});
 
   }
    
