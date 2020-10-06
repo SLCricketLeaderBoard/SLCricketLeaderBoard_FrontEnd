@@ -9,19 +9,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PlayerRankingElementComponent implements OnInit {
 
-  @Input() players : any[];
-  @Input() i : any;
-  
-  constructor(private router:Router,private route:ActivatedRoute) { }
+  @Input() players: any[];
+  @Input() i: any;
+
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
-  playerProfile(id: Number){
+  playerProfile(id: Number) {
     console.log(id);
-    // this.router.navigate(["player",id]);
-  
-    this.router.navigate(["player",id],{ relativeTo: this.route ,queryParams:{rank:this.i}});
+    this.router.navigate(["player", id]);
+
+    //this.router.navigate(["player",id],{ relativeTo: this.route ,queryParams:{rank:this.i}});
   }
 
 }

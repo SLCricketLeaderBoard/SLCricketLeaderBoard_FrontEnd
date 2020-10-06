@@ -6,11 +6,11 @@
     <div class="row">
       <table class="table" style="font-size: large;">
         <tr>
-          
+
           <td colspan="2" style="color: darkblue; text-align: center;">
             <b>
               {{player?.userId.nameWithInitial}}
-            </b>            
+            </b>
           </td>
         </tr>
         <tr>
@@ -39,7 +39,7 @@
             {{player.ballerTypeId.type}}
           </td>
         </tr>
-        
+
         <br>
         <br>
 
@@ -59,12 +59,12 @@
 
 
     <div class="row">
-      
+
       <div class="col-12">
 
         <table class="table">
           <tr>
-            <td colspan="2" style="color: blue;"> 
+            <td colspan="2" style="color: blue;">
               <h4> Batting </h4>
             </td>
           </tr>
@@ -90,7 +90,7 @@
               {{asBatman.facedBalls}}
             </td>
           </tr>
-          
+
           <tr>
             <th>
               Half Centuries
@@ -99,7 +99,7 @@
               {{asBatman.halfCenturies}}
             </td>
           </tr>
-          
+
           <tr>
             <th>
               Centuries
@@ -108,7 +108,7 @@
               {{asBatman.centuries}}
             </td>
           </tr>
-          
+
           <tr>
             <th>
               Double Centuries
@@ -117,7 +117,7 @@
               {{asBatman.doubleCenturies}}
             </td>
           </tr>
-          
+
           <tr>
             <th>
               Strike Rate
@@ -126,7 +126,7 @@
               {{asBatman.strikeRate}}
             </td>
           </tr>
-          
+
           <tr>
             <th>
               Not Out Matches
@@ -158,14 +158,14 @@
               {{asBallers.overs}}
             </td>
           </tr>
-          
+
           <tr>
             <th>Wickets</th>
             <td>
               {{asBallers.wickets}}
             </td>
           </tr>
-          
+
           <tr>
             <th>Runs Against</th>
             <td>
@@ -186,7 +186,7 @@
           </tr>
 
           <tr>
-            <td colspan="2" style="color: blue;"> 
+            <td colspan="2" style="color: blue;">
               <h4>
                 Fielding
               </h4>
@@ -201,7 +201,7 @@
               {{asAllRounders.numberOfCatch}}
             </td>
           </tr>
-          
+
           <tr>
             <th>
               Points
@@ -210,15 +210,89 @@
               {{asAllRounders.points}}
             </td>
           </tr>
-          
+
         </table>
       </div>
-        
-    </div>  
-      
+
     </div>
 
-    <div class="col-1">
-
-    </div>    
   </div>
+
+  <div class="col-1">
+
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Batting</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="text-secondary">
+              <th></th>
+              <th>Tournament</th>
+              <th>Match</th>
+              <th>Runs</th>
+              <th>Balls</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of playerMatchDataBatmen; let i = index">
+                <td>{{ i + 1 }})</td>
+                <td>{{ data.tournament }}</td>
+                <td>{{data.match}}</td>
+                <td>{{ data.result1 }}</td>
+                <td>{{ data.result2 }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Balling</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="text-secondary">
+              <th></th>
+              <th>Tournament</th>
+              <th>Match</th>
+              <th>Overs</th>
+              <th>Wickets</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of playerMatchDataBaller; let i = index">
+                <td>{{ i + 1 }})</td>
+                <td>{{ data.tournament }}</td>
+                <td>{{data.match}}</td>
+                <td>{{ data.result1 }}</td>
+                <td>{{ data.result2 }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Fielding</h4>
+      </div>
+      <div class="card-body">
+
+      </div>
+    </div>
+  </div>
+</div> -->

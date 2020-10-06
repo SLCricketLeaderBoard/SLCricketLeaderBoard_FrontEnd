@@ -5,6 +5,7 @@ import { API_URL } from '../../app.constants';
 import { BatmanScoreModel } from '../../class-model/BatmanScoreModel';
 import { BallerScoreModel } from '../../class-model/BallerScoreModel';
 import { FieldingScoreModel } from '../../class-model/FieldingScoreModel';
+import { PlayerMatchDataModel } from '../../class-model/PlayerMatchDataModel';
 
 @Injectable({
   providedIn: 'root'
@@ -34,8 +35,8 @@ export class PlayerService {
   playerAccountDeactivate(playerId: Number) {
     return this.http.put<Number>(`${API_URL}/player/deactivate/${playerId}`, {});
   }
-  
-  
+
+
   getPlayerForDetails(playerId: Number) {
     return this.http.get<PlayerModel>(`${API_URL}/playeRanking/player/${playerId}`, {});
   }
@@ -52,5 +53,8 @@ export class PlayerService {
     return this.http.get<FieldingScoreModel>(`${API_URL}/playeRanking/player/fieldingDetials/${playerId}`, {});
   }
 
+  getPlayerMatchData(playerType: Number, userId: Number) {
+    return this.http.get<PlayerMatchDataModel[]>(`${API_URL}/player/match/data/${playerType}/${userId}`);
+  }
 
 }

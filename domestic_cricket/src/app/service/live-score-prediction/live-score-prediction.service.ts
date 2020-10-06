@@ -13,7 +13,8 @@ export class LiveScorePredictionService {
   ) { }
 
   getLiveScore(score: MatchScorePredictionModel) {
-    return this.http.post<Number>(`http://127.0.0.1:5000/results`, score);
+    const headers = new HttpHeaders();
+    return this.http.post<Number>(`http://127.0.0.1:5000/results`, score, { headers, responseType: 'text' as 'json' });
   }
 
 }
