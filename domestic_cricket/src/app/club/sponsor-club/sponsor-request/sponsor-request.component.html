@@ -1,0 +1,51 @@
+<div class="panel-header panel-header-sm"></div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Sponsor Requests</h4>
+          
+        </div>
+        <div class="card-body">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">Sponsor Requests</h4>
+            </div>
+
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="text-primary">
+                    <th></th>
+                    <th>Company Name</th>
+                    <th>Responsible person</th>
+                    <th>Action</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let Sponsor of sponsorList; let i = index">
+                      <td>{{ i + 1 }})</td>
+                      <td>{{ sponsor.companyName }}</td>
+                      <td>{{ sponsor.responsiblePerson }}</td>
+                      <td >
+                        <a (click)="sendRequest(sponsor.sponsorId)"><button type="button" class="btn btn-info btn-sm"
+                            title="Confirm">Confirm</button></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="container" *ngIf="!isSponsorDataLoad">
+                  <div class="text-center">
+                    <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

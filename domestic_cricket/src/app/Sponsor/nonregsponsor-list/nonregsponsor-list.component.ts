@@ -11,6 +11,7 @@ import { SponsorService } from '../../service/sponsor/sponsor.service';
 export class NonregsponsorListComponent implements OnInit {
 
   sponsors:SponsorModel[];
+  regsponsors:SponsorModel[];
   constructor(private sponsorService:SponsorService,private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -18,6 +19,14 @@ export class NonregsponsorListComponent implements OnInit {
     this.sponsorService.getNonregsponsors().subscribe(res=>{
      
       this.sponsors=res;
+      console.log(res);
+      
+
+    })
+
+    this.sponsorService.getregsponsors().subscribe(res=>{
+     
+      this.regsponsors=res;
       console.log(res);
       
 

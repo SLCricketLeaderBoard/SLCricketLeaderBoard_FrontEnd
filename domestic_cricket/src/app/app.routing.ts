@@ -25,6 +25,7 @@ import { PlayedTounamnetDetailsComponent } from './played-tounamnet-details/play
 import { PublicMatchElementDetailComponent } from './match-calender/public-match-element-detail/public-match-element-detail.component';
 import { PubMatchDetailsComponent } from './played-tounamnet-details/pub-match-details/pub-match-details.component';
 
+
 const routes: Routes = [
   {
     path: '',

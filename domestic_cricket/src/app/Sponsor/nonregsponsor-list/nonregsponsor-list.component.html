@@ -17,8 +17,8 @@
                 <h4> Registred ---- </h4>
               </div>
               <div class="row">
-                <app-nonregsponsors *ngFor="let sponser of sponsors" [sponsor]="sponser" ></app-nonregsponsors>
-                <div class="container" *ngIf="!sponsors">
+                <app-nonregsponsors *ngFor="let sponser of regsponsors" [sponsor]="sponser" ></app-nonregsponsors>
+                <div class="container" *ngIf="!regsponsors">
                   <div class="text-center">
                     <div class="spinner-border text-center" role="status" style="width: 5rem; height: 5rem;">
                       <span class="sr-only">Loading...</span>
