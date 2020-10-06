@@ -237,7 +237,7 @@
                       <!-- [disabled]="!createMatch.valid" -->
 
                       <button mat-raised-button (click)="reset()">Reset</button>
-                      <button mat-raised-button (click)="openDialog()"  >Create</button>
+                      <button mat-raised-button (click)="create()" [disabled]="!createMatch.valid" >Create</button>
 
                     </form>
                   </div>

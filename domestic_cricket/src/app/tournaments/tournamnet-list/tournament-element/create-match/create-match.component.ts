@@ -242,53 +242,41 @@ console.log(matchEndDate+" mathc end date");
         );
 
         
-        //  let x = this.matchService.createMatch(match).subscribe(response=>{
-        //    this.matchService.createMatchInfirebase(response).then(res=>{
-        //      console.log(res);
+         let x = this.matchService.createMatch(match).subscribe(response=>{
+           this.matchService.createMatchInfirebase(response).then(res=>{
+             console.log(res);
             
-        //       this.done=true;
-        //       setTimeout(()=>{
-        //         this.createMatch.reset();
-        //         this.createMatch.clearValidators();
-        //       },1000)
-        //    }
+              this.done=true;
+              setTimeout(()=>{
+                this.createMatch.reset();
+                this.createMatch.clearValidators();
+              },1000)
+           }
             
-        //    ).catch(error=>{
-        //     setTimeout(()=>{
-        //       this.createMatch.reset();
-        //       this.createMatch.clearAsyncValidators();
-        //     },2000)
+           ).catch(error=>{
+            setTimeout(()=>{
+              this.createMatch.reset();
+              this.createMatch.clearAsyncValidators();
+            },2000)
 
-        //      this.errorMessage=error.message
-        //      this.done=false;
-        //    })
-        //  },error=>{
-        //   setTimeout(()=>{
-        //     this.createMatch.reset();
-        //     this.createMatch.clearAsyncValidators();
-        //   },1000)
+             this.errorMessage=error.message
+             this.done=false;
+           })
+         },error=>{
+          setTimeout(()=>{
+            this.createMatch.reset();
+            this.createMatch.clearAsyncValidators();
+          },1000)
 
-        //    console.log(error.message);
-        //    this.errorMessage=error.message
-        //    this.done= false; 
-        //  }) 
+           console.log(error.message);
+           this.errorMessage=error.message
+           this.done= false; 
+         }) 
 
       }
     }
 
 
-    openDialog(){
-      let dialogRef = this.dialog.open(ConfirmDialogComponent);
-      
-      dialogRef.afterClosed().subscribe(result=>{
-      console.log(result);
-        if(result=='true'){
-        this.create();
-       }else{
-        
-       }
-  
-      })
-    }
+
 
 }

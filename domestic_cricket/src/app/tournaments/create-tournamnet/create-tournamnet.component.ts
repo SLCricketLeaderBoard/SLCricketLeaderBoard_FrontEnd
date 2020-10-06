@@ -55,24 +55,24 @@ export class CreateTournamnetComponent implements OnInit {
     if(startDate<finishDate){
       if(registartionCloseDate>startDate){
       
-        alert("ok")
-            // const tournament: TournamentModel = new TournamentModel(
-            //   tournamentId,
-            //   tournamentName,
-            //   startDate,
-            //   finishDate,
-            //   registartionCloseDate
-            // );
-            // console.log(tournament);
+        
+            const tournament: TournamentModel = new TournamentModel(
+              tournamentId,
+              tournamentName,
+              startDate,
+              finishDate,
+              registartionCloseDate
+            );
+            console.log(tournament);
 
-            // this.tournamentService.registerTournament(tournament).subscribe(res=>{
+            this.tournamentService.registerTournament(tournament).subscribe(res=>{
 
-            //   console.log(res);
-            //   this.done=!this.done;
+              console.log(res);
+              this.done=!this.done;
               
-            // },error=>{
-            //   console.log(error);
-            // })
+            },error=>{
+              console.log(error);
+            })
             
       }else{
         alert("Please Double check your Dates");
@@ -86,25 +86,7 @@ export class CreateTournamnetComponent implements OnInit {
   }
 
 
-  openDialog(){
-    let dialogRef = this.dialog.open(DialogContentExampleDialog);
-    
-    dialogRef.afterClosed().subscribe(result=>{
-    console.log(result);
-      if(result=='true'){
-      this.create();
-     }else{
-      
-     }
 
-    })
-  }
-  
+
   }
 ;
-
-@Component({
-  selector: 'dialog-content-example-dialog',
-  templateUrl: 'dialog-content-example-dialog.html',
-})
-export class DialogContentExampleDialog {}
