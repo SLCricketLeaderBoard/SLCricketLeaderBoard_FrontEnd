@@ -1,0 +1,302 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-3">
+              <h4 class="card-title">About Match</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body" *ngIf="match">
+          <div class="row">
+          <div class="card col-5" style="padding: 4%; margin-left: 2%;">
+            <table class="table">
+              <tr>
+                <td> 
+                  <b>
+                  Tournament   
+                  </b>
+                </td>
+                <td>
+                  :{{match.tournamentId.tournamentName}}
+                </td>
+              </tr>
+
+              <tr>
+                <td> 
+                  <b>
+                  Tournament round   
+                  </b>
+                </td>
+                <td>
+                  :{{match.tournementRound}}
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <b>
+                    Stadium
+                  </b>
+                </td>
+                <td>
+                  :{{match.stadiumId.name}}
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <b>
+                    Type
+                  </b>
+                </td>
+                <td>
+                  :{{match.matchTypeId.matchType}}
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <b>
+                    On
+                  </b>
+                </td>
+                <td>
+                  :{{match.startDate}}
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <b>
+                    Start at
+                  </b>
+                </td>
+                <td>
+                  :{{match.startTime}}
+                </td>
+              </tr>
+            </table>
+          </div>
+
+
+
+          
+          <div class="card col-5" style="padding: 4%; margin-left: 2%;">
+            <table class="table">
+                <tr>
+                  <td>
+                    Toss Win
+                  </td>
+                  <td>
+                    :{{tossWinTeam?.clubName}}
+                  </td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>{{club01?.clubName}}</td>
+                  <td>:runs = {{match?.clubOneMark}}</td>
+                  <td>:wickets = {{match?.clubOneWicket}}</td>
+                </tr>
+                <tr>
+                  <td>{{club02?.clubName}}</td>
+                  <td>:runs = {{match?.clubTwoMark}}</td>
+                  <td>:wickets = {{match?.clubTwoWicket}}</td>
+                </tr>
+
+                <tr>
+                  <td>Wins</td>
+                  <td>{{winTeamId?.clubName}}</td>
+                  <td></td>
+                </tr>
+
+            </table>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-5 card" style="padding: 2%; margin-left: 2%;">
+            <h3>Team 01</h3>
+            <h4>{{club01?.clubName}}</h4>
+            <table>
+              <tr>
+                <td>Runs</td>
+                <td>{{match?.clubOneMark}}</td>
+                </tr>
+                <!-- <tr>
+                  <td>Captain</td>
+                  <td>{{captainClubOne?.nameWithInitial}}</td>
+                </tr>
+                <tr>
+                  <td>Vice captain</td>
+                  <td>{{clubOneViceCaptain?.nameWithInitial}}</td>
+                </tr> -->
+              </table>
+              <hr>
+              <h4>Players</h4>
+              <table *ngIf="club1Players let players">
+                <tr *ngFor="let player of players">
+                    <!-- <td>
+                      Name
+                    </td> -->
+                    <td>
+                      {{player.userId.userName}}
+                    </td>
+                </tr>
+
+              </table>
+            </div>
+            <div class="col-5 card" style="padding: 2%; margin-left: 2%;">
+              <h3>Team 02</h3>
+              <h4>{{club02?.clubName}}</h4>
+              <table>
+                <tr>
+                  <td>Runs</td>
+                  <td>{{match?.clubTwoMark}}</td>
+                </tr>
+                <!-- <tr>
+                    <td>Captain</td>
+                    <td>{{captainClubOne?.nameWithInitial}}</td>
+                </tr>
+                <tr>
+                  <td>Vice captain</td>
+                  <td>{{clubOneViceCaptain?.nameWithInitial}}</td>
+                </tr> -->
+              </table>
+              <hr>
+              <H4>Players</H4>
+
+              <table *ngIf="club2Players let players">
+                <tr *ngFor="let player of players">
+                    <!-- <td>
+                      Name
+                    </td> -->
+                    <td>
+                      {{player.userId.userName}}
+                    </td>
+                </tr>
+
+              </table>
+            </div>
+          </div>
+ 
+
+          <div class="row" style="margin-top: 5%; padding: 1%;">
+                <div class="col-12">
+                  <h3>Umpires</h3>
+                </div>
+                        <div class="col-12">
+                                      <div class="row">
+                                        <div class="col-3" *ngIf="umpireOne">
+                                          <h5>1 st</h5>
+                                            <div class="card card-user">
+                                              <div class="card-body">
+                                                <div class="author">
+                                                    <img class="avatar border-gray" src="{{umpireOne.userId.profileImage}}" alt="...">
+                                                    <h5 class="title">{{umpireOne.userId.userName}}</h5>
+                                                
+                                                  <p >
+                                                    {{umpireOne.userId.nameWithInitial}}
+                                                  </p>
+                                                </div>
+                                                <p class="text-center">
+                                                  {{umpireOne.userId.email}}
+                                                  <br> {{umpireOne.userId.contactNumber}}
+                                                  <br>{{umpireOne.userId.address}}
+                                                </p>
+                                              </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-3" *ngIf="umpireTwo">
+                                          <h5>2 nd</h5>
+                                            <div class="card card-user">
+                                              <div class="card-body">
+                                                <div class="author">
+                                                    <img class="avatar border-gray" src="{{umpireTwo.userId.profileImage}}" alt="...">
+                                                    <h5 class="title">{{umpireTwo.userId.userName}}</h5>
+                                                
+                                                  <p >
+                                                    {{umpireTwo.userId.nameWithInitial}}
+                                                  </p>
+                                                </div>
+                                                <p class="text-center">
+                                                  {{umpireTwo.userId.email}}
+                                                  <br> {{umpireTwo.userId.contactNumber}}
+                                                  <br>{{umpireTwo.userId.address}}
+                                                </p>
+                                              </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-3"  *ngIf="umpireThree" >
+                                          <h5>3 rd</h5>
+                                            <div class="card card-user" >
+                                              <div class="card-body">
+                                                <div class="author">
+                                                    <img class="avatar border-gray" src="{{umpireThree.userId.profileImage}}" alt="...">
+                                                    <h5 class="title">{{umpireThree.userId.userName}}</h5>
+                                                
+                                                  <p >
+                                                    {{umpireThree.userId.nameWithInitial}}
+                                                  </p>
+                                                </div>
+                                                <p class="text-center">
+                                                  {{umpireThree.userId.email}}
+                                                  <br> {{umpireThree.userId.contactNumber}}
+                                                  <br>{{umpireThree.userId.address}}
+                                                </p>
+                                              </div>
+                                            </div>
+                                        </div>
+                           </div>
+                  </div>
+          </div>
+
+
+          
+          <div class="row" style="margin-top: 5%; padding: 1%;">
+            <div class="col-12">
+              <h3>Referee</h3>
+            </div>
+                    <div class="col-12">
+                                  <div class="row">
+                                          <div class="col-3" *ngIf="match.refereeId">
+                                              <div class="card card-user">
+                                                <div class="card-body">
+                                                  <div class="author">
+                                                      <img class="avatar border-gray" src="{{match.refereeId.userId.profileImage}}" alt="...">
+                                                      <h5 class="title">{{match.refereeId.userId.userName}}</h5>
+                                                  
+                                                    <p >
+                                                      {{match.refereeId.userId.nameWithInitial}}
+                                                    </p>
+                                                  </div>
+                                                  <p class="text-center">
+                                                    {{match.refereeId.userId.email}}
+                                                    <br> {{match.refereeId.userId.contactNumber}}
+                                                    <br>{{match.refereeId.userId.address}}
+                                                  </p>
+                                                </div>
+                                              </div>
+                                          </div>
+                                  </div>
+                         </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+   
+  </div>
+

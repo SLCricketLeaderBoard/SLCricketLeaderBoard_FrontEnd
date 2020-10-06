@@ -13,13 +13,13 @@
               </div>
               <hr>
 
-              <div class="row" *ngIf="playedMatches.length>0">
+              <!-- <div class="row" *ngIf="playedMatches.length>0">
                 <h5>For Testing played matches</h5>
                 <div class="col">
                   <app-match-element *ngFor="let match of playedMatches" [match]="match" [played]="true">
                   </app-match-element>
                 </div>
-              </div>
+              </div> -->
 
               <div class="row" *ngIf="oneDayPlayedMatches.length>0">
                 <h5>One Day</h5>
@@ -46,9 +46,9 @@
                 </div>
               </div>
 
-              <div class="row" *ngIf="!playedMatches" style="margin-left: 20%; margin-top: 20%; ">
+              <!-- <div class="row" *ngIf="!playedMatches" style="margin-left: 20%; margin-top: 20%; ">
                 <p>No Matches Pendding</p>
-              </div>
+              </div> -->
               
             </div>
             <div class="col-3" style="margin: 2%;">
@@ -58,13 +58,13 @@
               </div>
               <hr>
 
-              <div class="row" *ngIf="toPlayMatches.length>0">
+              <!-- <div class="row" *ngIf="toPlayMatches.length>0">
                 <h5>For Testing toPlaye matches</h5>
                 <div class="col">
                   <app-match-element *ngFor="let match of toPlayMatches" [match]="match" [played]="true">
                   </app-match-element>
                 </div>
-              </div>
+              </div> -->
 
               <div class="row" *ngIf="oneDayUpcommingMatches.length>0">
                 <h5>One Day</h5>
@@ -74,25 +74,25 @@
                 </div>
               </div>
               <hr>
-              <div class="row" *ngIf="tTwentyPlayedUpdatedMatches.length>0">
+              <div class="row" *ngIf="tTwentyUpcommingMathces.length>0">
                 <h5>T Twenty</h5>
                 <div class="col">
-                  <app-match-element *ngFor="let match of tTwentyPlayedUpdatedMatches" [match]="match" [played]="false">
+                  <app-match-element *ngFor="let match of tTwentyUpcommingMathces" [match]="match" [played]="false">
                   </app-match-element>
                 </div>
 
               </div>
               <hr>
-              <div class="row" *ngIf="threeFourDayMathcesPlayedUpdated.length>0">
+              <div class="row" *ngIf="threeFourDayMathcesUpcomming.length>0">
                 <h5>3 4 Days</h5>
                 <div class="col">
-                  <app-match-element-trefordy *ngFor="let match of threeFourDayMathcesPlayedUpdated" [match]="match"
+                  <app-match-element-trefordy *ngFor="let match of threeFourDayMathcesUpcomming" [match]="match"
                     [played]="false"></app-match-element-trefordy>
                 </div>
               </div>
-              <div class="row" *ngIf="!toPlayMatches" style="margin-left: 20%; margin-top: 20%; ">
+              <!-- <div class="row" *ngIf="!toPlayMatches" style="margin-left: 20%; margin-top: 20%; ">
                 <p>No Matches Comming up</p>
-              </div>
+              </div> -->
             </div>
 
             <div class="col-3" style="margin: 2%;">
@@ -102,13 +102,13 @@
               </div>
               <hr>
 
-              <div class="row" *ngIf="updatedMatches.length>0">
+              <!-- <div class="row" *ngIf="oneDayPlayedUpdatedMatches.length>0">
                 <h5>For Testing updated matches</h5>
                 <div class="col">
-                  <app-match-element *ngFor="let match of updatedMatches" [match]="match" [played]="true">
+                  <app-match-element *ngFor="let match of oneDayPlayedUpdatedMatches" [match]="match" [played]="true">
                   </app-match-element>
                 </div>
-              </div>
+              </div> -->
 
 
               <div class="row" *ngIf="oneDayPlayedUpdatedMatches.length>0">
@@ -144,9 +144,9 @@
               </div>
 
 
-              <div class="row" *ngIf="!updatedMatches" style="margin-left: 20%; margin-top: 20%; ">
+              <!-- <div class="row" *ngIf="!updatedMatches" style="margin-left: 20%; margin-top: 20%; ">
                 <p>No Matches Updated</p>
-              </div>
+              </div> -->
             </div>
 
           </div>

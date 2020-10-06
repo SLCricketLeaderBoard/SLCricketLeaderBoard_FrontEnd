@@ -37,4 +37,9 @@ export class MainSiteComponent implements OnInit {
     this.router.navigate(["/match-calender"], { relativeTo: this.route });
   }
 
+
+  tournamentHistory(){
+    this.router.navigate(["/played-tournaments"], { relativeTo: this.route });
+  }
+  
 }
