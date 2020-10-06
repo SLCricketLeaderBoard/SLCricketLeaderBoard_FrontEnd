@@ -1,0 +1,73 @@
+<div class="panel-header panel-header-sm"></div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <!-- <div class="card-header">
+          <h4 class="card-title">Reports</h4>
+        </div> -->
+        <div class="card-body">
+
+          <h4>Club Reports</h4>
+
+          <div class="row">
+            <div class="col-md-6">
+              <table class="table">
+                <tr>
+                  <td>Club general report</td>
+                  <td>
+                    <a (click)="clubReport()"><button type="button" class="btn btn-success btn-sm" title="Club Report">
+                        <i class="far fa-file-pdf"></i></button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Club Payment Report - 2020</td>
+                  <td>
+                    <a (click)="clubPaymentReport(2020)"><button type="button" class="btn btn-success btn-sm"
+                        title="Club Report">
+                        <i class="far fa-file-pdf"></i></button></a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <h4>Tournament Reports</h4>
+
+          <div class="row">
+            <div class="col-md-6">
+              <table class="table">
+                <tr>
+                  <td>All Tournaments</td>
+                  <td>
+                    <a (click)="clubReport()"><button type="button" class="btn btn-success btn-sm" title="Club Report">
+                        <i class="far fa-file-pdf"></i></button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Club Payment Report - 2020</td>
+                  <td>
+                    <a (click)="clubReport()"><button type="button" class="btn btn-success btn-sm" title="Club Report">
+                        <i class="far fa-file-pdf"></i></button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Club Payment Report - 2019</td>
+                  <td>
+                    <a (click)="clubReport()"><button type="button" class="btn btn-success btn-sm" title="Club Report">
+                        <i class="far fa-file-pdf"></i></button></a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showSpinner" class="spinner-border text-secondary" role="status" id="loader">
+  <span class="sr-only">Loading...</span>
+</div>

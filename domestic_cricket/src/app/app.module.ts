@@ -38,11 +38,15 @@ import { OneDayPlayerRankingsComponent } from './player-ranking/one-day-player-r
 import { ThreeFourDaysPlayerRankingsComponent } from './player-ranking/three-four-days-player-rankings/three-four-days-player-rankings.component';
 import { TTwentyPlayerRankingsComponent } from './player-ranking/t-twenty-player-rankings/t-twenty-player-rankings.component';
 import { PlayerProfileSummeryComponent } from './player/player-profile-summery/player-profile-summery.component';
-import { MatchCalenderComponent } from './match-calender/match-calender.component';
-import { TournamentElementComponent } from './tournaments/tournamnet-list/tournament-element/tournament-element.component';
 import { PublicTournamentElementComponent } from './match-calender/public-tournament-element/public-tournament-element.component';
+import { MatchCalenderComponent } from './match-calender/match-calender.component';
 import { PublicMatchElementComponent } from './match-calender/public-match-element/public-match-element.component';
 import { PublicMatchElementDetailComponent } from './match-calender/public-match-element-detail/public-match-element-detail.component';
+import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PlayedTounamnetDetailsComponent } from './played-tounamnet-details/played-tounamnet-details.component';
+import { MatchDetailsComponent } from './tournaments/tournamnet-list/tournament-element/match-list/match-details/match-details.component';
+import { PubMatchDetailsComponent } from './played-tounamnet-details/pub-match-details/pub-match-details.component';
 
 
 
@@ -68,6 +72,7 @@ import { PublicMatchElementDetailComponent } from './match-calender/public-match
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireStorageModule,
+    MatDialogModule
   ],
   declarations: [
     AppComponent,
@@ -76,7 +81,7 @@ import { PublicMatchElementDetailComponent } from './match-calender/public-match
     PlayerSignupComponent,
     ManagerSignupComponent,
     ClubSignupComponent,
-   
+
     SponsorSignupComponent,
     LiveMatchComponent,
     MatchOversComponent,
@@ -85,6 +90,7 @@ import { PublicMatchElementDetailComponent } from './match-calender/public-match
     ClubRankingComponent,
     PlayerRankingComponent,
     PlayerRankingElementComponent,
+
     OneDayPlayerRankingsComponent,
     ThreeFourDaysPlayerRankingsComponent,
     TTwentyPlayerRankingsComponent,
@@ -94,10 +100,11 @@ import { PublicMatchElementDetailComponent } from './match-calender/public-match
     PublicTournamentElementComponent,
     PublicMatchElementComponent,
     PublicMatchElementDetailComponent,
-   
-   
-    
-  
+    PlayedTounamnetDetailsComponent,
+    // MatchDetailsComponent,
+    PubMatchDetailsComponent
+
+
 
   ],
   providers: [

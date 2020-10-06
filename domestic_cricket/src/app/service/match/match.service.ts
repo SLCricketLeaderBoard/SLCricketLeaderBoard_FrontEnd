@@ -75,6 +75,27 @@ export class MatchService {
     return this.http.get<MatchModel[]>(`${API_URL}/refereeMatchesUpcomming/${tournamentId}/${x}`, { headers });
   }
 
+  getRefereeMatchesUpcommingOneDay(tournamentId: Number, refereeId: String) {
+    let x: Number = +refereeId;
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.get<MatchModel[]>(`${API_URL}/getRefereeMatchesUpcommingOneDay/${tournamentId}/${x}`, { headers });
+  }
+
+  getRefereeMatchesUpcomming34Days(tournamentId: Number, refereeId: String) {
+    let x: Number = +refereeId;
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.get<MatchModel[]>(`${API_URL}/getRefereeMatchesUpcomming34Days/${tournamentId}/${x}`, { headers });
+  }
+
+  getRefereeMatchesUpcommingTTwenty(tournamentId: Number, refereeId: String) {
+    let x: Number = +refereeId;
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.get<MatchModel[]>(`${API_URL}/getRefereeMatchesUpcommingTTwenty/${tournamentId}/${x}`, { headers });
+  }
+
 
   getRefereeMatchesPlayed(tournamentId: Number, refereeId: String) {
     let x: Number = +refereeId;
@@ -83,11 +104,53 @@ export class MatchService {
     return this.http.get<MatchModel[]>(`${API_URL}/refereeMatchesPlayed/${tournamentId}/${x}`, { headers });
   }
 
+  getRefereeMatchesPlayedOneDay(tournamentId: Number, refereeId: String) {
+    let x: Number = +refereeId;
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.get<MatchModel[]>(`${API_URL}/getRefereeMatchesPlayedOneDay/${tournamentId}/${x}`, { headers });
+  }
+
+  getRefereeMatchesPlayed34Days(tournamentId: Number, refereeId: String) {
+    let x: Number = +refereeId;
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.get<MatchModel[]>(`${API_URL}/getRefereeMatchesPlayed34Days/${tournamentId}/${x}`, { headers });
+  }
+
+  getRefereeMatchesPlayedTTwenty(tournamentId: Number, refereeId: String) {
+    let x: Number = +refereeId;
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.get<MatchModel[]>(`${API_URL}/getRefereeMatchesPlayedTTwenty/${tournamentId}/${x}`, { headers });
+  }
+
   getRefereeMatchesPlayedUpdated(tournamentId: Number, refereeId: String) {
     let x: Number = +refereeId;
     let jwt = sessionStorage.getItem('TOKEN');
     const headers = new HttpHeaders().set('Authorization', jwt);
     return this.http.get<MatchModel[]>(`${API_URL}/refereeMatchesPlayedUpdated/${tournamentId}/${x}`, { headers });
+  }
+
+  getRefereeMatchesPlayedUpdatedOneDay(tournamentId: Number, refereeId: String) {
+    let x: Number = +refereeId;
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.get<MatchModel[]>(`${API_URL}/getRefereeMatchesPlayedUpdatedOneDay/${tournamentId}/${x}`, { headers });
+  }
+
+  getRefereeMatchesPlayedUpdated34Days(tournamentId: Number, refereeId: String) {
+    let x: Number = +refereeId;
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.get<MatchModel[]>(`${API_URL}/getRefereeMatchesPlayedUpdated34Days/${tournamentId}/${x}`, { headers });
+  }
+
+  getRefereeMatchesPlayedUpdatedTTwenty(tournamentId: Number, refereeId: String) {
+    let x: Number = +refereeId;
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.get<MatchModel[]>(`${API_URL}/getRefereeMatchesPlayedUpdatedTTwenty/${tournamentId}/${x}`, { headers });
   }
 
   //Player Ranking
@@ -109,8 +172,20 @@ export class MatchService {
 
 
   getMatchesForCalender(tournamentId: Number) {
-    
     return this.http.get<MatchModel[]>(`${API_URL}/playeRanking/matchesForCalender/${tournamentId}`);
   }
+
+
+
+  getPublicMatchById(matchId: Number) {
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.get<MatchModel>(`${API_URL}/playeRanking/match/${matchId}`, { headers });
+
+  }
+
+
+
+
 
 }

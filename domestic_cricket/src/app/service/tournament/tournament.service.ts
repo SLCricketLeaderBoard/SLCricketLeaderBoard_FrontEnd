@@ -27,6 +27,11 @@ export class TournamentService {
     
     return this.http.get<TournamentModel[]>(`${API_URL}/playeRanking/tournaments`);
   }
+
+  getTournamentsHistory(): Observable<TournamentModel[]> {
+    
+    return this.http.get<TournamentModel[]>(`${API_URL}/playeRanking/tournamentsForHistory`);
+  }
   
 
 

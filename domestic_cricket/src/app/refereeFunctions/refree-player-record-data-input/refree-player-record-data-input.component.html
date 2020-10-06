@@ -1,7 +1,7 @@
 <div class="panel-header panel-header-sm"></div>
 <div class="main-content">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12" *ngIf="!showSpinner">
       <div class="card">
         <div class="card-header">
           <h4 class="card-title">Player record</h4>
@@ -170,7 +170,7 @@
 
               </div>
 
-              <div class="row">
+              <!-- <div class="row">
 
                 <div class="col-md-4 pr-1">
                   <div class="form-group">
@@ -182,7 +182,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
 
               <div class="row">
@@ -209,7 +209,7 @@
 
               <div class="row">
                 <button class="btn btn-primary" (click)="reset()">Reset</button>
-                <button class="btn btn-primary" (click)="submit()">Submit</button>
+                <button class="btn btn-primary" (click)="submit()" [disabled]="!playerRecordForm.valid">Submit</button>
               </div>
 
               
@@ -227,5 +227,9 @@
      </div>
     </div>
   </div>
+</div>
+
+<div *ngIf="showSpinner" class="spinner-border text-secondary" role="status" id="loader">
+  <span class="sr-only">Loading...</span>
 </div>
 

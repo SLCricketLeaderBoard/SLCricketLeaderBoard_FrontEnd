@@ -8,25 +8,38 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class MainSiteComponent implements OnInit {
 
-  constructor(private router:Router,private route:ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
-  login(){
+  login() {
     this.router.navigate(["login"], { relativeTo: this.route });
   }
 
-  live(){
+  live() {
     this.router.navigate(["/live-now"], { relativeTo: this.route });
   }
-  
-  playerRankings(){
+
+
+  clubRank() {
+    this.router.navigate(["/club-ranking"], { relativeTo: this.route });
+  }
+
+
+
+  playerRankings() {
     this.router.navigate(["/player-rankings"], { relativeTo: this.route });
   }
 
-  matchCalender(){
-    this.router.navigate(["/match-calender"], { relativeTo: this.route });  
+
+  matchCalender() {
+    this.router.navigate(["/match-calender"], { relativeTo: this.route });
+  }
+
+
+  tournamentHistory(){
+    this.router.navigate(["/played-tournaments"], { relativeTo: this.route });
   }
   
 }
