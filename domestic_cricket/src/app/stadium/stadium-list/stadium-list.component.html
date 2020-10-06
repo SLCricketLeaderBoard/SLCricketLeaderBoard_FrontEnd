@@ -6,8 +6,59 @@
       <div class="card">
         <div class="card-header">
           <h4 class="card-title">Stadiums</h4>
+          <button (click)="register()" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Register Manager"><i class="fas fa-plus"></i>
+          </button> 
         </div>
         <div class="card-body">
+
+
+              <div class="card" style="width: 40rem; margin-left: 3%; padding: 2%;" *ngFor="let item of stadiums">
+                <table class="table">
+                  <tr>
+                    <th colspan="2">
+                      {{item.name}}
+                    </th>
+                  </tr>
+                  <tr>
+                    
+                      <th colspan="2">
+                        {{item.address}}
+                      </th>
+                    
+                  </tr>
+                  <tr>
+                    <td>Contact</td>
+                    <td>
+                      {{item.contactnum}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Capacity
+                    </td>
+                    <td>
+                      {{item.capacity}}
+
+                    </td>
+                  </tr>
+
+                </table>
+               
+               
+
+                
+
+               
+
+              
+                <!-- public name: String,
+                public address: String,
+                public contactum: String,
+                public capacity: Number, -->
+              
+
+              </div>
+
          
         </div>
       </div>

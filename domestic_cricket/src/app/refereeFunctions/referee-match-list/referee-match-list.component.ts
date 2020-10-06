@@ -45,8 +45,12 @@ export class RefereeMatchListComponent implements OnInit {
 
     this.matchService.getRefereeMatchesPlayed(this.tournamentId,this.userId).subscribe(res=>{
       this.playedMatches=res;
+      
+      
 
       res.forEach(x=>{
+        console.log(x);
+        
         if(x.matchTypeId.matchTypeId==1){
           this.oneDayPlayedMatches.push(x);
         }else if(x.matchTypeId.matchTypeId==3){
@@ -73,8 +77,10 @@ export class RefereeMatchListComponent implements OnInit {
     this.matchService.getRefereeMatchesUpcomming(this.tournamentId,this.userId).subscribe(res=>{
      
       this.toPlayMatches=res;
+   
       const matchUpcomming: ThreeFourDaysMatchModel = new ThreeFourDaysMatchModel(null,null);
       res.forEach(x=>{
+        console.log(x);
         if(x.matchTypeId.matchTypeId==1){
           this.oneDayUpcommingMatches.push(x);
         }else if(x.matchTypeId.matchTypeId==3){
@@ -97,9 +103,10 @@ export class RefereeMatchListComponent implements OnInit {
     this.matchService.getRefereeMatchesPlayedUpdated(this.tournamentId,this.userId).subscribe(res=>{
      
       this.updatedMatches=res;
+     
       const matchplayedUpdated: ThreeFourDaysMatchModel = new ThreeFourDaysMatchModel(null,null);
       res.forEach(x=>{
-
+        console.log(x);
         if(x.matchTypeId.matchTypeId==1){
           this.oneDayPlayedUpdatedMatches.push(x);
         }else if(x.matchTypeId.matchTypeId==3){

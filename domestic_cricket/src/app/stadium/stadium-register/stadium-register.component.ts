@@ -26,7 +26,7 @@ export class StadiumRegisterComponent implements OnInit {
   swalMessage:SwalMessage = new SwalMessage();
 
    //reactive form definition
-  stadiumRegisterFrom=this.fb.group({
+   stadiumRegisterFrom=this.fb.group({
     name:['',[Validators.required]],
     address:['',[Validators.required]],
     contactnum:['',[Validators.required,Validators.email]],
@@ -82,6 +82,10 @@ export class StadiumRegisterComponent implements OnInit {
         this.swalMessage.notSuccessMessage('Stadium registration not successful');
       }
     );
+  }
+
+  register(){
+
   }
 
 }
