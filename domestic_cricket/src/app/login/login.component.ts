@@ -114,7 +114,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("clubId", response.clubId + "");
 
         if (clubStatus == 1) {
-          this.router.navigate(["manager-dashboard"]);
+          this.router.navigate(["club-details"]);
         } else {
           this.router.navigate([
             "club-payment",
@@ -126,7 +126,7 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         sessionStorage.setItem("isManagerHasClub", "0");
-        this.router.navigate(["manager-dashboard"]);
+        this.router.navigate(["club-details"]);
         this.swalMessage.warnningMessage(
           "You haven't assing any club yet.Please inform to admin"
         );

@@ -65,7 +65,7 @@ export class SidebarComponent implements OnInit {
     this.menuItems = ROUTES.filter((menuItem) => menuItem);
 
     this.admin = [
-      { path: "/dashboard", title: "Dashboard", icon: "design_app", class: "" },
+      // { path: "/dashboard", title: "Dashboard", icon: "design_app", class: "" },
       { path: "/club-list", title: "Clubs", icon: "design_app", class: "" },
       { path: "/manager-list", title: "Managers", icon: "design_app", class: "", },
       { path: "/umpire-list", title: "Umpires", icon: "design_app", class: "" },
@@ -77,7 +77,7 @@ export class SidebarComponent implements OnInit {
     ];
 
     this.manager = [
-      { path: "/manager-dashboard", title: "Dashboard", icon: "design_app", class: "" },
+      // { path: "/manager-dashboard", title: "Dashboard", icon: "design_app", class: "" },
       { path: "/club-details", title: "Club", icon: "design_app", class: "" },
       { path: "/player-list", title: "Players", icon: "design_app", class: "" },
       { path: "/manager-match-list", title: "Matches", icon: "design_app", class: "" },
