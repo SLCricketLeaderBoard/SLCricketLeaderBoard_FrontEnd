@@ -161,7 +161,7 @@
                                   </div>
                               </div>
 
-                              <div class="row" style="margin-bottom: 20px;" *ngIf="showInning">
+                              <!-- <div class="row" style="margin-bottom: 20px;" *ngIf="showInning">
                                 <div class="form-group">
                                   <label>Inning</label>
                                   <br>
@@ -170,13 +170,150 @@
                                     <option [value]=2>2</option>
                                   </select>            
                                 </div>
-                            </div>
+                            </div> -->
                     
                               
                     
                     </div>
                     <!-- end of the win team toss team man of the match div -->
                     </div>   
+
+
+                    
+
+
+
+
+
+
+
+
+
+
+                    <!-- //second inning -->
+
+
+
+
+                    <div class="row" *ngIf="showInning">
+                      <div class="col-12">
+                        <h5>Second Inning</h5>
+                      </div>
+
+                      <!-- team 1 details start here -->
+                      <div class="col-3 card" style="padding: 2%; margin-left: 2%;">
+                        <h3>Team 01</h3>
+                        <h4>{{club01?.clubName}}</h4>
+                      
+                        <div class="row">
+  
+                            <div class="form-group">
+                              <label>Runs</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                placeholder="runs"
+                                formControlName="club1RunsSecond"
+                              />                     
+                            </div>
+                          </div>
+                        <div class="row">
+                          
+                            <div class="form-group">
+                              <label>Wickets</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                placeholder="wickets"
+                                formControlName="club1WicketsSecond"
+                              />                     
+                            </div>
+                        
+                        </div>
+                        <div class="row">
+  
+                            <div class="form-group">
+                              <label>Faced Overs</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                placeholder="Faced overs"
+                                formControlName="club1FacedOversSecond"
+                              />                     
+                            </div>
+  
+                        </div>
+                      
+                      </div>
+  
+                      <!-- Team 1 details ends here -->
+  
+  
+  
+  
+  
+  
+                      <!-- Team 2 details tag start here -->
+                      <div class="col-3 card" style="padding: 2%; margin-left: 2%;">
+                        <h3>Team 02</h3>
+                        <h4>{{club02?.clubName}}</h4>
+                      
+                        <div class="row">
+  
+                            <div class="form-group">
+                              <label>Runs</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                placeholder="runs"
+                                formControlName="club2RunsSecond"
+                              />                     
+                            </div>
+                          </div>
+                        <div class="row">
+                          
+                            <div class="form-group">
+                              <label>Wickets</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                placeholder="wickets"
+                                formControlName="club2WicketsSecond"
+                              />                     
+                            </div>
+                        
+                        </div>
+                        <div class="row">
+  
+                            <div class="form-group">
+                              <label>Faced Overs</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                placeholder="Faced overs"
+                                formControlName="club2FacedOversSecond"
+                              />                     
+                            </div>
+  
+                        </div>
+                      
+                      </div>
+  
+                      <!-- // team two inputs end here -->
+  
+  
+                      <!-- Strat of the win team toss team man of the mathc here -->
+                      <div class="col-3" style="padding: 2%; margin-left: 2%;">
+  
+                            
+                     
+  
+      
+                      
+                      </div>
+                      <!-- end of the win team toss team man of the match div -->
+                      </div>   
+
                   <div class="row" style="padding-left: 35%;">
                     
                     <div class="button-container">

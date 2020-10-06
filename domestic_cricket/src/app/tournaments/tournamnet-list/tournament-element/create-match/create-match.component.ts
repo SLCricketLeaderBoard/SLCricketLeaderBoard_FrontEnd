@@ -51,6 +51,7 @@ export class CreateMatchComponent implements OnInit {
 
   startDate: Date = new Date();
   endDate: Date = new Date();
+  showSpinner= false;
 
   constructor(private clubService: ClubService,
     private umpireService: UmpireService,
@@ -151,6 +152,7 @@ export class CreateMatchComponent implements OnInit {
   }
 
   create() {
+    this.showSpinner=true;
     const matchId: Number = null;
     const club1Id: Number = this.createMatch.value['club01'];
     const club2Id: Number = this.createMatch.value['club02'];
@@ -245,7 +247,7 @@ console.log(matchEndDate+" mathc end date");
          let x = this.matchService.createMatch(match).subscribe(response=>{
            this.matchService.createMatchInfirebase(response).then(res=>{
              console.log(res);
-            
+             this.showSpinner=false;
               this.done=true;
               setTimeout(()=>{
                 this.createMatch.reset();
@@ -254,6 +256,7 @@ console.log(matchEndDate+" mathc end date");
            }
             
            ).catch(error=>{
+            this.showSpinner=false;
             setTimeout(()=>{
               this.createMatch.reset();
               this.createMatch.clearAsyncValidators();
@@ -262,7 +265,10 @@ console.log(matchEndDate+" mathc end date");
              this.errorMessage=error.message
              this.done=false;
            })
+
+           this.showSpinner=false;
          },error=>{
+          this.showSpinner=false;
           setTimeout(()=>{
             this.createMatch.reset();
             this.createMatch.clearAsyncValidators();

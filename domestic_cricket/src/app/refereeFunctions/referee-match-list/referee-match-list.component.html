@@ -41,8 +41,8 @@
               <div class="row" *ngIf="threeFourDayPlayedMatches.length>0">
                 <h5>3 4 Days</h5>
                 <div class="col">
-                  <app-match-element-trefordy *ngFor="let match of threeFourDayPlayedMatches" [match]="match"
-                    [played]="true"></app-match-element-trefordy>
+                  <app-match-element *ngFor="let match of threeFourDayPlayedMatches" [match]="match"
+                    [played]="true"></app-match-element>
                 </div>
               </div>
 
@@ -86,8 +86,8 @@
               <div class="row" *ngIf="threeFourDayMathcesUpcomming.length>0">
                 <h5>3 4 Days</h5>
                 <div class="col">
-                  <app-match-element-trefordy *ngFor="let match of threeFourDayMathcesUpcomming" [match]="match"
-                    [played]="false"></app-match-element-trefordy>
+                  <app-match-element *ngFor="let match of threeFourDayMathcesUpcomming" [match]="match"
+                    [played]="true"></app-match-element>
                 </div>
               </div>
               <!-- <div class="row" *ngIf="!toPlayMatches" style="margin-left: 20%; margin-top: 20%; ">
@@ -138,8 +138,8 @@
                   3 4 Days
                 </h5>
                 <div class="col">
-                  <app-match-element-trefordy *ngFor="let match of threeFourDayMathcesPlayedUpdated" [match]="match"
-                    [played]="true"></app-match-element-trefordy>
+                  <app-match-element *ngFor="let match of threeFourDayMathcesPlayedUpdated" [match]="match"
+                    [played]="true"></app-match-element>
                 </div>
               </div>
 

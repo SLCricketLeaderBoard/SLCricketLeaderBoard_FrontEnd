@@ -43,6 +43,12 @@ sponsorAccept(userId: Number) {
     return this.http.post<Boolean>(`${API_URL}/sponsorclubrequest/${sponsorId}/${clubId}`, {});
 
   }
-   
+  
+  getclubsponsor(userId: Number){
+    //console.log(this.http.get<SponsorModel[]>(`${API_URL}/nonregsponsors`));
+    console.log(userId);
+    return this.http.get<SponsorModel[]>(`${API_URL}/getclubsponsor/${userId}`);
+      
+  }
 
 }

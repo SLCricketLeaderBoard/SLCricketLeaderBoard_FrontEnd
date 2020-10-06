@@ -177,6 +177,19 @@ export class MatchService {
 
 
 
+  getPublicMatchById(matchId: Number) {
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.get<MatchModel>(`${API_URL}/playeRanking/match/${matchId}`, { headers });
+
+  }
+
+
+  updateMatchFor34Days(match: MatchModel): Observable<MatchModel> {
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.post<MatchModel>(`${API_URL}/updateMatchFor34Days`, match, { headers });
+  }
 
 
 

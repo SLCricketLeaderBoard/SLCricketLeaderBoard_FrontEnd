@@ -48,34 +48,34 @@ export class MatchElementComponent implements OnInit {
     }
 
     this.clubServie.getClubData(this.match.clubOneId).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
       this.club01=res;
     })
 
     this.clubServie.getClubData(this.match.clubTwoId).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
       this.club02=res;
     })
 
     this.clubServie.getClubData(this.match.winTeamId).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
       if(res){
         this.winClub=res;
       }
     })
 
     this.umpireService.getUmpire(this.match.umpireOneId).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
       this.umpireOne=res;
     })
 
     this.umpireService.getUmpire(this.match.umpireTwoId).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
       this.umpireTwo=res;
     })
 
     this.umpireService.getUmpire(this.match.umpireThreeId).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
       this.umpireThree=res;
     })
 

@@ -288,23 +288,23 @@ export class RefereeLiveMatchElementComponent implements OnInit {
     console.log(liveScoreMode);
     
     
-    this.afs.collection('liveMatchesRecords').doc(`${this.userId}`).collection('match').doc(`${this.match.matchId}`).collection('eachBaller').add(
-      { inning:inning,
-        battingClub:this.battingClub,
-        fieldingClub:this.fieldingClub,
-        runs: +runs,
-        wicket:wicket,
-        ballerState:ballState,
-        striker:striker,
-        nonStriker:nonStriker,
-        bowler:bowler,
-        score:score,
-        numberofBalls:numberofBalls,
-        runrate:runrate,
-        numberOfWickets:numberOfWickets
-      }
+    // this.afs.collection('liveMatchesRecords').doc(`${this.userId}`).collection('match').doc(`${this.match.matchId}`).collection('eachBaller').add(
+    //   { inning:inning,
+    //     battingClub:this.battingClub,
+    //     fieldingClub:this.fieldingClub,
+    //     runs: +runs,
+    //     wicket:wicket,
+    //     ballerState:ballState,
+    //     striker:striker,
+    //     nonStriker:nonStriker,
+    //     bowler:bowler,
+    //     score:score,
+    //     numberofBalls:numberofBalls,
+    //     runrate:runrate,
+    //     numberOfWickets:numberOfWickets
+    //   }
 
-    )
+    // )
 
     this.afs.collection('liveMatches').doc(`${this.match.matchId}`).set(
       { inning:inning,

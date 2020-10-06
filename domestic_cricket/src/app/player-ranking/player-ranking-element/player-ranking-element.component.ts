@@ -21,7 +21,8 @@ export class PlayerRankingElementComponent implements OnInit {
     console.log(id);
     this.router.navigate(["player", id]);
 
-    //this.router.navigate(["player",id],{ relativeTo: this.route ,queryParams:{rank:this.i}});
+    // this.router.navigate(["player",id],{ relativeTo: this.route ,queryParams:{rank:this.i}});
+
   }
 
 }
