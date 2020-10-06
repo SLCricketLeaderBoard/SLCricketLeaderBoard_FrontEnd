@@ -177,6 +177,13 @@ export class MatchService {
 
 
 
+  getPublicMatchById(matchId: Number) {
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.get<MatchModel>(`${API_URL}/playeRanking/match/${matchId}`, { headers });
+
+  }
+
 
 
 

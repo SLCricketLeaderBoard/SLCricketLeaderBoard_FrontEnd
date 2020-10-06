@@ -50,8 +50,11 @@ export class RefereeMatchListComponent implements OnInit {
 
       this.matchService.getRefereeMatchesPlayedTTwenty(this.tournamentId,this.userId).subscribe(res=>{
         this.tTwentyPlayedMatches=res;
-      })
+        console.log(res                                                                                                         );
+        
 
+      })
+                                                                                                              
       this.matchService.getRefereeMatchesPlayed34Days(this.tournamentId,this.userId).subscribe(res=>{
         res.forEach(x=>{
           console.log(x);  
@@ -76,6 +79,9 @@ export class RefereeMatchListComponent implements OnInit {
 
       this.matchService.getRefereeMatchesPlayedUpdatedTTwenty(this.tournamentId,this.userId).subscribe(res=>{
         this.tTwentyPlayedUpdatedMatches=res;
+        res.forEach(x=>{
+          console.log(x);
+        })
       })
 
       this.matchService.getRefereeMatchesPlayedUpdated34Days(this.tournamentId,this.userId).subscribe(res=>{
@@ -124,88 +130,91 @@ export class RefereeMatchListComponent implements OnInit {
 
 
 
-    // this.matchService.getRefereeMatchesPlayed(this.tournamentId,this.userId).subscribe(res=>{
-    //   this.playedMatches=res;
+    this.matchService.getRefereeMatchesPlayed(this.tournamentId,this.userId).subscribe(res=>{
+      this.playedMatches=res;
       
       
 
-    //   res.forEach(x=>{
-    //     console.log(x);
+      // res.forEach(x=>{
+      //   console.log(x);
         
-    //     if(x.matchTypeId.matchTypeId==1){
-    //       this.oneDayPlayedMatches.push(x);
-    //     }else if(x.matchTypeId.matchTypeId==3){
-    //       this.tTwentyPlayedMatches.push(x);
-    //     }
+      //   if(x.matchTypeId.matchTypeId==1){
+      //     this.oneDayPlayedMatches.push(x);
+      //   }else if(x.matchTypeId.matchTypeId==3){
+      //     this.tTwentyPlayedMatches.push(x);
+      //   }
 
-    //     const matchPlayed: ThreeFourDaysMatchModel = new ThreeFourDaysMatchModel(null,null);
-    //     if(x.testMatchId){  
-    //       if(x.testMatchId!=x.matchId){
-    //         matchPlayed.secondInning=x;
-    //         console.log("secon innigs");
-    //         this.threeFourDayPlayedMatches.push(matchPlayed);
-    //       }else if(x.testMatchId==x.matchId){
-    //         matchPlayed.firstInning=x;
-    //         console.log("first innigs");
-    //       }          
-    //     }
-    //   })
+      //   const matchPlayed: ThreeFourDaysMatchModel = new ThreeFourDaysMatchModel(null,null);
+      //   if(x.testMatchId){  
+      //     if(x.testMatchId!=x.matchId){
+      //       matchPlayed.secondInning=x;
+      //       console.log("secon innigs");
+      //       this.threeFourDayPlayedMatches.push(matchPlayed);
+      //     }else if(x.testMatchId==x.matchId){
+      //       matchPlayed.firstInning=x;
+      //       console.log("first innigs");
+      //     }          
+      //   }
+      // })
 
-    // })
+    })
 
 
                                                                                                                                
-    // this.matchService.getRefereeMatchesUpcomming(this.tournamentId,this.userId).subscribe(res=>{
+    this.matchService.getRefereeMatchesUpcomming(this.tournamentId,this.userId).subscribe(res=>{
      
-    //   this.toPlayMatches=res;
+      this.toPlayMatches=res;
    
-    //   const matchUpcomming: ThreeFourDaysMatchModel = new ThreeFourDaysMatchModel(null,null);
-    //   res.forEach(x=>{
-    //     console.log(x);
-    //     if(x.matchTypeId.matchTypeId==1){
-    //       this.oneDayUpcommingMatches.push(x);
-    //     }else if(x.matchTypeId.matchTypeId==3){
-    //       this.tTwentyUpcommingMathces.push(x);
-    //     }
+      // const matchUpcomming: ThreeFourDaysMatchModel = new ThreeFourDaysMatchModel(null,null);
+      // res.forEach(x=>{
+      //   console.log(x);
+      //   if(x.matchTypeId.matchTypeId==1){
+      //     this.oneDayUpcommingMatches.push(x);
+      //   }else if(x.matchTypeId.matchTypeId==3){
+      //     this.tTwentyUpcommingMathces.push(x);
+      //   }
 
-    //     if(x.testMatchId){  
-    //       if(x.testMatchId!=x.matchId){
-    //         matchUpcomming.secondInning=x;
-    //         console.log("secon innigs");
-    //         this.threeFourDayMathcesUpcomming.push(matchUpcomming);
-    //       }else if(x.testMatchId==x.matchId){
-    //         matchUpcomming.firstInning=x;
-    //         console.log("first innigs");
-    //       }          
-    //     }
-    //   })
-    // })
+      //   if(x.testMatchId){  
+      //     if(x.testMatchId!=x.matchId){
+      //       matchUpcomming.secondInning=x;
+      //       console.log("secon innigs");
+      //       this.threeFourDayMathcesUpcomming.push(matchUpcomming);
+      //     }else if(x.testMatchId==x.matchId){
+      //       matchUpcomming.firstInning=x;
+      //       console.log("first innigs");
+      //     }          
+      //   }
+      // })
+    })
 
-    // this.matchService.getRefereeMatchesPlayedUpdated(this.tournamentId,this.userId).subscribe(res=>{
+    this.matchService.getRefereeMatchesPlayedUpdated(this.tournamentId,this.userId).subscribe(res=>{
      
-    //   this.updatedMatches=res;
-     
-    //   const matchplayedUpdated: ThreeFourDaysMatchModel = new ThreeFourDaysMatchModel(null,null);
-    //   res.forEach(x=>{
-    //     console.log(x);
-    //     if(x.matchTypeId.matchTypeId==1){
-    //       this.oneDayPlayedUpdatedMatches.push(x);
-    //     }else if(x.matchTypeId.matchTypeId==3){
-    //       this.tTwentyPlayedUpdatedMatches.push(x);
-    //     }
-    //     if(x.testMatchId){  
-    //       if(x.testMatchId!=x.matchId){
-    //         matchplayedUpdated.secondInning=x;
-    //         console.log("secon innigs");
-    //         this.threeFourDayMathcesPlayedUpdated.push(matchplayedUpdated);
-    //       }else if(x.testMatchId==x.matchId){
-    //         matchplayedUpdated.firstInning=x;
-    //         console.log("first innigs");
-    //       }          
-    //     }
-    //   })
+      this.updatedMatches=res;
+      console.log(res);
       
-    // })
+
+     
+      // const matchplayedUpdated: ThreeFourDaysMatchModel = new ThreeFourDaysMatchModel(null,null);
+      // res.forEach(x=>{
+      //   console.log(x);
+      //   if(x.matchTypeId.matchTypeId==1){
+      //     this.oneDayPlayedUpdatedMatches.push(x);
+      //   }else if(x.matchTypeId.matchTypeId==3){
+      //     this.tTwentyPlayedUpdatedMatches.push(x);
+      //   }
+      //   if(x.testMatchId){  
+      //     if(x.testMatchId!=x.matchId){
+      //       matchplayedUpdated.secondInning=x;
+      //       console.log("secon innigs");
+      //       this.threeFourDayMathcesPlayedUpdated.push(matchplayedUpdated);
+      //     }else if(x.testMatchId==x.matchId){
+      //       matchplayedUpdated.firstInning=x;
+      //       console.log("first innigs");
+      //     }          
+      //   }
+      // })
+      
+    })
 
   }
 
