@@ -313,11 +313,11 @@ export const AdminLayoutRoutes: Routes = [
     component: SponsorRequestComponent,
     canActivate: [RouteGuardService]
   },
- 
+ {
     path: "report",
     component: ReportComponent,
     canActivate: [RouteGuardService]
-  },
+  }
 
 
 ];
