@@ -38,29 +38,112 @@
             <div class="col-md-6">
               <table class="table">
                 <tr>
-                  <td>All Tournaments</td>
+                  <td>Past Tournaments</td>
                   <td>
-                    <a (click)="clubReport()"><button type="button" class="btn btn-success btn-sm" title="Club Report">
+                    <a (click)="tournamentReport(1)"><button type="button" class="btn btn-success btn-sm"
+                        title="download">
                         <i class="far fa-file-pdf"></i></button></a>
                   </td>
                 </tr>
                 <tr>
-                  <td>Club Payment Report - 2020</td>
+                  <td>Upcoming Tournaments</td>
                   <td>
-                    <a (click)="clubReport()"><button type="button" class="btn btn-success btn-sm" title="Club Report">
+                    <a (click)="tournamentReport(2)"><button type="button" class="btn btn-success btn-sm"
+                        title="download">
                         <i class="far fa-file-pdf"></i></button></a>
                   </td>
                 </tr>
                 <tr>
-                  <td>Club Payment Report - 2019</td>
+                  <td>Ongoing Tournaments</td>
                   <td>
-                    <a (click)="clubReport()"><button type="button" class="btn btn-success btn-sm" title="Club Report">
+                    <a (click)="tournamentReport(3)"><button type="button" class="btn btn-success btn-sm"
+                        title="download">
                         <i class="far fa-file-pdf"></i></button></a>
                   </td>
                 </tr>
               </table>
             </div>
           </div>
+
+
+          <h4>Tournament with Match Reports</h4>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">
+                    Past Tournament
+                  </h5>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <tr *ngFor="let tournament of pastTournament; let i = index">
+                          <td>{{ i + 1 }})</td>
+                          <td>{{ tournament.tournamentName }}</td>
+                          <td>
+                            <a (click)="getPastTournamentMatch(tournament.tournamentId)"><button type="button"
+                                class="btn btn-success btn-sm" title="download">
+                                <i class="far fa-file-pdf"></i></button></a>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">
+                    Upcoming Tournament
+                  </h5>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <tr *ngFor="let tournament of upComingTournament; let i = index">
+                          <td>{{ i + 1 }})</td>
+                          <td>{{ tournament.tournamentName }}</td>
+                          <td>
+                            <a (click)="getTournamentMatchFuture(tournament.tournamentId,2)"><button type="button"
+                                class="btn btn-success btn-sm" title="download">
+                                <i class="far fa-file-pdf"></i></button></a>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">
+                    Ongoing Tournament
+                  </h5>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <tr *ngFor="let tournament of onGoingTournament; let i = index">
+                          <td>{{ i + 1 }})</td>
+                          <td>{{ tournament.tournamentName }}</td>
+                          <td>
+                            <a (click)="getTournamentMatchFuture(tournament.tournamentId,3)"><button type="button"
+                                class="btn btn-success btn-sm" title="download">
+                                <i class="far fa-file-pdf"></i></button></a>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
 
         </div>
       </div>

@@ -24,10 +24,10 @@ export class TournamentService {
   }
 
   getTournamentsForCalender(): Observable<TournamentModel[]> {
-    
+
     return this.http.get<TournamentModel[]>(`${API_URL}/playeRanking/tournaments`);
   }
-  
+
 
 
   getTournamentById(tournamentId: Number): Observable<TournamentModel> {
@@ -40,15 +40,19 @@ export class TournamentService {
     return this.http.get<TournamentModel[]>(`${API_URL}/tournament/upcoming/${clubId}`, {});
   }
 
-  getRegistrationOpenTournaments():Observable<TournamentModel[]>{
+  getRegistrationOpenTournaments(): Observable<TournamentModel[]> {
     let jwt = sessionStorage.getItem('TOKEN');
-    const headers = new HttpHeaders().set('Authorization',jwt);
-    return this.http.get<TournamentModel[]>(`${API_URL}/tournaments/registrationOpened`,{headers});
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.get<TournamentModel[]>(`${API_URL}/tournaments/registrationOpened`, { headers });
   }
 
-  getRegistrationClosedTournaments():Observable<TournamentModel[]>{
+  getRegistrationClosedTournaments(): Observable<TournamentModel[]> {
     let jwt = sessionStorage.getItem('TOKEN');
-    const headers = new HttpHeaders().set('Authorization',jwt);
-    return this.http.get<TournamentModel[]>(`${API_URL}/tournaments/registrationClosed`,{headers});
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.get<TournamentModel[]>(`${API_URL}/tournaments/registrationClosed`, { headers });
+  }
+
+  getTournamentsByType(type) {
+    return this.http.get<TournamentModel[]>(`${API_URL}/tournament/type/${type}`);
   }
 }

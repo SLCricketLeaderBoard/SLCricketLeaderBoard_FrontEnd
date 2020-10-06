@@ -15,6 +15,7 @@ export class ManagerTournamentListComponent implements OnInit {
   clubId: Number = 0;
   registeredTournaments: TournamentClubModel[] = [];
   upcomingTournaments: TournamentModel[] = [];
+  showSpinner: Boolean = false;
 
   constructor(
     private tournamentClubService: TournamentClubService,

@@ -26,7 +26,7 @@ import { element } from 'protractor';
 export class PlayerSelectionComponent implements OnInit {
 
   isDataLoad = false;
-
+  showSpinner = false;
 
 
   option: Number = -1; //1-->Register , 2-->Update
@@ -205,6 +205,7 @@ export class PlayerSelectionComponent implements OnInit {
 
       //Register club for the tournament and register players for the tournament
       if (this.option == 1) {
+        this.showSpinner = true;
         this.tournamentClubPlayerService.tournamentClubPlayerRegister(this.clubId, this.tournementId, playerWrapper).subscribe(
           response => {
 
@@ -212,10 +213,12 @@ export class PlayerSelectionComponent implements OnInit {
             let object: TournamentClubCaptainModel = new TournamentClubCaptainModel(-1, this.captainField.value.playerId, this.viceCaptainField.value.playerId, response);
             this.tournamentClubCaptainService.tournamentCaptainsSave(object).subscribe(
               reponse => {
+                this.showSpinner = false;
                 this.router.navigate(['manager-tournament-list']);
                 this.swalMessage.successMessage("Tournament Team Players Registration Successful");
               },
               error => {
+                this.showSpinner = false;
                 console.log(error);
                 this.swalMessage.notSuccessMessage("Tournament Team Players Registration Not Successful");
               }
@@ -230,23 +233,27 @@ export class PlayerSelectionComponent implements OnInit {
 
       //Update data
       if (this.option == 2) {
+        this.showSpinner = true;
         this.tournamentClubPlayerService.tournamentClubPlayerUpdate(this.clubId, this.tournementId, playerWrapper).subscribe(
           response => {
             let object: TournamentClubCaptainModel = new TournamentClubCaptainModel(-1, this.captainField.value.playerId, this.viceCaptainField.value.playerId, response);
             this.tournamentClubCaptainService.tournamentCaptainsUpdate(object).subscribe(
               response => {
+                this.showSpinner = false;
                 this.swalMessage.successMessage("Tournament Team Players Update Successful");
                 this.getClubPlayerList();
                 this.getTournamentCaptain();
                 this.getRegisteredClubPlayerList();
               },
               error => {
+                this.showSpinner = false;
                 console.log(error);
                 this.swalMessage.successMessage("Tournament Team Players Update Not Successful");
               }
             );
           },
           error => {
+            this.showSpinner = false;
             this.swalMessage.successMessage("Tournament Team Players Update Not Successful");
             console.log(error);
           }

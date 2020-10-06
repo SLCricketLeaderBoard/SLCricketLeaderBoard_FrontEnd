@@ -18,4 +18,16 @@ export class ReportService {
   getClubPaymentReport(year) {
     return this.http.get<any>(`${API_URL}/report/club/payment/${year}`);
   }
+
+  getTournamentReport(type) {
+    return this.http.get<any>(`${API_URL}/report/tournament/${type}`);
+  }
+
+  getTournamentMatchPast(tournamentId) {
+    return this.http.get<any>(`${API_URL}/report/tournament/match/${tournamentId}`);
+  }
+
+  getTournamentMatchFuture(tournamentId, type) {
+    return this.http.get<any>(`${API_URL}/report/tournament/match/${tournamentId}/${type}`);
+  }
 }

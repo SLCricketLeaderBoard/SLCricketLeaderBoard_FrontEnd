@@ -77,18 +77,19 @@ export class LoginComponent implements OnInit {
       response.userId != null &&
       response.userId > 0 &&
       response.status == 1
-     
+
     ) {
       // response.role = 7;
       console.log(response.role);
       sessionStorage.setItem("userId", response.userId);
       sessionStorage.setItem("userRole", response.role);
       sessionStorage.setItem("userName", response.userName);
-     console.log(response.role)
+      console.log(response.role)
       if (response.role === 1) {
         this.router.navigate(["tournament-list"]);
       } else if (response.role == 2) {
         this.getClubData();
+        //this.router.navigate(["manager-dashboard"]);
       } else if (response.role == 3) {
         this.router.navigate(["#"]);
       } else if (response.role == 4) {
@@ -106,7 +107,7 @@ export class LoginComponent implements OnInit {
     let userId: Number = +sessionStorage.getItem("userId");
     this.clubService.getClubDataOfManager(userId).subscribe(
       (response) => {//ClubModel
-
+        console.log(response);
         let clubStatus: Number = +response.status;
         sessionStorage.setItem("isClubActivated", clubStatus + "");
         sessionStorage.setItem("isManagerHasClub", "1");
