@@ -81,6 +81,7 @@ export class SidebarComponent implements OnInit {
       { path: "/player-list", title: "Players", icon: "design_app", class: "" },
       { path: "/manager-match-list", title: "Matches", icon: "design_app", class: "" },
       { path: "/manager-tournament-list", title: "Tournaments", icon: "design_app", class: "" },
+      { path: "/sponsor-request", title: "Sponsor Requests", icon: "design_app", class: "" },
     ];
 
     this.referee = [

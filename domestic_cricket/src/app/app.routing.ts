@@ -21,6 +21,7 @@ import { PlayerProfileSummeryComponent } from './player/player-profile-summery/p
 import { MatchCalenderComponent } from './match-calender/match-calender.component';
 import { PublicMatchElementComponent } from './match-calender/public-match-element/public-match-element.component';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -64,7 +65,7 @@ const routes: Routes = [
     path: 'club-ranking',
     component: ClubRankingComponent
   }
-
+ 
   // {
   //   path: '',
   //   redirectTo: 'dashboard',

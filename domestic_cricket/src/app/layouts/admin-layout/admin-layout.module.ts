@@ -66,7 +66,7 @@ import { PlayerRateChartComponent } from '../../player/player-selection/player-r
 import { RefreeLiveMatchesComponent } from '../../refereeFunctions/refree-live-matches/refree-live-matches.component';
 import { RefereeLiveMatchElementComponent } from '../../refereeFunctions/refree-live-matches/referee-live-match-element/referee-live-match-element.component';
 import { MatchElementTrefordyComponent } from '../../tournaments/tournamnet-list/tournament-element/match-list/match-element-trefordy/match-element-trefordy.component';
-
+import { SponsorRequestComponent } from '../../club/sponsor-club/sponsor-request/sponsor-request.component';
 
 
 @NgModule({
@@ -146,7 +146,8 @@ import { MatchElementTrefordyComponent } from '../../tournaments/tournamnet-list
     SponsorDashboardComponent,
 
     PlayerRateChartComponent,
-    MatchElementTrefordyComponent
+    MatchElementTrefordyComponent,
+    SponsorRequestComponent
   ],
 })
 export class AdminLayoutModule { }
