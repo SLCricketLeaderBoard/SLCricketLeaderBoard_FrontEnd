@@ -70,7 +70,7 @@ export class SidebarComponent implements OnInit {
       { path: "/manager-list", title: "Managers", icon: "design_app", class: "", },
       { path: "/umpire-list", title: "Umpires", icon: "design_app", class: "" },
       { path: '/referee-list', title: "Referees", icon: "design_app", class: "" },
-      { path: "/stadium-register", title: "Stadiums", icon: "design_app", class: "" },
+      { path: "/stadium-list", title: "Stadiums", icon: "design_app", class: "" },
       { path: "/tournament-list", title: "Tournament", icon: "design_app", class: "" },
       { path: "/nonregsponsors", title: "Sponsors", icon: "design_app", class: "" },
       { path: "/report", title: "Reports", icon: "files_paper", class: "" },
@@ -82,6 +82,7 @@ export class SidebarComponent implements OnInit {
       { path: "/player-list", title: "Players", icon: "design_app", class: "" },
       { path: "/manager-match-list", title: "Matches", icon: "design_app", class: "" },
       { path: "/manager-tournament-list", title: "Tournaments", icon: "design_app", class: "" },
+      { path: "/sponsor-request", title: "Sponsor Requests", icon: "design_app", class: "" },
     ];
 
     this.referee = [

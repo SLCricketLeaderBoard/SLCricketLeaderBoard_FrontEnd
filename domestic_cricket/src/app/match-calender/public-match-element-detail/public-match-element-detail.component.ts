@@ -53,8 +53,10 @@ export class PublicMatchElementDetailComponent implements OnInit {
       console.log(res);
       this.club02=res;
     })
+  }
 
 
-
+  matchDetails(){
+    this.router.navigate(["match-details",this.match.matchId], { relativeTo: this.route });
   }
 }

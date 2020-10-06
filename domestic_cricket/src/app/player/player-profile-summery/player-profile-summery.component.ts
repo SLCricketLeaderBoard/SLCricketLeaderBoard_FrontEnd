@@ -15,6 +15,7 @@ export class PlayerProfileSummeryComponent implements OnInit {
 
   playerId: Number;
   player: PlayerModel;
+  rank
 
   asBallers: BallerScoreModel;
   asBatman: BatmanScoreModel;
@@ -24,6 +25,10 @@ export class PlayerProfileSummeryComponent implements OnInit {
       this.playerId = res['userId'];
       console.log(this.playerId);
     })
+
+    this.rank= +this.route.snapshot.queryParamMap.get('rank');
+    console.log(this.rank);
+    
    }
 
   ngOnInit() {

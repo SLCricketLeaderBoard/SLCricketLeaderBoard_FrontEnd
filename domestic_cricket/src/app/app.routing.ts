@@ -21,6 +21,9 @@ import { TTwentyPlayerRankingsComponent } from './player-ranking/t-twenty-player
 import { PlayerProfileSummeryComponent } from './player/player-profile-summery/player-profile-summery.component';
 import { MatchCalenderComponent } from './match-calender/match-calender.component';
 import { PublicMatchElementComponent } from './match-calender/public-match-element/public-match-element.component';
+import { PlayedTounamnetDetailsComponent } from './played-tounamnet-details/played-tounamnet-details.component';
+import { PublicMatchElementDetailComponent } from './match-calender/public-match-element-detail/public-match-element-detail.component';
+import { PubMatchDetailsComponent } from './played-tounamnet-details/pub-match-details/pub-match-details.component';
 
 
 const routes: Routes = [
@@ -46,6 +49,13 @@ const routes: Routes = [
           { path: ':tournamentId', component: PublicMatchElementComponent }
         ]
       },
+
+      {
+        path: 'played-tournaments', component: PlayedTounamnetDetailsComponent, children: [
+          { path: ':tournamentId', component: PublicMatchElementComponent },
+        ]
+      },
+      {path: 'played-tournaments/:tournamentId/match-details/:matchId',component: PubMatchDetailsComponent}
 
     ]
 
@@ -86,7 +96,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'dashboard'
+    redirectTo: 'login'
   }
 ];
 
