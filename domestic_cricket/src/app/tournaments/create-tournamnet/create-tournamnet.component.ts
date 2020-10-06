@@ -53,7 +53,7 @@ export class CreateTournamnetComponent implements OnInit {
 
     
     if(startDate<finishDate){
-      if(registartionCloseDate>startDate){
+      if(registartionCloseDate<startDate){
       
         
             const tournament: TournamentModel = new TournamentModel(

@@ -52,6 +52,7 @@ export class CreateMatchComponent implements OnInit {
   startDate: Date = new Date();
   endDate: Date = new Date();
   showSpinner= false;
+  endDateShow 
 
   constructor(private clubService: ClubService,
     private umpireService: UmpireService,
@@ -68,7 +69,7 @@ export class CreateMatchComponent implements OnInit {
       club02: new FormControl(null, [Validators.required]),
       tournementRound: new FormControl(null, [Validators.required]),
       startDate: new FormControl(null, [Validators.required]),
-      endDate: new FormControl(null, [Validators.required]),
+      endDate: new FormControl(null,),
       time: new FormControl(null, [Validators.required]),
       stadium: new FormControl(null, [Validators.required]),
       matchType: new FormControl(null, [Validators.required]),
@@ -152,6 +153,11 @@ export class CreateMatchComponent implements OnInit {
   }
 
   create() {
+    const startDate: Date = this.createMatch.value['startDate'];
+    let finishDate: Date = this.createMatch.value['startDate'];
+    if(this.endDateShow){
+      finishDate=this.createMatch.value['endDate'];
+    }
     this.showSpinner=true;
     const matchId: Number = null;
     const club1Id: Number = this.createMatch.value['club01'];
@@ -163,8 +169,7 @@ export class CreateMatchComponent implements OnInit {
     const club1Wicket: Number = 0;
     const club2Wicket: Number = 0;
     const tournementRound: number = this.createMatch.value['tournementRound'];
-    const startDate: Date = this.createMatch.value['startDate'];
-    const finishDate: Date = this.createMatch.value['endDate'];
+   
     const startTime: Timestamp<Time> = this.createMatch.value['time'];
     const winTeamId: Number = 0;
     const sponser: String = "Dialog"
@@ -243,6 +248,8 @@ console.log(matchEndDate+" mathc end date");
           testMatchId
         );
 
+        console.log(match);
+        
         
          let x = this.matchService.createMatch(match).subscribe(response=>{
            this.matchService.createMatchInfirebase(response).then(res=>{
@@ -280,7 +287,31 @@ console.log(matchEndDate+" mathc end date");
          }) 
 
       }
+
+
+      
+      
     }
+      
+      checkCheckBoxvalue(){
+        const x = this.createMatch.value['matchType'];
+       if(x.matchTypeId==2){
+         this.endDateShow=true;
+       }else{
+        this.endDateShow=false;
+       }
+ 
+      }
+
+      setEndDate(){
+        console.log("end date");
+        
+        if(!this.endDateShow){
+          this.createMatch.setValue({
+            endDate:this.createMatch.value['startDate']
+          });
+        }  
+      }
 
 
 

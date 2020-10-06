@@ -23,7 +23,7 @@
                           <div class="form-group">
                             <mat-form-field class="example-full-width">
                               <mat-label>Club 01</mat-label>
-                              <mat-select formControlName="club01">
+                              <mat-select formControlName="club01" [(ngModel)]="x">
                                 <mat-option *ngFor="let club of clubList" [value]="club.clubId">
                                   {{club.clubName}}
                                 </mat-option>
@@ -75,8 +75,8 @@
                           <div class="form-group">
                             <mat-form-field class="example-full-width">
                               <mat-label>Match Type</mat-label>
-                              <mat-select formControlName="matchType">
-                                <mat-option *ngFor="let type of matchTypes" [value]="type">
+                              <mat-select formControlName="matchType"  >
+                                <mat-option *ngFor="let type of matchTypes" [value]="type" (click)="checkCheckBoxvalue()" >
                                   {{type.matchType}}
                                 </mat-option>
                               </mat-select>
@@ -113,8 +113,8 @@
                             <p>
                               <mat-form-field class="example-full-width">
                                 <mat-label>Start Date</mat-label>
-                                <input matInput [matDatepicker]="std" formControlName="startDate">
-                                <mat-datepicker-toggle matSuffix [for]="std"></mat-datepicker-toggle>
+                                <input matInput [matDatepicker]="std" formControlName="startDate" >
+                                <mat-datepicker-toggle matSuffix [for]="std" (click)="setEndDate()"></mat-datepicker-toggle>
                                 <mat-datepicker #std disabled="false"></mat-datepicker>
                               </mat-form-field>
                             </p>
@@ -123,7 +123,7 @@
                         </div>
 
                         <div class="col-sm-6 col-lg-3">
-                          <div class="form-group">
+                          <div class="form-group" *ngIf="endDateShow" >
                             <p>
                               <mat-form-field class="example-full-width">
                                 <mat-label>End Date</mat-label>

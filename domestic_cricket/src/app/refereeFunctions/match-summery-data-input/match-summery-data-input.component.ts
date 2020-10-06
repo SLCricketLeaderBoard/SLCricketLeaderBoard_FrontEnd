@@ -81,33 +81,12 @@ export class MatchSummeryDataInputComponent implements OnInit {
 
       ]),
 
-      club1RunsSecond: new FormControl(null, [
-        Validators.required,
-        Validators.min(0),
-      ]),
-      club1WicketsSecond: new FormControl(null, [
-        Validators.required,
-        Validators.min(0),
-        Validators.max(10)
-      ]),
-      club1FacedOversSecond: new FormControl(null, [
-        Validators.required,
-        Validators.min(0),
-      ]),
-      club2RunsSecond: new FormControl(null, [
-        Validators.required,
-        Validators.min(0),
-      ]),
-      club2WicketsSecond: new FormControl(null, [
-        Validators.required,
-        Validators.min(0),
-        Validators.max(10)
-      ]),
-      club2FacedOversSecond: new FormControl(null, [
-        Validators.required,
-        Validators.min(0),
-
-      ]),
+      club1RunsSecond: new FormControl(null),
+      club1WicketsSecond: new FormControl(null),
+      club1FacedOversSecond: new FormControl(null),
+      club2RunsSecond: new FormControl(null),
+      club2WicketsSecond: new FormControl(null),
+      club2FacedOversSecond: new FormControl(null),
 
       tossWinTeam: new FormControl(null, Validators.required),
       // winTeam: new FormControl(null, [Validators.required]),
