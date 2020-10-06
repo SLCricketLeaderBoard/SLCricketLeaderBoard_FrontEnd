@@ -29,6 +29,12 @@ export class TournamentService {
   }
 
 
+  getTournamentsHistory(): Observable<TournamentModel[]> {
+
+    return this.http.get<TournamentModel[]>(`${API_URL}/playeRanking/tournamentsForHistory`);
+  }
+
+
 
   getTournamentById(tournamentId: Number): Observable<TournamentModel> {
     let jwt = sessionStorage.getItem('TOKEN');
