@@ -16,7 +16,7 @@ export class RefereeMatchListComponent implements OnInit {
   toPlayMatches:MatchModel[];
   updatedMatches: MatchModel[];
 
-  threeFourDayMathcesPlayedUpdated: ThreeFourDaysMatchModel[] =[];
+  threeFourDayMathcesPlayedUpdated: MatchModel[] =[];
   oneDayPlayedUpdatedMatches: MatchModel[]=[];
   tTwentyPlayedUpdatedMatches: MatchModel[]=[];
 
@@ -24,11 +24,11 @@ export class RefereeMatchListComponent implements OnInit {
 
   oneDayUpcommingMatches: MatchModel[]=[];
   tTwentyUpcommingMathces: MatchModel[]=[];
-  threeFourDayMathcesUpcomming: ThreeFourDaysMatchModel[] =[];
+  threeFourDayMathcesUpcomming: MatchModel[] =[];
   
   oneDayPlayedMatches: MatchModel[]=[];
   tTwentyPlayedMatches: MatchModel[]=[];
-  threeFourDayPlayedMatches: ThreeFourDaysMatchModel[] =[];
+  threeFourDayPlayedMatches: MatchModel[] =[];
 
 
   tournamentId:number;
@@ -50,26 +50,30 @@ export class RefereeMatchListComponent implements OnInit {
 
       this.matchService.getRefereeMatchesPlayedTTwenty(this.tournamentId,this.userId).subscribe(res=>{
         this.tTwentyPlayedMatches=res;
-        console.log(res                                                                                                         );
-        
-
+        res.forEach(x=>{
+          console.log(x);
+        })
+        // console.log(res);
       })
                                                                                                               
       this.matchService.getRefereeMatchesPlayed34Days(this.tournamentId,this.userId).subscribe(res=>{
-        res.forEach(x=>{
-          console.log(x);  
-          const matchPlayed: ThreeFourDaysMatchModel = new ThreeFourDaysMatchModel(null,null);
-          if(x.testMatchId){  
-            if(x.testMatchId!=x.matchId){
-              matchPlayed.secondInning=x;
-              console.log("secon innigs");
-              this.threeFourDayPlayedMatches.push(matchPlayed);
-            }else if(x.testMatchId==x.matchId){
-              matchPlayed.firstInning=x;
-              console.log("first innigs");
-            }          
-          }
-        })
+        this.threeFourDayPlayedMatches=res;
+        // res.forEach(x=>{
+        //   console.log(x);  
+        //   console.log("shjcbjshdbcjhsdbcjhsdbcjhsdbcjsbdjc");
+          
+        //   const matchPlayed: ThreeFourDaysMatchModel = new ThreeFourDaysMatchModel(null,null);
+       
+        //     if(x.testMatchId!=x.matchId){
+        //       matchPlayed.secondInning=x;
+        //       console.log("secon innigs");
+        //       this.threeFourDayPlayedMatches.push(matchPlayed);
+        //     }else if(x.testMatchId==x.matchId){
+        //       matchPlayed.firstInning=x;
+        //       console.log("first innigs");
+        //     }          
+         
+        // })
       })
 
 
@@ -85,20 +89,22 @@ export class RefereeMatchListComponent implements OnInit {
       })
 
       this.matchService.getRefereeMatchesPlayedUpdated34Days(this.tournamentId,this.userId).subscribe(res=>{
-        res.forEach(x=>{
-          console.log(x);  
-          const matchPlayed: ThreeFourDaysMatchModel = new ThreeFourDaysMatchModel(null,null);
-          if(x.testMatchId){  
-            if(x.testMatchId!=x.matchId){
-              matchPlayed.secondInning=x;
-              console.log("secon innigs");
-              this.threeFourDayMathcesPlayedUpdated.push(matchPlayed);
-            }else if(x.testMatchId==x.matchId){
-              matchPlayed.firstInning=x;
-              console.log("first innigs");
-            }          
-          }
-        })
+        this.threeFourDayMathcesPlayedUpdated=res;
+
+        // res.forEach(x=>{
+        //   console.log(x);  
+        //   const matchPlayed: ThreeFourDaysMatchModel = new ThreeFourDaysMatchModel(null,null);
+        //   if(x.testMatchId){  
+        //     if(x.testMatchId!=x.matchId){
+        //       matchPlayed.secondInning=x;
+        //       console.log("secon innigs");
+        //       this.threeFourDayMathcesPlayedUpdated.push(matchPlayed);
+        //     }else if(x.testMatchId==x.matchId){
+        //       matchPlayed.firstInning=x;
+        //       console.log("first innigs");
+        //     }          
+        //   }
+        // })
       })
 
 
@@ -112,28 +118,32 @@ export class RefereeMatchListComponent implements OnInit {
 
 
       this.matchService.getRefereeMatchesUpcomming34Days(this.tournamentId,this.userId).subscribe(res=>{
-        res.forEach(x=>{
-          console.log(x);  
-          const matchPlayed: ThreeFourDaysMatchModel = new ThreeFourDaysMatchModel(null,null);
-          if(x.testMatchId){  
-            if(x.testMatchId!=x.matchId){
-              matchPlayed.secondInning=x;
-              console.log("secon innigs");
-              this.threeFourDayMathcesUpcomming.push(matchPlayed);
-            }else if(x.testMatchId==x.matchId){
-              matchPlayed.firstInning=x;
-              console.log("first innigs");
-            }          
-          }
-        })
+        this.threeFourDayMathcesUpcomming=res;
+        // res.forEach(x=>{
+        //   console.log(x);  
+        //   const matchPlayed: ThreeFourDaysMatchModel = new ThreeFourDaysMatchModel(null,null);
+        //   if(x.testMatchId){  
+        //     if(x.testMatchId!=x.matchId){
+        //       matchPlayed.secondInning=x;
+        //       console.log("secon innigs");
+        //       this.threeFourDayMathcesUpcomming.push(matchPlayed);
+        //     }else if(x.testMatchId==x.matchId){
+        //       matchPlayed.firstInning=x;
+        //       console.log("first innigs");
+        //     }          
+        //   }
+        // })
       })
 
 
 
-    this.matchService.getRefereeMatchesPlayed(this.tournamentId,this.userId).subscribe(res=>{
-      this.playedMatches=res;
-      
-      
+    // this.matchService.getRefereeMatchesPlayed(this.tournamentId,this.userId).subscribe(res=>{
+    //   this.playedMatches=res;
+    //   res.forEach(x=>{
+    //     console.log(x);
+        
+    //   })
+          
 
       // res.forEach(x=>{
       //   console.log(x);
@@ -157,13 +167,13 @@ export class RefereeMatchListComponent implements OnInit {
       //   }
       // })
 
-    })
+    // })
 
 
                                                                                                                                
-    this.matchService.getRefereeMatchesUpcomming(this.tournamentId,this.userId).subscribe(res=>{
+    // this.matchService.getRefereeMatchesUpcomming(this.tournamentId,this.userId).subscribe(res=>{
      
-      this.toPlayMatches=res;
+    //   this.toPlayMatches=res;
    
       // const matchUpcomming: ThreeFourDaysMatchModel = new ThreeFourDaysMatchModel(null,null);
       // res.forEach(x=>{
@@ -185,12 +195,12 @@ export class RefereeMatchListComponent implements OnInit {
       //     }          
       //   }
       // })
-    })
+    // })
 
-    this.matchService.getRefereeMatchesPlayedUpdated(this.tournamentId,this.userId).subscribe(res=>{
+    // this.matchService.getRefereeMatchesPlayedUpdated(this.tournamentId,this.userId).subscribe(res=>{
      
-      this.updatedMatches=res;
-      console.log(res);
+    //   this.updatedMatches=res;
+    //   console.log(res);
       
 
      
@@ -214,7 +224,7 @@ export class RefereeMatchListComponent implements OnInit {
       //   }
       // })
       
-    })
+    // })
 
   }
 

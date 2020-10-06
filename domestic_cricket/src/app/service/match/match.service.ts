@@ -185,6 +185,12 @@ export class MatchService {
   }
 
 
+  updateMatchFor34Days(match: MatchModel): Observable<MatchModel> {
+    let jwt = sessionStorage.getItem('TOKEN');
+    const headers = new HttpHeaders().set('Authorization', jwt);
+    return this.http.post<MatchModel>(`${API_URL}/updateMatchFor34Days`, match, { headers });
+  }
+
 
 
 

@@ -240,6 +240,7 @@
                       <button mat-raised-button (click)="create()" [disabled]="!createMatch.valid" >Create</button>
 
                     </form>
+
                   </div>
 
 
@@ -250,6 +251,10 @@
 
                   <div *ngIf="!done">
                     <p style="margin-top: 20px; margin-left: 100px; color:red;">{{errorMessage}}</p>
+                  </div>
+
+                  <div *ngIf="showSpinner" class="spinner-border text-secondary" role="status" id="loader">
+                    <span class="sr-only">Loading...</span>
                   </div>
 
                 </div>
