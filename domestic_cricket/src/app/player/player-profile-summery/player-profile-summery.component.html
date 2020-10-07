@@ -1,9 +1,9 @@
-<div *ngIf="player" class="row">
+<div *ngIf="player" class="row" style="margin-top: 30px;">
   <div class="col-5">
     <div class="row" style="padding: 5%;">
       <img [src]="player.userId.profileImage" alt="" height="300px" width="auto">
     </div>
-    <div class="row">
+    <div class="row" style="padding: 5%;">
       <table class="table" style="font-size: large;">
         <tr>
 
@@ -177,7 +177,7 @@
               Hatricks
             </td>
             <th>
-              {{asBallers.hatricks}}
+              {{asBallers?.hatricks}}
             </th>
           </tr>
           <tr>

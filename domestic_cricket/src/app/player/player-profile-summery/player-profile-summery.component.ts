@@ -7,6 +7,8 @@ import { BallerScoreModel } from '../../class-model/BallerScoreModel';
 import { FieldingScoreModel } from '../../class-model/FieldingScoreModel';
 import { PlayerMatchRecordModel } from '../../class-model/PlayerMatchRecordModel';
 import { PlayerMatchDataModel } from '../../class-model/PlayerMatchDataModel';
+import { GUEST_USER_EMAIL, GUEST_USER_PASSWORD } from '../../app.constants';
+import { UserAuthenticationServiceService } from '../../service/user/user-authentication-service.service';
 
 @Component({
   selector: 'app-player-profile-summery',
@@ -18,6 +20,7 @@ export class PlayerProfileSummeryComponent implements OnInit {
   playerId: Number;
   player: PlayerModel;
   rank
+  errorMessage
 
   playerMatchDataBatmen: PlayerMatchDataModel[] = [];
   playerMatchDataBaller: PlayerMatchDataModel[] = [];
@@ -25,7 +28,7 @@ export class PlayerProfileSummeryComponent implements OnInit {
   asBallers: BallerScoreModel;
   asBatman: BatmanScoreModel;
   asAllRounders: FieldingScoreModel;
-  constructor(private router: Router, private route: ActivatedRoute, private playerService: PlayerService) {
+  constructor(private router: Router, private route: ActivatedRoute, private playerService: PlayerService,  private userAuthenticationService: UserAuthenticationServiceService) {
     this.route.params.subscribe(res => {
       this.playerId = res['userId'];
       console.log(this.playerId);
@@ -37,8 +40,8 @@ export class PlayerProfileSummeryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getPlayerMatchData(1);
-    this.getPlayerMatchData(2);
+    this.guestUserAuthenticated();
+    
 
     this.playerService.getPlayerForDetails(this.playerId).subscribe(res => {
       this.player = res;
@@ -77,6 +80,26 @@ export class PlayerProfileSummeryComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  guestUserAuthenticated() {
+    let email: string = GUEST_USER_EMAIL;
+    let password: string = GUEST_USER_PASSWORD;
+    this.userAuthenticationService
+      .executeJWTAuthenticationService(
+        email,
+        password
+      )
+      .subscribe(
+        (response) => {
+          console.log("Success request for guest user")
+          this.getPlayerMatchData(1);
+          this.getPlayerMatchData(2);
+        },
+        (error) => {
+          this.errorMessage = "INVALID CREDENTIALS.";
+        }
+      );
   }
 
 
