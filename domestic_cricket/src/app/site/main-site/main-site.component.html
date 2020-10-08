@@ -26,12 +26,25 @@
         <li class="nav-item">
           <a class="nav-link" (click)="matchCalender()">Match Calender</a>
         </li>
+      
+
+     
 
 
       </ul>
       <form class="form-inline mt-2 mt-md-0">
         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" (click)="login()">Login</button>
+
+        <button class="btn btn-outline-success my-2 my-sm-0" [matMenuTriggerFor]="menu">SignUp</button>
+        <!-- #enddocregion mat-menu-trigger-for -->
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="playerSignup()">Player Sign up</button> 
+          <button mat-menu-item (click)="managerSignup()">Manager Sign up</button>
+          <button mat-menu-item (click)="sponsorSignup()">Sponser Sign up</button>
+        </mat-menu>
+      
+       
       </form>
     </div>
   </nav>

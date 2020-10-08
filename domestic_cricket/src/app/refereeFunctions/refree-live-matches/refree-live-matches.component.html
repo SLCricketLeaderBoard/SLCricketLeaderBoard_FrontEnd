@@ -12,9 +12,14 @@
         </div>
        </div>
 
-       <app-referee-live-match-element *ngFor="let match of liveTodayMatches" [match]="match" >
+       <div *ngIf="liveTodayMatches" class="row">
+         <app-referee-live-match-element *ngFor="let match of liveTodayMatches" [match]="match" >
+         </app-referee-live-match-element>
 
-       </app-referee-live-match-element>
+       </div>
+       <div *ngIf="liveTodayMatches.length==0" class="row" style="padding: 20%;">
+          <h4>There is no match to play today</h4>
+       </div>
      </div>
     </div>
   </div>

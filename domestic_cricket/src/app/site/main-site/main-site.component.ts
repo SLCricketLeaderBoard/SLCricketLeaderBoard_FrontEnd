@@ -41,5 +41,21 @@ export class MainSiteComponent implements OnInit {
   tournamentHistory(){
     this.router.navigate(["/played-tournaments"], { relativeTo: this.route });
   }
+
+  signUps(){
+
+  }
+
+  playerSignup() {
+    this.router.navigate(['player-signup']);
+  }
+
+  managerSignup() {
+    this.router.navigate(['manager-signup']);
+  }
+
+  sponsorSignup() {
+    this.router.navigate(['sponsor-signup']);
+  }
   
 }

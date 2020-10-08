@@ -138,15 +138,5 @@ export class LoginComponent implements OnInit {
     this.errorMessage = null;
   }
 
-  playerSignup() {
-    this.router.navigate(['player-signup']);
-  }
 
-  managerSignup() {
-    this.router.navigate(['manager-signup']);
-  }
-
-  sponsorSignup() {
-    this.router.navigate(['sponsor-signup']);
-  }
 }
